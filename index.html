@@ -264,10 +264,9 @@
 <li><ol>
 <li>指向静态方法的方法引用</li>
 <li>指向任意类型实例方法的方法引用</li>
-<li>指向现有对象的实例的方法引用</li>
+<li>指向现有对象的实例的方法引用<img src="/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E6%96%B9%E6%B3%95%E5%BC%95%E7%94%A8%E7%9A%84%E6%9B%BF%E6%8D%A2.PNG" class></li>
 </ol>
 </li>
-<li><img src="/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/lambda表达式与方法引用的替换.PNG" alt="lambda表达式与方法引用的替换" style="zoom: 50%;"></li>
 </ul>
 </li>
 </ul>
@@ -338,13 +337,10 @@
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import static java.util.stream.Collectors.toList</span><br><span class="line">List&lt;String&gt; threeHighCaloricDishName &#x3D; menu.stream().filter(d-&gt;d.getCalories()&gt;300).map(Dish::getName).limit(3).collect(toList());</span><br><span class="line">System.out.println(threeHighCaloricDishName);</span><br></pre></td></tr></table></figure>
-
-
+<img src="/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Java8%E6%B5%81%E5%A4%84%E7%90%86%E7%9A%84%E8%BF%AD%E4%BB%A3%E8%BF%87%E7%A8%8B%E5%9B%BE.PNG" class>
 
 <ul>
-<li><img src="/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Java 8流处理的迭代过程图.PNG" alt="Java 8流处理的迭代过程图" style="zoom:67%;"></li>
-<li><p>解释：上图显示流操作的顺序，可以理解为：链中的方法一致处于等待状态，直到流到达处理，最后形成List。</p>
-</li>
+<li>解释：上图显示流操作的顺序，可以理解为：链中的方法一致处于等待状态，直到流到达处理，最后形成List。</li>
 </ul>
 </li>
 </ul>
@@ -367,10 +363,7 @@
 <li><code>Streams</code>使用了内部迭代。它帮助做迭代，并且暂存结果。</li>
 <li>内部迭代隐藏了一些复杂性，隐去了复杂丑陋的代码，让显示出来的代码优美好看。</li>
 <li>内部迭代提供并行处理，或者选择更加优化的迭代顺序来处理。</li>
-<li>下图展示两者的差异：<ul>
-<li><img src="/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Java 8 内部迭代与外部迭代.PNG" alt="Java 8 内部迭代与外部迭代" style="zoom:67%;"></li>
-</ul>
-</li>
+<li>下图展示两者的差异：<img src="/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Java8%E5%86%85%E9%83%A8%E8%BF%AD%E4%BB%A3%E4%B8%8E%E5%A4%96%E9%83%A8%E8%BF%AD%E4%BB%A3.PNG" class></li>
 </ul>
 <h3 id="4-5-流操作"><a href="#4-5-流操作" class="headerlink" title="4.5 流操作"></a>4.5 流操作</h3><ul>
 <li>流操作基本可以分为两类：中间操作和终端操作。</li>
@@ -684,13 +677,9 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Boolean,List&lt;Dish&gt;&gt; partitionMenu &#x3D; menu.stream().collect(partitioningBy(Dish::isvegetarian));</span><br><span class="line">执行结果：</span><br><span class="line">&#123;false&#x3D;[beef, pork, SanWenYu], true&#x3D;[cabbage]&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p>下面将展示<code>Collectors</code>类的静态工厂方法</p>
-<ul>
-<li><img src="/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Collectors类静态工厂方法表1.PNG" alt="Collectors类静态工厂方法表1" style="zoom: 50%;"></li>
-<li><img src="/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Collectors类静态工厂方法表2.PNG" alt="Collectors类静态工厂方法表2" style="zoom:67%;"></li>
-<li><img src="/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Collectors类静态工厂方法表3.PNG" alt="Collectors类静态工厂方法表3" style="zoom:67%;"></li>
-</ul>
-</li>
+<li>下面将展示<code>Collectors</code>类的静态工厂方法<img src="/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Collectors%E7%B1%BB%E9%9D%99%E6%80%81%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E8%A1%A81.PNG" class>
+<img src="/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Collectors%E7%B1%BB%E9%9D%99%E6%80%81%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E8%A1%A82.PNG" class>
+<img src="/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Collectors%E7%B1%BB%E9%9D%99%E6%80%81%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E8%A1%A83.PNG" class></li>
 </ul>
 <h3 id="6-5-收集器接口"><a href="#6-5-收集器接口" class="headerlink" title="6.5 收集器接口"></a>6.5 收集器接口</h3><ul>
 <li><p><code>Collector</code>接口</p>
@@ -814,10 +803,7 @@
 </ul>
 </li>
 <li><p>**<code>Spliterator</code>**特性</p>
-<ul>
-<li><img src="/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Spliterator特性.PNG" style="zoom:67%;"></li>
-</ul>
-</li>
+<img src="/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Spliterator%E7%89%B9%E6%80%A7.PNG" class></li>
 </ul>
 <h1 id="第三部分-高效-Java-8-编程"><a href="#第三部分-高效-Java-8-编程" class="headerlink" title="第三部分 高效 Java 8 编程"></a>第三部分 高效 Java 8 编程</h1><h2 id="第八章-高效-Java-8-编程"><a href="#第八章-高效-Java-8-编程" class="headerlink" title="第八章 高效 Java 8 编程"></a>第八章 高效 Java 8 编程</h2><h3 id="8-1-设计模式"><a href="#8-1-设计模式" class="headerlink" title="8.1 设计模式"></a>8.1 设计模式</h3><ul>
 <li>这里涉及的涉及模式主要是为了使用<code>Lambda</code>重构面向对象的设计模式。</li>
