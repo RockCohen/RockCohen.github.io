@@ -15,8 +15,6 @@
 <meta property="og:site_name" content="Rock Cohen">
 <meta property="og:description" content="第一部分 基础知识第一章 Java 8 新特性 Java 8 新特性主要包括： Stream API 向方法传递代码的技巧 接口中的默认方法    1.1 流处理 流是一系列的数据项，一次只生成一项。 程序可以从输入流中一个一个读取数据，以同样的方式将数据写入输出流。 一个程序的输入流可能是另一个程序的输出流。 Java 8 借助流水线的思想，在java.util.Stream中添加一个Strea">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Java8%20常用函数式接口1.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Java8%20常用函数式接口2.PNG">
 <meta property="og:image" content="https://rockcohen.gitee.io/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/lambda表达式与方法引用的替换.PNG">
 <meta property="og:image" content="https://rockcohen.gitee.io/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Java%208流处理的迭代过程图.PNG">
 <meta property="og:image" content="https://rockcohen.gitee.io/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Java%208%20内部迭代与外部迭代.PNG">
@@ -25,11 +23,11 @@
 <meta property="og:image" content="https://rockcohen.gitee.io/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Collectors类静态工厂方法表3.PNG">
 <meta property="og:image" content="https://rockcohen.gitee.io/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Spliterator特性.PNG">
 <meta property="article:published_time" content="2021-03-21T08:29:40.000Z">
-<meta property="article:modified_time" content="2021-03-21T08:31:52.741Z">
+<meta property="article:modified_time" content="2021-03-21T08:48:06.615Z">
 <meta property="article:author" content="RockCohen">
 <meta property="article:tag" content="Java 8">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://rockcohen.gitee.io/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Java8%20常用函数式接口1.PNG">
+<meta name="twitter:image" content="https://rockcohen.gitee.io/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/lambda表达式与方法引用的替换.PNG">
   
     <link rel="alternative" href="/atom.xml" title="Rock Cohen" type="application/atom+xml">
   
@@ -244,12 +242,9 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">接口定义与实现</span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Function</span>&lt;<span class="title">T</span>,<span class="title">R</span>&gt;</span>&#123;</span><br><span class="line"> <span class="function">R <span class="title">apply</span><span class="params">(T t)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T,R&gt; <span class="function">List&lt;R&gt; <span class="title">map</span><span class="params">(List&lt;T&gt; list,Function&lt;T,R&gt; f)</span></span>&#123;</span><br><span class="line">   List&lt;R&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">   <span class="keyword">for</span>(T s:list)&#123;</span><br><span class="line">   result.add(f.apply(s));</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line">接口应用</span><br><span class="line">List&lt;Integer&gt; list = map(Array.asList(<span class="string">&quot;lambda&quot;</span>,<span class="string">&quot;in&quot;</span>,<span class="string">&quot;action&quot;</span>),(String s)-&gt;s.length())</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>Java 8 中常用的函数式接口<ul>
-<li><img src="/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Java8 常用函数式接口1.PNG" alt="Java8 常用函数式接口1" style="zoom:67%;"></li>
-<li><img src="/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Java8 常用函数式接口2.PNG" alt="Java8 常用函数式接口2" style="zoom:67%;"></li>
-<li>具体参考相应的API。</li>
-</ul>
+<li>Java 8 中常用的函数式接口
 </li>
+<li>具体参考相应的API。</li>
 </ul>
 <h3 id="3-4-类型检查"><a href="#3-4-类型检查" class="headerlink" title="3.4 类型检查"></a>3.4 类型检查</h3><ul>
 <li><p>使用局部的变量</p>
