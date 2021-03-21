@@ -924,28 +924,50 @@
 </li>
 <li><p>可接受<code>null</code>的<code>Optional</code></p>
 <ul>
-<li><p>通过调用静态工厂方法<code>Optional.ofNullable</code>，可以创建一个允许<code>null</code>值得<code>Optional</code>对象：</p>
+<li>通过调用静态工厂方法<code>Optional.ofNullable</code>，可以创建一个允许<code>null</code>值得<code>Optional</code>对象：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Car&gt; optCar &#x3D;  Optional.ofNullable(car);</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li><pre><code>Optional&lt;Car&gt; optCar =  Optional.ofNullable(car);
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">      - 如果car为空，那么得到的&#96;Optional&#96;对象就是个空对象。</span><br><span class="line"></span><br><span class="line">- 使用map从&#96;Optional&#96;对象中提取和转换值</span><br><span class="line"></span><br><span class="line">  - &#96;Optional&#96;提供一个map方法。与map的作用一致，只是应用的对象是&#96;Optional&#96;而已。</span><br><span class="line"></span><br><span class="line">- 可以使用&#96;flatMap&#96;链接&#96;Optional&#96;对象。</span><br><span class="line"></span><br><span class="line">- 待补充</span><br><span class="line"></span><br><span class="line">## 第十一章 组合式异步编程</span><br><span class="line"></span><br><span class="line">### 11.1 Future接口</span><br><span class="line"></span><br><span class="line">- &#96;Future&#96;接口在Java 5中引入，设计初衷是为了对将来某个时刻会发生的结果进行建模。</span><br><span class="line">- 它建模了一种异步计算，返回一个执行结果的引用，当运算结束后，这个引用被返回给调用方。</span><br><span class="line">- 在&#96;Future&#96;中触发那些潜在耗时的运算把调用线程解放出来，让它继续执行其他有价值的工作，不再呆呆地等待耗时操作完成。</span><br><span class="line"></span><br><span class="line">#### 11.1.1 使用&#96;CompletableFuture&#96;构建异步应用</span><br><span class="line"></span><br><span class="line">- **同步API**：是对传统方式调用的一种称呼，调用方法时，调用方在被调用方运行过程中等待，被调用方执行完毕后，调用方取得被调用返回的结果并继续运行。即使调用方与被调用方使用不同的线程，调用方还是需要被调用方执行完毕后的运行，这就是**阻塞式调用**。</span><br><span class="line">- **异步API**：异步API会直接返回，或者至少被调用方计算完成之前，将它剩余的计算任务交给另一个线程去做，该线程与调用方是异步的，-------这就是**非阻塞式调用**。</span><br><span class="line"></span><br><span class="line">### 11.2 实现异步API</span><br><span class="line"></span><br><span class="line">#### 11.2.1 将同步方法转换为异步方法</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-public Future&lt;Double&gt; getPriceAsync(String product)&#123;
-CompletableFuture&lt;Double&gt; futurePrice = new CompletableFuture&lt;&gt;();
-new Thread(()-&gt;&#123;
-double price = calculatePrice(product);
-futurePrice.complete(price);
-&#125;).start();
-return futurePrice;
-&#125;
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 上述代码解释：首先创建了一个代表异步计算的&#96;CompletableFuture&#96;对象实例，它在计算完成时hi包含计算的结果。接着调用fork创建了另一个线程去执行实际价格的计算工作，不等待该耗时计算任务结束，直接返回一个&#96;Future&#96;实例，当请求的产品价格最终计算出来，可以调用&#96;complete&#96;方法，结束&#96;completableFuture&#96;对象的运行，并设置变量的值。</span><br><span class="line"></span><br><span class="line">#### 11.2.2 错误处理</span><br><span class="line"></span><br><span class="line">- 上述的代码，如果当计算价格的代码出错，那么则会永久阻塞，采用新版的get方法可以避免这个问题，</span><br><span class="line"></span><br><span class="line">- **使用工厂方法&#96;supplyAsync&#96;创建&#96;CompletableFuture&#96;**</span><br><span class="line"></span><br><span class="line">  - &#96;CompletableFuture&#96;提供了大量的精巧的工厂方法，使用这些方法可以更加容易地完成前面的异步过程，且不用担心实现细节。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-public Future&lt;Doublr&gt; getPriceAsyncPrice(String product)&#123;
-return CompletableFuture.supplyAsync(()-&gt;calculatePrice(product));
-&#125;
-</code></pre>
-</li>
+<li>如果car为空，那么得到的<code>Optional</code>对象就是个空对象。</li>
 </ul>
 </li>
 </ul>
 </li>
+<li><p>使用map从<code>Optional</code>对象中提取和转换值</p>
+<ul>
+<li><code>Optional</code>提供一个map方法。与map的作用一致，只是应用的对象是<code>Optional</code>而已。</li>
+</ul>
+</li>
+<li><p>可以使用<code>flatMap</code>链接<code>Optional</code>对象。</p>
+</li>
+<li><p>待补充</p>
+</li>
+</ul>
+<h2 id="第十一章-组合式异步编程"><a href="#第十一章-组合式异步编程" class="headerlink" title="第十一章 组合式异步编程"></a>第十一章 组合式异步编程</h2><h3 id="11-1-Future接口"><a href="#11-1-Future接口" class="headerlink" title="11.1 Future接口"></a>11.1 Future接口</h3><ul>
+<li><code>Future</code>接口在Java 5中引入，设计初衷是为了对将来某个时刻会发生的结果进行建模。</li>
+<li>它建模了一种异步计算，返回一个执行结果的引用，当运算结束后，这个引用被返回给调用方。</li>
+<li>在<code>Future</code>中触发那些潜在耗时的运算把调用线程解放出来，让它继续执行其他有价值的工作，不再呆呆地等待耗时操作完成。</li>
+</ul>
+<h4 id="11-1-1-使用CompletableFuture构建异步应用"><a href="#11-1-1-使用CompletableFuture构建异步应用" class="headerlink" title="11.1.1 使用CompletableFuture构建异步应用"></a>11.1.1 使用<code>CompletableFuture</code>构建异步应用</h4><ul>
+<li><strong>同步API</strong>：是对传统方式调用的一种称呼，调用方法时，调用方在被调用方运行过程中等待，被调用方执行完毕后，调用方取得被调用返回的结果并继续运行。即使调用方与被调用方使用不同的线程，调用方还是需要被调用方执行完毕后的运行，这就是<strong>阻塞式调用</strong>。</li>
+<li><strong>异步API</strong>：异步API会直接返回，或者至少被调用方计算完成之前，将它剩余的计算任务交给另一个线程去做，该线程与调用方是异步的，——-这就是<strong>非阻塞式调用</strong>。</li>
+</ul>
+<h3 id="11-2-实现异步API"><a href="#11-2-实现异步API" class="headerlink" title="11.2 实现异步API"></a>11.2 实现异步API</h3><h4 id="11-2-1-将同步方法转换为异步方法"><a href="#11-2-1-将同步方法转换为异步方法" class="headerlink" title="11.2.1 将同步方法转换为异步方法"></a>11.2.1 将同步方法转换为异步方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public Future&lt;Double&gt; getPriceAsync(String product)&#123;</span><br><span class="line">   CompletableFuture&lt;Double&gt; futurePrice &#x3D; new CompletableFuture&lt;&gt;();</span><br><span class="line">   new Thread(()-&gt;&#123;</span><br><span class="line">      double price &#x3D; calculatePrice(product);</span><br><span class="line">      futurePrice.complete(price);</span><br><span class="line">   &#125;).start();</span><br><span class="line">   return futurePrice;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上述代码解释：首先创建了一个代表异步计算的<code>CompletableFuture</code>对象实例，它在计算完成时hi包含计算的结果。接着调用fork创建了另一个线程去执行实际价格的计算工作，不等待该耗时计算任务结束，直接返回一个<code>Future</code>实例，当请求的产品价格最终计算出来，可以调用<code>complete</code>方法，结束<code>completableFuture</code>对象的运行，并设置变量的值。</li>
+</ul>
+<h4 id="11-2-2-错误处理"><a href="#11-2-2-错误处理" class="headerlink" title="11.2.2 错误处理"></a>11.2.2 错误处理</h4><ul>
+<li><p>上述的代码，如果当计算价格的代码出错，那么则会永久阻塞，采用新版的get方法可以避免这个问题，</p>
+</li>
+<li><p><strong>使用工厂方法<code>supplyAsync</code>创建<code>CompletableFuture</code></strong></p>
+<ul>
+<li><code>CompletableFuture</code>提供了大量的精巧的工厂方法，使用这些方法可以更加容易地完成前面的异步过程，且不用担心实现细节。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public Future&lt;Doublr&gt; getPriceAsyncPrice(String product)&#123;</span><br><span class="line">    return CompletableFuture.supplyAsync(()-&gt;calculatePrice(product));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li><p><code>supplyAync</code>接受一个生产者<code>Supplier</code>作为参数，返回一个<code>CompletableFuture</code>兑现给，该对象完成异步执行后读取调用生产者方法的返回值。</p>
 </li>
 <li><p>生产者方法交由<code>ForkJoinPool</code>池中的某个执行线程去执行。</p>
