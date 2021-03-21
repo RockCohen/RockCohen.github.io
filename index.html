@@ -154,6 +154,923 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-java8实战" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/">java8实战</a>
+    </h1>
+  
+
+        
+        <a href="/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/" class="archive-article-date">
+  	<time datetime="2021-03-21T08:29:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="第一部分-基础知识"><a href="#第一部分-基础知识" class="headerlink" title="第一部分 基础知识"></a>第一部分 基础知识</h1><h2 id="第一章-Java-8-新特性"><a href="#第一章-Java-8-新特性" class="headerlink" title="第一章 Java 8 新特性"></a>第一章 Java 8 新特性</h2><ul>
+<li>Java 8 新特性主要包括：<ul>
+<li>Stream API</li>
+<li>向方法传递代码的技巧</li>
+<li>接口中的默认方法</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-1-流处理"><a href="#1-1-流处理" class="headerlink" title="1.1 流处理"></a>1.1 流处理</h3><ul>
+<li>流是一系列的数据项，一次只生成一项。</li>
+<li>程序可以从输入流中一个一个读取数据，以同样的方式将数据写入输出流。</li>
+<li>一个程序的输入流可能是另一个程序的输出流。</li>
+<li>Java 8 借助流水线的思想，在<code>java.util.Stream</code>中添加一个<code>Stream API</code>，<code>Stream&lt;T&gt;</code>就是一系列T类型的项目。</li>
+<li>Java 8 可以透明地把输入的不相关的部分拿到几个CPU内核上面去分别执行的操作流。</li>
+</ul>
+<h3 id="1-2-用行为参数化把代码传递给方法"><a href="#1-2-用行为参数化把代码传递给方法" class="headerlink" title="1.2 用行为参数化把代码传递给方法"></a>1.2 用行为参数化把代码传递给方法</h3><ul>
+<li>将一些功能函数参数化，传递给其他对象进行执行，完成相应的功能，比如排序方法，根据不同的应用，排序的标准不一样，此时通过参数化就可以方便实现排序功能，这样不但减少了代码的冗余，同时增加了程序设计的简洁性。</li>
+</ul>
+<h3 id="1-3-并行与共享的可变数据"><a href="#1-3-并行与共享的可变数据" class="headerlink" title="1.3 并行与共享的可变数据"></a>1.3 并行与共享的可变数据</h3><ul>
+<li>写代码时不能访问共享的可变数据，这些函数被称作“纯函数”、“无副作用函数”或者“无状态函数”。</li>
+<li>”不能有共享的可变数据“意味着，一个放啊发是可以通过它将参数值转换为结果的方式完全描述的，换句话说，它的行为像一个数据函数，没有可见的副作用。</li>
+</ul>
+<h2 id="第二章-lambda表达式"><a href="#第二章-lambda表达式" class="headerlink" title="第二章 lambda表达式"></a>第二章 lambda表达式</h2><ul>
+<li>lambda示例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">布尔表达式                              (List&lt;String&gt; list)-&gt;list.isEmpty();</span><br><span class="line">创建对象                                ()-&gt;<span class="keyword">new</span> Apple(<span class="number">10</span>);</span><br><span class="line">消费一个对象                             (Apple a)-&gt;System.out.println(a.getWeight());</span><br><span class="line">从一个对象中选择/抽取                     (String s)-&gt;s.length();</span><br><span class="line">组合两个值                              (<span class="keyword">int</span> a,<span class="keyword">int</span> b)-&gt;a*b;</span><br><span class="line">比较两个对象                             (Apple a,Apple b)-&gt;a.getWeight().compareTo(a.getWeight());</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>lambda使用的地方</p>
+<ul>
+<li>可以在函数式接口处使用lambda表达式。</li>
+</ul>
+</li>
+<li><p>函数式接口</p>
+<ul>
+<li>函数式接口就是只定义了一个抽象方法的接口。</li>
+<li>函数式接口不能没有抽象方法。</li>
+<li>函数式接口的方法只能是一个，这里计算其抽象方法的数量包括重父类中继承的抽象方法。</li>
+<li>lambda表达式允许直接以内联的形式为函数式接口的抽象方法提供实现，并且把整个表达式作为函数式接口的实例。</li>
+<li>通过匿名内部类可以实现上述的作用，可是实现方式相对较为繁冗。</li>
+</ul>
+</li>
+</ul>
+<h2 id="第三章-函数式接口"><a href="#第三章-函数式接口" class="headerlink" title="第三章 函数式接口"></a>第三章 函数式接口</h2><h3 id="3-1-predicate"><a href="#3-1-predicate" class="headerlink" title="3.1 predicate"></a>3.1 predicate</h3><ul>
+<li><code>java.util.function.Predicate&lt;T&gt;</code>接口定义了一个叫做<code>test</code>的抽象方法，它接受泛型T对象，并返回一个boolean的值。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">接口定义以及接口实现。</span><br><span class="line">@FunctionalInterface</span><br><span class="line">public interface Predicate&lt;T&gt;&#123;</span><br><span class="line">   boolean test(T t);</span><br><span class="line">&#125;</span><br><span class="line">public static &lt;T&gt; List&lt;T&gt; filter(List&lt;T&gt; list,Predicate&lt;T&gt; p)&#123;</span><br><span class="line">   List&lt;T&gt; results &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">   for(T s:list)&#123;</span><br><span class="line">      if(p.test(s))&#123;</span><br><span class="line">         results.add(s);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   return resluts;</span><br><span class="line">&#125;</span><br><span class="line">函数式接口的应用</span><br><span class="line">筛选出不为空的字符串数组</span><br><span class="line">Predicate&lt;String&gt; nonEmptyStringPredicate &#x3D; (String s) -&gt; !s.isEmpty();</span><br><span class="line">List&lt;String&gt; nonEmpty &#x3D; filter(ListOFStrings,nonEmptyStringPredicate);</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-Consumer"><a href="#3-2-Consumer" class="headerlink" title="3.2 Consumer"></a>3.2 Consumer</h3><ul>
+<li><code>java.util.function.Consumer&lt;T&gt;</code>中定义了一个叫做accept的抽象方法，他接受泛型T的对象，没有返回（void）.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">接口的定义以及接口实现</span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Consumer</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">accept</span><span class="params">(T t)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">forEach</span><span class="params">(List&lt;T&gt; list,Comsumer&lt;T&gt; c)</span></span>&#123;</span><br><span class="line">     <span class="keyword">for</span>(T i:list)&#123;</span><br><span class="line">        c.accept(i);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">接口应用</span><br><span class="line"><span class="keyword">for</span>(Arrays.asList(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>),(Integer i)-&gt;System.out.println(i));</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-Function"><a href="#3-3-Function" class="headerlink" title="3.3 Function"></a>3.3 Function</h3><ul>
+<li><code>java.util.function.Function&lt;T,R&gt;</code>接口定义了一个叫做<code>apply</code>的方法，它接受一个泛型T的对象，并返回一个泛型的R的对象。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">接口定义与实现</span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Function</span>&lt;<span class="title">T</span>,<span class="title">R</span>&gt;</span>&#123;</span><br><span class="line"> <span class="function">R <span class="title">apply</span><span class="params">(T t)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T,R&gt; <span class="function">List&lt;R&gt; <span class="title">map</span><span class="params">(List&lt;T&gt; list,Function&lt;T,R&gt; f)</span></span>&#123;</span><br><span class="line">   List&lt;R&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">   <span class="keyword">for</span>(T s:list)&#123;</span><br><span class="line">   result.add(f.apply(s));</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line">接口应用</span><br><span class="line">List&lt;Integer&gt; list = map(Array.asList(<span class="string">&quot;lambda&quot;</span>,<span class="string">&quot;in&quot;</span>,<span class="string">&quot;action&quot;</span>),(String s)-&gt;s.length())</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Java 8 中常用的函数式接口<ul>
+<li><img src="/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Java8 常用函数式接口1.PNG" alt="Java8 常用函数式接口1" style="zoom:67%;"></li>
+<li><img src="/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Java8 常用函数式接口2.PNG" alt="Java8 常用函数式接口2" style="zoom:67%;"></li>
+<li>具体参考相应的API。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-4-类型检查"><a href="#3-4-类型检查" class="headerlink" title="3.4 类型检查"></a>3.4 类型检查</h3><ul>
+<li><p>使用局部的变量</p>
+<ul>
+<li>lambda允许使用自由变量，就像匿名类一样，他们被称作<strong>捕获lambda</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int portNumber &#x3D; 1337;</span><br><span class="line">Runnable r &#x3D; ()-&gt;System.out.println(portNumber);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>lambda可以无限制的捕获实例变量和静态变量。但局部变量必须显示声明为final或为事实上的final。也就是说，lambda表达式只能捕获指派给他的局部变量一次。</p>
+</li>
+<li><p>如果lambda表达式直接访问局部变量，而且lambda是在一个线程中使用的，则使用lambda的线程，可能回在分配该变量的线程将这个变量回收之后，去访问该变量。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-5-方法引用"><a href="#3-5-方法引用" class="headerlink" title="3.5 方法引用"></a>3.5 方法引用</h3><ul>
+<li>方法引用可以重复使用现有的方法定义，并像lambda一样传递他们。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inventory.sort(comparing(Apple::getWeight));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>如何构建方法引用</p>
+<ul>
+<li>方法引用主要有三类：<ul>
+<li><ol>
+<li>指向静态方法的方法引用</li>
+<li>指向任意类型实例方法的方法引用</li>
+<li>指向现有对象的实例的方法引用</li>
+</ol>
+</li>
+<li><img src="/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/lambda表达式与方法引用的替换.PNG" alt="lambda表达式与方法引用的替换" style="zoom: 50%;"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>构造函数引用</p>
+<ul>
+<li>对于一个现有的构造函数，可以使用他的名称和关键字new来创建一个引用：<code>ClassName :: new</code>.它的功能与指向静态方法的引用一致。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Supplier&lt;Apple&gt; c1 &#x3D; ()-&gt;new Apple();&#x2F;&#x2F;利用默认构造器创建Apple的lambda表达式</span><br><span class="line">Apple a1 &#x3D; c1.get();&#x2F;&#x2F;调用Supplier的get方法产生一个Apple对象。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果构造器存在一个参数，那么可以使用<code>Function</code>接口的签名。可以类似于如下的方式来实现：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Function&lt;Integer,Apple&gt; c2 &#x3D; Apple::new;&#x2F;&#x2F;指向Apple(Integer weight)的构造函数</span><br><span class="line">Apple a2 &#x3D; c2.apply(110);&#x2F;&#x2F;调用该Function函数的apply方法，并给出要求的重量，将产生一个Apple对象。</span><br><span class="line">上述的代码等价于：</span><br><span class="line">Function&lt;Integer,Apple&gt; c2 &#x3D; (weight)-&gt; new Apple(weight);&#x2F;&#x2F;用相应的构造器来创建对象的lambda表达式&#x2F;</span><br><span class="line">Apple a2 &#x3D; c2.apply(110);&#x2F;&#x2F;产生具体的对象。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果存在两个参数则可以使用<code>BiFunction</code>接口来实现，可以象如下的方式来写：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BiFunction&lt;String,Integer,Apple&gt; c3 &#x3D; Apple::new;&#x2F;&#x2F;调用相应的构造函数</span><br><span class="line">Apple a3 &#x3D; c3.apply(&quot;red&quot;,110);&#x2F;&#x2F;传递实参，构造实例。</span><br><span class="line">上述的代码与下面的代码实现相同的功能：</span><br><span class="line">BiFunction&lt;String,Integer,Apple&gt; c3 &#x3D; (color,weight)-&gt;new Apple(color,weight);&#x2F;具体构造器的lambda表达式</span><br><span class="line">Apple a3 &#x3D; c3.apply(&quot;red&quot;,110);&#x2F;&#x2F;传递实参，构造实例。</span><br></pre></td></tr></table></figure></li>
+<li><p>小结</p>
+<ul>
+<li><ol>
+<li>lambda表达式可以理解为一种匿名类：没有名称，但是有参数列表，函数主体，返回类型，甚至可能抛出异常的列表。</li>
+<li>lambda表达式可以帮助传递简洁的代码</li>
+<li>函数式接口就仅仅是声明了一个抽象函数的接口。</li>
+<li>只有在接受函数式接口的地方才可使用lambda表达式。</li>
+<li>lambda表达式允许直接内联，为函数式接口提供具体的实现，并且将真个表达式作为函数式接口的一个实例。</li>
+<li>Java 8 提供常用的函数式接口，Java.util.Function包里面。</li>
+<li>相应的操作来避免装箱操作。</li>
+<li>方法引用可以重复使用现有的方法实现并且直接传递他们。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="第二部分-函数式处理"><a href="#第二部分-函数式处理" class="headerlink" title="第二部分 函数式处理"></a>第二部分 函数式处理</h1><h2 id="第四章-函数式数据处理"><a href="#第四章-函数式数据处理" class="headerlink" title="第四章 函数式数据处理"></a>第四章 函数式数据处理</h2><ul>
+<li>本部分主要讲述Stream API，通过声明式的处理数据集。</li>
+</ul>
+<h3 id="4-1-流的概念"><a href="#4-1-流的概念" class="headerlink" title="4.1 流的概念"></a>4.1 流的概念</h3><ul>
+<li><p>流式Java API的新的成员。</p>
+</li>
+<li><p>流允许用户以声明性的方式来处理数据集合（通过查询语句来实现，而不是临时编写一个实现。）</p>
+</li>
+<li><p>可以将流处理堪称高级的数据爹迭代器。</p>
+</li>
+<li><p>流可以透明的进行并行处理。</p>
+</li>
+<li><p>Java 8 中的Stream API有如下的优点：</p>
+<ul>
+<li>声明性——更简洁、更容易读</li>
+<li>可复性——更灵活</li>
+<li>可并行——性能更好</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-2-流简介"><a href="#4-2-流简介" class="headerlink" title="4.2 流简介"></a>4.2 流简介</h3><ul>
+<li><p>流的简单定义就是：从支持数据处理操作的源生成的元素序列。</p>
+<ul>
+<li><p>元素序列：流提供了一套接口，来访问特定元素类型的一组有序值。与集合侧重的数据不一样，流讲究的是对数据的操作计算。</p>
+</li>
+<li><p>源： 流会使用特供数据的源，如集合、数组或者输入/输出资源。</p>
+</li>
+<li><p>数据处理操作：流的数据处理能力类似数据的操作，以及函数式编程语言中的常用操作。如<code>filter</code>,<code>map</code>,<code>reduce</code>,<code>find</code>,<code>match</code>,<code>sort</code>.既可以顺序执行，也可以并行执行。</p>
+</li>
+<li><p>流水线：很多流操作本身还是会返回一个流，于是多个操作连接起来就形成了一条流水线。流水线操作可以看成对数据的数据库操作。</p>
+</li>
+<li><p>内部迭代：与使用迭代器显示迭代的集合不同，流的迭代是在背后执行的。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import static java.util.stream.Collectors.toList</span><br><span class="line">List&lt;String&gt; threeHighCaloricDishName &#x3D; menu.stream().filter(d-&gt;d.getCalories()&gt;300).map(Dish::getName).limit(3).collect(toList());</span><br><span class="line">System.out.println(threeHighCaloricDishName);</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><img src="/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Java 8流处理的迭代过程图.PNG" alt="Java 8流处理的迭代过程图" style="zoom:67%;"></li>
+<li><p>解释：上图显示流操作的顺序，可以理解为：链中的方法一致处于等待状态，直到流到达处理，最后形成List。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-3-流与集合"><a href="#4-3-流与集合" class="headerlink" title="4.3 流与集合"></a>4.3 流与集合</h3><ul>
+<li><p>粗略说，流与集合的区别在于什么时候进行计算，集合式一个内存中的数据结构，它包含数据结构目前所有的元素，相比之下，流则是概念上固定的数据结构，其元素则是按需计算的。</p>
+</li>
+<li><p>从一个角度讲，流像是一个延迟创建的集合：只有消费者要求的时候才会计算。（管理学观点：需求驱动，实时制造），集合是急切创建的，（管理学观点：供应商驱动，先把仓库装满，再开始卖）</p>
+</li>
+<li><p>与迭代器一样，流只能遍历一次，遍历之后，该流被消费掉。</p>
+</li>
+<li><p>下列的代码会抛出异常：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; title &#x3D; Arrays.asList(&quot;java8&quot;,&quot;In&quot;,&quot;Action&quot;);</span><br><span class="line">Stream&lt;String&gt; s &#x3D; title.stream();</span><br><span class="line">s.forEach(System.out::println);</span><br><span class="line">s.forEach(System.out::println);&#x2F;&#x2F;该句抛出异常，上一句已经将流对象消费掉了。</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-4-外部迭代与内部迭代"><a href="#4-4-外部迭代与内部迭代" class="headerlink" title="4.4 外部迭代与内部迭代"></a>4.4 外部迭代与内部迭代</h3><ul>
+<li>使用<code>Collection</code>接口需要用户去做迭代（例如：for-each)，这叫外部迭代。</li>
+<li><code>Streams</code>使用了内部迭代。它帮助做迭代，并且暂存结果。</li>
+<li>内部迭代隐藏了一些复杂性，隐去了复杂丑陋的代码，让显示出来的代码优美好看。</li>
+<li>内部迭代提供并行处理，或者选择更加优化的迭代顺序来处理。</li>
+<li>下图展示两者的差异：<ul>
+<li><img src="/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Java 8 内部迭代与外部迭代.PNG" alt="Java 8 内部迭代与外部迭代" style="zoom:67%;"></li>
+</ul>
+</li>
+</ul>
+<h3 id="4-5-流操作"><a href="#4-5-流操作" class="headerlink" title="4.5 流操作"></a>4.5 流操作</h3><ul>
+<li>流操作基本可以分为两类：中间操作和终端操作。</li>
+<li>中间操作：主要是中间流的操作步骤</li>
+<li>终端操作：终端操作的目的是为了选择合适的数据结构将流重新存入内存。当然也会返回void,比如打印到终端。</li>
+</ul>
+<h3 id="4-6-使用流"><a href="#4-6-使用流" class="headerlink" title="4.6 使用流"></a>4.6 使用流</h3><ul>
+<li>流的使用一般包括三件事：<ul>
+<li>一个数据源(如集合)来执行一个查询。</li>
+<li>一个中间操作链（形成一个流的流水线）</li>
+<li>一个终端操作，执行流水线，并生成结果。</li>
+</ul>
+</li>
+</ul>
+<h2 id="第五章-使用流"><a href="#第五章-使用流" class="headerlink" title="第五章 使用流"></a>第五章 使用流</h2><ul>
+<li>主要内容：<ul>
+<li>筛选、切片和匹配</li>
+<li>查找、匹配和归约</li>
+<li>使用数值范围等数值流</li>
+<li>从多个源创建流</li>
+<li>无限流</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-1-筛选和切片"><a href="#5-1-筛选和切片" class="headerlink" title="5.1 筛选和切片"></a>5.1 筛选和切片</h3><ul>
+<li><p><strong>用谓词筛选</strong></p>
+<ul>
+<li><code>Streams</code>接口支持<code>filter</code>方法，该操作接受一个谓词（一个返回<code>boolean</code>的函数）作为参数。并且返回所有符合谓词条件的元素的流。</li>
+<li>流支持<code>distinct</code>的方法，它返回一个元素各异（根据流所生成的hashCode方法和equals方法）的流。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; numbers &#x3D; Arrays.asList(1,2,4,6,2,3,4,6,5);</span><br><span class="line">numbers.stream().filter(i-&gt;i%2&#x3D;&#x3D;0).distinct().forEach(System.out::println);</span><br><span class="line">上述代码首先筛选出偶数，然后筛选出不重复的偶数集合。</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>截断流</strong></p>
+<ul>
+<li>流支持<code>limit(n)</code>方法，该方法返回一个不超过给定长度的流。如果流是有序的，则最多返回前n个元素。</li>
+</ul>
+</li>
+<li><p><strong>跳过流</strong></p>
+<ul>
+<li> 流还支持<code>skip(n)</code>的方法，返回一个扔掉了前n个元素的流。如果流不足n个元素，则返回一个空流。</li>
+<li> <code>skip(n)</code>与<code>limit(n)</code>互补。</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-2-映射"><a href="#5-2-映射" class="headerlink" title="5.2 映射"></a>5.2 映射</h3><ul>
+<li><p><strong>对流中每一个元素应用函数</strong></p>
+<ul>
+<li>流支持<code>map</code>方法，接受一个函数作为参数，这个函数会被应用到每一个元素上面，并将其映射成一个新的元素。</li>
+</ul>
+</li>
+<li><p><strong>流的扁平化</strong></p>
+<ul>
+<li>flatMap方法可把一个流中的每一个值都转换为另一个流，然后把所有的流连接成一个流。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">给定List&lt;Integer&gt;：number1:【1，2，3】与number2:【3，4】 返回【【1，3】，【1，4】，【2，3】，【2，4】，【3，3】，【3，4】】</span><br><span class="line">List&lt;int[]&gt; pairs &#x3D; number1.stream().flatMap(i-&gt;number2.stream().map(j-&gt;new int[]&#123;i,j&#125;)).collect(toList());</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="5-3-查找与匹配"><a href="#5-3-查找与匹配" class="headerlink" title="5.3 查找与匹配"></a>5.3 查找与匹配</h3><ul>
+<li><p><code>Stream API</code> 通过<code>allMatch</code>,<code>anyMatch</code>,<code>noneMatch</code>,<code>findFirst</code>,<code>FindAny</code>来查看数据集合中的某些元素是否匹配一个给定的属性。</p>
+</li>
+<li><p><strong>检查谓词是否至少匹配一个元素</strong></p>
+<ul>
+<li><code>anyMatch</code>方法可以实现该功能。比如看看是否有素食可供选择</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if(menu.stream().anyMatch(Dish::isVegetarian))&#123;</span><br><span class="line">    System.out.println(&quot;the menu is (somewhat) vegetarian friendly&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><code>anyMatch()</code>是一个终端操作。</li>
+</ul>
+</li>
+<li><p><strong>检查谓词是否匹配所有元素</strong></p>
+<ul>
+<li><code>allMatch()</code>方法的工作原理与<code>anyMatch()</code>类似，查看所有蔬菜是否健康</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">boolean isHealthy &#x3D; menu.stream().allMatch(d-&gt;d.getCalories()&lt;1000);</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><code>noneMatch()</code>方法检查确保流中没有元素与给定的谓词匹配。</li>
+</ul>
+</li>
+<li><p><strong>查找元素</strong></p>
+<ul>
+<li><code>findAny</code>方法将返回当前流中的任意元素。它可以与其他流操作结合使用。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Dish&gt; dish &#x3D; menu.stream().filter(Dish::isVegetarian).findAny();</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><code>findFirst</code>找出顺序流中第一个符合谓词的元素。</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-4-归约"><a href="#5-4-归约" class="headerlink" title="5.4 归约"></a>5.4 归约</h3><ul>
+<li><p><strong>元素求和</strong></p>
+<ul>
+<li><p><code>reduce</code>操作，对于重复应用的模式做了抽象，比如元素求和：</p>
+</li>
+<li><p><code>int sum = numbers.stream().reduce(0,(a,b)-&gt;a+b);</code></p>
+<ul>
+<li><p><code>reduce</code>接受两个参数：</p>
+<ul>
+<li>一个初始值</li>
+<li>一个<code>BinaryOperator&lt;T&gt;</code>来将两个元素集合起来产生一个新值。</li>
+</ul>
+</li>
+<li><p><code>reduce</code>通过不断的通过第二个表达式的意思来来更新第一个值。最终达到计算终值的目的。</p>
+</li>
+</ul>
+</li>
+<li><p>元素求和的过程中，初始值的重要性不言而喻，如果没有初始值的话，那么将会返回一个<code>Optional&lt;T&gt;</code>.</p>
+</li>
+</ul>
+</li>
+<li><p>除了上述的求和操作，还提供最大值与最小值的计算。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Integer&gt; max &#x3D; numbers.stream().reduce(Integer::max);</span><br><span class="line">Optional&lt;Integer&gt; max &#x3D; numbers.stream().reduce(Integer::min);,也可以替换(a,b)-&gt;a&lt;b?a:b</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-5-数值流"><a href="#5-5-数值流" class="headerlink" title="5.5 数值流"></a>5.5 数值流</h3><ul>
+<li><p><code>Stream API</code>提供了原始类型流特化，专门处理数值流的方法。</p>
+</li>
+<li><p><strong>原始类型流特化</strong></p>
+<ul>
+<li><p>Java 8引入三个原始类型特化流接口：</p>
+<ul>
+<li><code>IntStream</code></li>
+<li><code>DoubleStream</code></li>
+<li><code>LongStream</code></li>
+</ul>
+</li>
+<li><p><strong>映射到数值流</strong></p>
+<ul>
+<li><p>将流转换为特化版本的常用方法：<code>mapToInt</code>,<code>mapToLong</code>,<code>mapToDouble</code>.这些方法返回一个特化流。</p>
+<ul>
+<li><p><code>int calories = menu.stream.mapToInt(Dish::getCalories).sum();</code></p>
+</li>
+<li><p><code>maptoInt</code>返回一个<code>IntStream</code>.如果是空流，那么将返回0。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>转换回对象流</strong></p>
+<ul>
+<li>将特化流转换为一般流，可以使用boxed方法。</li>
+</ul>
+</li>
+<li><p><strong>默认值<code>OptionalInt</code></strong></p>
+<ul>
+<li><code>Optional</code>对于三种原始的流特化，也有原始的类型特化版本：<ul>
+<li><code>OptionalInt, OptionalDouble, OptionalLong</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>数值范围</strong></p>
+<ul>
+<li>提供<code>range</code>与<code>rangeClosed</code>来生成数值的范围约定。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">IntStream evenNumbers &#x3D; IntStream.rangeClosed(1,100).filter(n-&gt;n%2&#x3D;&#x3D;0);</span><br><span class="line">生成1-100的偶数构成的流。</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="5-6-构建流"><a href="#5-6-构建流" class="headerlink" title="5.6 构建流"></a>5.6 构建流</h3><ul>
+<li><p><strong>由值创建流</strong></p>
+<ul>
+<li>静态方法<code>Stream.of()</code>接受任意数量的参数，比如如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt; stream &#x3D; Stream.of(&quot;java 8 &quot;,&quot;lambda&quot;,&quot;in&quot;,&quot;Action&quot;);</span><br><span class="line">stream.map(String::toUpperCase).forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用<code>Stream.empty()</code>得到一个空流。</li>
+</ul>
+</li>
+<li><p><strong>由数组创建流</strong></p>
+<ul>
+<li>使用静态方法<code>Arrays.stream</code>方法从数组创建一个流。它接受一个数组作为参数。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int[] numbers &#x3D; &#123;2,3,5,7,11,13&#125;;</span><br><span class="line">int sum &#x3D; Arrays.stream(numbers).sum();&#x2F;&#x2F;Arrays.stream返回一个IntStream.</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>由文件生成流</strong></p>
+<ul>
+<li>Java中用于处理文件等的I/O操作的NIO API (非阻塞IO)已经更新，以便于利用<code>Stream API</code>。<code>java.nio.file.Files</code>中很多静态方法都会返回一个流。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">long uniqueWords&#x3D;0;</span><br><span class="line">try(Stream&lt;String&gt; lines&#x3D;FIles.lines(Paths.get(&quot;data.txt&quot;),Charset.defaultCharset()))&#123;</span><br><span class="line">uniqueWords&#x3D;lines.flatMap(line-&gt;Arrays.stream(line.split(&quot; &quot;)))</span><br><span class="line">.discount()</span><br><span class="line">.count();</span><br><span class="line">&#125;</span><br><span class="line">catch(IOException e)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上述的代码用来统计指定文件中的不同单词的数量。</li>
+</ul>
+</li>
+<li><p><strong>由函数生成流：创建无限流</strong></p>
+<ul>
+<li><code>Stream API</code> 提供了两个静态的方法来从函数生成流:<code>Stream.iterate</code>和<code>Stream.generate</code>,两个操作可以创建所谓的无限流，一般会使用<code>limit(n)</code>对无限流进行限制。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Stream.iterate(0,n-&gt;n+2)</span><br><span class="line">.limit(10)</span><br><span class="line">.forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上述方法用来打印前十个偶数。</li>
+<li>与<code>iterate</code>类似，<code>generate</code>方法也可以按需生成无限流，但<code>generate</code>不是对依次对每个新生成的值应用函数，它接受一个<code>Supplier&lt;T&gt;</code>类型的lambda提供新的值。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Stream.generate(Math::random)</span><br><span class="line">.limit(5)</span><br><span class="line">.forEach(System.out::println);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="第六章-用流收集数据"><a href="#第六章-用流收集数据" class="headerlink" title="第六章 用流收集数据"></a>第六章 用流收集数据</h2><ul>
+<li>主要内容<ul>
+<li>用<code>Collectors</code>类创建和使用收集器</li>
+<li>将数据归约成一个值</li>
+<li>汇总：归约的特殊情况</li>
+<li>数据分组和分区</li>
+<li>开发自己的自定义收集器</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-1-收集器简介"><a href="#6-1-收集器简介" class="headerlink" title="6.1 收集器简介"></a>6.1 收集器简介</h3><ul>
+<li><p><strong>收集器用作高级归约</strong></p>
+<ul>
+<li>收集器通过灵活定义<code>collect</code>来实现更容易地复合和重用。</li>
+<li><code>Collectors</code>实用类提供了很多地静态工厂方法，可以方便地创建常见的收集器。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Transaction&gt; transaction &#x3D; transactionStream.collect(Coleector.toList());</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上述的方法将所有元素收集到一个<code>List</code>中。</li>
+</ul>
+</li>
+<li><p><strong>预定义收集器</strong></p>
+<ul>
+<li>从<code>Collectors</code>类提供的工厂方法创建的收集器。主要提供了三大功能：<ul>
+<li>将元素归约汇总为一个值</li>
+<li>元素分组</li>
+<li>元素分区</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-2-归约和汇总"><a href="#6-2-归约和汇总" class="headerlink" title="6.2 归约和汇总"></a>6.2 归约和汇总</h3><ul>
+<li><p><strong>查找最大值与最小值</strong></p>
+<ul>
+<li><code>Collectors.maxBy</code>与<code>Collectors.minBy</code>分别返回流中最大的与最小值。当然需要提供比较函数的比较方式。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Comparator&lt;Dish&gt; dishCaloriesComparator &#x3D; Comparator.comparingInt(Dish::getCalories);</span><br><span class="line">Optional&lt;Dish&gt; mostCaloriesDish&#x3D; menu.stream().collect(Collectors.maxBy(dishCaloriesComparator));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>汇总</strong></p>
+<ul>
+<li>用<code>Collectors.summingInt</code>来求和。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int totalCalories &#x3D; menu.stream().collect(summingInt(Dish::getCalories));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>同样，<code>Collectors.summingLong</code>与<code>Collectors.summingDouble</code>方法的作用一样，可以用于字段求和。</li>
+</ul>
+</li>
+<li><p><strong>连接字符串</strong></p>
+<ul>
+<li><code>joining</code>工厂方法返回的收集器会把流中的每一个对象应用<code>toString</code>方法得到的结果连接成一个字符串。</li>
+<li><code>joining</code>工厂方法海接受参数，用来隔开每个字符串之间的隔开符号。</li>
+</ul>
+</li>
+<li><p><strong>广义的归约汇总</strong></p>
+<ul>
+<li><code>Collectors.reducing</code>工厂方法是所有特殊归约情况的一般化。</li>
+<li><strong>1. 收集框架的灵活性：以不同的方法执行同样的操作</strong></li>
+<li><strong>2. 根据情况选择最佳的解决方案</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="6-3-分组"><a href="#6-3-分组" class="headerlink" title="6.3 分组"></a>6.3 分组</h3><ul>
+<li><p>一个常见的操作就是根据一个或者多个属性对集合中的项目进行分组。如果利用命令式的方式区实现就会很不容易，通过流处理的方式来实现就显得非常简易了。</p>
+</li>
+<li><p><code>Collectors.groupingBy</code>可以实现对流中数据按某种方式进行分类。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Dish.Type,List&lt;Dish&gt;&gt; dishesByType &#x3D; menu.stream().collect(Collectors.groupingBy(Dish::getType));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>多级分组</strong></p>
+<ul>
+<li><p>双参数的<code>Collectors.groupingBy</code>的工厂方法创建的收集器可以实现多级分组。除了普通的分类函数之外，还接受一个<code>collector</code>类型的第二个参数。</p>
+</li>
+<li><p>可以把第一个内层的<code>groupingBy</code>传递给外层的<code>groupingBy</code>，并且定义一个为流中项目分类的耳机标准。</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Type,Map&lt;CaloricLevel,List&lt;Dish&gt;&gt;&gt; dishByType &#x3D; menu.stream().collect(groupingBy(Dish::getType,groupingBy(dish-&gt;&#123;</span><br><span class="line">            if(dish.getCalories()&lt;400) return CaloricLevel.DIET;</span><br><span class="line">            else if(dish.getCalories()&lt;700)return CaloricLevel.NORMAL;</span><br><span class="line">            else return CaloricLevel.FAT;</span><br><span class="line">        &#125;)));运行结果：</span><br><span class="line">menu.add(new Dish(&quot;beef&quot;,false,800,Type.MEAT));</span><br><span class="line">menu.add(new Dish(&quot;pork&quot;,false,600,Type.MEAT));</span><br><span class="line">menu.add(new Dish(&quot;cabbage&quot;,true,300,Type.OTHER));</span><br><span class="line">menu.add(new Dish(&quot;SanWenYu&quot;,false,500,Type.FISH));</span><br><span class="line">--------------------------------------------------------------------------------------------------</span><br><span class="line">&#123;FISH&#x3D;&#123;NORMAL&#x3D;[SanWenYu]&#125;, OTHER&#x3D;&#123;DIET&#x3D;[cabbage]&#125;, MEAT&#x3D;&#123;FAT&#x3D;[beef], NORMAL&#x3D;[pork]&#125;&#125;   </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>按照子组收集数据</strong></p>
+<ul>
+<li><p><strong>把收集器的结果转换为另一种类型</strong></p>
+<ul>
+<li>把收集器返回的结果转换为另一种类型，可以使用<code>Collectors.collectingAndThen</code>工厂方法返回的收集器。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Dish.Type,Dish&gt; mostCaloriesByType &#x3D; menu.stream().collect(froupingBy(Dish::getType,collectingAndThen(maxBy(comparingInt(Dish::getCalories)),Optional::get)));</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="6-4-分区"><a href="#6-4-分区" class="headerlink" title="6.4 分区"></a>6.4 分区</h3><ul>
+<li><p>分区是分组的特殊情况：由一个谓词（返回<code>Boolean</code>值得函数）作为函数，它称为分区函数。分区函数返回类型决定了结果分组map的键类型为<code>boolean</code>。</p>
+</li>
+<li><p>因此只能分为两个区，谓词肯定区和谓词否定区</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Boolean,List&lt;Dish&gt;&gt; partitionMenu &#x3D; menu.stream().collect(partitioningBy(Dish::isvegetarian));</span><br><span class="line">执行结果：</span><br><span class="line">&#123;false&#x3D;[beef, pork, SanWenYu], true&#x3D;[cabbage]&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>下面将展示<code>Collectors</code>类的静态工厂方法</p>
+<ul>
+<li><img src="/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Collectors类静态工厂方法表1.PNG" alt="Collectors类静态工厂方法表1" style="zoom: 50%;"></li>
+<li><img src="/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Collectors类静态工厂方法表2.PNG" alt="Collectors类静态工厂方法表2" style="zoom:67%;"></li>
+<li><img src="/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Collectors类静态工厂方法表3.PNG" alt="Collectors类静态工厂方法表3" style="zoom:67%;"></li>
+</ul>
+</li>
+</ul>
+<h3 id="6-5-收集器接口"><a href="#6-5-收集器接口" class="headerlink" title="6.5 收集器接口"></a>6.5 收集器接口</h3><ul>
+<li><p><code>Collector</code>接口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public interface Collector&lt;T,A,R&gt;</span><br><span class="line">&#123;</span><br><span class="line">     Supplier&lt;A&gt;  supplier();</span><br><span class="line">     BiConsumer&lt;A,T&gt; acculator();</span><br><span class="line">     Function&lt;A,R&gt;   finisher();</span><br><span class="line">     BinaryOperator&lt;A&gt; combiner();</span><br><span class="line">     Set&lt;Characteristics&gt; characteristics();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>解释：</p>
+<ul>
+<li>T是流中要收集的项目的泛型</li>
+<li>A是累加器的类型，累加器是在收集过程中用于累积部分结果的对象。</li>
+<li>R是收集器得到的对象的类型。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>理解Collector接口声明的方法</strong></p>
+<ul>
+<li><strong>建立新的结果容器：<code>supplier</code>方法</strong><ul>
+<li><code>supplier</code>方法必须返回一个结果为空的<code>Supplier</code>,也就是无参数函数，在调用时会拆功能键一个空的累加器实例，供数据收集过程中使用。</li>
+</ul>
+</li>
+<li><strong>将元素添加到结果容器：<code>accumulator</code>方法</strong><ul>
+<li><code>accumulator</code>方法会返回执行归约操作的函数。当遍历到流中的第n个元素时，这个函数执行会有两个参数：保存归约结果的累加器，还有第n个元素本身。该函数将返回void，因为累加器是原位更新。</li>
+</ul>
+</li>
+<li><strong>对结果容器应用最终转换：<code>finisher</code>方法</strong><ul>
+<li>在遍历完流后，finisher方法必须返回在累计过程的最后要调用的一个函数，一遍将累加器对象转换为整个集合操作的最终结果，因此也无需转换。</li>
+</ul>
+</li>
+<li><strong>合并两个结果容器：<code>combiner</code>方法</strong><ul>
+<li><code>combiner</code>方法返回一个供归约操作使用的函数，它定义了对流的各个子部分进行并行处理时，各个子部分归约所得的累加器如何合并。</li>
+</ul>
+</li>
+<li><strong><code>characteristics</code>方法</strong><ul>
+<li>它将返回一个不可变的<code>Characteristics</code>集合，它定义了收集器的行为———-尤其是关于流是否可以归约以及使用哪些优化的提示。</li>
+<li><code>Characteristics</code>是一个包含三个元素的枚举：<ul>
+<li><code>UNORDERED</code>:归约结果不受流中项目的遍历和累积顺序影响。</li>
+<li><code>CONCURRENT</code>:<code>accumulator</code>方法可以从多个线程同时调用，且该收集器可以并行归约流。</li>
+<li><code>IDENTITY_FINISH</code>:表明完成器方法返回的函数是一个恒等函数。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="第七章-并行数据与性能"><a href="#第七章-并行数据与性能" class="headerlink" title="第七章 并行数据与性能"></a>第七章 并行数据与性能</h2><h3 id="7-1-并行流"><a href="#7-1-并行流" class="headerlink" title="7.1 并行流"></a>7.1 并行流</h3><ul>
+<li><p><strong>并行流</strong>是一个把内容分成多个数据块，并用不同的线程分别处理每个数据块的流。</p>
+</li>
+<li><p><strong>将顺序流变为并行流</strong></p>
+<ul>
+<li>对顺序流调用<code>parallel</code>的方法将其转换为并行流，</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static long parallelSum(long n)&#123;</span><br><span class="line">      return Stream.iterate(1L,i-&gt;i+1)</span><br><span class="line">      .limit(n)</span><br><span class="line">      .parallel()</span><br><span class="line">      .reduce(0L,Long::sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上述直接利用截断无限流阶段产生并行流，然后利用reduce操作实现前n项和。</li>
+<li>同样对于并行流调用<code>sequential</code>方法可将其转换为顺序流。</li>
+<li>在一个流水线操作中，可以反复利用上述的两个方法实现对流的形式转换来适应对应的操作。</li>
+</ul>
+</li>
+<li><p><strong>正确使用并行流</strong></p>
+<ul>
+<li>错用并行流而产生错误的原因 首要就是使用的算法改变了某些共享状态。</li>
+<li>共享可变状态可能会影响并行流以及并行计算。</li>
+</ul>
+</li>
+<li><p><strong>高效使用并行流</strong></p>
+<ul>
+<li>关于使用并行流的建议：<ul>
+<li><ol>
+<li>如果有疑问，测量。</li>
+<li>留意装箱，自动拆箱和装箱会大大影响性能。</li>
+<li>一些操作的性质就决定了其并行性能不如顺序流处理。</li>
+<li>考虑流的操作流水线的总计算成本。</li>
+<li>对于较小的数据量，并行流从来都不是什么好的选择。</li>
+<li>考虑流背后的数据结构是否易于分解。</li>
+<li>考虑终端合并操作的代价。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-2-分支-合并框架"><a href="#7-2-分支-合并框架" class="headerlink" title="7.2 分支/合并框架"></a>7.2 分支/合并框架</h3><ul>
+<li>分支/合并框架的目的是一递归方式将可以并行的任务拆成更加小的任务，然后将每个子任务的结果合并起来生成整体结果。</li>
+<li>它是<code>ExecutorService</code>接口的一个实现，它把子任务分配给线程池（称为：<code>ForkJoinPoll</code>）中的工作线程。</li>
+<li><strong>使用<code>RecursiveTask</code></strong><ul>
+<li>要把任务提交到这个池，必须创建<code>RecursiveTask&lt;R&gt;</code>的一个子类，其中R是并行化任务产生的结果对象类型。</li>
+<li>要定义<code>RecursiveTask</code>，只需要实现它唯一的抽象方法：<code>protected abstract R compute()</code>.</li>
+</ul>
+</li>
+<li><strong>使用分支/合并框架的最佳做法</strong><ul>
+<li><ol>
+<li>对一个任务调用<code>join</code>方法会阻塞用方，直到任务做出结果。因此必须要有两个字任务开始之后才可以调用。</li>
+<li>不应该在<code>RecursiveTask</code>内部使用<code>ForkJoinPool</code>的<code>invoke</code>方法。应该直接调用<code>compute</code>方法或者<code>fork</code>方法，只有顺序代码才应该用<code>invoke</code>来启动并行计算。</li>
+<li>对于子任务调用<code>fork</code>方法可以把他排进<code>ForkJoinPool</code>.</li>
+</ol>
+</li>
+<li>分支/合并框架工程用一种称为<strong>工作窃取</strong>的技术来解决外部服务协调。</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-3-Spliterator"><a href="#7-3-Spliterator" class="headerlink" title="7.3 Spliterator"></a>7.3 <code>Spliterator</code></h3><ul>
+<li><p>Java 8 引入新的接口：<code>Splitterator</code>,代表“可分迭代器”，与<code>iterator</code>一样，用于遍历数据中的元素，但是专门为并行技术设计的。</p>
+</li>
+<li><p>Java 8 已经为集合框架中包含的所有数据结构提供了一个默认的<code>Spliterator</code>的实现。</p>
+</li>
+<li><p>集合实现了<code>Spliterator</code>接口，接口提供了一个<code>spliterator</code>的方法。</p>
+</li>
+<li><p>该接口的定义如下：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public interface Spliterator&lt;T&gt; &#123;</span><br><span class="line">     boolean tryAdvance(Consumer&lt;? super T&gt; action);</span><br><span class="line">     Spliterator&lt;T&gt; trySplit();</span><br><span class="line">     long estimateSize();</span><br><span class="line">     int characteristics();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>拆分过程</strong></p>
+<ul>
+<li>将<code>Stream</code>拆分为多个部分的算法是一个递归过程，通过不断调用<code>trySplit</code>分成多个<code>Splierator</code>.调用过程直到返回null.</li>
+</ul>
+</li>
+<li><p>**<code>Spliterator</code>**特性</p>
+<ul>
+<li><img src="/blog/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/Spliterator特性.PNG" style="zoom:67%;"></li>
+</ul>
+</li>
+</ul>
+<h1 id="第三部分-高效-Java-8-编程"><a href="#第三部分-高效-Java-8-编程" class="headerlink" title="第三部分 高效 Java 8 编程"></a>第三部分 高效 Java 8 编程</h1><h2 id="第八章-高效-Java-8-编程"><a href="#第八章-高效-Java-8-编程" class="headerlink" title="第八章 高效 Java 8 编程"></a>第八章 高效 Java 8 编程</h2><h3 id="8-1-设计模式"><a href="#8-1-设计模式" class="headerlink" title="8.1 设计模式"></a>8.1 设计模式</h3><ul>
+<li>这里涉及的涉及模式主要是为了使用<code>Lambda</code>重构面向对象的设计模式。</li>
+</ul>
+<h4 id="8-1-1-策略模式"><a href="#8-1-1-策略模式" class="headerlink" title="8.1.1 策略模式"></a>8.1.1 策略模式</h4><ul>
+<li>策略模式代表了一类算法的通用解决方案。</li>
+<li>策略模式包含三个部分：<ul>
+<li>一个代表某个算法的接口</li>
+<li>一个或者多个接口的具体实现，代表算法的多种实现</li>
+<li>一个或者多个使用策略对象的客户。</li>
+</ul>
+</li>
+<li>lambda表达式可以避免采用策略模式时僵化的模板代码。</li>
+<li>多个算法的具体实现交给lambda表达式来实现，体现了lambda表达式的灵活性。</li>
+</ul>
+<h4 id="8-1-2-模板方法"><a href="#8-1-2-模板方法" class="headerlink" title="8.1.2 模板方法"></a>8.1.2 模板方法</h4><ul>
+<li>需要采取某个算法的框架，同时有希望有一定的灵活度，进行部分的改进，可以采用<strong>模板方法设计模式</strong>。</li>
+<li>不同使用者对框架进行差异化的实现。</li>
+<li>关于差异化实现，刚好是lambda的擅长的事情。</li>
+</ul>
+<h4 id="8-1-3-观察者模式"><a href="#8-1-3-观察者模式" class="headerlink" title="8.1.3 观察者模式"></a>8.1.3 观察者模式</h4><ul>
+<li>观察者模式：当某件事情发生时，如果一个对象（称作:主题）需要自动通知其他的多个对象（称作：观察者），采取观察者模式。</li>
+</ul>
+<h4 id="8-1-4-责任链模式"><a href="#8-1-4-责任链模式" class="headerlink" title="8.1.4 责任链模式"></a>8.1.4 责任链模式</h4><ul>
+<li><p>责任链模式是一种创建处理对象序列的通用方案。一个处理对象可能需要在完成一些工作之后，将结果传递另一个对象，这个对象接着做一些事情，再传递给下一个对象。</p>
+</li>
+<li><p>通常这种模式时通过定义一个的代表处理对象的抽象类来实现，再抽象类中会顶一个字段来记录后续的对象。一旦对象完成他的工作，处理对象就将他的工作转交给他的后继。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public abstract class ProcessingObject&lt;T&gt; &#123;</span><br><span class="line">    protected ProcessingObject&lt;T&gt; successor;</span><br><span class="line">    public void setSuccessor(ProcessingObject&lt;T&gt; successor)&#123;</span><br><span class="line">        this.successor&#x3D;successor;</span><br><span class="line">    &#125;</span><br><span class="line">    public  T handle(T input)&#123;</span><br><span class="line">      T r&#x3D;handWork(input);</span><br><span class="line">      if(successor!&#x3D;null)&#123;</span><br><span class="line">         return successor.handle(r);</span><br><span class="line">      &#125;</span><br><span class="line">      return r;</span><br><span class="line">    &#125;</span><br><span class="line">    abstract protected T handleWork(T input);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-1-5-工厂模式"><a href="#8-1-5-工厂模式" class="headerlink" title="8.1.5 工厂模式"></a>8.1.5 工厂模式</h4><ul>
+<li><p>使用工厂模式，用户无需向客户暴露实例化的逻辑就能创建对象。</p>
+</li>
+<li><p>如下创建工厂，包含一个负责实现不同对象的方法。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class ProducetFactory&#123;</span><br><span class="line">    public sttaic Product createProduct(String name)&#123;</span><br><span class="line">       switch(name)&#123;</span><br><span class="line">           case &quot;loan&quot;:return new Loan();</span><br><span class="line">           case &quot;stock&quot;:return new Stock();</span><br><span class="line">           case &quot;bond&quot;: return new Bond();</span><br><span class="line">           default: throw new RuntimeException(&quot;No such product &quot;+name);</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="8-2-调试"><a href="#8-2-调试" class="headerlink" title="8.2 调试"></a>8.2 调试</h3><ul>
+<li>调试的两种方式<ul>
+<li>查看栈跟踪</li>
+<li>输出日志</li>
+</ul>
+</li>
+<li><strong>使用日志调试</strong><ul>
+<li>流操作方法中的<code>peek</code>方法。在流的每个元素恢复运行之前，插入执行一个动作。这样就便于 查看流水线的每一步的动作。</li>
+<li><code>peek</code>方法并不影响流的结果。</li>
+</ul>
+</li>
+</ul>
+<h2 id="第九章-默认方法"><a href="#第九章-默认方法" class="headerlink" title="第九章 默认方法"></a>第九章 默认方法</h2><ul>
+<li>Java 8中的接口在声明的同时可以提供实现。通过接口声明<strong>静态方法</strong>或者<strong>默认方法的</strong>方式可以实现。</li>
+<li>默认方法的目的：它让类可以自动地继承接口的一个默认实现。</li>
+<li>默认方法为接口的演进提供了一种平滑的方式。改动并不会影响已有的代码。</li>
+</ul>
+<h3 id="9-1-默认方法概述"><a href="#9-1-默认方法概述" class="headerlink" title="9.1 默认方法概述"></a>9.1 默认方法概述</h3><ul>
+<li>默认方法由<code>default</code>修饰，并像类种声明的其他的方法一样包含方法体。</li>
+<li>Java 8中的抽象类和抽象接口<ul>
+<li>一个类只能继承一个抽象类，但是一个类可以继承多个接口。</li>
+<li>一个抽象类可以通过实例类保存一个通用状态，而接口不能有实例变量。</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-2-默认方法的使用模式"><a href="#9-2-默认方法的使用模式" class="headerlink" title="9.2 默认方法的使用模式"></a>9.2 默认方法的使用模式</h3><h4 id="9-2-1-可选方法"><a href="#9-2-1-可选方法" class="headerlink" title="9.2.1 可选方法"></a>9.2.1 可选方法</h4><ul>
+<li>情况：类实现了接口，但却刻意地将一些方法的实现留白。</li>
+<li>上述情况，在Java 8以前，必须在实现类中提供空白的代码框架，。</li>
+<li>引入默认方法，只需要在接口中将该方法定义为默认方法然后就可以不用在实现类中提供空白无用的实现了。</li>
+</ul>
+<h4 id="9-2-2-行为的多继承"><a href="#9-2-2-行为的多继承" class="headerlink" title="9.2.2 行为的多继承"></a>9.2.2 行为的多继承</h4><ul>
+<li>与C++的多继承方式不一样，Java引入默认方法实现了行为级的多继承。</li>
+<li>这是一种让类从多个来源重用代码的能力。</li>
+<li><strong>类型的多继承</strong><ul>
+<li>Java的类只能继承单一的类，但是一个类可以实现多个接口。也就是类实现了继承多个类型，也就是说一个类可以是多个类型的直接子类。</li>
+</ul>
+</li>
+<li><strong>用正交方法的精简接口</strong><ul>
+<li>通过正交的方式来精简接口的设计，这样接口的设计就显得小巧了。</li>
+</ul>
+</li>
+<li><strong>组合接口</strong><ul>
+<li>通过组合正交接口，一个类可以实现多个功能。</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-3-解决冲突的规则"><a href="#9-3-解决冲突的规则" class="headerlink" title="9.3 解决冲突的规则"></a>9.3 解决冲突的规则</h3><ul>
+<li>因为Java 8引入默认方法，如果接口的实现类刚好实现了这个默认方法，那么这个时候冲突在于：应该使用这个方法的哪个版本来进行计算。</li>
+<li>解决问题的三个规则：<ul>
+<li><ol>
+<li>类中的方法优先级最高。类或者父类中声明的方法的优先级高于任何声明为默认方法的优先级。</li>
+<li>第一条无法满足的情况下，则是子接口中的方法的优先级最高。</li>
+<li>最后，还是无法判断时，继承了多个接口的类必须通过显式覆盖和调用期望的方法，显示的选择哪一个默认方法的实现。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>关于继承的菱形问题，Java提供上述的解决方案中的第三条来解决。</li>
+</ul>
+<h3 id="9-4-总结"><a href="#9-4-总结" class="headerlink" title="9.4 总结"></a>9.4 总结</h3><ul>
+<li>Java 8中的接口可以通过默认方法和静态方法来提供代码的实现。</li>
+<li>向发布的接口添加抽象方法不是源码兼容的。</li>
+<li>默认方法帮助库设计者以后向兼容的方式演进API。</li>
+</ul>
+<h2 id="第十章-Optional"><a href="#第十章-Optional" class="headerlink" title="第十章 Optional"></a>第十章 Optional</h2><h3 id="10-1-应用Optional的几种模式"><a href="#10-1-应用Optional的几种模式" class="headerlink" title="10.1 应用Optional的几种模式"></a>10.1 应用<code>Optional</code>的几种模式</h3><ul>
+<li><p>创建<code>Optional</code>对象</p>
+<ul>
+<li><p>声明一个空的<code>Optional</code></p>
+<ul>
+<li>通过调用静态工厂方法：<code>Optional.empty</code>,创建一个空的<code>Optional</code>对象。</li>
+</ul>
+</li>
+<li><p>依据一个非空值创建<code>Optional</code></p>
+<ul>
+<li>通过静态工厂方法：<code>Optional.of</code>，依据一个非空值创建一个<code>Optional</code>对象。</li>
+</ul>
+</li>
+<li><p>可接受<code>null</code>的<code>Optional</code></p>
+<ul>
+<li><p>通过调用静态工厂方法<code>Optional.ofNullable</code>，可以创建一个允许<code>null</code>值得<code>Optional</code>对象：</p>
+<ul>
+<li><pre><code>Optional&lt;Car&gt; optCar =  Optional.ofNullable(car);
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">      - 如果car为空，那么得到的&#96;Optional&#96;对象就是个空对象。</span><br><span class="line"></span><br><span class="line">- 使用map从&#96;Optional&#96;对象中提取和转换值</span><br><span class="line"></span><br><span class="line">  - &#96;Optional&#96;提供一个map方法。与map的作用一致，只是应用的对象是&#96;Optional&#96;而已。</span><br><span class="line"></span><br><span class="line">- 可以使用&#96;flatMap&#96;链接&#96;Optional&#96;对象。</span><br><span class="line"></span><br><span class="line">- 待补充</span><br><span class="line"></span><br><span class="line">## 第十一章 组合式异步编程</span><br><span class="line"></span><br><span class="line">### 11.1 Future接口</span><br><span class="line"></span><br><span class="line">- &#96;Future&#96;接口在Java 5中引入，设计初衷是为了对将来某个时刻会发生的结果进行建模。</span><br><span class="line">- 它建模了一种异步计算，返回一个执行结果的引用，当运算结束后，这个引用被返回给调用方。</span><br><span class="line">- 在&#96;Future&#96;中触发那些潜在耗时的运算把调用线程解放出来，让它继续执行其他有价值的工作，不再呆呆地等待耗时操作完成。</span><br><span class="line"></span><br><span class="line">#### 11.1.1 使用&#96;CompletableFuture&#96;构建异步应用</span><br><span class="line"></span><br><span class="line">- **同步API**：是对传统方式调用的一种称呼，调用方法时，调用方在被调用方运行过程中等待，被调用方执行完毕后，调用方取得被调用返回的结果并继续运行。即使调用方与被调用方使用不同的线程，调用方还是需要被调用方执行完毕后的运行，这就是**阻塞式调用**。</span><br><span class="line">- **异步API**：异步API会直接返回，或者至少被调用方计算完成之前，将它剩余的计算任务交给另一个线程去做，该线程与调用方是异步的，-------这就是**非阻塞式调用**。</span><br><span class="line"></span><br><span class="line">### 11.2 实现异步API</span><br><span class="line"></span><br><span class="line">#### 11.2.1 将同步方法转换为异步方法</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+public Future&lt;Double&gt; getPriceAsync(String product)&#123;
+CompletableFuture&lt;Double&gt; futurePrice = new CompletableFuture&lt;&gt;();
+new Thread(()-&gt;&#123;
+double price = calculatePrice(product);
+futurePrice.complete(price);
+&#125;).start();
+return futurePrice;
+&#125;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 上述代码解释：首先创建了一个代表异步计算的&#96;CompletableFuture&#96;对象实例，它在计算完成时hi包含计算的结果。接着调用fork创建了另一个线程去执行实际价格的计算工作，不等待该耗时计算任务结束，直接返回一个&#96;Future&#96;实例，当请求的产品价格最终计算出来，可以调用&#96;complete&#96;方法，结束&#96;completableFuture&#96;对象的运行，并设置变量的值。</span><br><span class="line"></span><br><span class="line">#### 11.2.2 错误处理</span><br><span class="line"></span><br><span class="line">- 上述的代码，如果当计算价格的代码出错，那么则会永久阻塞，采用新版的get方法可以避免这个问题，</span><br><span class="line"></span><br><span class="line">- **使用工厂方法&#96;supplyAsync&#96;创建&#96;CompletableFuture&#96;**</span><br><span class="line"></span><br><span class="line">  - &#96;CompletableFuture&#96;提供了大量的精巧的工厂方法，使用这些方法可以更加容易地完成前面的异步过程，且不用担心实现细节。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+public Future&lt;Doublr&gt; getPriceAsyncPrice(String product)&#123;
+return CompletableFuture.supplyAsync(()-&gt;calculatePrice(product));
+&#125;
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>supplyAync</code>接受一个生产者<code>Supplier</code>作为参数，返回一个<code>CompletableFuture</code>兑现给，该对象完成异步执行后读取调用生产者方法的返回值。</p>
+</li>
+<li><p>生产者方法交由<code>ForkJoinPool</code>池中的某个执行线程去执行。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="11-3-让代码免受阻塞之苦"><a href="#11-3-让代码免受阻塞之苦" class="headerlink" title="11.3 让代码免受阻塞之苦"></a>11.3 让代码免受阻塞之苦</h3><ul>
+<li>。。。。。等看完Java并发再来看。</li>
+</ul>
+<h2 id="第十二章-高阶函数式编程"><a href="#第十二章-高阶函数式编程" class="headerlink" title="第十二章 高阶函数式编程"></a>第十二章 高阶函数式编程</h2><h3 id="12-1-函数式编程概念"><a href="#12-1-函数式编程概念" class="headerlink" title="12.1 函数式编程概念"></a>12.1 函数式编程概念</h3><ul>
+<li>在函数式编程的上下文中，一个“函数”对应一个数学函数：它接受零个或者多个参数，生成一个或者多个结果，并且不会有任何副作用。</li>
+<li>在强调函数式编程的时候，我们主要是强调的时：无副作用。</li>
+<li>被称作“函数式”的函数式方法都只能改变本地变量。除此之外，他引用的对象都应该是不被修改的。</li>
+<li>。。。。</li>
+</ul>
+<h2 id="第十三章-函数式编程的技巧"><a href="#第十三章-函数式编程的技巧" class="headerlink" title="第十三章 函数式编程的技巧"></a>第十三章 函数式编程的技巧</h2><ul>
+<li>主要内容：<ul>
+<li>一等成员，高阶函数，科里化以及局部应用</li>
+<li>持久化数据结构</li>
+<li>模式匹配</li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+<h3 id="13-1-高阶函数"><a href="#13-1-高阶函数" class="headerlink" title="13.1 高阶函数"></a>13.1 高阶函数</h3><ul>
+<li>函数式编程的世界里，如果一个函数，能满足下列任何一个要求，则称为<strong>高阶函数</strong>。<ul>
+<li>接受至少一个函数作为参数</li>
+<li>返回的结果是一个函数</li>
+</ul>
+</li>
+<li>java 8中，函数不仅可以作为参数传递，还可以作为结果返回，能赋值给本地变量，也可以插入到某个数据结构中。比如<code>Map&lt;String,Function&lt;Double,Double&gt;&gt;</code>.</li>
+</ul>
+<h3 id="13-2-科里化"><a href="#13-2-科里化" class="headerlink" title="13.2 科里化"></a>13.2 科里化</h3><ul>
+<li>作用：它是一种可以被帮助你模块化函数，提高代码重用的技术。</li>
+<li>科里化是一种将具备2个参数的函数f转化为使用一个参数的函数g，并且这个函数返回值也是一个函数，他会最为新函数的一个参数。</li>
+<li>一个函数使用所有参数仅有部分被遗传时，通常说这个函数是：”部分应用的“。</li>
+</ul>
+<h3 id="13-3-持久化数据结构"><a href="#13-3-持久化数据结构" class="headerlink" title="13.3 持久化数据结构"></a>13.3 持久化数据结构</h3><ul>
+<li>。。。</li>
+</ul>
+<h3 id="13-4-Stream的延迟计算"><a href="#13-4-Stream的延迟计算" class="headerlink" title="13.4 Stream的延迟计算"></a>13.4 Stream的延迟计算</h3><ul>
+<li></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java 8</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/blog/categories/Java//" class="article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/blog/2021/03/21/java8%E5%AE%9E%E6%88%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-java核心问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -452,6 +1369,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java 8</a>
               </li>
             
             <div class="clearfix"></div>
