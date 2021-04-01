@@ -188,7 +188,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-04-01 22:28:58 / 修改时间：19:58:41" itemprop="dateCreated datePublished" datetime="2021-04-01T22:28:58+08:00">2021-04-01</time>
+              <time title="创建时间：2021-04-01 22:28:58 / 修改时间：20:04:01" itemprop="dateCreated datePublished" datetime="2021-04-01T22:28:58+08:00">2021-04-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -212,122 +212,6 @@
 
       
           <h1 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h1><h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>多态是同一个行为具有多个不同表现形式或形态的能力。多态性是对象多种表现形式的体现。多态就是同一个接口，使用不同的实例而执行不同操作，如图所示：</p>
-<img src="/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E5%A4%9A%E6%80%81%E6%89%93%E5%8D%B0.PNG" class>
-
-<p>多态的优点：</p>
-<ol>
-<li>消除类型之间的耦合关系</li>
-<li>可替换性</li>
-<li>可扩充性</li>
-<li>接口性</li>
-<li>灵活性</li>
-<li>简化性</li>
-</ol>
-<p>多态的必要条件:</p>
-<ol>
-<li>继承</li>
-<li>重写</li>
-<li>父类引用指向子类对象：Parent p = new Child();</li>
-</ol>
-<img src="/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E5%A4%9A%E6%80%81%E8%A1%A8%E7%8E%B0.PNG" class>
-
-<p>当使用多态方式调用方法时，首先检查父类中是否有该方法，如果没有，则编译错误；如果有，再去调用子类的同名方法。多态的好处：可以使程序有良好的扩展，并可以对所有类的对象进行通用处理。在Java中，当子类对象调用重写的方法时，调用的是子类的方法，而不是父类中被重写的方法。要想调用父类中被重写的方法，则必须使用关键字 <code>super</code>。</p>
-<h3 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h3><p>当修饰类属性时，表示该类的所有实例对象拥有一个共同的静态成员属性，也就是共享变量，通常对于对静态成员属性操作的方法也需要设置为静态的。<br>当修饰类方法时， 如果方法与调用者无关，则这样的方法通常被声明为类方法，由于不需要创建对象就可以调用类方法，从而简化了方法的调用。<br>static修饰的范围包括：类属性成员，类方法成员，代码块，内部类。被static修饰的成员具有如下的特点：</p>
-<ul>
-<li>随着类的加载而被加载。</li>
-<li>优先于对象存在。</li>
-<li>修饰的成员被所有对象共享。</li>
-<li>在访问权限足够的情况下，成员可直接通过类进行调用。</li>
-<li>在static方法内部只能访问类的static修饰的属性或方法，不能访问类的非static的结构。</li>
-<li> 因为不需要实例就可以访问static方法，因此static方法内部不能有this。(也不能有super)</li>
-<li>static修饰的方法不能被重写.</li>
-</ul>
-<p>static的应用：<strong>单例设计模式</strong>。</p>
-<p><strong>单例设计模式</strong>：所谓类的单例设计模式，就是采取一定的方法保证在整个的软件系统中，对某个类只能存在一个对象实例，并且该类只提供一个取得其对象实例的方法。如果我们要让类在一个虚拟机中只能产生一个对象，我们首先必须将类的构 造器的访问权限设置为private，这样，就不能用new操作符在类的外部产生类的对象了，但在类内部仍可以产生该类的对象。因为在类的外部开始还无法得到类的对象，只能调用该类的某个静态方法以返回类内部创建的对象，静态方法只能访问类中的静态成员变量，所以，指向类内部产生的该类对象的变量也必须定义成静态的.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 1.私有化构造器</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 2.内部提供一个当前类的实例</span></span><br><span class="line">    <span class="comment">// 4.此实例也必须静态化</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton single;</span><br><span class="line">    <span class="comment">// 3.提供公共的静态的方法，返回当前类的对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(single == <span class="keyword">null</span>) &#123;</span><br><span class="line">            single = <span class="keyword">new</span> Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> single; &#125; </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>单例模式的应用场景：</p>
-<ul>
-<li>网站的计数器，一般也是单例模式实现，否则难以同步。</li>
-<li>应用程序的日志应用，一般都使用单例模式实现，这一般是由于共享的日志文件一直处于打开状态，因为只能有一个实例去操作，否则内容不好追加。</li>
-<li>数据库连接池的设计一般也是采用单例模式，因为数据库连接是一种数据库资源。</li>
-<li>项目中，读取配置文件的类，一般也只有一个对象。没有必要每次使用配置文件数据，都生成一个对象去读取。</li>
-<li>Application 也是单例的典型应用</li>
-<li>Windows的Task Manager (任务管理器)就是很典型的单例模式</li>
-<li>Windows的Recycle Bin (回收站)也是典型的单例应用。在整个系统运行过程中，回收站一直维护着仅有的一个实例。</li>
-</ul>
-<p>对于Java中main方法的理解：</p>
-<ul>
-<li>由于Java虚拟机需要调用类的main()方法，所以该方法的访问权限必须是public，又因为Java虚拟机在执行main()方法时不必创建对象，所以该方法必须是static的，该方法接收一个String类型的数组参数，该数组中保存执行Java命令时传递给所运行的类的参数。</li>
-<li>又因为main() 方法是静态的，我们不能直接访问该类中的非静态成员，必须创建该类的一个实例对象后，才能通过这个对象去访问类中的非静态成员，这种情况，我们在之前的例子中多次碰到。</li>
-</ul>
-<p>代码块：</p>
-<ul>
-<li><p>静态代码块：<code>static&#123;//代码块&#125;</code>.</p>
-<ol>
-<li>可以有输出语句。</li>
-<li>可以对类的属性、类的声明进行初始化操作。</li>
-<li>不可以对非静态的属性初始化。即：不可以调用非静态的属性和方法。</li>
-<li>若有多个静态的代码块，那么按照从上到下的顺序依次执行。</li>
-<li>静态代码块的执行要先于非静态代码块。</li>
-<li>静态代码块随着类的加载而加载，且只执行一次。</li>
-</ol>
-</li>
-<li><p>非静态代码块：</p>
-<ol>
-<li>可以有输出语句。 </li>
-<li>可以对类的属性、类的声明进行初始化操作。 </li>
-<li>除了调用非静态的结构外，还可以调用静态的变量或方法。 </li>
-<li>若有多个非静态的代码块，那么按照从上到下的顺序依次执行。 </li>
-<li>每次创建对象的时候，都会执行一次。且先于构造器执行。</li>
-</ol>
-</li>
-</ul>
-<p>程序中成员变量的赋值顺序：</p>
-<img src="/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E6%88%90%E5%91%98%E8%B5%8B%E5%80%BC%E9%A1%BA%E5%BA%8F.PNG" class>
-
-<h3 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h3><p>final标记的类不能被继承。提高安全性，提高程序的可读性。<br>final标记的方法不能被子类重写。<br>final标记的变量(成员变量或局部变量)即称为常量。名称大写，且只能被赋值一次。</p>
-<p>程序举例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Something</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Other o = <span class="keyword">new</span> Other();</span><br><span class="line">        <span class="keyword">new</span> Something().addOne(o);</span><br><span class="line">        System.out.println(o.i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addOne</span><span class="params">(<span class="keyword">final</span> Other o)</span> </span>&#123;</span><br><span class="line">         <span class="comment">//o = new Other();</span></span><br><span class="line">        o.i++;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Other</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> i; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="抽象类与抽象方法"><a href="#抽象类与抽象方法" class="headerlink" title="抽象类与抽象方法"></a>抽象类与抽象方法</h3><p>通过关键字<code>abstract</code>来修饰抽象类与抽象方法。在抽象类中可以不存在抽象方法，但是存在抽象方法的类必须是抽象类。抽象类中的抽象方法只提供声明，其实现由其抽象类继承的子类来实现，如果继承的子类不实现其父类的抽象方法，那么其依然是抽象类。抽象类除了抽象方法之外还可以由其他的成员，比如具体已经实现的方法，具体的实例成员。抽象类约定是不能被实例化的，可以定义抽象类的变量。其变量可以指向实现所有抽象方法的子类的实例化对象。<br>不能用abstract修饰私有方法、静态方法、final的方法、final的类。原因显然易见。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">m1</span><span class="params">()</span></span>; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;A类中定义的m2方法&quot;</span>);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">m1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;B类中定义的m1方法&quot;</span>);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        A a = <span class="keyword">new</span> B();</span><br><span class="line">        a.m1();</span><br><span class="line">        a.m2();</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注意：<br>抽象类不能显式地实例化，比如给定抽象类<code>A</code>，不能直接使用语句<code>A a=new A()</code>。但是这并不代表抽象类不能有构造器，下面的代码充分说明：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Abs</span> </span>&#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Abs</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Abs</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name=name;</span><br><span class="line">        System.out.println(<span class="string">&quot;抽象类的构造器&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">m1</span><span class="params">()</span></span>; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;A类中定义的m2方法，打印名字：&quot;</span>+name);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bbs</span> <span class="keyword">extends</span> <span class="title">Abs</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Bbs</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Bbs</span><span class="params">(String name,<span class="keyword">int</span> age)</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">        <span class="keyword">this</span>.age=age;</span><br><span class="line">        System.out.println(<span class="string">&quot;实现类的构造器&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">m1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;B类中定义的m1方法，打印名字与年龄：&quot;</span>+<span class="keyword">this</span>.name+<span class="string">&quot; &quot;</span>+<span class="keyword">this</span>.age);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">       <span class="comment">// Abs s=new Abs();</span></span><br><span class="line">        <span class="comment">//Abs a = new Bbs();</span></span><br><span class="line">        Abs a1= <span class="keyword">new</span> Bbs(<span class="string">&quot;rock&quot;</span>,<span class="number">25</span>);</span><br><span class="line">        a1.m1();</span><br><span class="line">        a1.m2();</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>执行结果如下：</p>
-<figure class="highlight graph"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">抽象类的构造器</span><br><span class="line">实现类的构造器</span><br><span class="line">B类中定义的m1方法，打印名字与年龄：rock 25</span><br><span class="line">A类中定义的m2方法，打印名字：rock</span><br></pre></td></tr></table></figure>
-<p>上述结果的解释：待补充。</p>
-<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>接口(interface)是抽象方法和常量值定义的集合。接口中的所有成员变量都默认是由public static final修饰的。接口中的所有抽象方法都默认是由public abstract修饰的。接口中没有构造器。接口采用多继承机制。<br>实现接口的类中必须提供接口中所有方法的具体实现内容，方可实例化。否则，仍为抽象类。<br>关于抽象类与接口的对比如下：</p>
-<img src="/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%AF%B9%E6%AF%94.PNG" class>
-
-<p>JDK 8以后的接口出现了新的特性，接口可以添加静态方法与默认方法。：默认方法使用 default 关键字修饰。可以通过实现类对象来调用。我们在已有的接口中提供新方法的同时，还保持了与旧版本代码的兼容性。比如：java 8 API中对Collection、List、Comparator等接口提供了丰富的默认方法。<br>若一个接口中定义了一个默认方法，而另外一个接口中也定义了一个同名同参数的方法（不管此方法是否是默认方法），在实现类同时实现了这两个接口时，会出现：接口冲突。解决办法：实现类必须覆盖接口中同名同参数的方法，来解决冲突。<br>若一个接口中定义了一个默认方法，而父类中也定义了一个同名同参数的非抽象方法，则不会出现冲突问题。因为此时遵守：类优先原则。接口中具有相同名称和参数的默认方法会被忽略。</p>
-<h3 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h3><p>内部类的分类：成员内部类、局部内部类、匿名内部类。<br><strong>成员内部类</strong>：和外部类不同，Inner class还可以声明为private或protected；可以调用外部类的结构，Inner class 可以声明为static的，但此时就不能再使用外层类的非static的成员变量；可以在内部定义属性、方法、构造器等结构，可以声明为abstract类 ，因此可以被其它的内部类继承，可以声明为final的，编译以后生成OuterClass$InnerClass.class字节码文件（也适用于局部内部类）。<br>注意：</p>
-<ol>
-<li>非static的成员内部类中的成员不能声明为static的，只有在外部类或static的成员内部类中才可声明static成员。</li>
-<li>外部类访问成员内部类的成员，需要“内部类.成员”或“内部类对象.成员”的方式。</li>
-<li>成员内部类可以直接使用外部类的所有成员，包括私有的数据。</li>
-<li>当想要在外部类的静态成员部分使用内部类时，可以考虑内部类声明为静态的。</li>
-</ol>
-<p><strong>局部内部类</strong>：只能在声明它的方法或代码块中使用，而且是先声明后使用。除此之外的任何地方都不能使用该类，但是它的对象可以通过外部方法的返回值返回使用，返回值类型只能是局部内部类的父类或父接口类型。<br>局部内部类的特点：</p>
-<ol>
-<li>内部类仍然是一个独立的类，在编译之后内部类会被编译成独立的.class文件，但是前面冠以外部类的类名和$符号，以及数字号。</li>
-<li>只能在声明它的方法或代码块中使用，而且是先声明后使用。除此之外的任何地方都不能使用该类。</li>
-<li>局部内部类可以使用外部类的成员，包括私有的。 </li>
-<li>局部内部类可以使用外部方法的局部变量，但是必须是final的。由局部内部类和局部变量的声明周期不同所致。</li>
-<li>局部内部类和局部变量地位类似，不能使用public,protected,缺省private</li>
-<li>局部内部类不能使用static修饰，因此也不能包含静态成员</li>
-</ol>
-<p><strong>匿名内部类</strong>：匿名内部类不能定义任何静态成员、方法和类，只能创建匿名内部类的一个实例。一个匿名内部类一定是在new的后面，用其隐含实现一个接口或实现一个类。<br>匿名内部类的特点：</p>
-<ol>
-<li>匿名内部类必须继承父类或实现接口</li>
-<li>匿名内部类只能有一个对象</li>
-<li>匿名内部类对象只能使用多态形式引用</li>
-</ol>
-<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><p>实现多线程的方式有几种：</p>
-<ol>
-<li>通过继承Thread类实现一个多线程类，并且需要重写run方法。</li>
-<li>通过实现Runnable接口实现一个多线程类，并且需要重写run方法。</li>
-<li>通过实现Callable接口实现一个多线程类，并且需要重写run方法。</li>
-<li>使用线程池</li></ol>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/#more" rel="contents">
