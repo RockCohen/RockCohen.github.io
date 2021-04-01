@@ -23,28 +23,28 @@
   <meta name="description" content="Java基础面向对象多态多态是同一个行为具有多个不同表现形式或形态的能力。多态性是对象多种表现形式的体现。多态就是同一个接口，使用不同的实例而执行不同操作，如图所示：   多态的优点：  消除类型之间的耦合关系 可替换性 可扩充性 接口性 灵活性 简化性  多态的必要条件:  继承 重写 父类引用指向子类对象：Parent p &#x3D; new Child();    当使用多态方式调用方法时，首先检查">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java核心问题">
-<meta property="og:url" content="https://rockcohen.gitee.io/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:url" content="https://rockcohen.gitee.io/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Rock Cohen">
 <meta property="og:description" content="Java基础面向对象多态多态是同一个行为具有多个不同表现形式或形态的能力。多态性是对象多种表现形式的体现。多态就是同一个接口，使用不同的实例而执行不同操作，如图所示：   多态的优点：  消除类型之间的耦合关系 可替换性 可扩充性 接口性 灵活性 简化性  多态的必要条件:  继承 重写 父类引用指向子类对象：Parent p &#x3D; new Child();    当使用多态方式调用方法时，首先检查">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E5%A4%9A%E6%80%81%E6%89%93%E5%8D%B0.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E5%A4%9A%E6%80%81%E8%A1%A8%E7%8E%B0.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E6%88%90%E5%91%98%E8%B5%8B%E5%80%BC%E9%A1%BA%E5%BA%8F.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%AF%B9%E6%AF%94.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/java%E7%BA%BF%E7%A8%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/Collection%E6%8E%A5%E5%8F%A3%E5%AE%9A%E4%B9%89.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E5%8F%8D%E5%B0%84%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0.PNG">
-<meta property="article:published_time" content="2021-03-21T14:28:58.000Z">
-<meta property="article:modified_time" content="2021-04-01T11:53:10.277Z">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E5%A4%9A%E6%80%81%E6%89%93%E5%8D%B0.PNG">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E5%A4%9A%E6%80%81%E8%A1%A8%E7%8E%B0.PNG">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E6%88%90%E5%91%98%E8%B5%8B%E5%80%BC%E9%A1%BA%E5%BA%8F.PNG">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%AF%B9%E6%AF%94.PNG">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/java%E7%BA%BF%E7%A8%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.PNG">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/Collection%E6%8E%A5%E5%8F%A3%E5%AE%9A%E4%B9%89.PNG">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E5%8F%8D%E5%B0%84%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6.PNG">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B.PNG">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.PNG">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0.PNG">
+<meta property="article:published_time" content="2021-04-01T14:28:58.000Z">
+<meta property="article:modified_time" content="2021-04-01T11:58:41.775Z">
 <meta property="article:author" content="RockCohen">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://rockcohen.gitee.io/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E5%A4%9A%E6%80%81%E6%89%93%E5%8D%B0.PNG">
+<meta name="twitter:image" content="https://rockcohen.gitee.io/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E5%A4%9A%E6%80%81%E6%89%93%E5%8D%B0.PNG">
 
-<link rel="canonical" href="https://rockcohen.gitee.io/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/">
+<link rel="canonical" href="https://rockcohen.gitee.io/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/">
 
 
 <script id="page-configurations">
@@ -178,7 +178,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/">
+    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/hugo.png">
@@ -200,16 +200,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-03-21 22:28:58" itemprop="dateCreated datePublished" datetime="2021-03-21T22:28:58+08:00">2021-03-21</time>
+              <time title="创建时间：2021-04-01 22:28:58 / 修改时间：19:58:41" itemprop="dateCreated datePublished" datetime="2021-04-01T22:28:58+08:00">2021-04-01</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-01 19:53:10" itemprop="dateModified" datetime="2021-04-01T19:53:10+08:00">2021-04-01</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -232,7 +226,7 @@
 
       
         <h1 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h1><h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>多态是同一个行为具有多个不同表现形式或形态的能力。多态性是对象多种表现形式的体现。多态就是同一个接口，使用不同的实例而执行不同操作，如图所示：</p>
-<img src="/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E5%A4%9A%E6%80%81%E6%89%93%E5%8D%B0.PNG" class>
+<img src="/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E5%A4%9A%E6%80%81%E6%89%93%E5%8D%B0.PNG" class>
 
 <p>多态的优点：</p>
 <ol>
@@ -249,7 +243,7 @@
 <li>重写</li>
 <li>父类引用指向子类对象：Parent p = new Child();</li>
 </ol>
-<img src="/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E5%A4%9A%E6%80%81%E8%A1%A8%E7%8E%B0.PNG" class>
+<img src="/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E5%A4%9A%E6%80%81%E8%A1%A8%E7%8E%B0.PNG" class>
 
 <p>当使用多态方式调用方法时，首先检查父类中是否有该方法，如果没有，则编译错误；如果有，再去调用子类的同名方法。多态的好处：可以使程序有良好的扩展，并可以对所有类的对象进行通用处理。在Java中，当子类对象调用重写的方法时，调用的是子类的方法，而不是父类中被重写的方法。要想调用父类中被重写的方法，则必须使用关键字 <code>super</code>。</p>
 <h3 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h3><p>当修饰类属性时，表示该类的所有实例对象拥有一个共同的静态成员属性，也就是共享变量，通常对于对静态成员属性操作的方法也需要设置为静态的。<br>当修饰类方法时， 如果方法与调用者无关，则这样的方法通常被声明为类方法，由于不需要创建对象就可以调用类方法，从而简化了方法的调用。<br>static修饰的范围包括：类属性成员，类方法成员，代码块，内部类。被static修饰的成员具有如下的特点：</p>
@@ -303,7 +297,7 @@
 </li>
 </ul>
 <p>程序中成员变量的赋值顺序：</p>
-<img src="/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E6%88%90%E5%91%98%E8%B5%8B%E5%80%BC%E9%A1%BA%E5%BA%8F.PNG" class>
+<img src="/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E6%88%90%E5%91%98%E8%B5%8B%E5%80%BC%E9%A1%BA%E5%BA%8F.PNG" class>
 
 <h3 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h3><p>final标记的类不能被继承。提高安全性，提高程序的可读性。<br>final标记的方法不能被子类重写。<br>final标记的变量(成员变量或局部变量)即称为常量。名称大写，且只能被赋值一次。</p>
 <p>程序举例：</p>
@@ -317,7 +311,7 @@
 <figure class="highlight graph"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">抽象类的构造器</span><br><span class="line">实现类的构造器</span><br><span class="line">B类中定义的m1方法，打印名字与年龄：rock 25</span><br><span class="line">A类中定义的m2方法，打印名字：rock</span><br></pre></td></tr></table></figure>
 <p>上述结果的解释：待补充。</p>
 <h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>接口(interface)是抽象方法和常量值定义的集合。接口中的所有成员变量都默认是由public static final修饰的。接口中的所有抽象方法都默认是由public abstract修饰的。接口中没有构造器。接口采用多继承机制。<br>实现接口的类中必须提供接口中所有方法的具体实现内容，方可实例化。否则，仍为抽象类。<br>关于抽象类与接口的对比如下：</p>
-<img src="/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%AF%B9%E6%AF%94.PNG" class>
+<img src="/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%AF%B9%E6%AF%94.PNG" class>
 
 <p>JDK 8以后的接口出现了新的特性，接口可以添加静态方法与默认方法。：默认方法使用 default 关键字修饰。可以通过实现类对象来调用。我们在已有的接口中提供新方法的同时，还保持了与旧版本代码的兼容性。比如：java 8 API中对Collection、List、Comparator等接口提供了丰富的默认方法。<br>若一个接口中定义了一个默认方法，而另外一个接口中也定义了一个同名同参数的方法（不管此方法是否是默认方法），在实现类同时实现了这两个接口时，会出现：接口冲突。解决办法：实现类必须覆盖接口中同名同参数的方法，来解决冲突。<br>若一个接口中定义了一个默认方法，而父类中也定义了一个同名同参数的非抽象方法，则不会出现冲突问题。因为此时遵守：类优先原则。接口中具有相同名称和参数的默认方法会被忽略。</p>
 <h3 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h3><p>内部类的分类：成员内部类、局部内部类、匿名内部类。<br><strong>成员内部类</strong>：和外部类不同，Inner class还可以声明为private或protected；可以调用外部类的结构，Inner class 可以声明为static的，但此时就不能再使用外层类的非static的成员变量；可以在内部定义属性、方法、构造器等结构，可以声明为abstract类 ，因此可以被其它的内部类继承，可以声明为final的，编译以后生成OuterClass$InnerClass.class字节码文件（也适用于局部内部类）。<br>注意：</p>
@@ -415,7 +409,7 @@
 <li>支持泛型的返回值</li>
 <li>需要借助FutureTask类，比如获取返回结果</li>
 </ul>
-<h2 id="线程的周期"><a href="#线程的周期" class="headerlink" title="线程的周期"></a>线程的周期</h2><img src="/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/java%E7%BA%BF%E7%A8%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.PNG" class title="线程生命周期">
+<h2 id="线程的周期"><a href="#线程的周期" class="headerlink" title="线程的周期"></a>线程的周期</h2><img src="/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/java%E7%BA%BF%E7%A8%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.PNG" class title="线程生命周期">
 
 <p>上述的图片不仅说明了Java线程的生命周期历程，也说明了引起Java线程状态改变的原因。</p>
 <h2 id="线程同步方法"><a href="#线程同步方法" class="headerlink" title="线程同步方法"></a>线程同步方法</h2><p>多个线程对同一个数据进行处理的时候，难免出现一些不合法的情况，最典型的例子就是银行的账户问题，银行取钱的过程就必须保证同步问题。</p>
@@ -494,7 +488,7 @@ JDK８中关于注解的新特性：</li>
 <li>Map：该接口主要用于双列数据，保存具有映射关系的<code>key-value</code>对的集合。</li>
 <li>Collection接口的API如下：</li>
 </ul>
-<img src="/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/Collection%E6%8E%A5%E5%8F%A3%E5%AE%9A%E4%B9%89.PNG" class title="Collection">
+<img src="/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/Collection%E6%8E%A5%E5%8F%A3%E5%AE%9A%E4%B9%89.PNG" class title="Collection">
 <hr>
 <p>List的基本实现类包括：</p>
 <ul>
@@ -574,7 +568,7 @@ JDK８中关于注解的新特性：</li>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Package java.util</span><br><span class="line">Class Collections</span><br><span class="line">java.lang.Object</span><br><span class="line">java.util.Collections</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Collections</span></span></span><br><span class="line"><span class="class"><span class="keyword">extends</span> <span class="title">Object</span></span></span><br><span class="line">This class consists exclusively of static methods that operate on or return collections. It contains polymorphic algorithms that operate on collections, &quot;wrappers&quot;, which return a new collection backed by a specified collection, and a few other odds and ends.</span><br><span class="line">The methods of <span class="keyword">this</span> <span class="class"><span class="keyword">class</span> <span class="title">all</span> <span class="title">throw</span> <span class="title">a</span> <span class="title">NullPointerException</span> <span class="title">if</span> <span class="title">the</span> <span class="title">collections</span> <span class="title">or</span> <span class="title">class</span> <span class="title">objects</span> <span class="title">provided</span> <span class="title">to</span> <span class="title">them</span> <span class="title">are</span> <span class="title">null</span>.</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">The</span> <span class="title">documentation</span> <span class="title">for</span> <span class="title">the</span> <span class="title">polymorphic</span> <span class="title">algorithms</span> <span class="title">contained</span> <span class="title">in</span> <span class="title">this</span> <span class="title">class</span> <span class="title">generally</span> <span class="title">includes</span> <span class="title">a</span> <span class="title">brief</span> <span class="title">description</span> <span class="title">of</span> <span class="title">the</span> <span class="title">implementation</span>. <span class="title">Such</span> <span class="title">descriptions</span> <span class="title">should</span> <span class="title">be</span> <span class="title">regarded</span> <span class="title">as</span> <span class="title">implementation</span> <span class="title">notes</span>, <span class="title">rather</span> <span class="title">than</span> <span class="title">parts</span> <span class="title">of</span> <span class="title">the</span> <span class="title">specification</span>. <span class="title">Implementors</span> <span class="title">should</span> <span class="title">feel</span> <span class="title">free</span> <span class="title">to</span> <span class="title">substitute</span> <span class="title">other</span> <span class="title">algorithms</span>, <span class="title">so</span> <span class="title">long</span> <span class="title">as</span> <span class="title">the</span> <span class="title">specification</span> <span class="title">itself</span> <span class="title">is</span> <span class="title">adhered</span> <span class="title">to</span>. (<span class="title">For</span> <span class="title">example</span>, <span class="title">the</span> <span class="title">algorithm</span> <span class="title">used</span> <span class="title">by</span> <span class="title">sort</span> <span class="title">does</span> <span class="title">not</span> <span class="title">have</span> <span class="title">to</span> <span class="title">be</span> <span class="title">a</span> <span class="title">mergesort</span>, <span class="title">but</span> <span class="title">it</span> <span class="title">does</span> <span class="title">have</span> <span class="title">to</span> <span class="title">be</span> <span class="title">stable</span>.)</span></span><br><span class="line"><span class="class"></span></span><br><span class="line">The &quot;destructive&quot; algorithms contained in this class, that is, the algorithms that modify the collection on which they operate, are specified to throw UnsupportedOperationException if the collection does not support the appropriate mutation primitive(s), such as the set method. These algorithms may, but are not required to, throw this exception if an invocation would have no effect on the collection. For example, invoking the sort method on an unmodifiable list that is already sorted may or may not throw UnsupportedOperationException.</span><br><span class="line"></span><br><span class="line">This <span class="class"><span class="keyword">class</span> <span class="title">is</span> <span class="title">a</span> <span class="title">member</span> <span class="title">of</span> <span class="title">the</span> <span class="title">Java</span> <span class="title">Collections</span> <span class="title">Framework</span>.</span></span><br><span class="line"><span class="class"></span></span><br><span class="line">Since:</span><br><span class="line"><span class="number">1.2</span></span><br><span class="line">See Also:</span><br><span class="line">Collection, Set, List, Map</span><br></pre></td></tr></table></figure>
 <hr>
 <h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><p><code>Reflection</code>（反射）是被视为动态语言的关键，反射机制允许程序在执行期借助于<code>Reflection API</code>取得任何类的内部信息，并能直接操作任意对象的内部属性及方法。<br>加载完类之后，在堆内存的方法区中就产生了一个Class类型的对象（一个类只有一个Class对象），这个对象就包含了完整的类的结构信息。我们可以通过这个对象看到类的结构。这个对象就像一面镜子，透过这个镜子看到类的结构，所以，我们形象的称之为：<strong>反射</strong>。</p>
-<img src="/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E5%8F%8D%E5%B0%84%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6.PNG" class>
+<img src="/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E5%8F%8D%E5%B0%84%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6.PNG" class>
 
 <p>关于静态语言与动态语言的相关概念解释：</p>
 <ul>
@@ -610,7 +604,7 @@ JDK８中关于注解的新特性：</li>
 </ul>
 <p>所有对象都有class属性。包括外部类，成员（成员内部类，静态内部类），内部类，匿名内部类；接口，枚举，数组，注解，基本数据类型；void.</p>
 <p>java类的加载过程如下：</p>
-<img src="/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B.PNG" class>
+<img src="/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B.PNG" class>
 
 <p><strong>加载</strong>：将class文件字节码内容加载到内存中，并将这些静态数据转换成方法区的运行时数据结构，然后生成一个代表这个类的java.lang.Class对象，作为方法区中类数据的访问入口（即引用地址）.所有需要访问和使用类数据只能通过这个Class对象。这个加载的过程需要类加载器参与。</p>
 <p><strong>链接</strong>：将Java类的二进制代码合并到JVM的运行状态之中的过程。</p>
@@ -647,10 +641,10 @@ JDK８中关于注解的新特性：</li>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String name = <span class="string">&quot;atguigu.java.Person&quot;</span>;<span class="comment">//1.根据全类名获取对应的Class对象</span></span><br><span class="line">Class clazz = <span class="keyword">null</span>;</span><br><span class="line">clazz = Class.forName(name);<span class="comment">//2.调用指定参数结构的构造器，生成Constructor的实例</span></span><br><span class="line">Constructor con = clazz.getConstructor(String.class,Integer.class);</span><br><span class="line">Person p2 = (Person) con.newInstance(<span class="string">&quot;Peter&quot;</span>,<span class="number">20</span>);<span class="comment">//3.通过Constructor的实例创建对应类的对象，并初始化类属性</span></span><br><span class="line">System.out.println(p2);</span><br></pre></td></tr></table></figure>
 
 <h3 id="反射的应用：动态代理"><a href="#反射的应用：动态代理" class="headerlink" title="反射的应用：动态代理"></a>反射的应用：动态代理</h3><p><strong>java代理模式</strong>：代理模式（Proxy）是通过代理对象访问目标对象，这样可以在目标对象基础上增强额外的功能，如添加权限，访问控制和审计等功能。<br><strong>代理设计模式的原理</strong>：使用一个代理将对象包装起来, 然后用该代理对象取代原始对象。任何对原始对象的调用都要通过代理。代理对象决定是否以及何时将方法调用转到原始对象上。</p>
-<img src="/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.PNG" class>
+<img src="/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.PNG" class>
 
 <p>下面一图展示代理模式的实现架构</p>
-<img src="/blog/2021/03/21/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0.PNG" class>
+<img src="/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0.PNG" class>
 
 <p>以如下的实例进行说明：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//功能接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AdminService</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">Object <span class="title">find</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//功能接口实现类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdminServiceImpl</span> <span class="keyword">implements</span> <span class="title">AdminService</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;修改管理系统数据&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">find</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;查看管理系统数据&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Object();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//代理模式：</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdminServiceProxy</span> <span class="keyword">implements</span> <span class="title">AdminService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> AdminService adminService;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AdminServiceProxy</span><span class="params">(AdminService adminService)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.adminService = adminService;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;判断用户是否有权限进行update操作&quot;</span>);</span><br><span class="line">        adminService.update();</span><br><span class="line">        System.out.println(<span class="string">&quot;记录用户执行update操作的用户信息、更改内容和时间等&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">find</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;判断用户是否有权限进行find操作&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;记录用户执行find操作的用户信息、查看内容和时间等&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> adminService.find();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//代理测试</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticProxyTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        AdminService adminService = <span class="keyword">new</span> AdminServiceImpl();</span><br><span class="line">        AdminServiceProxy proxy = <span class="keyword">new</span> AdminServiceProxy(adminService);</span><br><span class="line">        proxy.update();</span><br><span class="line">        System.out.println(<span class="string">&quot;=============================&quot;</span>);</span><br><span class="line">        proxy.find();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -683,13 +677,10 @@ JDK８中关于注解的新特性：</li>
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blog/2021/03/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" rel="prev" title="数据库基本概念">
-      <i class="fa fa-chevron-left"></i> 数据库基本概念
+    <a href="/blog/2021/03/23/Docker%E5%9F%BA%E7%A1%80/" rel="prev" title="Docker基础">
+      <i class="fa fa-chevron-left"></i> Docker基础
     </a></div>
-      <div class="post-nav-item">
-    <a href="/blog/2021/03/23/Docker%E5%9F%BA%E7%A1%80/" rel="next" title="Docker基础">
-      Docker基础 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
