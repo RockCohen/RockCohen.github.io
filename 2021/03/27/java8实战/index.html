@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/03/27/java8%E5%AE%9E%E6%88%98/Collectors%E7%B1%BB%E9%9D%99%E6%80%81%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E8%A1%A83.PNG">
 <meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/03/27/java8%E5%AE%9E%E6%88%98/Spliterator%E7%89%B9%E6%80%A7.PNG">
 <meta property="article:published_time" content="2021-03-27T08:29:40.000Z">
-<meta property="article:modified_time" content="2021-04-02T07:03:10.141Z">
+<meta property="article:modified_time" content="2021-04-03T08:45:40.715Z">
 <meta property="article:author" content="RockCohen">
 <meta property="article:tag" content="Java 8">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-02 15:03:10" itemprop="dateModified" datetime="2021-04-02T15:03:10+08:00">2021-04-02</time>
+                <time title="修改时间：2021-04-03 16:45:40" itemprop="dateModified" datetime="2021-04-03T16:45:40+08:00">2021-04-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,7 +232,7 @@
         <img src="/blog/2021/03/27/java8%E5%AE%9E%E6%88%98/%E7%A7%91%E6%AF%94.PNG" class>
 
 <span id="more"></span>
-<h1 id="第一部分-基础知识"><a href="#第一部分-基础知识" class="headerlink" title="第一部分 基础知识"></a>第一部分 基础知识</h1><h2 id="第一章-Java-8-新特性"><a href="#第一章-Java-8-新特性" class="headerlink" title="第一章 Java 8 新特性"></a>第一章 Java 8 新特性</h2><ul>
+<h1 id="第一部分-基础知识"><a href="#第一部分-基础知识" class="headerlink" title="第一部分 基础知识"></a>第一部分 基础知识</h1><h2 id="Java-8-新特性"><a href="#Java-8-新特性" class="headerlink" title="Java 8 新特性"></a>Java 8 新特性</h2><ul>
 <li>Java 8 新特性主要包括：<ul>
 <li>Stream API</li>
 <li>向方法传递代码的技巧</li>
@@ -240,17 +240,17 @@
 </ul>
 </li>
 </ul>
-<h3 id="1-1-流处理"><a href="#1-1-流处理" class="headerlink" title="1.1 流处理"></a>1.1 流处理</h3><ul>
+<h3 id="流处理"><a href="#流处理" class="headerlink" title="流处理"></a>流处理</h3><ul>
 <li>流是一系列的数据项，一次只生成一项。</li>
 <li>程序可以从输入流中一个一个读取数据，以同样的方式将数据写入输出流。</li>
 <li>一个程序的输入流可能是另一个程序的输出流。</li>
 <li>Java 8 借助流水线的思想，在<code>java.util.Stream</code>中添加一个<code>Stream API</code>，<code>Stream&lt;T&gt;</code>就是一系列T类型的项目。</li>
 <li>Java 8 可以透明地把输入的不相关的部分拿到几个CPU内核上面去分别执行的操作流。</li>
 </ul>
-<h3 id="1-2-用行为参数化把代码传递给方法"><a href="#1-2-用行为参数化把代码传递给方法" class="headerlink" title="1.2 用行为参数化把代码传递给方法"></a>1.2 用行为参数化把代码传递给方法</h3><ul>
+<h3 id="用行为参数化把代码传递给方法"><a href="#用行为参数化把代码传递给方法" class="headerlink" title="用行为参数化把代码传递给方法"></a>用行为参数化把代码传递给方法</h3><ul>
 <li>将一些功能函数参数化，传递给其他对象进行执行，完成相应的功能，比如排序方法，根据不同的应用，排序的标准不一样，此时通过参数化就可以方便实现排序功能，这样不但减少了代码的冗余，同时增加了程序设计的简洁性。</li>
 </ul>
-<h3 id="1-3-并行与共享的可变数据"><a href="#1-3-并行与共享的可变数据" class="headerlink" title="1.3 并行与共享的可变数据"></a>1.3 并行与共享的可变数据</h3><ul>
+<h3 id="并行与共享的可变数据"><a href="#并行与共享的可变数据" class="headerlink" title="并行与共享的可变数据"></a>并行与共享的可变数据</h3><ul>
 <li>写代码时不能访问共享的可变数据，这些函数被称作“纯函数”、“无副作用函数”或者“无状态函数”。</li>
 <li>”不能有共享的可变数据“意味着，一个放啊发是可以通过它将参数值转换为结果的方式完全描述的，换句话说，它的行为像一个数据函数，没有可见的副作用。</li>
 </ul>
@@ -275,17 +275,17 @@
 </ul>
 </li>
 </ul>
-<h2 id="第三章-函数式接口"><a href="#第三章-函数式接口" class="headerlink" title="第三章 函数式接口"></a>第三章 函数式接口</h2><h3 id="3-1-predicate"><a href="#3-1-predicate" class="headerlink" title="3.1 predicate"></a>3.1 predicate</h3><ul>
+<h2 id="第三章-函数式接口"><a href="#第三章-函数式接口" class="headerlink" title="第三章 函数式接口"></a>第三章 函数式接口</h2><h3 id="predicate"><a href="#predicate" class="headerlink" title="predicate"></a>predicate</h3><ul>
 <li><code>java.util.function.Predicate&lt;T&gt;</code>接口定义了一个叫做<code>test</code>的抽象方法，它接受泛型T对象，并返回一个boolean的值。</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">接口定义以及接口实现。</span><br><span class="line">@FunctionalInterface</span><br><span class="line">public interface Predicate&lt;T&gt;&#123;</span><br><span class="line">   boolean test(T t);</span><br><span class="line">&#125;</span><br><span class="line">public static &lt;T&gt; List&lt;T&gt; filter(List&lt;T&gt; list,Predicate&lt;T&gt; p)&#123;</span><br><span class="line">   List&lt;T&gt; results &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">   for(T s:list)&#123;</span><br><span class="line">      if(p.test(s))&#123;</span><br><span class="line">         results.add(s);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   return resluts;</span><br><span class="line">&#125;</span><br><span class="line">函数式接口的应用</span><br><span class="line">筛选出不为空的字符串数组</span><br><span class="line">Predicate&lt;String&gt; nonEmptyStringPredicate &#x3D; (String s) -&gt; !s.isEmpty();</span><br><span class="line">List&lt;String&gt; nonEmpty &#x3D; filter(ListOFStrings,nonEmptyStringPredicate);</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-2-Consumer"><a href="#3-2-Consumer" class="headerlink" title="3.2 Consumer"></a>3.2 Consumer</h3><ul>
+<h3 id="Consumer"><a href="#Consumer" class="headerlink" title="Consumer"></a>Consumer</h3><ul>
 <li><code>java.util.function.Consumer&lt;T&gt;</code>中定义了一个叫做accept的抽象方法，他接受泛型T的对象，没有返回（void）.</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">接口的定义以及接口实现</span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Consumer</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">accept</span><span class="params">(T t)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">forEach</span><span class="params">(List&lt;T&gt; list,Comsumer&lt;T&gt; c)</span></span>&#123;</span><br><span class="line">     <span class="keyword">for</span>(T i:list)&#123;</span><br><span class="line">        c.accept(i);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">接口应用</span><br><span class="line"><span class="keyword">for</span>(Arrays.asList(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>),(Integer i)-&gt;System.out.println(i));</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-3-Function"><a href="#3-3-Function" class="headerlink" title="3.3 Function"></a>3.3 Function</h3><ul>
+<h3 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h3><ul>
 <li><code>java.util.function.Function&lt;T,R&gt;</code>接口定义了一个叫做<code>apply</code>的方法，它接受一个泛型T的对象，并返回一个泛型的R的对象。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">接口定义与实现</span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Function</span>&lt;<span class="title">T</span>,<span class="title">R</span>&gt;</span>&#123;</span><br><span class="line"> <span class="function">R <span class="title">apply</span><span class="params">(T t)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T,R&gt; <span class="function">List&lt;R&gt; <span class="title">map</span><span class="params">(List&lt;T&gt; list,Function&lt;T,R&gt; f)</span></span>&#123;</span><br><span class="line">   List&lt;R&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">   <span class="keyword">for</span>(T s:list)&#123;</span><br><span class="line">   result.add(f.apply(s));</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line">接口应用</span><br><span class="line">List&lt;Integer&gt; list = map(Array.asList(<span class="string">&quot;lambda&quot;</span>,<span class="string">&quot;in&quot;</span>,<span class="string">&quot;action&quot;</span>),(String s)-&gt;s.length())</span><br></pre></td></tr></table></figure>
@@ -295,7 +295,7 @@
 <img src="/blog/2021/03/27/java8%E5%AE%9E%E6%88%98/Java8%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A32.PNG" class title="Java8接口"></li>
 <li>具体参考相应的API。</li>
 </ul>
-<h3 id="3-4-类型检查"><a href="#3-4-类型检查" class="headerlink" title="3.4 类型检查"></a>3.4 类型检查</h3><ul>
+<h3 id="类型检查"><a href="#类型检查" class="headerlink" title="类型检查"></a>类型检查</h3><ul>
 <li><p>使用局部的变量</p>
 <ul>
 <li>lambda允许使用自由变量，就像匿名类一样，他们被称作<strong>捕获lambda</strong></li>
@@ -310,7 +310,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="3-5-方法引用"><a href="#3-5-方法引用" class="headerlink" title="3.5 方法引用"></a>3.5 方法引用</h3><ul>
+<h3 id="方法引用"><a href="#方法引用" class="headerlink" title="方法引用"></a>方法引用</h3><ul>
 <li>方法引用可以重复使用现有的方法定义，并像lambda一样传递他们。</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inventory.sort(comparing(Apple::getWeight));</span><br></pre></td></tr></table></figure>
@@ -363,7 +363,7 @@
 <h1 id="第二部分-函数式处理"><a href="#第二部分-函数式处理" class="headerlink" title="第二部分 函数式处理"></a>第二部分 函数式处理</h1><h2 id="第四章-函数式数据处理"><a href="#第四章-函数式数据处理" class="headerlink" title="第四章 函数式数据处理"></a>第四章 函数式数据处理</h2><ul>
 <li>本部分主要讲述Stream API，通过声明式的处理数据集。</li>
 </ul>
-<h3 id="4-1-流的概念"><a href="#4-1-流的概念" class="headerlink" title="4.1 流的概念"></a>4.1 流的概念</h3><ul>
+<h3 id="流的概念"><a href="#流的概念" class="headerlink" title="流的概念"></a>流的概念</h3><ul>
 <li><p>流式Java API的新的成员。</p>
 </li>
 <li><p>流允许用户以声明性的方式来处理数据集合（通过查询语句来实现，而不是临时编写一个实现。）</p>
@@ -380,7 +380,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="4-2-流简介"><a href="#4-2-流简介" class="headerlink" title="4.2 流简介"></a>4.2 流简介</h3><ul>
+<h3 id="流简介"><a href="#流简介" class="headerlink" title="流简介"></a>流简介</h3><ul>
 <li><p>流的简单定义就是：从支持数据处理操作的源生成的元素序列。</p>
 <ul>
 <li><p>元素序列：流提供了一套接口，来访问特定元素类型的一组有序值。与集合侧重的数据不一样，流讲究的是对数据的操作计算。</p>
@@ -402,7 +402,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="4-3-流与集合"><a href="#4-3-流与集合" class="headerlink" title="4.3 流与集合"></a>4.3 流与集合</h3><ul>
+<h3 id="流与集合"><a href="#流与集合" class="headerlink" title="流与集合"></a>流与集合</h3><ul>
 <li><p>粗略说，流与集合的区别在于什么时候进行计算，集合式一个内存中的数据结构，它包含数据结构目前所有的元素，相比之下，流则是概念上固定的数据结构，其元素则是按需计算的。</p>
 </li>
 <li><p>从一个角度讲，流像是一个延迟创建的集合：只有消费者要求的时候才会计算。（管理学观点：需求驱动，实时制造），集合是急切创建的，（管理学观点：供应商驱动，先把仓库装满，再开始卖）</p>
@@ -416,19 +416,19 @@
 
 
 
-<h3 id="4-4-外部迭代与内部迭代"><a href="#4-4-外部迭代与内部迭代" class="headerlink" title="4.4 外部迭代与内部迭代"></a>4.4 外部迭代与内部迭代</h3><ul>
+<h3 id="外部迭代与内部迭代"><a href="#外部迭代与内部迭代" class="headerlink" title="外部迭代与内部迭代"></a>外部迭代与内部迭代</h3><ul>
 <li>使用<code>Collection</code>接口需要用户去做迭代（例如：for-each)，这叫外部迭代。</li>
 <li><code>Streams</code>使用了内部迭代。它帮助做迭代，并且暂存结果。</li>
 <li>内部迭代隐藏了一些复杂性，隐去了复杂丑陋的代码，让显示出来的代码优美好看。</li>
 <li>内部迭代提供并行处理，或者选择更加优化的迭代顺序来处理。</li>
 <li>下图展示两者的差异：<img src="/blog/2021/03/27/java8%E5%AE%9E%E6%88%98/Java8%E5%86%85%E9%83%A8%E8%BF%AD%E4%BB%A3%E4%B8%8E%E5%A4%96%E9%83%A8%E8%BF%AD%E4%BB%A3.PNG" class></li>
 </ul>
-<h3 id="4-5-流操作"><a href="#4-5-流操作" class="headerlink" title="4.5 流操作"></a>4.5 流操作</h3><ul>
+<h3 id="流操作"><a href="#流操作" class="headerlink" title="流操作"></a>流操作</h3><ul>
 <li>流操作基本可以分为两类：中间操作和终端操作。</li>
 <li>中间操作：主要是中间流的操作步骤</li>
 <li>终端操作：终端操作的目的是为了选择合适的数据结构将流重新存入内存。当然也会返回void,比如打印到终端。</li>
 </ul>
-<h3 id="4-6-使用流"><a href="#4-6-使用流" class="headerlink" title="4.6 使用流"></a>4.6 使用流</h3><ul>
+<h3 id="使用流"><a href="#使用流" class="headerlink" title="使用流"></a>使用流</h3><ul>
 <li>流的使用一般包括三件事：<ul>
 <li>一个数据源(如集合)来执行一个查询。</li>
 <li>一个中间操作链（形成一个流的流水线）</li>
@@ -446,7 +446,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="5-1-筛选和切片"><a href="#5-1-筛选和切片" class="headerlink" title="5.1 筛选和切片"></a>5.1 筛选和切片</h3><ul>
+<h3 id="筛选和切片"><a href="#筛选和切片" class="headerlink" title="筛选和切片"></a>筛选和切片</h3><ul>
 <li><p><strong>用谓词筛选</strong></p>
 <ul>
 <li><code>Streams</code>接口支持<code>filter</code>方法，该操作接受一个谓词（一个返回<code>boolean</code>的函数）作为参数。并且返回所有符合谓词条件的元素的流。</li>
@@ -465,7 +465,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="5-2-映射"><a href="#5-2-映射" class="headerlink" title="5.2 映射"></a>5.2 映射</h3><ul>
+<h3 id="映射"><a href="#映射" class="headerlink" title="映射"></a>映射</h3><ul>
 <li><p><strong>对流中每一个元素应用函数</strong></p>
 <ul>
 <li>流支持<code>map</code>方法，接受一个函数作为参数，这个函数会被应用到每一个元素上面，并将其映射成一个新的元素。</li>
@@ -477,7 +477,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">给定List&lt;Integer&gt;：number1:【1，2，3】与number2:【3，4】 返回【【1，3】，【1，4】，【2，3】，【2，4】，【3，3】，【3，4】】</span><br><span class="line">List&lt;int[]&gt; pairs &#x3D; number1.stream().flatMap(i-&gt;number2.stream().map(j-&gt;new int[]&#123;i,j&#125;)).collect(toList());</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="5-3-查找与匹配"><a href="#5-3-查找与匹配" class="headerlink" title="5.3 查找与匹配"></a>5.3 查找与匹配</h3><ul>
+<h3 id="查找与匹配"><a href="#查找与匹配" class="headerlink" title="查找与匹配"></a>查找与匹配</h3><ul>
 <li><p><code>Stream API</code> 通过<code>allMatch</code>,<code>anyMatch</code>,<code>noneMatch</code>,<code>findFirst</code>,<code>FindAny</code>来查看数据集合中的某些元素是否匹配一个给定的属性。</p>
 </li>
 <li><p><strong>检查谓词是否至少匹配一个元素</strong></p>
@@ -517,7 +517,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="5-4-归约"><a href="#5-4-归约" class="headerlink" title="5.4 归约"></a>5.4 归约</h3><ul>
+<h3 id="归约"><a href="#归约" class="headerlink" title="归约"></a>归约</h3><ul>
 <li><p><strong>元素求和</strong></p>
 <ul>
 <li><p><code>reduce</code>操作，对于重复应用的模式做了抽象，比如元素求和：</p>
@@ -545,7 +545,7 @@
 
 
 
-<h3 id="5-5-数值流"><a href="#5-5-数值流" class="headerlink" title="5.5 数值流"></a>5.5 数值流</h3><ul>
+<h3 id="数值流"><a href="#数值流" class="headerlink" title="数值流"></a>数值流</h3><ul>
 <li><p><code>Stream API</code>提供了原始类型流特化，专门处理数值流的方法。</p>
 </li>
 <li><p><strong>原始类型流特化</strong></p>
@@ -590,7 +590,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="5-6-构建流"><a href="#5-6-构建流" class="headerlink" title="5.6 构建流"></a>5.6 构建流</h3><ul>
+<h3 id="构建流"><a href="#构建流" class="headerlink" title="构建流"></a>构建流</h3><ul>
 <li><p><strong>由值创建流</strong></p>
 <ul>
 <li>静态方法<code>Stream.of()</code>接受任意数量的参数，比如如下：</li>
@@ -638,7 +638,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="6-1-收集器简介"><a href="#6-1-收集器简介" class="headerlink" title="6.1 收集器简介"></a>6.1 收集器简介</h3><ul>
+<h3 id="收集器简介"><a href="#收集器简介" class="headerlink" title="收集器简介"></a>收集器简介</h3><ul>
 <li><p><strong>收集器用作高级归约</strong></p>
 <ul>
 <li>收集器通过灵活定义<code>collect</code>来实现更容易地复合和重用。</li>
@@ -661,7 +661,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="6-2-归约和汇总"><a href="#6-2-归约和汇总" class="headerlink" title="6.2 归约和汇总"></a>6.2 归约和汇总</h3><ul>
+<h3 id="归约和汇总"><a href="#归约和汇总" class="headerlink" title="归约和汇总"></a>归约和汇总</h3><ul>
 <li><p><strong>查找最大值与最小值</strong></p>
 <ul>
 <li><code>Collectors.maxBy</code>与<code>Collectors.minBy</code>分别返回流中最大的与最小值。当然需要提供比较函数的比较方式。</li>
@@ -695,7 +695,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="6-3-分组"><a href="#6-3-分组" class="headerlink" title="6.3 分组"></a>6.3 分组</h3><ul>
+<h3 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h3><ul>
 <li><p>一个常见的操作就是根据一个或者多个属性对集合中的项目进行分组。如果利用命令式的方式区实现就会很不容易，通过流处理的方式来实现就显得非常简易了。</p>
 </li>
 <li><p><code>Collectors.groupingBy</code>可以实现对流中数据按某种方式进行分类。</p>
@@ -726,7 +726,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Dish.Type,Dish&gt; mostCaloriesByType &#x3D; menu.stream().collect(froupingBy(Dish::getType,collectingAndThen(maxBy(comparingInt(Dish::getCalories)),Optional::get)));</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="6-4-分区"><a href="#6-4-分区" class="headerlink" title="6.4 分区"></a>6.4 分区</h3><ul>
+<h3 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h3><ul>
 <li><p>分区是分组的特殊情况：由一个谓词（返回<code>Boolean</code>值得函数）作为函数，它称为分区函数。分区函数返回类型决定了结果分组map的键类型为<code>boolean</code>。</p>
 </li>
 <li><p>因此只能分为两个区，谓词肯定区和谓词否定区</p>
@@ -739,7 +739,7 @@
 <img src="/blog/2021/03/27/java8%E5%AE%9E%E6%88%98/Collectors%E7%B1%BB%E9%9D%99%E6%80%81%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E8%A1%A82.PNG" class>
 <img src="/blog/2021/03/27/java8%E5%AE%9E%E6%88%98/Collectors%E7%B1%BB%E9%9D%99%E6%80%81%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E8%A1%A83.PNG" class></li>
 </ul>
-<h3 id="6-5-收集器接口"><a href="#6-5-收集器接口" class="headerlink" title="6.5 收集器接口"></a>6.5 收集器接口</h3><ul>
+<h3 id="收集器接口"><a href="#收集器接口" class="headerlink" title="收集器接口"></a>收集器接口</h3><ul>
 <li><p><code>Collector</code>接口</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public interface Collector&lt;T,A,R&gt;</span><br><span class="line">&#123;</span><br><span class="line">     Supplier&lt;A&gt;  supplier();</span><br><span class="line">     BiConsumer&lt;A,T&gt; acculator();</span><br><span class="line">     Function&lt;A,R&gt;   finisher();</span><br><span class="line">     BinaryOperator&lt;A&gt; combiner();</span><br><span class="line">     Set&lt;Characteristics&gt; characteristics();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -784,7 +784,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="第七章-并行数据与性能"><a href="#第七章-并行数据与性能" class="headerlink" title="第七章 并行数据与性能"></a>第七章 并行数据与性能</h2><h3 id="7-1-并行流"><a href="#7-1-并行流" class="headerlink" title="7.1 并行流"></a>7.1 并行流</h3><ul>
+<h2 id="第七章-并行数据与性能"><a href="#第七章-并行数据与性能" class="headerlink" title="第七章 并行数据与性能"></a>第七章 并行数据与性能</h2><h3 id="并行流"><a href="#并行流" class="headerlink" title="并行流"></a>并行流</h3><ul>
 <li><p><strong>并行流</strong>是一个把内容分成多个数据块，并用不同的线程分别处理每个数据块的流。</p>
 </li>
 <li><p><strong>将顺序流变为并行流</strong></p>
@@ -823,7 +823,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="7-2-分支-合并框架"><a href="#7-2-分支-合并框架" class="headerlink" title="7.2 分支/合并框架"></a>7.2 分支/合并框架</h3><ul>
+<h3 id="分支-合并框架"><a href="#分支-合并框架" class="headerlink" title="分支/合并框架"></a>分支/合并框架</h3><ul>
 <li>分支/合并框架的目的是一递归方式将可以并行的任务拆成更加小的任务，然后将每个子任务的结果合并起来生成整体结果。</li>
 <li>它是<code>ExecutorService</code>接口的一个实现，它把子任务分配给线程池（称为：<code>ForkJoinPoll</code>）中的工作线程。</li>
 <li><strong>使用<code>RecursiveTask</code></strong><ul>
@@ -842,7 +842,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="7-3-Spliterator"><a href="#7-3-Spliterator" class="headerlink" title="7.3 Spliterator"></a>7.3 <code>Spliterator</code></h3><ul>
+<h3 id="Spliterator"><a href="#Spliterator" class="headerlink" title="Spliterator"></a><code>Spliterator</code></h3><ul>
 <li><p>Java 8 引入新的接口：<code>Splitterator</code>,代表“可分迭代器”，与<code>iterator</code>一样，用于遍历数据中的元素，但是专门为并行技术设计的。</p>
 </li>
 <li><p>Java 8 已经为集合框架中包含的所有数据结构提供了一个默认的<code>Spliterator</code>的实现。</p>
@@ -863,10 +863,10 @@
 <li><p>**<code>Spliterator</code>**特性</p>
 <img src="/blog/2021/03/27/java8%E5%AE%9E%E6%88%98/Spliterator%E7%89%B9%E6%80%A7.PNG" class></li>
 </ul>
-<h1 id="第三部分-高效-Java-8-编程"><a href="#第三部分-高效-Java-8-编程" class="headerlink" title="第三部分 高效 Java 8 编程"></a>第三部分 高效 Java 8 编程</h1><h2 id="第八章-高效-Java-8-编程"><a href="#第八章-高效-Java-8-编程" class="headerlink" title="第八章 高效 Java 8 编程"></a>第八章 高效 Java 8 编程</h2><h3 id="8-1-设计模式"><a href="#8-1-设计模式" class="headerlink" title="8.1 设计模式"></a>8.1 设计模式</h3><ul>
+<h1 id="第三部分-高效-Java-8-编程"><a href="#第三部分-高效-Java-8-编程" class="headerlink" title="第三部分 高效 Java 8 编程"></a>第三部分 高效 Java 8 编程</h1><h2 id="第八章-高效-Java-8-编程"><a href="#第八章-高效-Java-8-编程" class="headerlink" title="第八章 高效 Java 8 编程"></a>第八章 高效 Java 8 编程</h2><h3 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h3><ul>
 <li>这里涉及的涉及模式主要是为了使用<code>Lambda</code>重构面向对象的设计模式。</li>
 </ul>
-<h4 id="8-1-1-策略模式"><a href="#8-1-1-策略模式" class="headerlink" title="8.1.1 策略模式"></a>8.1.1 策略模式</h4><ul>
+<h4 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h4><ul>
 <li>策略模式代表了一类算法的通用解决方案。</li>
 <li>策略模式包含三个部分：<ul>
 <li>一个代表某个算法的接口</li>
@@ -877,15 +877,15 @@
 <li>lambda表达式可以避免采用策略模式时僵化的模板代码。</li>
 <li>多个算法的具体实现交给lambda表达式来实现，体现了lambda表达式的灵活性。</li>
 </ul>
-<h4 id="8-1-2-模板方法"><a href="#8-1-2-模板方法" class="headerlink" title="8.1.2 模板方法"></a>8.1.2 模板方法</h4><ul>
+<h4 id="模板方法"><a href="#模板方法" class="headerlink" title="模板方法"></a>模板方法</h4><ul>
 <li>需要采取某个算法的框架，同时有希望有一定的灵活度，进行部分的改进，可以采用<strong>模板方法设计模式</strong>。</li>
 <li>不同使用者对框架进行差异化的实现。</li>
 <li>关于差异化实现，刚好是lambda的擅长的事情。</li>
 </ul>
-<h4 id="8-1-3-观察者模式"><a href="#8-1-3-观察者模式" class="headerlink" title="8.1.3 观察者模式"></a>8.1.3 观察者模式</h4><ul>
+<h4 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h4><ul>
 <li>观察者模式：当某件事情发生时，如果一个对象（称作:主题）需要自动通知其他的多个对象（称作：观察者），采取观察者模式。</li>
 </ul>
-<h4 id="8-1-4-责任链模式"><a href="#8-1-4-责任链模式" class="headerlink" title="8.1.4 责任链模式"></a>8.1.4 责任链模式</h4><ul>
+<h4 id="责任链模式"><a href="#责任链模式" class="headerlink" title="责任链模式"></a>责任链模式</h4><ul>
 <li><p>责任链模式是一种创建处理对象序列的通用方案。一个处理对象可能需要在完成一些工作之后，将结果传递另一个对象，这个对象接着做一些事情，再传递给下一个对象。</p>
 </li>
 <li><p>通常这种模式时通过定义一个的代表处理对象的抽象类来实现，再抽象类中会顶一个字段来记录后续的对象。一旦对象完成他的工作，处理对象就将他的工作转交给他的后继。</p>
@@ -893,7 +893,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public abstract class ProcessingObject&lt;T&gt; &#123;</span><br><span class="line">    protected ProcessingObject&lt;T&gt; successor;</span><br><span class="line">    public void setSuccessor(ProcessingObject&lt;T&gt; successor)&#123;</span><br><span class="line">        this.successor&#x3D;successor;</span><br><span class="line">    &#125;</span><br><span class="line">    public  T handle(T input)&#123;</span><br><span class="line">      T r&#x3D;handWork(input);</span><br><span class="line">      if(successor!&#x3D;null)&#123;</span><br><span class="line">         return successor.handle(r);</span><br><span class="line">      &#125;</span><br><span class="line">      return r;</span><br><span class="line">    &#125;</span><br><span class="line">    abstract protected T handleWork(T input);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="8-1-5-工厂模式"><a href="#8-1-5-工厂模式" class="headerlink" title="8.1.5 工厂模式"></a>8.1.5 工厂模式</h4><ul>
+<h4 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h4><ul>
 <li><p>使用工厂模式，用户无需向客户暴露实例化的逻辑就能创建对象。</p>
 </li>
 <li><p>如下创建工厂，包含一个负责实现不同对象的方法。</p>
@@ -903,7 +903,7 @@
 
 
 
-<h3 id="8-2-调试"><a href="#8-2-调试" class="headerlink" title="8.2 调试"></a>8.2 调试</h3><ul>
+<h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><ul>
 <li>调试的两种方式<ul>
 <li>查看栈跟踪</li>
 <li>输出日志</li>
@@ -920,7 +920,7 @@
 <li>默认方法的目的：它让类可以自动地继承接口的一个默认实现。</li>
 <li>默认方法为接口的演进提供了一种平滑的方式。改动并不会影响已有的代码。</li>
 </ul>
-<h3 id="9-1-默认方法概述"><a href="#9-1-默认方法概述" class="headerlink" title="9.1 默认方法概述"></a>9.1 默认方法概述</h3><ul>
+<h3 id="默认方法概述"><a href="#默认方法概述" class="headerlink" title="默认方法概述"></a>默认方法概述</h3><ul>
 <li>默认方法由<code>default</code>修饰，并像类种声明的其他的方法一样包含方法体。</li>
 <li>Java 8中的抽象类和抽象接口<ul>
 <li>一个类只能继承一个抽象类，但是一个类可以继承多个接口。</li>
@@ -928,12 +928,12 @@
 </ul>
 </li>
 </ul>
-<h3 id="9-2-默认方法的使用模式"><a href="#9-2-默认方法的使用模式" class="headerlink" title="9.2 默认方法的使用模式"></a>9.2 默认方法的使用模式</h3><h4 id="9-2-1-可选方法"><a href="#9-2-1-可选方法" class="headerlink" title="9.2.1 可选方法"></a>9.2.1 可选方法</h4><ul>
+<h3 id="默认方法的使用模式"><a href="#默认方法的使用模式" class="headerlink" title="默认方法的使用模式"></a>默认方法的使用模式</h3><h4 id="可选方法"><a href="#可选方法" class="headerlink" title="可选方法"></a>可选方法</h4><ul>
 <li>情况：类实现了接口，但却刻意地将一些方法的实现留白。</li>
 <li>上述情况，在Java 8以前，必须在实现类中提供空白的代码框架，。</li>
 <li>引入默认方法，只需要在接口中将该方法定义为默认方法然后就可以不用在实现类中提供空白无用的实现了。</li>
 </ul>
-<h4 id="9-2-2-行为的多继承"><a href="#9-2-2-行为的多继承" class="headerlink" title="9.2.2 行为的多继承"></a>9.2.2 行为的多继承</h4><ul>
+<h4 id="行为的多继承"><a href="#行为的多继承" class="headerlink" title="行为的多继承"></a>行为的多继承</h4><ul>
 <li>与C++的多继承方式不一样，Java引入默认方法实现了行为级的多继承。</li>
 <li>这是一种让类从多个来源重用代码的能力。</li>
 <li><strong>类型的多继承</strong><ul>
@@ -949,7 +949,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="9-3-解决冲突的规则"><a href="#9-3-解决冲突的规则" class="headerlink" title="9.3 解决冲突的规则"></a>9.3 解决冲突的规则</h3><ul>
+<h3 id="解决冲突的规则"><a href="#解决冲突的规则" class="headerlink" title="解决冲突的规则"></a>解决冲突的规则</h3><ul>
 <li>因为Java 8引入默认方法，如果接口的实现类刚好实现了这个默认方法，那么这个时候冲突在于：应该使用这个方法的哪个版本来进行计算。</li>
 <li>解决问题的三个规则：<ul>
 <li><ol>
@@ -962,12 +962,12 @@
 </li>
 <li>关于继承的菱形问题，Java提供上述的解决方案中的第三条来解决。</li>
 </ul>
-<h3 id="9-4-总结"><a href="#9-4-总结" class="headerlink" title="9.4 总结"></a>9.4 总结</h3><ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
 <li>Java 8中的接口可以通过默认方法和静态方法来提供代码的实现。</li>
 <li>向发布的接口添加抽象方法不是源码兼容的。</li>
 <li>默认方法帮助库设计者以后向兼容的方式演进API。</li>
 </ul>
-<h2 id="第十章-Optional"><a href="#第十章-Optional" class="headerlink" title="第十章 Optional"></a>第十章 Optional</h2><h3 id="10-1-应用Optional的几种模式"><a href="#10-1-应用Optional的几种模式" class="headerlink" title="10.1 应用Optional的几种模式"></a>10.1 应用<code>Optional</code>的几种模式</h3><ul>
+<h2 id="第十章-Optional"><a href="#第十章-Optional" class="headerlink" title="第十章 Optional"></a>第十章 Optional</h2><h3 id="应用Optional的几种模式"><a href="#应用Optional的几种模式" class="headerlink" title="应用Optional的几种模式"></a>应用<code>Optional</code>的几种模式</h3><ul>
 <li><p>创建<code>Optional</code>对象</p>
 <ul>
 <li><p>声明一个空的<code>Optional</code></p>
@@ -1002,21 +1002,21 @@
 <li><p>待补充</p>
 </li>
 </ul>
-<h2 id="第十一章-组合式异步编程"><a href="#第十一章-组合式异步编程" class="headerlink" title="第十一章 组合式异步编程"></a>第十一章 组合式异步编程</h2><h3 id="11-1-Future接口"><a href="#11-1-Future接口" class="headerlink" title="11.1 Future接口"></a>11.1 Future接口</h3><ul>
+<h2 id="第十一章-组合式异步编程"><a href="#第十一章-组合式异步编程" class="headerlink" title="第十一章 组合式异步编程"></a>第十一章 组合式异步编程</h2><h3 id="Future接口"><a href="#Future接口" class="headerlink" title="Future接口"></a>Future接口</h3><ul>
 <li><code>Future</code>接口在Java 5中引入，设计初衷是为了对将来某个时刻会发生的结果进行建模。</li>
 <li>它建模了一种异步计算，返回一个执行结果的引用，当运算结束后，这个引用被返回给调用方。</li>
 <li>在<code>Future</code>中触发那些潜在耗时的运算把调用线程解放出来，让它继续执行其他有价值的工作，不再呆呆地等待耗时操作完成。</li>
 </ul>
-<h4 id="11-1-1-使用CompletableFuture构建异步应用"><a href="#11-1-1-使用CompletableFuture构建异步应用" class="headerlink" title="11.1.1 使用CompletableFuture构建异步应用"></a>11.1.1 使用<code>CompletableFuture</code>构建异步应用</h4><ul>
+<h4 id="使用CompletableFuture构建异步应用"><a href="#使用CompletableFuture构建异步应用" class="headerlink" title="使用CompletableFuture构建异步应用"></a>使用<code>CompletableFuture</code>构建异步应用</h4><ul>
 <li><strong>同步API</strong>：是对传统方式调用的一种称呼，调用方法时，调用方在被调用方运行过程中等待，被调用方执行完毕后，调用方取得被调用返回的结果并继续运行。即使调用方与被调用方使用不同的线程，调用方还是需要被调用方执行完毕后的运行，这就是<strong>阻塞式调用</strong>。</li>
 <li><strong>异步API</strong>：异步API会直接返回，或者至少被调用方计算完成之前，将它剩余的计算任务交给另一个线程去做，该线程与调用方是异步的，——-这就是<strong>非阻塞式调用</strong>。</li>
 </ul>
-<h3 id="11-2-实现异步API"><a href="#11-2-实现异步API" class="headerlink" title="11.2 实现异步API"></a>11.2 实现异步API</h3><h4 id="11-2-1-将同步方法转换为异步方法"><a href="#11-2-1-将同步方法转换为异步方法" class="headerlink" title="11.2.1 将同步方法转换为异步方法"></a>11.2.1 将同步方法转换为异步方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public Future&lt;Double&gt; getPriceAsync(String product)&#123;</span><br><span class="line">   CompletableFuture&lt;Double&gt; futurePrice &#x3D; new CompletableFuture&lt;&gt;();</span><br><span class="line">   new Thread(()-&gt;&#123;</span><br><span class="line">      double price &#x3D; calculatePrice(product);</span><br><span class="line">      futurePrice.complete(price);</span><br><span class="line">   &#125;).start();</span><br><span class="line">   return futurePrice;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="实现异步API"><a href="#实现异步API" class="headerlink" title="实现异步API"></a>实现异步API</h3><h4 id="将同步方法转换为异步方法"><a href="#将同步方法转换为异步方法" class="headerlink" title="将同步方法转换为异步方法"></a>将同步方法转换为异步方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public Future&lt;Double&gt; getPriceAsync(String product)&#123;</span><br><span class="line">   CompletableFuture&lt;Double&gt; futurePrice &#x3D; new CompletableFuture&lt;&gt;();</span><br><span class="line">   new Thread(()-&gt;&#123;</span><br><span class="line">      double price &#x3D; calculatePrice(product);</span><br><span class="line">      futurePrice.complete(price);</span><br><span class="line">   &#125;).start();</span><br><span class="line">   return futurePrice;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>上述代码解释：首先创建了一个代表异步计算的<code>CompletableFuture</code>对象实例，它在计算完成时hi包含计算的结果。接着调用fork创建了另一个线程去执行实际价格的计算工作，不等待该耗时计算任务结束，直接返回一个<code>Future</code>实例，当请求的产品价格最终计算出来，可以调用<code>complete</code>方法，结束<code>completableFuture</code>对象的运行，并设置变量的值。</li>
 </ul>
-<h4 id="11-2-2-错误处理"><a href="#11-2-2-错误处理" class="headerlink" title="11.2.2 错误处理"></a>11.2.2 错误处理</h4><ul>
+<h4 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h4><ul>
 <li><p>上述的代码，如果当计算价格的代码出错，那么则会永久阻塞，采用新版的get方法可以避免这个问题，</p>
 </li>
 <li><p><strong>使用工厂方法<code>supplyAsync</code>创建<code>CompletableFuture</code></strong></p>
@@ -1033,10 +1033,10 @@
 </ul>
 </li>
 </ul>
-<h3 id="11-3-让代码免受阻塞之苦"><a href="#11-3-让代码免受阻塞之苦" class="headerlink" title="11.3 让代码免受阻塞之苦"></a>11.3 让代码免受阻塞之苦</h3><ul>
+<h3 id="让代码免受阻塞之苦"><a href="#让代码免受阻塞之苦" class="headerlink" title="让代码免受阻塞之苦"></a>让代码免受阻塞之苦</h3><ul>
 <li>。。。。。等看完Java并发再来看。</li>
 </ul>
-<h2 id="第十二章-高阶函数式编程"><a href="#第十二章-高阶函数式编程" class="headerlink" title="第十二章 高阶函数式编程"></a>第十二章 高阶函数式编程</h2><h3 id="12-1-函数式编程概念"><a href="#12-1-函数式编程概念" class="headerlink" title="12.1 函数式编程概念"></a>12.1 函数式编程概念</h3><ul>
+<h2 id="第十二章-高阶函数式编程"><a href="#第十二章-高阶函数式编程" class="headerlink" title="第十二章 高阶函数式编程"></a>第十二章 高阶函数式编程</h2><h3 id="函数式编程概念"><a href="#函数式编程概念" class="headerlink" title="函数式编程概念"></a>函数式编程概念</h3><ul>
 <li>在函数式编程的上下文中，一个“函数”对应一个数学函数：它接受零个或者多个参数，生成一个或者多个结果，并且不会有任何副作用。</li>
 <li>在强调函数式编程的时候，我们主要是强调的时：无副作用。</li>
 <li>被称作“函数式”的函数式方法都只能改变本地变量。除此之外，他引用的对象都应该是不被修改的。</li>
@@ -1051,7 +1051,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="13-1-高阶函数"><a href="#13-1-高阶函数" class="headerlink" title="13.1 高阶函数"></a>13.1 高阶函数</h3><ul>
+<h3 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h3><ul>
 <li>函数式编程的世界里，如果一个函数，能满足下列任何一个要求，则称为<strong>高阶函数</strong>。<ul>
 <li>接受至少一个函数作为参数</li>
 <li>返回的结果是一个函数</li>
@@ -1059,16 +1059,10 @@
 </li>
 <li>java 8中，函数不仅可以作为参数传递，还可以作为结果返回，能赋值给本地变量，也可以插入到某个数据结构中。比如<code>Map&lt;String,Function&lt;Double,Double&gt;&gt;</code>.</li>
 </ul>
-<h3 id="13-2-科里化"><a href="#13-2-科里化" class="headerlink" title="13.2 科里化"></a>13.2 科里化</h3><ul>
+<h3 id="科里化"><a href="#科里化" class="headerlink" title="科里化"></a>科里化</h3><ul>
 <li>作用：它是一种可以被帮助你模块化函数，提高代码重用的技术。</li>
 <li>科里化是一种将具备2个参数的函数f转化为使用一个参数的函数g，并且这个函数返回值也是一个函数，他会最为新函数的一个参数。</li>
 <li>一个函数使用所有参数仅有部分被遗传时，通常说这个函数是：”部分应用的“。</li>
-</ul>
-<h3 id="13-3-持久化数据结构"><a href="#13-3-持久化数据结构" class="headerlink" title="13.3 持久化数据结构"></a>13.3 持久化数据结构</h3><ul>
-<li>。。。</li>
-</ul>
-<h3 id="13-4-Stream的延迟计算"><a href="#13-4-Stream的延迟计算" class="headerlink" title="13.4 Stream的延迟计算"></a>13.4 Stream的延迟计算</h3><ul>
-<li></li>
 </ul>
 
     </div>
@@ -1153,7 +1147,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">第一部分 基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-Java-8-%E6%96%B0%E7%89%B9%E6%80%A7"><span class="nav-number">1.1.</span> <span class="nav-text">第一章 Java 8 新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E6%B5%81%E5%A4%84%E7%90%86"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 流处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E7%94%A8%E8%A1%8C%E4%B8%BA%E5%8F%82%E6%95%B0%E5%8C%96%E6%8A%8A%E4%BB%A3%E7%A0%81%E4%BC%A0%E9%80%92%E7%BB%99%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 用行为参数化把代码传递给方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E5%B9%B6%E8%A1%8C%E4%B8%8E%E5%85%B1%E4%BA%AB%E7%9A%84%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 并行与共享的可变数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">第二章 lambda表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.3.</span> <span class="nav-text">第三章 函数式接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-predicate"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 predicate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Consumer"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 Consumer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Function"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 类型检查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-%E6%96%B9%E6%B3%95%E5%BC%95%E7%94%A8"><span class="nav-number">1.3.5.</span> <span class="nav-text">3.5 方法引用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E5%87%BD%E6%95%B0%E5%BC%8F%E5%A4%84%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">第二部分 函数式处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%87%BD%E6%95%B0%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">第四章 函数式数据处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%B5%81%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.1.</span> <span class="nav-text">4.1 流的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E6%B5%81%E7%AE%80%E4%BB%8B"><span class="nav-number">2.1.2.</span> <span class="nav-text">4.2 流简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E6%B5%81%E4%B8%8E%E9%9B%86%E5%90%88"><span class="nav-number">2.1.3.</span> <span class="nav-text">4.3 流与集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E5%A4%96%E9%83%A8%E8%BF%AD%E4%BB%A3%E4%B8%8E%E5%86%85%E9%83%A8%E8%BF%AD%E4%BB%A3"><span class="nav-number">2.1.4.</span> <span class="nav-text">4.4 外部迭代与内部迭代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-%E6%B5%81%E6%93%8D%E4%BD%9C"><span class="nav-number">2.1.5.</span> <span class="nav-text">4.5 流操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-%E4%BD%BF%E7%94%A8%E6%B5%81"><span class="nav-number">2.1.6.</span> <span class="nav-text">4.6 使用流</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E4%BD%BF%E7%94%A8%E6%B5%81"><span class="nav-number">2.2.</span> <span class="nav-text">第五章 使用流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E7%AD%9B%E9%80%89%E5%92%8C%E5%88%87%E7%89%87"><span class="nav-number">2.2.1.</span> <span class="nav-text">5.1 筛选和切片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E6%98%A0%E5%B0%84"><span class="nav-number">2.2.2.</span> <span class="nav-text">5.2 映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E6%9F%A5%E6%89%BE%E4%B8%8E%E5%8C%B9%E9%85%8D"><span class="nav-number">2.2.3.</span> <span class="nav-text">5.3 查找与匹配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-%E5%BD%92%E7%BA%A6"><span class="nav-number">2.2.4.</span> <span class="nav-text">5.4 归约</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-%E6%95%B0%E5%80%BC%E6%B5%81"><span class="nav-number">2.2.5.</span> <span class="nav-text">5.5 数值流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-%E6%9E%84%E5%BB%BA%E6%B5%81"><span class="nav-number">2.2.6.</span> <span class="nav-text">5.6 构建流</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E7%94%A8%E6%B5%81%E6%94%B6%E9%9B%86%E6%95%B0%E6%8D%AE"><span class="nav-number">2.3.</span> <span class="nav-text">第六章 用流收集数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-%E6%94%B6%E9%9B%86%E5%99%A8%E7%AE%80%E4%BB%8B"><span class="nav-number">2.3.1.</span> <span class="nav-text">6.1 收集器简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-%E5%BD%92%E7%BA%A6%E5%92%8C%E6%B1%87%E6%80%BB"><span class="nav-number">2.3.2.</span> <span class="nav-text">6.2 归约和汇总</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-%E5%88%86%E7%BB%84"><span class="nav-number">2.3.3.</span> <span class="nav-text">6.3 分组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-%E5%88%86%E5%8C%BA"><span class="nav-number">2.3.4.</span> <span class="nav-text">6.4 分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-5-%E6%94%B6%E9%9B%86%E5%99%A8%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.3.5.</span> <span class="nav-text">6.5 收集器接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%B9%B6%E8%A1%8C%E6%95%B0%E6%8D%AE%E4%B8%8E%E6%80%A7%E8%83%BD"><span class="nav-number">2.4.</span> <span class="nav-text">第七章 并行数据与性能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-%E5%B9%B6%E8%A1%8C%E6%B5%81"><span class="nav-number">2.4.1.</span> <span class="nav-text">7.1 并行流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-%E5%88%86%E6%94%AF-%E5%90%88%E5%B9%B6%E6%A1%86%E6%9E%B6"><span class="nav-number">2.4.2.</span> <span class="nav-text">7.2 分支&#x2F;合并框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-Spliterator"><span class="nav-number">2.4.3.</span> <span class="nav-text">7.3 Spliterator</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86-%E9%AB%98%E6%95%88-Java-8-%E7%BC%96%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">第三部分 高效 Java 8 编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%AB%98%E6%95%88-Java-8-%E7%BC%96%E7%A8%8B"><span class="nav-number">3.1.</span> <span class="nav-text">第八章 高效 Java 8 编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.1.1.</span> <span class="nav-text">8.1 设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8-1-1-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">8.1.1 策略模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-1-2-%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95"><span class="nav-number">3.1.1.2.</span> <span class="nav-text">8.1.2 模板方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-1-3-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.1.1.3.</span> <span class="nav-text">8.1.3 观察者模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-1-4-%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.1.1.4.</span> <span class="nav-text">8.1.4 责任链模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-1-5-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.1.1.5.</span> <span class="nav-text">8.1.5 工厂模式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-%E8%B0%83%E8%AF%95"><span class="nav-number">3.1.2.</span> <span class="nav-text">8.2 调试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B9%9D%E7%AB%A0-%E9%BB%98%E8%AE%A4%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">第九章 默认方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1-%E9%BB%98%E8%AE%A4%E6%96%B9%E6%B3%95%E6%A6%82%E8%BF%B0"><span class="nav-number">3.2.1.</span> <span class="nav-text">9.1 默认方法概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-2-%E9%BB%98%E8%AE%A4%E6%96%B9%E6%B3%95%E7%9A%84%E4%BD%BF%E7%94%A8%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.2.2.</span> <span class="nav-text">9.2 默认方法的使用模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#9-2-1-%E5%8F%AF%E9%80%89%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">9.2.1 可选方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-2-2-%E8%A1%8C%E4%B8%BA%E7%9A%84%E5%A4%9A%E7%BB%A7%E6%89%BF"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">9.2.2 行为的多继承</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-3-%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81%E7%9A%84%E8%A7%84%E5%88%99"><span class="nav-number">3.2.3.</span> <span class="nav-text">9.3 解决冲突的规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-4-%E6%80%BB%E7%BB%93"><span class="nav-number">3.2.4.</span> <span class="nav-text">9.4 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E7%AB%A0-Optional"><span class="nav-number">3.3.</span> <span class="nav-text">第十章 Optional</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#10-1-%E5%BA%94%E7%94%A8Optional%E7%9A%84%E5%87%A0%E7%A7%8D%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.3.1.</span> <span class="nav-text">10.1 应用Optional的几种模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E7%BB%84%E5%90%88%E5%BC%8F%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B"><span class="nav-number">3.4.</span> <span class="nav-text">第十一章 组合式异步编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#11-1-Future%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.4.1.</span> <span class="nav-text">11.1 Future接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#11-1-1-%E4%BD%BF%E7%94%A8CompletableFuture%E6%9E%84%E5%BB%BA%E5%BC%82%E6%AD%A5%E5%BA%94%E7%94%A8"><span class="nav-number">3.4.1.1.</span> <span class="nav-text">11.1.1 使用CompletableFuture构建异步应用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-2-%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5API"><span class="nav-number">3.4.2.</span> <span class="nav-text">11.2 实现异步API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#11-2-1-%E5%B0%86%E5%90%8C%E6%AD%A5%E6%96%B9%E6%B3%95%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%BC%82%E6%AD%A5%E6%96%B9%E6%B3%95"><span class="nav-number">3.4.2.1.</span> <span class="nav-text">11.2.1 将同步方法转换为异步方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-2-2-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="nav-number">3.4.2.2.</span> <span class="nav-text">11.2.2 错误处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-3-%E8%AE%A9%E4%BB%A3%E7%A0%81%E5%85%8D%E5%8F%97%E9%98%BB%E5%A1%9E%E4%B9%8B%E8%8B%A6"><span class="nav-number">3.4.3.</span> <span class="nav-text">11.3 让代码免受阻塞之苦</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="nav-number">3.5.</span> <span class="nav-text">第十二章 高阶函数式编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#12-1-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E6%A6%82%E5%BF%B5"><span class="nav-number">3.5.1.</span> <span class="nav-text">12.1 函数式编程概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E7%9A%84%E6%8A%80%E5%B7%A7"><span class="nav-number">3.6.</span> <span class="nav-text">第十三章 函数式编程的技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#13-1-%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0"><span class="nav-number">3.6.1.</span> <span class="nav-text">13.1 高阶函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-2-%E7%A7%91%E9%87%8C%E5%8C%96"><span class="nav-number">3.6.2.</span> <span class="nav-text">13.2 科里化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-3-%E6%8C%81%E4%B9%85%E5%8C%96%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">3.6.3.</span> <span class="nav-text">13.3 持久化数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-4-Stream%E7%9A%84%E5%BB%B6%E8%BF%9F%E8%AE%A1%E7%AE%97"><span class="nav-number">3.6.4.</span> <span class="nav-text">13.4 Stream的延迟计算</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">第一部分 基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-8-%E6%96%B0%E7%89%B9%E6%80%A7"><span class="nav-number">1.1.</span> <span class="nav-text">Java 8 新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E5%A4%84%E7%90%86"><span class="nav-number">1.1.1.</span> <span class="nav-text">流处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E8%A1%8C%E4%B8%BA%E5%8F%82%E6%95%B0%E5%8C%96%E6%8A%8A%E4%BB%A3%E7%A0%81%E4%BC%A0%E9%80%92%E7%BB%99%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.2.</span> <span class="nav-text">用行为参数化把代码传递给方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B6%E8%A1%8C%E4%B8%8E%E5%85%B1%E4%BA%AB%E7%9A%84%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE"><span class="nav-number">1.1.3.</span> <span class="nav-text">并行与共享的可变数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">第二章 lambda表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.3.</span> <span class="nav-text">第三章 函数式接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#predicate"><span class="nav-number">1.3.1.</span> <span class="nav-text">predicate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Consumer"><span class="nav-number">1.3.2.</span> <span class="nav-text">Consumer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Function"><span class="nav-number">1.3.3.</span> <span class="nav-text">Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5"><span class="nav-number">1.3.4.</span> <span class="nav-text">类型检查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%BC%95%E7%94%A8"><span class="nav-number">1.3.5.</span> <span class="nav-text">方法引用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E5%87%BD%E6%95%B0%E5%BC%8F%E5%A4%84%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">第二部分 函数式处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%87%BD%E6%95%B0%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">第四章 函数式数据处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.1.</span> <span class="nav-text">流的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E7%AE%80%E4%BB%8B"><span class="nav-number">2.1.2.</span> <span class="nav-text">流简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E4%B8%8E%E9%9B%86%E5%90%88"><span class="nav-number">2.1.3.</span> <span class="nav-text">流与集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%96%E9%83%A8%E8%BF%AD%E4%BB%A3%E4%B8%8E%E5%86%85%E9%83%A8%E8%BF%AD%E4%BB%A3"><span class="nav-number">2.1.4.</span> <span class="nav-text">外部迭代与内部迭代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E6%93%8D%E4%BD%9C"><span class="nav-number">2.1.5.</span> <span class="nav-text">流操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%B5%81"><span class="nav-number">2.1.6.</span> <span class="nav-text">使用流</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E4%BD%BF%E7%94%A8%E6%B5%81"><span class="nav-number">2.2.</span> <span class="nav-text">第五章 使用流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%9B%E9%80%89%E5%92%8C%E5%88%87%E7%89%87"><span class="nav-number">2.2.1.</span> <span class="nav-text">筛选和切片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%A0%E5%B0%84"><span class="nav-number">2.2.2.</span> <span class="nav-text">映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E4%B8%8E%E5%8C%B9%E9%85%8D"><span class="nav-number">2.2.3.</span> <span class="nav-text">查找与匹配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%92%E7%BA%A6"><span class="nav-number">2.2.4.</span> <span class="nav-text">归约</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E6%B5%81"><span class="nav-number">2.2.5.</span> <span class="nav-text">数值流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E6%B5%81"><span class="nav-number">2.2.6.</span> <span class="nav-text">构建流</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E7%94%A8%E6%B5%81%E6%94%B6%E9%9B%86%E6%95%B0%E6%8D%AE"><span class="nav-number">2.3.</span> <span class="nav-text">第六章 用流收集数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B6%E9%9B%86%E5%99%A8%E7%AE%80%E4%BB%8B"><span class="nav-number">2.3.1.</span> <span class="nav-text">收集器简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%92%E7%BA%A6%E5%92%8C%E6%B1%87%E6%80%BB"><span class="nav-number">2.3.2.</span> <span class="nav-text">归约和汇总</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%BB%84"><span class="nav-number">2.3.3.</span> <span class="nav-text">分组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%8C%BA"><span class="nav-number">2.3.4.</span> <span class="nav-text">分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B6%E9%9B%86%E5%99%A8%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.3.5.</span> <span class="nav-text">收集器接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%B9%B6%E8%A1%8C%E6%95%B0%E6%8D%AE%E4%B8%8E%E6%80%A7%E8%83%BD"><span class="nav-number">2.4.</span> <span class="nav-text">第七章 并行数据与性能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B6%E8%A1%8C%E6%B5%81"><span class="nav-number">2.4.1.</span> <span class="nav-text">并行流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%94%AF-%E5%90%88%E5%B9%B6%E6%A1%86%E6%9E%B6"><span class="nav-number">2.4.2.</span> <span class="nav-text">分支&#x2F;合并框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spliterator"><span class="nav-number">2.4.3.</span> <span class="nav-text">Spliterator</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86-%E9%AB%98%E6%95%88-Java-8-%E7%BC%96%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">第三部分 高效 Java 8 编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%AB%98%E6%95%88-Java-8-%E7%BC%96%E7%A8%8B"><span class="nav-number">3.1.</span> <span class="nav-text">第八章 高效 Java 8 编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.1.1.</span> <span class="nav-text">设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">策略模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95"><span class="nav-number">3.1.1.2.</span> <span class="nav-text">模板方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.1.1.3.</span> <span class="nav-text">观察者模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.1.1.4.</span> <span class="nav-text">责任链模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.1.1.5.</span> <span class="nav-text">工厂模式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E8%AF%95"><span class="nav-number">3.1.2.</span> <span class="nav-text">调试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B9%9D%E7%AB%A0-%E9%BB%98%E8%AE%A4%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">第九章 默认方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E6%96%B9%E6%B3%95%E6%A6%82%E8%BF%B0"><span class="nav-number">3.2.1.</span> <span class="nav-text">默认方法概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E6%96%B9%E6%B3%95%E7%9A%84%E4%BD%BF%E7%94%A8%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.2.2.</span> <span class="nav-text">默认方法的使用模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%AF%E9%80%89%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">可选方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%8C%E4%B8%BA%E7%9A%84%E5%A4%9A%E7%BB%A7%E6%89%BF"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">行为的多继承</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81%E7%9A%84%E8%A7%84%E5%88%99"><span class="nav-number">3.2.3.</span> <span class="nav-text">解决冲突的规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.2.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E7%AB%A0-Optional"><span class="nav-number">3.3.</span> <span class="nav-text">第十章 Optional</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8Optional%E7%9A%84%E5%87%A0%E7%A7%8D%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.3.1.</span> <span class="nav-text">应用Optional的几种模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E7%BB%84%E5%90%88%E5%BC%8F%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B"><span class="nav-number">3.4.</span> <span class="nav-text">第十一章 组合式异步编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Future%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.4.1.</span> <span class="nav-text">Future接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8CompletableFuture%E6%9E%84%E5%BB%BA%E5%BC%82%E6%AD%A5%E5%BA%94%E7%94%A8"><span class="nav-number">3.4.1.1.</span> <span class="nav-text">使用CompletableFuture构建异步应用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5API"><span class="nav-number">3.4.2.</span> <span class="nav-text">实现异步API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%86%E5%90%8C%E6%AD%A5%E6%96%B9%E6%B3%95%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%BC%82%E6%AD%A5%E6%96%B9%E6%B3%95"><span class="nav-number">3.4.2.1.</span> <span class="nav-text">将同步方法转换为异步方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="nav-number">3.4.2.2.</span> <span class="nav-text">错误处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A9%E4%BB%A3%E7%A0%81%E5%85%8D%E5%8F%97%E9%98%BB%E5%A1%9E%E4%B9%8B%E8%8B%A6"><span class="nav-number">3.4.3.</span> <span class="nav-text">让代码免受阻塞之苦</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="nav-number">3.5.</span> <span class="nav-text">第十二章 高阶函数式编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E6%A6%82%E5%BF%B5"><span class="nav-number">3.5.1.</span> <span class="nav-text">函数式编程概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E7%9A%84%E6%8A%80%E5%B7%A7"><span class="nav-number">3.6.</span> <span class="nav-text">第十三章 函数式编程的技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0"><span class="nav-number">3.6.1.</span> <span class="nav-text">高阶函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%91%E9%87%8C%E5%8C%96"><span class="nav-number">3.6.2.</span> <span class="nav-text">科里化</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
