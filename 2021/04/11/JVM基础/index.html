@@ -22,24 +22,25 @@
 
   <meta property="og:type" content="article">
 <meta property="og:title" content="JVM基础">
-<meta property="og:url" content="https://rockcohen.gitee.io/blog/2021/04/05/JVM%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:url" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Rock Cohen">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/05/JVM%E5%9F%BA%E7%A1%80/%E7%A7%91%E6%AF%94.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/05/JVM%E5%9F%BA%E7%A1%80/%E8%BF%90%E8%A1%8C%E6%97%B6%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/05/JVM%E5%9F%BA%E7%A1%80/%E5%8F%A5%E6%9F%84%E8%AE%BF%E9%97%AE.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/05/JVM%E5%9F%BA%E7%A1%80/%E7%9B%B4%E6%8E%A5%E6%8C%87%E9%92%88.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/05/JVM%E5%9F%BA%E7%A1%80/%E5%8F%AF%E8%BE%BE%E6%80%A7%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/05/JVM%E5%9F%BA%E7%A1%80/%E5%B8%B8%E9%87%8F%E6%B1%A0%E8%A1%A8.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/05/JVM%E5%9F%BA%E7%A1%80/%E8%AE%BF%E9%97%AE%E6%A0%87%E5%BF%97%E7%AC%A6.PNG">
-<meta property="article:published_time" content="2021-04-05T08:41:32.000Z">
-<meta property="article:modified_time" content="2021-04-11T13:04:54.143Z">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%A7%91%E6%AF%94.PNG">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E8%BF%90%E8%A1%8C%E6%97%B6%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F.PNG">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E5%8F%A5%E6%9F%84%E8%AE%BF%E9%97%AE.PNG">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%9B%B4%E6%8E%A5%E6%8C%87%E9%92%88.PNG">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E5%8F%AF%E8%BE%BE%E6%80%A7%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95.PNG">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E5%B8%B8%E9%87%8F%E6%B1%A0%E8%A1%A8.PNG">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E8%AE%BF%E9%97%AE%E6%A0%87%E5%BF%97%E7%AC%A6.PNG">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%91%A8%E6%9C%9F.PNG">
+<meta property="article:published_time" content="2021-04-11T08:41:32.000Z">
+<meta property="article:modified_time" content="2021-04-11T14:21:38.883Z">
 <meta property="article:author" content="RockCohen">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://rockcohen.gitee.io/blog/2021/04/05/JVM%E5%9F%BA%E7%A1%80/%E7%A7%91%E6%AF%94.PNG">
+<meta name="twitter:image" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%A7%91%E6%AF%94.PNG">
 
-<link rel="canonical" href="https://rockcohen.gitee.io/blog/2021/04/05/JVM%E5%9F%BA%E7%A1%80/">
+<link rel="canonical" href="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/">
 
 
 <script id="page-configurations">
@@ -173,7 +174,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/04/05/JVM%E5%9F%BA%E7%A1%80/">
+    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/hugo.png">
@@ -195,16 +196,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-04-05 16:41:32" itemprop="dateCreated datePublished" datetime="2021-04-05T16:41:32+08:00">2021-04-05</time>
+              <time title="创建时间：2021-04-11 16:41:32 / 修改时间：22:21:38" itemprop="dateCreated datePublished" datetime="2021-04-11T16:41:32+08:00">2021-04-11</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-11 21:04:54" itemprop="dateModified" datetime="2021-04-11T21:04:54+08:00">2021-04-11</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -226,7 +221,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <img src="/blog/2021/04/05/JVM%E5%9F%BA%E7%A1%80/%E7%A7%91%E6%AF%94.PNG" class>
+        <img src="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%A7%91%E6%AF%94.PNG" class>
 
 <span id="more"></span>
 
@@ -239,7 +234,7 @@
 <p>Java虚拟机的本质属于程序虚拟机，其位置在操作系统之上。</p>
 <h1 id="自动内存管理"><a href="#自动内存管理" class="headerlink" title="自动内存管理"></a>自动内存管理</h1><h2 id="Java内存区域"><a href="#Java内存区域" class="headerlink" title="Java内存区域"></a>Java内存区域</h2><p>Java 中，在虚拟机自动内存管理机制的帮助下，不需要为每一个<code>new</code>的对象去写培对的<code>delete/free</code>代码。同时，内存管理交由虚拟机来管理之后，使得排查错误、修正问题将会成为艰巨的任务。</p>
 <p>Java虚拟机在执行时会把所管理的内存划分为若干个不同的区域。每个区域有各自的用途，创建和销毁时间。</p>
-<img src="/blog/2021/04/05/JVM%E5%9F%BA%E7%A1%80/%E8%BF%90%E8%A1%8C%E6%97%B6%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F.PNG" class>
+<img src="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E8%BF%90%E8%A1%8C%E6%97%B6%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F.PNG" class>
 
 <h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3><p>程序计数器是一块较小的内存空间，它可以看作是当前线程执行的字节码的行号指示器。主要时程序控制流的指示器，完成分支，循环，跳转，异常处理，线程恢复等工作。Java虚拟机的多线程是通过线程轮流切换、分配处理执行时间的方式来完成，任何时候，一个处理器都只会执行一条线程中的指令。每个线程拥有独立的程序计数器，线程之间相互独立，互不影响。这类内存区域叫做<strong>线程私有</strong>的内存。如果线程正在执行一个Java方法，这个计数器记录的是正在执行的虚拟机字节码指零的地址，如果执行的是<strong>本地(<code>native</code>方法</strong>,这个计数器值应该为空(<code>undefined</code>)。该区域是唯一一个在《Java虚拟机规范》中没有规定任何<code>OutOfMemory</code>的区域。</p>
 <h3 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h3><p>Java虚拟机栈也是线程私有的，其生命周期与线程相同。描述Java方法执行的线程内存模型：用于存储局部变量表，操作数栈，动态连接，方法出口等信息。每一个方法被调用直到执行完毕分过程中，就对应着一个栈帧在虚拟机中从入栈到出栈的过程。</p>
@@ -289,9 +284,9 @@
 <li>直接指针：Java堆中对象的内存布局九必须考虑如何放置访问类型数据的相关信息，reference中存储的直接就是对象地址，如果访问对象本身的话，就不需要多一次的间接访问的开销。</li>
 </ul>
 <p>两种方式参考下面给的两张图。</p>
-<img src="/blog/2021/04/05/JVM%E5%9F%BA%E7%A1%80/%E5%8F%A5%E6%9F%84%E8%AE%BF%E9%97%AE.PNG" class>
+<img src="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E5%8F%A5%E6%9F%84%E8%AE%BF%E9%97%AE.PNG" class>
 
-<img src="/blog/2021/04/05/JVM%E5%9F%BA%E7%A1%80/%E7%9B%B4%E6%8E%A5%E6%8C%87%E9%92%88.PNG" class>
+<img src="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%9B%B4%E6%8E%A5%E6%8C%87%E9%92%88.PNG" class>
 
 <h1 id="垃圾收集器与自动内存管理"><a href="#垃圾收集器与自动内存管理" class="headerlink" title="垃圾收集器与自动内存管理"></a>垃圾收集器与自动内存管理</h1><p>垃圾收集器需要完成的三件事：</p>
 <ul>
@@ -305,7 +300,7 @@
 <p>上述的代码通过<code>objA.instance=objB</code>,<code>objB.instance=objA</code>;来建立对象AB之间的引用。然后并没有对AB对象进行其他的操作，如果采用引用计数算法，那么AB则无法回收。事实上，执行结果表明：对象AB确实被回收了。</p>
 <h3 id="可达性分析算法"><a href="#可达性分析算法" class="headerlink" title="可达性分析算法"></a>可达性分析算法</h3><p>可达性分析算法是主流语言(java c#)的内存管理算法。</p>
 <p>可达性分析算法的基本思路：<br>通过一系列称作<strong>GC Roots</strong>的根对象作为起始节点集。从这些节点出发，根据引用关系向下搜索，搜索过程所走过的路径叫做<strong>引用链</strong>，如果某个对象到<code>GC　Roots</code>间没有任何引用链相连，也就是图中的对象节点不可达，证明该节点不能再被使用，可被回收。</p>
-<img src="/blog/2021/04/05/JVM%E5%9F%BA%E7%A1%80/%E5%8F%AF%E8%BE%BE%E6%80%A7%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95.PNG" class>
+<img src="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E5%8F%AF%E8%BE%BE%E6%80%A7%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95.PNG" class>
 
 <p>上图的对象<code>5,6,7</code>是可被回收的。</p>
 <p>Java技术体系里面，固定可作为<code>GC Roots</code>的对象包括以下几种：</p>
@@ -385,7 +380,7 @@
 </ul>
 <p><strong>Java代码在Javac编译的时候，不会保存各个方法，字段的最终物理地址，只有在程序运行期间才真正的获得。Java虚拟机加载类时候，将从常量池种获得相应的符号引用，再在类创建或者运行的时候解析和编译到具体的地址。</strong></p>
 <p>常量池中的每一项常量都是一个表，分别由17种表来表示：</p>
-<img src="/blog/2021/04/05/JVM%E5%9F%BA%E7%A1%80/%E5%B8%B8%E9%87%8F%E6%B1%A0%E8%A1%A8.PNG" class>
+<img src="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E5%B8%B8%E9%87%8F%E6%B1%A0%E8%A1%A8.PNG" class>
 
 <p><strong>访问标识符</strong>：<br>接着常量池的字段就是访问标志(<code>access_flags</code>)。访问标志用于识别一些类和接口层次的访问信息，包括：</p>
 <ul>
@@ -395,11 +390,41 @@
 </ul>
 <p>访问标志一共有16个标志可以使用，没有应用到的标志默认为0.</p>
 <p>访问标志的具体信息参考如下：</p>
-<img src="/blog/2021/04/05/JVM%E5%9F%BA%E7%A1%80/%E8%AE%BF%E9%97%AE%E6%A0%87%E5%BF%97%E7%AC%A6.PNG" class>
+<img src="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E8%AE%BF%E9%97%AE%E6%A0%87%E5%BF%97%E7%AC%A6.PNG" class>
 
 <p><strong>类索引、父类索引、接口索引集合</strong>:<br>类索引和父类索引都是一个u2类型的数据，而接口索引集合则是一组u2类型的数据的集合。Class文件通过这三个来确定类的继承的关系。类索引用于确定这类的全限定名。父类索引用于确定这类的父类的全限定名。类索引，父类索引，接口索引集合都按照顺序排列在访问标志之后，类索引，父类索引用两个u2类型的索引值表示，各自指向一个为<code>CONSTANT_Class_info</code>类常量描述符。</p>
 <h1 id="虚拟机类加载机制"><a href="#虚拟机类加载机制" class="headerlink" title="虚拟机类加载机制"></a>虚拟机类加载机制</h1><p>Java虚拟机把描述类的数据从Class 文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型，这个过程叫做虚拟机的类加载机制。与编译器间需要连接的程序不同，Java语言里面，类的加载、连接和初始化过程都是程序运行器间完成的。Java天生可以动态扩展的语言特性就是依赖运行器期动态加载和动态连接这个特点实现的。</p>
+<h2 id="类加载时机"><a href="#类加载时机" class="headerlink" title="类加载时机"></a>类加载时机</h2><p>一个类型从被加到到虚拟机内存中开始，到卸载出内存为止，它的整个声明周期将会经历加载(<code>loading</code>)、验证(<code>Verification</code>)、准备(<code>Preparation</code>)、解析(<code>Resolution</code>)、初始化(<code>Initialization</code>)、使用(<code>using</code>)和卸载(<code>Unloading</code>)七个阶段。</p>
+<img src="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%91%A8%E6%9C%9F.PNG" class>
 
+<p>上图中，加载、验证、准备、初始化和卸载这几个阶段的顺序是完全确定的，类型的加载必须按照这个顺序来按部就班开始，而解析则不一定：解析在某些情况下，可以在初始化之后再开始，这是为了支持Java语言运行时绑定特性。</p>
+<p>对于初始化阶段，《Java虚拟机规范》严格规定了有且只有六种情况必须立即对类进行初始化：</p>
+<ol>
+<li><p>遇到new、getstatic,putstatic或者invokestatic这四条指令时，如果类型没有进行初始化，则需要先触发其初始化阶段。能够生成四条指令的典型Java场景：</p>
+<ul>
+<li>使用new关键字实例化对象的时候</li>
+<li>读取或者设置一个类型的静态字段（被final修饰、已在编译期间把结果放入常量池的静态字段除外）的时候。</li>
+<li>调用一个类型的静态方法的时候。</li>
+</ul>
+</li>
+<li><p>使用<code>java.lang.reflect</code>包的方法对类型机型反射调用的时候，如果类型没有进行初始化，则需要先触发其初始化。</p>
+</li>
+<li><p>当初始化类的时候，如果发现其父类还没有进行初始化，则需要先触发父类的初始化。</p>
+</li>
+<li><p>当虚拟机启动时，用户需要执行一个要执行的主类，虚拟机先初始化这个类。</p>
+</li>
+<li><p>当使用JDK7新加入的动态语言支持时，如果使用<code>java.lang.invoke.MethodHandle</code>实例最后的解析结果为<code>REF_getStatic</code>,<code>REF_putStatic</code>,<code>REF_invokeStatic</code>,<code>REF_newInvokeSpecial</code>四种类型的方法句柄，并且这个方法句柄对应的类型还没有进行初始化，则需要先触发器初始化。</p>
+</li>
+<li><p>当接口定义了一个JDK8 的默认方法，如果由这个接口的实现类发生了初始化，那该接口要在其之前进行初始化。</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 被动使用类字段演示一： </span></span><br><span class="line"><span class="comment">* 通过子类引用父类的静态字段，不会导致子类初始化 </span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*/</span> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SuperClass</span> </span>&#123; </span><br><span class="line">    <span class="keyword">static</span> &#123; </span><br><span class="line">        System.out.println(<span class="string">&quot;SuperClass init!&quot;</span>); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> value = <span class="number">123</span>; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SubClass</span> <span class="keyword">extends</span> <span class="title">SuperClass</span> </span>&#123; </span><br><span class="line">    <span class="keyword">static</span> &#123; </span><br><span class="line">        System.out.println(<span class="string">&quot;SubClass init!&quot;</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 非主动使用类字段演示 </span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*/</span> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NotInitialization</span> </span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123; </span><br><span class="line">        System.out.println(SubClass.value); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述的代码运行结果是：<code>SuperClass init!</code>,不会触发<code>SubClass</code>的初始化，只会触发<code>SuperClass</code>的初始化。事实上运行时也没有输出<code>SuperClass init!</code>.原因在于：？？？？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 被动使用类字段演示二： </span></span><br><span class="line"><span class="comment">* 通过数组定义来引用类，不会触发此类的初始化 </span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*/</span> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NotInitialization</span> </span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123; </span><br><span class="line">        SuperClass[] sca = <span class="keyword">new</span> SuperClass[<span class="number">10</span>]; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述的代码没有输出<code>SuperClass init!</code>.<br>下面的代码跟不会输出<code>SuperClass init!</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NotInitialization</span> </span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123; </span><br><span class="line">       System.out.println(SuperClass.value);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h2>
     </div>
 
     
@@ -479,7 +504,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">1.</span> <span class="nav-text">Java虚拟机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">自动内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F"><span class="nav-number">2.1.</span> <span class="nav-text">Java内存区域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%A1%E6%95%B0%E5%99%A8"><span class="nav-number">2.1.1.</span> <span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88"><span class="nav-number">2.1.2.</span> <span class="nav-text">Java虚拟机栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%A0%88"><span class="nav-number">2.1.3.</span> <span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java%E5%A0%86"><span class="nav-number">2.1.4.</span> <span class="nav-text">Java堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA"><span class="nav-number">2.1.5.</span> <span class="nav-text">方法区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0"><span class="nav-number">2.1.6.</span> <span class="nav-text">运行时常量池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%86%85%E5%AD%98"><span class="nav-number">2.1.7.</span> <span class="nav-text">直接内存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HotSpot%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">2.2.</span> <span class="nav-text">HotSpot虚拟机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="nav-number">2.2.1.</span> <span class="nav-text">对象的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80"><span class="nav-number">2.2.2.</span> <span class="nav-text">对象的内存布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%AE%BF%E9%97%AE%E5%AE%9A%E4%BD%8D"><span class="nav-number">2.2.3.</span> <span class="nav-text">对象的访问定位</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E4%B8%8E%E8%87%AA%E5%8A%A8%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">垃圾收集器与自动内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E5%9B%9E%E6%94%B6%E7%AD%96%E7%95%A5"><span class="nav-number">3.1.</span> <span class="nav-text">对象回收策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E7%AE%97%E6%B3%95"><span class="nav-number">3.1.1.</span> <span class="nav-text">引用计数算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%BE%BE%E6%80%A7%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95"><span class="nav-number">3.1.2.</span> <span class="nav-text">可达性分析算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%88%92%E5%88%86"><span class="nav-number">3.1.3.</span> <span class="nav-text">引用类型划分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E5%8F%AF%E5%9B%9E%E6%94%B6%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%A4%84%E7%90%86"><span class="nav-number">3.1.4.</span> <span class="nav-text">对于可回收的对象的处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA%E7%9A%84%E5%9B%9E%E6%94%B6"><span class="nav-number">3.1.5.</span> <span class="nav-text">方法区的回收</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">垃圾收集算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E4%BB%A3%E6%94%B6%E9%9B%86%E7%90%86%E8%AE%BA"><span class="nav-number">3.2.1.</span> <span class="nav-text">分代收集理论</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">类文件结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84-1"><span class="nav-number">4.1.</span> <span class="nav-text">类文件结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6"><span class="nav-number">5.</span> <span class="nav-text">虚拟机类加载机制</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">1.</span> <span class="nav-text">Java虚拟机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">自动内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F"><span class="nav-number">2.1.</span> <span class="nav-text">Java内存区域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%A1%E6%95%B0%E5%99%A8"><span class="nav-number">2.1.1.</span> <span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88"><span class="nav-number">2.1.2.</span> <span class="nav-text">Java虚拟机栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%A0%88"><span class="nav-number">2.1.3.</span> <span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java%E5%A0%86"><span class="nav-number">2.1.4.</span> <span class="nav-text">Java堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA"><span class="nav-number">2.1.5.</span> <span class="nav-text">方法区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0"><span class="nav-number">2.1.6.</span> <span class="nav-text">运行时常量池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%86%85%E5%AD%98"><span class="nav-number">2.1.7.</span> <span class="nav-text">直接内存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HotSpot%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">2.2.</span> <span class="nav-text">HotSpot虚拟机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="nav-number">2.2.1.</span> <span class="nav-text">对象的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80"><span class="nav-number">2.2.2.</span> <span class="nav-text">对象的内存布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%AE%BF%E9%97%AE%E5%AE%9A%E4%BD%8D"><span class="nav-number">2.2.3.</span> <span class="nav-text">对象的访问定位</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E4%B8%8E%E8%87%AA%E5%8A%A8%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">垃圾收集器与自动内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E5%9B%9E%E6%94%B6%E7%AD%96%E7%95%A5"><span class="nav-number">3.1.</span> <span class="nav-text">对象回收策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E7%AE%97%E6%B3%95"><span class="nav-number">3.1.1.</span> <span class="nav-text">引用计数算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%BE%BE%E6%80%A7%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95"><span class="nav-number">3.1.2.</span> <span class="nav-text">可达性分析算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%88%92%E5%88%86"><span class="nav-number">3.1.3.</span> <span class="nav-text">引用类型划分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E5%8F%AF%E5%9B%9E%E6%94%B6%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%A4%84%E7%90%86"><span class="nav-number">3.1.4.</span> <span class="nav-text">对于可回收的对象的处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA%E7%9A%84%E5%9B%9E%E6%94%B6"><span class="nav-number">3.1.5.</span> <span class="nav-text">方法区的回收</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">垃圾收集算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E4%BB%A3%E6%94%B6%E9%9B%86%E7%90%86%E8%AE%BA"><span class="nav-number">3.2.1.</span> <span class="nav-text">分代收集理论</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">类文件结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84-1"><span class="nav-number">4.1.</span> <span class="nav-text">类文件结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6"><span class="nav-number">5.</span> <span class="nav-text">虚拟机类加载机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%97%B6%E6%9C%BA"><span class="nav-number">5.1.</span> <span class="nav-text">类加载时机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD"><span class="nav-number">5.2.</span> <span class="nav-text">加载</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
