@@ -20,30 +20,32 @@
     var CONFIG = {"hostname":"rockcohen.gitee.io","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="a programmer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Rock Cohen">
-<meta property="og:url" content="https://rockcohen.gitee.io/blog/index.html">
+  <meta name="description" content="在Scala中可以直接引用Java的包，如下： 1234567891011import java.util.&amp;#123;Date, Locale&amp;#125;import java.text.DateFormat._&#x2F;&#x2F;_类似于Java中的*.引入该包下所有的类.object FrenchDate &amp;#123;  def main(args: Array[String]): Unit &#x3D; &amp;#123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="scala基础">
+<meta property="og:url" content="https://rockcohen.gitee.io/blog/2021/04/15/scala%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Rock Cohen">
-<meta property="og:description" content="a programmer">
+<meta property="og:description" content="在Scala中可以直接引用Java的包，如下： 1234567891011import java.util.&amp;#123;Date, Locale&amp;#125;import java.text.DateFormat._&#x2F;&#x2F;_类似于Java中的*.引入该包下所有的类.object FrenchDate &amp;#123;  def main(args: Array[String]): Unit &#x3D; &amp;#123">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-15T03:37:04.000Z">
+<meta property="article:modified_time" content="2021-04-15T05:45:57.900Z">
 <meta property="article:author" content="RockCohen">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://rockcohen.gitee.io/blog/">
+<link rel="canonical" href="https://rockcohen.gitee.io/blog/2021/04/15/scala%E5%9F%BA%E7%A1%80/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Rock Cohen</title>
+  <title>scala基础 | Rock Cohen</title>
   
 
 
@@ -157,9 +159,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -175,10 +178,9 @@
       <meta itemprop="name" content="Rock Cohen">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/04/15/scala%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">scala基础</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          scala基础
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -202,7 +204,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>在Scala中可以直接引用Java的包，如下：</p>
+        <p>在Scala中可以直接引用Java的包，如下：</p>
 <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.&#123;<span class="type">Date</span>, <span class="type">Locale</span>&#125;</span><br><span class="line"><span class="keyword">import</span> java.text.<span class="type">DateFormat</span>._</span><br><span class="line"><span class="comment">//_类似于Java中的*.引入该包下所有的类.</span></span><br><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">FrenchDate</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = &#123;</span><br><span class="line">    <span class="comment">//Unit类似于Java中的void.</span></span><br><span class="line">    <span class="keyword">val</span> now = <span class="keyword">new</span> <span class="type">Date</span><span class="comment">//自动类型推导，val now:Date =new Data</span></span><br><span class="line">    <span class="keyword">val</span> df = getDateInstance(<span class="type">LONG</span>, <span class="type">Locale</span>.<span class="type">FRANCE</span>)</span><br><span class="line">    println(df format now)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上述的代码直接使用<code>Java</code>中的<code>Data</code>与<code>Local</code>.</p>
 <p>一切皆对象，Scala是比Java更加体现面向对象的语言，在Scala中没有static的概念，通过引入<code>Object</code>伴生对象，实现Java中static的概念。一切皆是对象还体现如下几个方面：</p>
@@ -252,511 +254,30 @@
 
 
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/hugo.png">
-      <meta itemprop="name" content="RockCohen">
-      <meta itemprop="description" content="a programmer">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rock Cohen">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">JVM基础</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-04-11 16:41:32" itemprop="dateCreated datePublished" datetime="2021-04-11T16:41:32+08:00">2021-04-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-15 11:36:40" itemprop="dateModified" datetime="2021-04-15T11:36:40+08:00">2021-04-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <img src="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%A7%91%E6%AF%94.PNG" class>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/04/02/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/hugo.png">
-      <meta itemprop="name" content="RockCohen">
-      <meta itemprop="description" content="a programmer">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rock Cohen">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/04/02/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">算法基础</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-04-02 10:51:08" itemprop="dateCreated datePublished" datetime="2021-04-02T10:51:08+08:00">2021-04-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-12 17:07:09" itemprop="dateModified" datetime="2021-04-12T17:07:09+08:00">2021-04-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <img src="/blog/2021/04/02/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E7%A7%91%E6%AF%94.PNG" class>
-
-<h1 id="What-I’m-doing-right-now，I’m-chasing-perfection"><a href="#What-I’m-doing-right-now，I’m-chasing-perfection" class="headerlink" title="What I’m doing right now，I’m chasing perfection"></a>What I’m doing right now，I’m chasing perfection</h1>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2021/04/02/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/" rel="prev" title="JVM基础">
+      <i class="fa fa-chevron-left"></i> JVM基础
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/hugo.png">
-      <meta itemprop="name" content="RockCohen">
-      <meta itemprop="description" content="a programmer">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rock Cohen">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">java核心问题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-04-01 22:28:58" itemprop="dateCreated datePublished" datetime="2021-04-01T22:28:58+08:00">2021-04-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-03 16:41:10" itemprop="dateModified" datetime="2021-04-03T16:41:10+08:00">2021-04-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <img src="/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/%E7%A7%91%E6%AF%94.PNG" class>
-
-<h1 id="Everything-negative-pressure，challenges-is-all-an-opportunity-for-me-to-rise"><a href="#Everything-negative-pressure，challenges-is-all-an-opportunity-for-me-to-rise" class="headerlink" title="Everything negative-pressure，challenges-is all an opportunity for me to rise"></a>Everything negative-pressure，challenges-is all an opportunity for me to rise</h1>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/03/27/java8%E5%AE%9E%E6%88%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/hugo.png">
-      <meta itemprop="name" content="RockCohen">
-      <meta itemprop="description" content="a programmer">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rock Cohen">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/03/27/java8%E5%AE%9E%E6%88%98/" class="post-title-link" itemprop="url">java8实战</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-27 16:29:40" itemprop="dateCreated datePublished" datetime="2021-03-27T16:29:40+08:00">2021-03-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-03 16:45:40" itemprop="dateModified" datetime="2021-04-03T16:45:40+08:00">2021-04-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <img src="/blog/2021/03/27/java8%E5%AE%9E%E6%88%98/%E7%A7%91%E6%AF%94.PNG" class>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2021/03/27/java8%E5%AE%9E%E6%88%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/03/23/Docker%E5%9F%BA%E7%A1%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/hugo.png">
-      <meta itemprop="name" content="RockCohen">
-      <meta itemprop="description" content="a programmer">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rock Cohen">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/03/23/Docker%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">Docker基础</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-23 23:50:27" itemprop="dateCreated datePublished" datetime="2021-03-23T23:50:27+08:00">2021-03-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-03 16:49:03" itemprop="dateModified" datetime="2021-04-03T16:49:03+08:00">2021-04-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <img src="/blog/2021/03/23/Docker%E5%9F%BA%E7%A1%80/%E7%A7%91%E6%AF%94.PNG" class>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2021/03/23/Docker%E5%9F%BA%E7%A1%80/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/03/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/hugo.png">
-      <meta itemprop="name" content="RockCohen">
-      <meta itemprop="description" content="a programmer">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rock Cohen">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/03/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">数据库基本概念</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-21 17:12:24" itemprop="dateCreated datePublished" datetime="2021-03-21T17:12:24+08:00">2021-03-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-03 16:56:36" itemprop="dateModified" datetime="2021-04-03T16:56:36+08:00">2021-04-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/DataBase/" itemprop="url" rel="index"><span itemprop="name">DataBase</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <img src="/blog/2021/03/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/%E7%A7%91%E6%AF%94.PNG" class>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2021/03/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
