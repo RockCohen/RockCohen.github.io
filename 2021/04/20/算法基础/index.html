@@ -22,23 +22,23 @@
 
   <meta name="description" content="What I’m doing right now，I’m chasing perfection">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法基础">
-<meta property="og:url" content="https://rockcohen.gitee.io/blog/2021/04/02/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:title" content="递归-分治-动态规划-贪心">
+<meta property="og:url" content="https://rockcohen.gitee.io/blog/2021/04/20/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Rock Cohen">
 <meta property="og:description" content="What I’m doing right now，I’m chasing perfection">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/02/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E7%A7%91%E6%AF%94.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/02/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E9%92%A2%E6%9D%A1%E5%88%87%E5%89%B2%E9%97%AE%E9%A2%98.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/02/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E9%92%A2%E6%9D%A1%E6%9C%80%E4%BC%98%E8%A7%A3%E5%88%BB%E7%94%BB.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/02/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E9%92%A2%E6%9D%A1%E6%9C%80%E4%BC%98%E8%A7%A3%E5%88%BB%E7%94%BB%E4%BA%8C.PNG">
-<meta property="article:published_time" content="2021-04-02T02:51:08.000Z">
-<meta property="article:modified_time" content="2021-04-12T09:07:09.167Z">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/20/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E7%A7%91%E6%AF%94.PNG">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/20/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E9%92%A2%E6%9D%A1%E5%88%87%E5%89%B2%E9%97%AE%E9%A2%98.PNG">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/20/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E9%92%A2%E6%9D%A1%E6%9C%80%E4%BC%98%E8%A7%A3%E5%88%BB%E7%94%BB.PNG">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/20/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E9%92%A2%E6%9D%A1%E6%9C%80%E4%BC%98%E8%A7%A3%E5%88%BB%E7%94%BB%E4%BA%8C.PNG">
+<meta property="article:published_time" content="2021-04-20T02:51:08.000Z">
+<meta property="article:modified_time" content="2021-04-20T07:56:22.443Z">
 <meta property="article:author" content="RockCohen">
 <meta property="article:tag" content="Algorithm">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://rockcohen.gitee.io/blog/2021/04/02/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E7%A7%91%E6%AF%94.PNG">
+<meta name="twitter:image" content="https://rockcohen.gitee.io/blog/2021/04/20/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E7%A7%91%E6%AF%94.PNG">
 
-<link rel="canonical" href="https://rockcohen.gitee.io/blog/2021/04/02/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">
+<link rel="canonical" href="https://rockcohen.gitee.io/blog/2021/04/20/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">
 
 
 <script id="page-configurations">
@@ -51,7 +51,7 @@
   };
 </script>
 
-  <title>算法基础 | Rock Cohen</title>
+  <title>递归-分治-动态规划-贪心 | Rock Cohen</title>
   
 
 
@@ -172,7 +172,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/04/02/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">
+    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/04/20/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/hugo.png">
@@ -185,7 +185,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          算法基础
+          递归-分治-动态规划-贪心
         </h1>
 
         <div class="post-meta">
@@ -194,16 +194,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-04-02 10:51:08" itemprop="dateCreated datePublished" datetime="2021-04-02T10:51:08+08:00">2021-04-02</time>
+              <time title="创建时间：2021-04-20 10:51:08 / 修改时间：15:56:22" itemprop="dateCreated datePublished" datetime="2021-04-20T10:51:08+08:00">2021-04-20</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-12 17:07:09" itemprop="dateModified" datetime="2021-04-12T17:07:09+08:00">2021-04-12</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -225,7 +219,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <img src="/blog/2021/04/02/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E7%A7%91%E6%AF%94.PNG" class>
+        <img src="/blog/2021/04/20/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E7%A7%91%E6%AF%94.PNG" class>
 
 <h1 id="What-I’m-doing-right-now，I’m-chasing-perfection"><a href="#What-I’m-doing-right-now，I’m-chasing-perfection" class="headerlink" title="What I’m doing right now，I’m chasing perfection"></a>What I’m doing right now，I’m chasing perfection</h1><span id="more"></span>
 
@@ -321,14 +315,14 @@
 </ol>
 <p>步骤 1～3 是动态规划算法求解问题的基础。如果我们仅仅需要一个最优解的值，而非解本身，可以忽略步骤 4。如果确实要做步骤 4，有时就需要在执行步骤 3 的过程中维护一些额外信息，以便用来构造一个最优解。</p>
 <h2 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h2><p>钢条切割问题：给定一段长度为 n 英寸的钢条和一个价格表 Pi;（i=1，2，…，n），求切割钢条方案，使得销售收益 Ri，最大。注意，如果长度为 n英寸的钢条的价格 p，足够大，最优解可能就是完全不需要切割。</p>
-<img src="/blog/2021/04/02/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E9%92%A2%E6%9D%A1%E5%88%87%E5%89%B2%E9%97%AE%E9%A2%98.PNG" class>
+<img src="/blog/2021/04/20/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E9%92%A2%E6%9D%A1%E5%88%87%E5%89%B2%E9%97%AE%E9%A2%98.PNG" class>
 
 <p>按照动态规划算法分析的步骤，我们首先刻画一个最优解的结构特征。</p>
-<img src="/blog/2021/04/02/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E9%92%A2%E6%9D%A1%E6%9C%80%E4%BC%98%E8%A7%A3%E5%88%BB%E7%94%BB.PNG" class>
+<img src="/blog/2021/04/20/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E9%92%A2%E6%9D%A1%E6%9C%80%E4%BC%98%E8%A7%A3%E5%88%BB%E7%94%BB.PNG" class>
 
 <p>其中Pn代表不进行切割，显然上述的公式刻画了最优解与子问题之间的关系。根据如上的结构特征便可以构造递归的递推关系。</p>
 <p>此外，如果切割的时候只考虑对切割后的两截钢条中的一截进行切割，可以得到如下更加简单的最优解的结构特征。</p>
-<img src="/blog/2021/04/02/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E9%92%A2%E6%9D%A1%E6%9C%80%E4%BC%98%E8%A7%A3%E5%88%BB%E7%94%BB%E4%BA%8C.PNG" class>
+<img src="/blog/2021/04/20/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E9%92%A2%E6%9D%A1%E6%9C%80%E4%BC%98%E8%A7%A3%E5%88%BB%E7%94%BB%E4%BA%8C.PNG" class>
 
 <p>基于上述的递推关系，我们可以得到下面的递归程序.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cut(<span class="keyword">int</span> n,<span class="keyword">int</span>[p])&#123;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">0</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> q=Integer.MIN_VALUE;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)</span><br><span class="line">        q=max(q,p[i]+cut(n-i,p));</span><br><span class="line">    <span class="keyword">return</span> q;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -404,7 +398,27 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestSubsequence</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> difference)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> len = arr.length;</span><br><span class="line">    <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[len];</span><br><span class="line">    Map&lt;Integer,Integer&gt; map = <span class="keyword">new</span> HashMap();<span class="comment">//用map存储已经求过的最长子序列值</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len;i++) &#123;</span><br><span class="line">        dp[i] = <span class="number">1</span>;<span class="comment">//将自己计算在内</span></span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(arr[i] - difference)) &#123;<span class="comment">//判断是否存在差值为difference的最长子序列</span></span><br><span class="line">            dp[i] = Math.max(dp[i], map.get(arr[i] - difference) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        map.put(arr[i],dp[i]);<span class="comment">//存于map，以便后续查找</span></span><br><span class="line">        res = Math.max(res,dp[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="动态规划与分治法等算法之间差异"><a href="#动态规划与分治法等算法之间差异" class="headerlink" title="动态规划与分治法等算法之间差异"></a>动态规划与分治法等算法之间差异</h1><p>我们知道递归，分治法，动态规划之间存在相同的因素，也存在各自的特点。对上述三者，递归是基础，作为他们三者的思想基础。三者都有子问题的划分，子问题的划分就来自于递归的本质，子问题的组合是自底向上的过程，而递归的过程是自顶向下的过程。两者出发的角度不同，却殊途同归。分治法的概念来源就在于子问题的划分，多个子问题的组合才能得到最终问题的解。问题的关键在于子问题划分与子问题的组合；并且还有一点，分治法的子问题是相互独立的。独立性是说明子问题之间的依赖关系。动态规划从另一个角度出发，探讨的是子问题之间的关联性。两个子问题之间存在某种关联性，动态规划通过关联性的记忆来解决分治法中子问题的递归求解的重复问题。<br>从另一个层面，我们清楚递归，分治法都是自定向下的算法，子问题的划分本身就基于子问题的独立性，也就是说其实子问题的组合方式已经是确定的，我们只需要明确子问题所有的组合方式即可。这一点动态规划自顶向下的方法天然继承两者的特点，只是借助记忆化技术减少子问题的重复求解问题。但是基于自底向上的动态规划方法，在借助于子问题之间的依赖关系的时候，子问题一步步扩大的过程中组合的方式可能是不确定的。在不确定之间，我们需要抉择，选择一种可操作性为是的作为我们的组合方式。于是我们的工作中心之一便是：子问题的扩大的方式选择与实现。</p>
-<h1 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h1>
+<h1 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h1><p>贪心算法通过每一步做出当前的局部最优解来获得最终的解，该算法不能保证获得的是一个全局最优解，但是在某些情况下也能获得全局最优解，这也决定了在某些应用场景下，贪心算法是我们首选的算法。通常的应用领域包括：哈夫曼编码，最小生成树，单源最短路径，集合覆盖问题等。<br><strong>贪心算法的步骤</strong>：</p>
+<ol>
+<li>确定问题的最优子结构.</li>
+<li>设计一个递归算法。</li>
+<li>证明如果做出一个贪心选择，则子问题只剩下一个。</li>
+<li>证明贪心的选择总是安全的。</li>
+<li>设计一个递递归算法实现贪心策略</li>
+<li>将递归改成迭代实现。</li>
+</ol>
+<p><strong>贪心算法关键要素</strong>：<br>贪心选择性质：在动态规划中，我们通常需要寻找子问题之间的依赖关系，然后设计自底向上的算法去实现，而贪心算法中，我们根据当前做出当前的最优解即可。贪心算法进行选择时可能依赖之前做出的选择，但不依赖任何将来的选择或是子问题的解。如果贪心选择时，我们面临多种选择，通常意味着我们需要改进贪心选择机制，使得其更加高效。总结起来，贪心算法需要做的论证是：<strong>将子问题的最优解与当前我们的贪心选择组合在一起就能生成原问题的最优解</strong>。</p>
+<p><strong>经典问题</strong>：</p>
+<ul>
+<li>0-1背包问题：</li>
+</ul>
+<p>我们有一堆物品S={a1,a2,…,an}S={a1,a2,…,an},每一个物品ai都有一个重量wi和一个价值vi.现在有一个背包，这个背包的容量为WW,现在要将这些物品在不超出背包容量的情况下选择性的放入背包，使得背包里面物品的价值最大，物品不能只选取其中一部分，必须选择整个，或者不选！</p>
+<ul>
+<li>分数背包问题：</li>
+</ul>
+<p>这个问题和上面的问题比较相似，唯一不同的就是该问题里面的物品可以进行分割，即可以只选取一个物品ai的一部分。</p>
+<p>上述两个问题，其中0-1背包问题是不能用贪心算法来求解的，而分数背包问题是利用贪心算法求解的典范。</p>
+<h1 id="贪心算法-1"><a href="#贪心算法-1" class="headerlink" title="贪心算法"></a>贪心算法</h1>
     </div>
 
     
@@ -422,13 +436,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/" rel="prev" title="java核心问题">
-      <i class="fa fa-chevron-left"></i> java核心问题
+    <a href="/blog/2021/04/15/scala%E5%9F%BA%E7%A1%80/" rel="prev" title="scala基础">
+      <i class="fa fa-chevron-left"></i> scala基础
     </a></div>
-      <div class="post-nav-item">
-    <a href="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/" rel="next" title="JVM基础">
-      JVM基础 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -487,7 +498,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-I%E2%80%99m-doing-right-now%EF%BC%8CI%E2%80%99m-chasing-perfection"><span class="nav-number">1.</span> <span class="nav-text">What I’m doing right now，I’m chasing perfection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%92%E5%BD%92"><span class="nav-number">2.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">分治算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">4.</span> <span class="nav-text">动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%BB%8B%E7%BB%8D"><span class="nav-number">4.1.</span> <span class="nav-text">动态规划介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90"><span class="nav-number">4.2.</span> <span class="nav-text">案例分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9A"><span class="nav-number">4.3.</span> <span class="nav-text">动态规划应用场景：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E4%BC%98%E5%AD%90%E7%BB%93%E6%9E%84"><span class="nav-number">4.3.1.</span> <span class="nav-text">最优子结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E5%8F%A0%E5%AD%90%E9%97%AE%E9%A2%98"><span class="nav-number">4.3.2.</span> <span class="nav-text">重叠子问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%88%86%E7%B1%BB"><span class="nav-number">4.4.</span> <span class="nav-text">动态规划分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">4.4.1.</span> <span class="nav-text">线性动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E4%B8%B2"><span class="nav-number">4.4.1.1.</span> <span class="nav-text">单串</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%8E%E5%88%86%E6%B2%BB%E6%B3%95%E7%AD%89%E7%AE%97%E6%B3%95%E4%B9%8B%E9%97%B4%E5%B7%AE%E5%BC%82"><span class="nav-number">5.</span> <span class="nav-text">动态规划与分治法等算法之间差异</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">贪心算法</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-I%E2%80%99m-doing-right-now%EF%BC%8CI%E2%80%99m-chasing-perfection"><span class="nav-number">1.</span> <span class="nav-text">What I’m doing right now，I’m chasing perfection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%92%E5%BD%92"><span class="nav-number">2.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">分治算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">4.</span> <span class="nav-text">动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%BB%8B%E7%BB%8D"><span class="nav-number">4.1.</span> <span class="nav-text">动态规划介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90"><span class="nav-number">4.2.</span> <span class="nav-text">案例分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9A"><span class="nav-number">4.3.</span> <span class="nav-text">动态规划应用场景：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E4%BC%98%E5%AD%90%E7%BB%93%E6%9E%84"><span class="nav-number">4.3.1.</span> <span class="nav-text">最优子结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E5%8F%A0%E5%AD%90%E9%97%AE%E9%A2%98"><span class="nav-number">4.3.2.</span> <span class="nav-text">重叠子问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%88%86%E7%B1%BB"><span class="nav-number">4.4.</span> <span class="nav-text">动态规划分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">4.4.1.</span> <span class="nav-text">线性动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E4%B8%B2"><span class="nav-number">4.4.1.1.</span> <span class="nav-text">单串</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%8E%E5%88%86%E6%B2%BB%E6%B3%95%E7%AD%89%E7%AE%97%E6%B3%95%E4%B9%8B%E9%97%B4%E5%B7%AE%E5%BC%82"><span class="nav-number">5.</span> <span class="nav-text">动态规划与分治法等算法之间差异</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">贪心算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95-1"><span class="nav-number">7.</span> <span class="nav-text">贪心算法</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
