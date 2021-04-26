@@ -30,8 +30,11 @@
 <meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/24/Spring-5/jay.webp">
 <meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/24/Spring-5/Spring%E6%A1%86%E6%9E%B6.PNG">
 <meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/24/Spring-5/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA.PNG">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/24/Spring-5/Bean%E5%B1%9E%E6%80%A7.PNG">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/24/Spring-5/Bean%E4%B8%8E%E5%AE%B9%E5%99%A8%E5%85%B3%E7%B3%BB.png">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/24/Spring-5/Bean%E4%BD%9C%E7%94%A8%E5%9F%9F.PNG">
 <meta property="article:published_time" content="2021-04-24T12:01:29.000Z">
-<meta property="article:modified_time" content="2021-04-25T05:00:52.714Z">
+<meta property="article:modified_time" content="2021-04-25T09:42:55.627Z">
 <meta property="article:author" content="RockCohen">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="Spring">
@@ -202,7 +205,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-25 13:00:52" itemprop="dateModified" datetime="2021-04-25T13:00:52+08:00">2021-04-25</time>
+                <time title="修改时间：2021-04-25 17:42:55" itemprop="dateModified" datetime="2021-04-25T17:42:55+08:00">2021-04-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -292,6 +295,32 @@
 <img src="/blog/2021/04/24/Spring-5/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA.PNG" class>
 
 <p>IOC 容器具有依赖注入功能的容器，它可以创建对象，IOC 容器负责实例化、定位、配置应用程序中的对象及建立这些对象间的依赖。通常new一个实例，控制权由程序员控制，而”控制反转”是指new实例工作不由程序员来做而是交给Spring容器来做。在Spring中BeanFactory是IOC容器的实际代表者。</p>
+<h2 id="Bean"><a href="#Bean" class="headerlink" title="Bean"></a>Bean</h2><p>被称作 bean 的对象是构成应用程序的支柱也是由 Spring IoC 容器管理的。bean 是一个被实例化，组装，并通过 Spring IoC 容器所管理的对象。这些 bean 是由用容器提供的配置元数据创建的，例如，已经在先前章节看到的，在 XML 的表单中的 定义。</p>
+<p>bean 定义包含称为配置元数据的信息，下述容器也需要知道配置元数据：</p>
+<ul>
+<li><p>如何创建一个 bean</p>
+</li>
+<li><p>bean 的生命周期的详细信息</p>
+</li>
+<li><p>bean 的依赖关系</p>
+</li>
+</ul>
+<p>上述所有的配置元数据转换成一组构成每个 bean 定义的下列属性。</p>
+<img src="/blog/2021/04/24/Spring-5/Bean%E5%B1%9E%E6%80%A7.PNG" class>
+
+<p>下图描述Bean的使用过程：</p>
+<img src="/blog/2021/04/24/Spring-5/Bean%E4%B8%8E%E5%AE%B9%E5%99%A8%E5%85%B3%E7%B3%BB.png" class>
+
+<p><strong>Spring 元数据配置</strong>：<br>Spring元数据配置的方式包括：</p>
+<ul>
+<li>基于XML配置文件</li>
+<li>基于注解配置</li>
+<li>基于Java的配置</li>
+</ul>
+<h2 id="Spring-Bean作用域"><a href="#Spring-Bean作用域" class="headerlink" title="Spring Bean作用域"></a>Spring Bean作用域</h2><p>在Bean的属性中，通过<code>scope</code>指明Bean的作用域，Spring 框架支持以下五个作用域，分别为 <code>singleton</code>、<code>prototype</code>、<code>request</code>、<code>session</code> 和 <code>global session</code>，5种作用域说明如下所示:</p>
+<img src="/blog/2021/04/24/Spring-5/Bean%E4%BD%9C%E7%94%A8%E5%9F%9F.PNG" class>
+
+<h3 id="Singleton"><a href="#Singleton" class="headerlink" title="Singleton"></a>Singleton</h3><p>singleton 是默认的作用域，也就是说，当定义 Bean 时，如果没有指定作用域配置项，则 Bean 的作用域被默认为 singleton。<br>当一个bean的作用域为 Singleton，那么 Spring IoC 容器中只会存在一个共享的 bean 实例，并且所有对 bean 的请求，只要 id 与该 bean 定义相匹配，则只会返回 bean 的同一实例。</p>
 
     </div>
 
@@ -315,8 +344,8 @@
       <i class="fa fa-chevron-left"></i> B树
     </a></div>
       <div class="post-nav-item">
-    <a href="/blog/2021/04/25/%E5%9B%BE%E8%AE%BA/" rel="next" title="图论">
-      图论 <i class="fa fa-chevron-right"></i>
+    <a href="/blog/2021/04/25/%E5%9B%BE%E8%AE%BA/" rel="next" title="图论-搜索算法">
+      图论-搜索算法 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -376,7 +405,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E5%BF%86%E9%80%90%E6%B8%90%E5%BB%B6%E7%83%A7%EF%BC%8C%E6%9B%BE%E7%BB%8F%E7%BA%AF%E7%9C%9F%E7%9A%84%E7%94%BB%E9%9D%A2%EF%BC%8C%E6%AE%8B%E5%BF%8D%E7%9A%84%E6%B8%A9%E6%9F%94%E5%87%BA%E7%8E%B0%EF%BC%8C%E8%84%86%E5%BC%B1%E6%97%B6%E9%97%B4%E5%88%B0%EF%BC%8C%E6%88%91%E4%BB%AC%E4%B8%80%E8%B5%B7%E6%9D%A5%E7%A5%B7%E5%91%8A%E2%80%94%E3%80%8A%E4%BB%A5%E7%88%B6%E4%B9%8B%E5%90%8D%E3%80%8B"><span class="nav-number">1.</span> <span class="nav-text">回忆逐渐延烧，曾经纯真的画面，残忍的温柔出现，脆弱时间到，我们一起来祷告—《以父之名》</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-%E6%A6%82%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">Spring 概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IOC-%E5%AE%B9%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">IOC 容器</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E5%BF%86%E9%80%90%E6%B8%90%E5%BB%B6%E7%83%A7%EF%BC%8C%E6%9B%BE%E7%BB%8F%E7%BA%AF%E7%9C%9F%E7%9A%84%E7%94%BB%E9%9D%A2%EF%BC%8C%E6%AE%8B%E5%BF%8D%E7%9A%84%E6%B8%A9%E6%9F%94%E5%87%BA%E7%8E%B0%EF%BC%8C%E8%84%86%E5%BC%B1%E6%97%B6%E9%97%B4%E5%88%B0%EF%BC%8C%E6%88%91%E4%BB%AC%E4%B8%80%E8%B5%B7%E6%9D%A5%E7%A5%B7%E5%91%8A%E2%80%94%E3%80%8A%E4%BB%A5%E7%88%B6%E4%B9%8B%E5%90%8D%E3%80%8B"><span class="nav-number">1.</span> <span class="nav-text">回忆逐渐延烧，曾经纯真的画面，残忍的温柔出现，脆弱时间到，我们一起来祷告—《以父之名》</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-%E6%A6%82%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">Spring 概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IOC-%E5%AE%B9%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">IOC 容器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean"><span class="nav-number">3.1.</span> <span class="nav-text">Bean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Bean%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">3.2.</span> <span class="nav-text">Spring Bean作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Singleton"><span class="nav-number">3.2.1.</span> <span class="nav-text">Singleton</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -392,7 +421,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

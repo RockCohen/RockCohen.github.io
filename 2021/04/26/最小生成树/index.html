@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rockcohen.gitee.io","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="我会发着呆然后微微笑，接着紧紧闭上眼 —《轨迹》">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图论-最小生成树">
+<meta property="og:url" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/index.html">
+<meta property="og:site_name" content="Rock Cohen">
+<meta property="og:description" content="我会发着呆然后微微笑，接着紧紧闭上眼 —《轨迹》">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/jay.webp">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k1.png">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k2.png">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k3.png">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k4.png">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k5.png">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k6.png">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k7.png">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/1135-1.png">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/1135-2.png">
+<meta property="article:published_time" content="2021-04-26T06:32:19.000Z">
+<meta property="article:modified_time" content="2021-04-26T08:25:00.998Z">
+<meta property="article:author" content="RockCohen">
+<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="DataStruction">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/jay.webp">
+
+<link rel="canonical" href="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>图论-最小生成树 | Rock Cohen</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rock Cohen</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Cohen</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/hugo.png">
+      <meta itemprop="name" content="RockCohen">
+      <meta itemprop="description" content="a programmer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rock Cohen">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          图论-最小生成树
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-04-26 14:32:19 / 修改时间：16:25:00" itemprop="dateCreated datePublished" datetime="2021-04-26T14:32:19+08:00">2021-04-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/DataStruction/" itemprop="url" rel="index"><span itemprop="name">DataStruction</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <img src="/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/jay.webp" class>
+
+<h1 id="我会发着呆然后微微笑，接着紧紧闭上眼-—《轨迹》"><a href="#我会发着呆然后微微笑，接着紧紧闭上眼-—《轨迹》" class="headerlink" title="我会发着呆然后微微笑，接着紧紧闭上眼 —《轨迹》"></a>我会发着呆然后微微笑，接着紧紧闭上眼 —《轨迹》</h1><span id="more"></span>
+
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>图在搜索的过程中我们就已经明白了存在搜索树，比如广度优先搜索树，深度优先搜索树。这里讲述的是最小生成树，目的在于使得图中所有节点之间存在通路，并且使得边的权值之和最小。<br>为了得到最小生成树，存在一些算法，著名的算法包括：</p>
+<ul>
+<li>克鲁斯卡尔算法</li>
+<li>普林算法</li>
+</ul>
+<h1 id="克鲁斯卡尔算法"><a href="#克鲁斯卡尔算法" class="headerlink" title="克鲁斯卡尔算法"></a>克鲁斯卡尔算法</h1><p>克鲁斯卡尔的算法思想：</p>
+<ul>
+<li>每次从图中选取最小权边链接的点加入到森林中。（为什么是森林。显然在选取最小边的时候，已被选取的节点之间；连通性不能保证），并且选取的边符合安全边的定义。</li>
+<li>克鲁斯卡尔算法基于贪心算法的基础，每次选取最小权边便是其贪心策略。</li>
+</ul>
+<p>克鲁斯卡尔算法从边的角度出发去构建最小生成树，显然更加适合于边较为少的图。也就是稀疏图。</p>
+<p>算法过程如下，给定连通图：</p>
+<img src="/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k1.png" class>
+
+<p>根据克鲁斯卡尔算法的算法原则，应该呈现如下的边的添加过程。</p>
+<img src="/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k2.png" class>
+
+<img src="/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k3.png" class>
+
+<img src="/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k4.png" class>
+
+<img src="/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k5.png" class>
+
+<img src="/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k6.png" class>
+
+<img src="/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k7.png" class>
+
+<p>为了联系克鲁斯卡尔算法，精选如下的题目供练习：</p>
+<p>题目一：城市最小联通成本<br>参考：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/connecting-cities-with-minimum-cost/%EF%BC%88%E9%9C%80%E8%A6%81%E4%BC%9A%E5%91%98%EF%BC%89">https://leetcode-cn.com/problems/connecting-cities-with-minimum-cost/（需要会员）</a></p>
+<p>题目描述：</p>
+<p>想象一下你是个城市基建规划者，地图上有 N 座城市，它们按以 1 到 N 的次序编号。<br>给你一些可连接的选项 conections，其中每个选项 conections[i] = [city1, city2, cost] 表示将城市 city1 和城市 city2 连接所要的成本。（连接是双向的，也就是说城市 city1 和城市 city2 相连也同样意味着城市 city2 和城市 city1 相连）。<br>返回使得每对城市间都存在将它们连接在一起的连通路径（可能长度为 1 的）最小成本。该最小成本应该是所用全部连接代价的综合。如果根据已知条件无法完成该项任务，则请你返回 -1。<br>示例 1：</p>
+<img src="/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/1135-1.png" class>
+
+<p>输入：N = 3, conections = [[1,2,5],[1,3,6],[2,3,1]]<br>输出：6<br>解释：</p>
+<ul>
+<li>选出任意 2 条边都可以连接所有城市，我们从中选取成本最小的 2 条。</li>
+</ul>
+<p>示例 2：</p>
+<img src="/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/1135-2.png" class>
+
+<p>输入:N = 4, conections = [[1,2,3],[3,4,4]]<br>输出：-1</p>
+<p>解释： </p>
+<ul>
+<li>即使连通所有的边，也无法连接所有城市。</li>
+</ul>
+<p>题解思路：</p>
+<ul>
+<li>克鲁斯卡尔算法，使用并查集依次查看每条边。</li>
+<li></li>
+</ul>
+<p>题解代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minimumCost</span><span class="params">(<span class="keyword">int</span> N, <span class="keyword">int</span>[][] connections)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//首先对边进行排序处理</span></span><br><span class="line">    Arrays.sort(connections,(a,b)-&gt;a[<span class="number">2</span>]-b[<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span>[] parent = <span class="keyword">new</span> <span class="keyword">int</span>[N+<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;i++)&#123;</span><br><span class="line">        parent[i]=i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//成本计算</span></span><br><span class="line">    <span class="keyword">int</span> cost=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span>[] edge:connections)&#123;</span><br><span class="line">        <span class="keyword">if</span>(union(edge[<span class="number">0</span>],edge[<span class="number">1</span>],parent))&#123;</span><br><span class="line">            cost+=edge[<span class="number">2</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 检查是否具有同一个根节点。</span></span><br><span class="line">    <span class="keyword">int</span> p=-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> root=findRoot(i,parent);</span><br><span class="line">        <span class="keyword">if</span>(p==-<span class="number">1</span>)&#123;</span><br><span class="line">            p=root;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(p!=root)&#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cost;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findRoot</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span>[]parent)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(x!=parent[x])&#123;</span><br><span class="line">        parent[x] = parent[parent[x]];</span><br><span class="line">        x = parent[x];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">union</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span>[] parent)</span></span>&#123;</span><br><span class="line">    a=findRoot(a,parent);</span><br><span class="line">    b=findRoot(b,parent);</span><br><span class="line">    <span class="keyword">if</span>(a==b)<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    parent[a]=b;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述题解基本就是模板，在最小生成树题目中都可以直接套用的。第一步将城市之间的路径进行排序这是因为卡鲁斯卡尔算法的核心之一便是贪心算法。而此题的关键在于并查集的实现，通过并查集来确定是否存在环路。</p>
+<h1 id="普林算法"><a href="#普林算法" class="headerlink" title="普林算法"></a>普林算法</h1>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/Algorithm/" rel="tag"># Algorithm</a>
+              <a href="/blog/tags/DataStruction/" rel="tag"># DataStruction</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2021/04/25/%E5%9B%BE%E8%AE%BA/" rel="prev" title="图论-搜索算法">
+      <i class="fa fa-chevron-left"></i> 图论-搜索算法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2021/04/26/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="next" title="并查集">
+      并查集 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%91%E4%BC%9A%E5%8F%91%E7%9D%80%E5%91%86%E7%84%B6%E5%90%8E%E5%BE%AE%E5%BE%AE%E7%AC%91%EF%BC%8C%E6%8E%A5%E7%9D%80%E7%B4%A7%E7%B4%A7%E9%97%AD%E4%B8%8A%E7%9C%BC-%E2%80%94%E3%80%8A%E8%BD%A8%E8%BF%B9%E3%80%8B"><span class="nav-number">1.</span> <span class="nav-text">我会发着呆然后微微笑，接着紧紧闭上眼 —《轨迹》</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%8B%E9%B2%81%E6%96%AF%E5%8D%A1%E5%B0%94%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">克鲁斯卡尔算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%99%AE%E6%9E%97%E7%AE%97%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">普林算法</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="RockCohen"
+      src="/blog/images/hugo.png">
+  <p class="site-author-name" itemprop="name">RockCohen</p>
+  <div class="site-description" itemprop="description">a programmer</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/rockcohen" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;rockcohen" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xluo0616@gmail.com" title="E-Mail → mailto:xluo0616@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RockCohen</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
