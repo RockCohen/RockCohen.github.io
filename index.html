@@ -188,7 +188,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-05-11 20:42:52 / 修改时间：23:16:23" itemprop="dateCreated datePublished" datetime="2021-05-11T20:42:52+08:00">2021-05-11</time>
+              <time title="创建时间：2021-05-11 20:42:52 / 修改时间：23:24:59" itemprop="dateCreated datePublished" datetime="2021-05-11T20:42:52+08:00">2021-05-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -223,78 +223,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
-
-<span id="more"></span>
-
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><code>Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can &quot;just run&quot;.</code> 能快速创建出生产级别的Spring应用。</p>
-<p><code>SpringBoot</code>是整合Spring技术栈的一站式框架，<code>SpringBoot</code>是简化Spring技术栈的快速开发脚手架。</p>
-<h1 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h1><ul>
-<li><p><code>Create stand-alone Spring applications</code>：创建独立Spring应用</p>
-</li>
-<li><p><code>Embed Tomcat, Jetty or Undertow directly (no need to deploy WAR files)</code>：内嵌web服务器</p>
-</li>
-<li><p><code>Provide opinionated &#39;starter&#39; dependencies to simplify your build configuration</code>：自动starter依赖，简化构建配置</p>
-</li>
-<li><p><code>Automatically configure Spring and 3rd party libraries whenever possible</code>：自动配置Spring以及第三方功能</p>
-</li>
-<li><p><code>Provide production-ready features such as metrics, health checks, and externalized configuration</code>：提供生产级别的监控、健康检查及外部化配置</p>
-</li>
-<li><p><code>Absolutely no code generation and no requirement for XML configuration</code>：无代码生成、无需编写XML</p>
-</li>
-</ul>
-<h1 id="Spring-Boot-自动配置原理"><a href="#Spring-Boot-自动配置原理" class="headerlink" title="Spring Boot 自动配置原理"></a>Spring Boot 自动配置原理</h1><h2 id="依赖管理"><a href="#依赖管理" class="headerlink" title="依赖管理"></a>依赖管理</h2><h3 id="父项目-依赖管理"><a href="#父项目-依赖管理" class="headerlink" title="父项目-依赖管理"></a>父项目-依赖管理</h3><p>在spring boot的项目的pom文件中有父项目的配置如下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>上述的父项目是用来做依赖管理的，主要的依赖的版本控制。上述的父项目的父项目如下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>查看上述项目的pom配置文件我们可以看见如下的一些内容：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">activemq.version</span>&gt;</span>5.16.1<span class="tag">&lt;/<span class="name">activemq.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">antlr2.version</span>&gt;</span>2.7.7<span class="tag">&lt;/<span class="name">antlr2.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">appengine-sdk.version</span>&gt;</span>1.9.88<span class="tag">&lt;/<span class="name">appengine-sdk.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artemis.version</span>&gt;</span>2.15.0<span class="tag">&lt;/<span class="name">artemis.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aspectj.version</span>&gt;</span>1.9.6<span class="tag">&lt;/<span class="name">aspectj.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">assertj.version</span>&gt;</span>3.18.1<span class="tag">&lt;/<span class="name">assertj.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">atomikos.version</span>&gt;</span>4.0.6<span class="tag">&lt;/<span class="name">atomikos.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">awaitility.version</span>&gt;</span>4.0.3<span class="tag">&lt;/<span class="name">awaitility.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bitronix.version</span>&gt;</span>2.1.4<span class="tag">&lt;/<span class="name">bitronix.version</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- ....还有很多 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>结论</strong>：<br>通过上述的分析，显然在Spring Boot项目中，父项目的作用是：依赖管理。<br>包括：依赖的版本，SpringBoot父项目将当前的Spring Boot版本与其依赖的版本进行绑定（Spring Boot的自动版本仲裁，也可以自定义具体依赖的版本）。所以在Spring boot项目中，我们引入具体的依赖时候，不需要指定具体的版本。</p>
-<h3 id="开发导入starter场景启动器"><a href="#开发导入starter场景启动器" class="headerlink" title="开发导入starter场景启动器"></a>开发导入starter场景启动器</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1、见到很多 spring-boot-starter-* ： *就某种场景</span><br><span class="line">2、只要引入starter，这个场景的所有常规需要的依赖我们都自动引入</span><br><span class="line">3、SpringBoot所有支持的场景</span><br><span class="line">https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-starter</span><br><span class="line">4、见到的  *-spring-boot-starter： 第三方为我们提供的简化开发的场景启动器。</span><br><span class="line">5、所有场景启动器最底层的依赖</span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.4.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">scope</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>具体的依赖可以参考如下的依赖图：</p>
+          <img src="/blog/2021/05/11/spring-boot/jay.webp" class>
 
 
-<h2 id="自动配置"><a href="#自动配置" class="headerlink" title="自动配置"></a>自动配置</h2><p>以Spring Web为例，Spring Boot自动注入依赖：<code>tomcat</code>,并且自动配置<code>tomcat</code>.</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-tomcat<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.5.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>自动配好SpringMVC</p>
-<ul>
-<li>引入SpringMVC全套组件</li>
-<li>自动配好SpringMVC常用组件（功能）</li>
-</ul>
-</li>
-<li><p>自动配好Web常见功能，如：字符编码问题</p>
-<ul>
-<li>SpringBoot帮我们配置好了所有web开发的常见场景</li>
-</ul>
-</li>
-<li><p>默认的包结构</p>
-<ul>
-<li>主程序所在包及其下面的所有子包里面的组件都会被默认扫描进来</li>
-<li>无需以前的包扫描配置</li>
-<li>想要改变扫描路径，<code>@SpringBootApplication(scanBasePackages=&quot;com.atguigu&quot;)</code></li>
-<li>或者@ComponentScan 指定扫描路径</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line">等同于</span><br><span class="line"><span class="meta">@SpringBootConfiguration</span></span><br><span class="line"><span class="meta">@EnableAutoConfiguration</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;com.atguigu.boot&quot;)</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>各种配置拥有默认值</p>
-<ul>
-<li>默认配置最终都是映射到某个类上，如：<code>MultipartProperties</code></li>
-<li>配置文件的值最终会绑定某个类上，这个类会在容器中创建对象</li>
-</ul>
-</li>
-<li><p>按需加载所有自动配置项</p>
-<ul>
-<li>非常多的starter</li>
-<li>引入了哪些场景这个场景的自动配置才会开启</li>
-<li>SpringBoot所有的自动配置功能都在<code>spring-boot-autoconfigure</code>包里面.</li>
-</ul>
-</li>
-</ul>
-<h1 id="容器功能"><a href="#容器功能" class="headerlink" title="容器功能"></a>容器功能</h1>
+<h1 id="夜的第七章-打字机继续推向-接近事实的那下一行-—《夜的第七章》"><a href="#夜的第七章-打字机继续推向-接近事实的那下一行-—《夜的第七章》" class="headerlink" title="夜的第七章 打字机继续推向 接近事实的那下一行 —《夜的第七章》"></a>夜的第七章 打字机继续推向 接近事实的那下一行 —《夜的第七章》</h1>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2021/05/11/spring-boot/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
