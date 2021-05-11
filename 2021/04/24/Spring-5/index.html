@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"rockcohen.gitee.io","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="回忆逐渐延烧，曾经纯真的画面，残忍的温柔出现，脆弱时间到，我们一起来祷告—《以父之名》">
+  <meta name="description" content="回忆逐渐延烧，曾经纯真的画面，残忍的温柔出现，脆弱时间到，我们一起来祷告 —《以父之名》">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring-5">
 <meta property="og:url" content="https://rockcohen.gitee.io/blog/2021/04/24/Spring-5/index.html">
 <meta property="og:site_name" content="Rock Cohen">
-<meta property="og:description" content="回忆逐渐延烧，曾经纯真的画面，残忍的温柔出现，脆弱时间到，我们一起来祷告—《以父之名》">
+<meta property="og:description" content="回忆逐渐延烧，曾经纯真的画面，残忍的温柔出现，脆弱时间到，我们一起来祷告 —《以父之名》">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/24/Spring-5/jay.webp">
 <meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/24/Spring-5/Spring%E6%A1%86%E6%9E%B6.PNG">
@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/24/Spring-5/aop.png">
 <meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/24/Spring-5/AOP%E5%AE%9E%E4%BE%8B.PNG">
 <meta property="article:published_time" content="2021-04-24T12:01:29.000Z">
-<meta property="article:modified_time" content="2021-05-10T14:16:17.136Z">
+<meta property="article:modified_time" content="2021-05-11T03:18:56.979Z">
 <meta property="article:author" content="RockCohen">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="Spring">
@@ -208,7 +208,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-10 22:16:17" itemprop="dateModified" datetime="2021-05-10T22:16:17+08:00">2021-05-10</time>
+                <time title="修改时间：2021-05-11 11:18:56" itemprop="dateModified" datetime="2021-05-11T11:18:56+08:00">2021-05-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -233,7 +233,7 @@
       
         <img src="/blog/2021/04/24/Spring-5/jay.webp" class>
 
-<h1 id="回忆逐渐延烧，曾经纯真的画面，残忍的温柔出现，脆弱时间到，我们一起来祷告—《以父之名》"><a href="#回忆逐渐延烧，曾经纯真的画面，残忍的温柔出现，脆弱时间到，我们一起来祷告—《以父之名》" class="headerlink" title="回忆逐渐延烧，曾经纯真的画面，残忍的温柔出现，脆弱时间到，我们一起来祷告—《以父之名》"></a>回忆逐渐延烧，曾经纯真的画面，残忍的温柔出现，脆弱时间到，我们一起来祷告—《以父之名》</h1><span id="more"></span>
+<h1 id="回忆逐渐延烧，曾经纯真的画面，残忍的温柔出现，脆弱时间到，我们一起来祷告-—《以父之名》"><a href="#回忆逐渐延烧，曾经纯真的画面，残忍的温柔出现，脆弱时间到，我们一起来祷告-—《以父之名》" class="headerlink" title="回忆逐渐延烧，曾经纯真的画面，残忍的温柔出现，脆弱时间到，我们一起来祷告 —《以父之名》"></a>回忆逐渐延烧，曾经纯真的画面，残忍的温柔出现，脆弱时间到，我们一起来祷告 —《以父之名》</h1><span id="more"></span>
 
 <h1 id="Spring-概述"><a href="#Spring-概述" class="headerlink" title="Spring 概述"></a>Spring 概述</h1><p>框架的核心在于高度可重用的代码设计，具有高度的通用性。Spring是一个轻量级的开源Java EE框架，可以解决企业应用开发的复杂性。<br><code>Spring makes programming Java quicker, easier, and safer for everybody. Spring’s focus on speed, simplicity, and productivity has made it the world&#39;s most popular Java framework.</code></p>
 <p>特点：</p>
@@ -410,16 +410,18 @@
 <p>利用AOP可以对业务逻辑各个部分进行隔离，从而使业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高开发效率。</p>
 <p>AOP的使用场景主要包括日志记录、性能统计、安全控制、事务处理、异常处理等。</p>
 <h2 id="AOP中的概念"><a href="#AOP中的概念" class="headerlink" title="AOP中的概念"></a>AOP中的概念</h2><p><strong>Aspect：切面</strong>：切面是散落在系统各处通用的业务逻辑代码，如日志模块、权限模块、事务模块等。可以通过使用常规类（基于模式的方法）或用<code>@Aspect</code>注解的常规类（<code>@AspectJ</code>风格）实现。</p>
-<p><strong>Join cut：连接点</strong>:连接点是程序执行过程中明确的点，一般是类中方法的调用。连接点是程序在运行过程中能够插入切面的地点，比如方法调用、异常抛出、字段修改等.</p>
+<p><strong>Join cut：连接点</strong>:连接点是程序执行过程中明确的点，一般是类中方法的调用。连接点是程序在运行过程中能够插入切面的地点，比如方法调用、异常抛出、字段修改等.通俗讲，连接点就是可以被增强的方法。</p>
 <p><strong>Advice: 通知</strong>：通知是AOP在特定切入点上执行的增强处理，是拦截到连接点之后要执行的代码，通知可以分为前置通知Before、后置通知AfterReturning、异常通知AfterThrowing、最终通知After、环绕通知Around五类。</p>
-<p><strong>PointCut：切入点</strong>：切入点是带有通知的连接点，在程序中主要体现为编写切入点表达式。切入点是对连接点进行拦截的定义。切入点用于定义通知应该切入到哪些连接点上，不同的通知需要切入到不同的连接点上，这种精准的匹配是由切入点的正则表达式来定义的。切入点是可以插入增强处理的连接点，当某个连接点满足执行要求时，该连接点将被连接增强处理，该连接点也就变成了切入点。切入点是拦截的方法，连接点JointPoint拦截后将变成切入点。</p>
+<p><strong>PointCut：切入点</strong>：切入点是带有通知的连接点，在程序中主要体现为编写切入点表达式。切入点是对连接点进行拦截的定义。切入点用于定义通知应该切入到哪些连接点上，不同的通知需要切入到不同的连接点上，这种精准的匹配是由切入点的正则表达式来定义的。切入点是可以插入增强处理的连接点，当某个连接点满足执行要求时，该连接点将被连接增强处理，该连接点也就变成了切入点。切入点是拦截的方法，连接点JointPoint拦截后将变成切入点。通俗讲，就是实际被增强的方法叫做切入点。</p>
 <p><strong>Proxy：代理对象</strong>：代理对象是AOP创建的对象，包含通知，代理是目标对象的加强。 代理是将通知应用到目标对象之后被动态创建的对象，可以简单理解代理对象的功能等同于目标对象的核心业务逻辑功能加上共有功能。代理对象对于使用者而言是透明的，是程序运行过程中的产物。</p>
-<p><strong>Weaving：织入</strong>：通过切入点切入，将切面应用到目标对象并导致代理对象创建的过程。将切面应用到目标对象从而创建一个新的代理对象的过程，这个过程可以发生在编译器、类转载期、运行期，不同的发生点有着不同的前提条件。如果发生在编译器就需要有一个支持这种AOP实现的特殊编译器，发生在类转载期就需要有一个支持AOP实现的特殊类转载其，发生在运行期则可以直接通过反射机制与动态代理机制来动态实现。</p>
+<p><strong>Weaving：织入</strong>：通过切入点切入，将切面应用到目标对象并导致代理对象创建的过程。将切面应用到目标对象从而创建一个新的代理对象的过程，这个过程可以发生在编译器、类转载期、运行期，不同的发生点有着不同的前提条件。如果发生在编译器就需要有一个支持这种AOP实现的特殊编译器，发生在类转载期就需要有一个支持AOP实现的特殊类转载其，发生在运行期则可以直接通过反射机制与动态代理机制来动态实现。通俗的可以理解为：切面是一个过程，即将通知应用到切入点的过程。</p>
 <p><strong>Target：目标对象</strong>：目标对象是指代理的目标对象，是指要织入的对象模块。目标对象是那些即将切入切面的对象，也就是被通知的对象。这些对象中已经只剩下干干净净的核心业务逻辑代码，所有的共有功能等待AOP容器的切入。目标对象是AOP进行增强处理的对象，也被称为增强的对象。如果AOP是通过运行时代理来实现的，那么这个对象将是一个被代理的对象。</p>
 <img src="/blog/2021/04/24/Spring-5/aop.png" class>
 
 <p>上述的图示依然较为抽象，为了更加清晰理解AOP中相关的概念，这给出如下的图示。</p>
 <img src="/blog/2021/04/24/Spring-5/AOP%E5%AE%9E%E4%BE%8B.PNG" class>
+
+
 
 
 <h1 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h1><h2 id="IOC的底层实现原理："><a href="#IOC的底层实现原理：" class="headerlink" title="IOC的底层实现原理："></a>IOC的底层实现原理：</h2><p>基于xml解析，工厂模式，反射三种技术实现IOC容器。</p>
@@ -514,7 +516,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E5%BF%86%E9%80%90%E6%B8%90%E5%BB%B6%E7%83%A7%EF%BC%8C%E6%9B%BE%E7%BB%8F%E7%BA%AF%E7%9C%9F%E7%9A%84%E7%94%BB%E9%9D%A2%EF%BC%8C%E6%AE%8B%E5%BF%8D%E7%9A%84%E6%B8%A9%E6%9F%94%E5%87%BA%E7%8E%B0%EF%BC%8C%E8%84%86%E5%BC%B1%E6%97%B6%E9%97%B4%E5%88%B0%EF%BC%8C%E6%88%91%E4%BB%AC%E4%B8%80%E8%B5%B7%E6%9D%A5%E7%A5%B7%E5%91%8A%E2%80%94%E3%80%8A%E4%BB%A5%E7%88%B6%E4%B9%8B%E5%90%8D%E3%80%8B"><span class="nav-number">1.</span> <span class="nav-text">回忆逐渐延烧，曾经纯真的画面，残忍的温柔出现，脆弱时间到，我们一起来祷告—《以父之名》</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-%E6%A6%82%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">Spring 概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IOC-%E5%AE%B9%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">IOC 容器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean"><span class="nav-number">3.1.</span> <span class="nav-text">Bean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Bean%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">3.2.</span> <span class="nav-text">Spring Bean作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Singleton"><span class="nav-number">3.2.1.</span> <span class="nav-text">Singleton</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prototype"><span class="nav-number">3.2.2.</span> <span class="nav-text">prototype</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">3.3.</span> <span class="nav-text">Bean生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%9B%9E%E8%B0%83"><span class="nav-number">3.3.1.</span> <span class="nav-text">初始化回调</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%80%E6%AF%81%E5%9B%9E%E8%B0%83"><span class="nav-number">3.3.2.</span> <span class="nav-text">销毁回调</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bean%E5%90%8E%E7%BD%AE%E5%A4%84%E7%90%86"><span class="nav-number">3.3.3.</span> <span class="nav-text">Bean后置处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-%E5%9F%BA%E4%BA%8E%E6%9C%89%E5%8F%82%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-%E6%97%A0%E5%8F%82%E6%9E%84%E9%80%A0%EF%BC%88Setter%E6%96%B9%E6%B3%95%EF%BC%89%E7%9A%84%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5"><span class="nav-number">3.3.4.</span> <span class="nav-text">Spring 基于有参构造函数&#x2F;无参构造（Setter方法）的依赖注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90"><span class="nav-number">3.3.5.</span> <span class="nav-text">构造函数参数解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-p-namespace-%E5%AE%9E%E7%8E%B0-XML-%E9%85%8D%E7%BD%AE"><span class="nav-number">3.3.6.</span> <span class="nav-text">使用 p-namespace 实现 XML 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5%E9%9B%86%E5%90%88"><span class="nav-number">3.3.7.</span> <span class="nav-text">注入集合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean%E7%9A%84%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D"><span class="nav-number">3.4.</span> <span class="nav-text">Bean的自动装配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">3.5.</span> <span class="nav-text">Spring 基于注解的配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8EJava%E7%9A%84%E5%AE%8C%E5%85%A8%E6%B3%A8%E8%A7%A3"><span class="nav-number">3.6.</span> <span class="nav-text">基于Java的完全注解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AOP"><span class="nav-number">4.</span> <span class="nav-text">AOP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AOP%E4%B8%AD%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">4.1.</span> <span class="nav-text">AOP中的概念</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">底层原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IOC%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="nav-number">5.1.</span> <span class="nav-text">IOC的底层实现原理：</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E5%BF%86%E9%80%90%E6%B8%90%E5%BB%B6%E7%83%A7%EF%BC%8C%E6%9B%BE%E7%BB%8F%E7%BA%AF%E7%9C%9F%E7%9A%84%E7%94%BB%E9%9D%A2%EF%BC%8C%E6%AE%8B%E5%BF%8D%E7%9A%84%E6%B8%A9%E6%9F%94%E5%87%BA%E7%8E%B0%EF%BC%8C%E8%84%86%E5%BC%B1%E6%97%B6%E9%97%B4%E5%88%B0%EF%BC%8C%E6%88%91%E4%BB%AC%E4%B8%80%E8%B5%B7%E6%9D%A5%E7%A5%B7%E5%91%8A-%E2%80%94%E3%80%8A%E4%BB%A5%E7%88%B6%E4%B9%8B%E5%90%8D%E3%80%8B"><span class="nav-number">1.</span> <span class="nav-text">回忆逐渐延烧，曾经纯真的画面，残忍的温柔出现，脆弱时间到，我们一起来祷告 —《以父之名》</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-%E6%A6%82%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">Spring 概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IOC-%E5%AE%B9%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">IOC 容器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean"><span class="nav-number">3.1.</span> <span class="nav-text">Bean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Bean%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">3.2.</span> <span class="nav-text">Spring Bean作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Singleton"><span class="nav-number">3.2.1.</span> <span class="nav-text">Singleton</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prototype"><span class="nav-number">3.2.2.</span> <span class="nav-text">prototype</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">3.3.</span> <span class="nav-text">Bean生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%9B%9E%E8%B0%83"><span class="nav-number">3.3.1.</span> <span class="nav-text">初始化回调</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%80%E6%AF%81%E5%9B%9E%E8%B0%83"><span class="nav-number">3.3.2.</span> <span class="nav-text">销毁回调</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bean%E5%90%8E%E7%BD%AE%E5%A4%84%E7%90%86"><span class="nav-number">3.3.3.</span> <span class="nav-text">Bean后置处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-%E5%9F%BA%E4%BA%8E%E6%9C%89%E5%8F%82%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-%E6%97%A0%E5%8F%82%E6%9E%84%E9%80%A0%EF%BC%88Setter%E6%96%B9%E6%B3%95%EF%BC%89%E7%9A%84%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5"><span class="nav-number">3.3.4.</span> <span class="nav-text">Spring 基于有参构造函数&#x2F;无参构造（Setter方法）的依赖注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90"><span class="nav-number">3.3.5.</span> <span class="nav-text">构造函数参数解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-p-namespace-%E5%AE%9E%E7%8E%B0-XML-%E9%85%8D%E7%BD%AE"><span class="nav-number">3.3.6.</span> <span class="nav-text">使用 p-namespace 实现 XML 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5%E9%9B%86%E5%90%88"><span class="nav-number">3.3.7.</span> <span class="nav-text">注入集合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean%E7%9A%84%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D"><span class="nav-number">3.4.</span> <span class="nav-text">Bean的自动装配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">3.5.</span> <span class="nav-text">Spring 基于注解的配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8EJava%E7%9A%84%E5%AE%8C%E5%85%A8%E6%B3%A8%E8%A7%A3"><span class="nav-number">3.6.</span> <span class="nav-text">基于Java的完全注解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AOP"><span class="nav-number">4.</span> <span class="nav-text">AOP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AOP%E4%B8%AD%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">4.1.</span> <span class="nav-text">AOP中的概念</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">底层原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IOC%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="nav-number">5.1.</span> <span class="nav-text">IOC的底层实现原理：</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -530,20 +532,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/blog/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
