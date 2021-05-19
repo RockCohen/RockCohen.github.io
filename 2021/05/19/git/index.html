@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rockcohen.gitee.io","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="孩儿立志出乡关，学不成名誓不还。埋骨何须桑梓地，人生无处不青山!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git-base">
+<meta property="og:url" content="https://rockcohen.gitee.io/blog/2021/05/19/git/index.html">
+<meta property="og:site_name" content="Rock Cohen">
+<meta property="og:description" content="孩儿立志出乡关，学不成名誓不还。埋骨何须桑梓地，人生无处不青山!">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/19/git/git%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.PNG">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/19/git/%E5%B7%A5%E4%BD%9C%E5%8C%BA%E6%9A%82%E5%AD%98%E5%8C%BA%E7%89%88%E6%9C%AC%E5%BA%93%E5%85%B3%E7%B3%BB%E5%9B%BE.PNG">
+<meta property="article:published_time" content="2021-05-19T06:38:54.000Z">
+<meta property="article:modified_time" content="2021-05-19T07:36:37.980Z">
+<meta property="article:author" content="RockCohen">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="VersionController">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://rockcohen.gitee.io/blog/2021/05/19/git/git%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.PNG">
+
+<link rel="canonical" href="https://rockcohen.gitee.io/blog/2021/05/19/git/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Git-base | Rock Cohen</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rock Cohen</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Cohen</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/05/19/git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/hugo.png">
+      <meta itemprop="name" content="RockCohen">
+      <meta itemprop="description" content="a programmer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rock Cohen">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Git-base
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-19 14:38:54 / 修改时间：15:36:37" itemprop="dateCreated datePublished" datetime="2021-05-19T14:38:54+08:00">2021-05-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/VersionController/" itemprop="url" rel="index"><span itemprop="name">VersionController</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="孩儿立志出乡关，学不成名誓不还。"><a href="#孩儿立志出乡关，学不成名誓不还。" class="headerlink" title="孩儿立志出乡关，学不成名誓不还。"></a>孩儿立志出乡关，学不成名誓不还。</h1><h1 id="埋骨何须桑梓地，人生无处不青山"><a href="#埋骨何须桑梓地，人生无处不青山" class="headerlink" title="埋骨何须桑梓地，人生无处不青山!"></a>埋骨何须桑梓地，人生无处不青山!</h1><span id="more"></span>
+
+<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><h2 id="第一章-概论"><a href="#第一章-概论" class="headerlink" title="第一章 概论"></a>第一章 概论</h2><h4 id="git工作流程"><a href="#git工作流程" class="headerlink" title="git工作流程"></a>git工作流程</h4><ul>
+<li>开局一张图</li>
+</ul>
+<img src="/blog/2021/05/19/git/git%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.PNG" class>
+
+<h4 id="git工作区、暂存区、版本库"><a href="#git工作区、暂存区、版本库" class="headerlink" title="git工作区、暂存区、版本库"></a>git工作区、暂存区、版本库</h4><ul>
+<li><p><em><strong>工作区</strong></em></p>
+<ul>
+<li>就是你在电脑里能看到的目录。</li>
+</ul>
+</li>
+<li><p><em><strong>暂存区</strong></em></p>
+<ul>
+<li>英文叫stage, 或index。一般存放在 “.git目录下” 下的index文件（.git/index）中，所以我们把暂存区有时也叫作索引（index）。</li>
+</ul>
+</li>
+<li><p><em><strong>版本库</strong></em></p>
+<ul>
+<li><p>工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。</p>
+</li>
+<li><p>三者关系</p>
+</li>
+</ul>
+</li>
+</ul>
+<img src="/blog/2021/05/19/git/%E5%B7%A5%E4%BD%9C%E5%8C%BA%E6%9A%82%E5%AD%98%E5%8C%BA%E7%89%88%E6%9C%AC%E5%BA%93%E5%85%B3%E7%B3%BB%E5%9B%BE.PNG" class>
+
+<h4 id="git基本操作"><a href="#git基本操作" class="headerlink" title="git基本操作"></a>git基本操作</h4><ul>
+<li>git中文件的三种状态<ul>
+<li>已提交(committed):已提交表示数据已经安全的提交到本地数据库中。</li>
+<li>已修改(modified):已经修改了文件，但是还没有保存到数据库中。</li>
+<li>已暂存(staged):对一个已经修改的文件做了当前版本的标记，使其包含在下次提交的快照中。</li>
+</ul>
+</li>
+<li>git项目的三个工作区域<ul>
+<li>git仓库：保存项目的元数据与对象数据库的地方。当从计算机拷贝仓库时，拷贝的数据就是这些。</li>
+<li>工作目录：是对项目的某个版本独立提取出来的内容，这些从git仓库的压缩的文件中提取出来的文件，放在磁盘上供使用者使用与修改。</li>
+<li>暂存区域：暂存区域作为一个文件，保存下次将要提交的文件列表信息。一般放在git的仓库目录中。</li>
+</ul>
+</li>
+<li>git工作的基本流程<ul>
+<li>在工作目录中修改文件。</li>
+<li>将文件的快照放入暂存区域保存。</li>
+<li>提交更新，也就是提交暂存区域的文件的新的内容。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>配置用户信息(配置基本信息，仅需配置一次，可以通过  git config –list 查看 )</p>
+<ul>
+<li><p>```<br>$ git config –global user.name “John Doe”<br>$ git config –global user.email <a href="mailto:&#x6a;&#x6f;&#104;&#x6e;&#x64;&#x6f;&#x65;&#x40;&#x65;&#120;&#97;&#109;&#x70;&#108;&#x65;&#46;&#x63;&#111;&#109;">&#x6a;&#x6f;&#104;&#x6e;&#x64;&#x6f;&#x65;&#x40;&#x65;&#120;&#97;&#109;&#x70;&#108;&#x65;&#46;&#x63;&#111;&#109;</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  - 通过上述的命令，配置基本的用户信息，仅需要配置一次即可。</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- 编辑器的绑定</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>git config core.editor Code //绑定VScode</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 获取帮助</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>git help <verb><br>git <verb> –help<br>man git<verb></verb></verb></verb></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### git基础</span><br><span class="line"></span><br><span class="line">- 获取git仓库</span><br><span class="line">  - 本地仓库，在本地初始化一个仓库</span><br><span class="line">  - 远程仓库，从远程克隆一个仓库</span><br><span class="line">- 本地仓库</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>git init   //本地初始化一个仓库，创建子目录.git，包含仓库中所有的必要文件。<br>git add .&lt; sources file&gt;   //添加需要跟踪的文件<br>$ git add LICENSE<br>$ git commit -m ‘initial project version’ //提交</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 克隆远程仓库</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>get clone <a target="_blank" rel="noopener" href="https://github.com/RockShirely/rockshirely.github.io">https://github.com/RockShirely/rockshirely.github.io</a> local_dir</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 检查当前文件状态</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>git status &lt;-s&gt;   //需要跟踪新的文件，通过git add new_file_name 实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 查看已暂存和未暂存的修改</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>git diff</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 提交更新</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>git commit<br>git commit -a //会把所有跟踪的文件提交</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 移除文件</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>git rm file_name</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 查看</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>git log -p //每次提交内容的差异<br>git log ….//详细查看手册</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 撤销操作</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>git commit –amend</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 远程仓库的使用</span><br><span class="line"></span><br><span class="line">- 查看远程仓库</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>git clone url   //克隆远程仓库到本地目录<br>git remote //列举指定的每一个远程仓库<br>git remote -v //列举每一个指定的远程仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 添加远程仓库</span><br><span class="line"></span><br><span class="line">### 1.1 版本控制</span><br><span class="line"></span><br><span class="line">- 版本控制(&#96;VCS&#96;)是一种记录一个或者若干个文件内容变化，以便将来查询特定版本修订情况的系统。</span><br><span class="line"></span><br><span class="line">#### 1.1.1 本地版本控制</span><br><span class="line"></span><br><span class="line">- 本地版本控制大多采用某种简单的数据库来记录文件的历次更新差异。</span><br><span class="line">- 如下图展示的一种版本控制方法：</span><br><span class="line"></span><br><span class="line">&#123;% asset_img 本地版本控制.PNG  %&#125;</span><br><span class="line"></span><br><span class="line">#### 1.1.2 集中化的版本控制系统</span><br><span class="line"></span><br><span class="line">- 集中化的版本控制系统(&#96;CVCS&#96;)是为了解决不同系统的开发者协同工作的，</span><br><span class="line">- 集中化的版本控制系统存在一个单一的集中管理的服务器，保存所有文件的修订本，而协同工作的人们通过客户端连接到这台服务器，取出最新的文件或者提交更新。</span><br><span class="line">- 集中化的版本控制如下图：</span><br><span class="line"></span><br><span class="line">&#123;% asset_img 集中化的版本控制系统.PNG  %&#125;</span><br><span class="line"></span><br><span class="line">- 集中化的版本控制系统可以方便管理各个开发者的权限，并且管理一个CVCS要比远在各个客户端上维护本地数据来得轻松些。</span><br><span class="line">- CVCS 的缺点也是明显的：中央服务器的单点故障。</span><br><span class="line"></span><br><span class="line">#### 1.1.3 分布式版本控制系统</span><br><span class="line"></span><br><span class="line">- 分布式版本控制系统(&#96;DVCS&#96;)中，客户端并不只提取最新版本的文件快照，而是把代码仓库完整地镜像下来。即使协同工作的服务器宕机，事后可以通过任何一个镜像来恢复，每一次的克隆操作，实际上是一次对代码仓库的完整备份。</span><br><span class="line">- 分布式版本控制系统如下图：</span><br><span class="line"></span><br><span class="line">&#123;% asset_img 分布式版本控制系统.PNG  %&#125;</span><br><span class="line"></span><br><span class="line">### 1.2 Git基础</span><br><span class="line"></span><br><span class="line">#### 1.2.1 直接记录快照，而非差异比较</span><br><span class="line"></span><br><span class="line">- Git和其他版本控制系统的主要差别在于git对待数据的方法，概念上讲，其他大部分系统以文件变更列表的方式存储信息。这类系统讲他们保存的信息看作是一组基本文件和每个文件随时间逐步累积的差异。</span><br><span class="line">- 如下图展示的文件差异存储方式：</span><br><span class="line"></span><br><span class="line">&#123;% asset_img 版本差异存储方法.PNG  %&#125;</span><br><span class="line"></span><br><span class="line">- git不按照上述的方式来保存数据，git更像是把数据看作是对小型文件系统的一组快照。每次提交更新，或者保存项目状态时，它主要对当时的全部文件制作一个快照并保存这个快照的索引。为了高效，如果文件没有更改，git不再重新存储文件，而是保留一个连接指向原来的文件，git对待数据更像是一个**快照流**。</span><br><span class="line">- 快照流方式存储如下图：</span><br><span class="line"></span><br><span class="line">&#123;% asset_img 快照流方式存储.PNG  %&#125;</span><br><span class="line"></span><br><span class="line">#### 1.2.2 近乎所有的操作都是本地执行</span><br><span class="line"></span><br><span class="line">- 在git中的绝大多数的操作都只需要访问本地文件和资源，一般不需要来自网络上的其他的计算机的信息。</span><br><span class="line">- 在本地查询项目历史，在本地进行差异计算。</span><br><span class="line">- 按时提交，延时上传，方便的处理文件与项目。</span><br><span class="line"></span><br><span class="line">#### 1.2.3 git保证完整性</span><br><span class="line"></span><br><span class="line">- git中所有数据在存储前都计算校验和，然后以校验和来引用。</span><br><span class="line">- git用以计算校验和的机制叫做**&#96;SHA-1&#96;散列**，校验和由40个十六进制字符组成的字符串。</span><br><span class="line">- 执行git操作，几乎只往git数据库中添加数据，很难让git执行任何不可逆操作，或者以任何方式清除数据。</span><br><span class="line"></span><br><span class="line">#### 1.2.4 三种状态</span><br><span class="line"></span><br><span class="line">- git有三种状态，分别是:</span><br><span class="line">  - 已提交(&#96;committed&#96;) ：表示数据已经安全的保存在本地数据库中。</span><br><span class="line">  - 已修改(&#96;modified&#96;)：表示修改了文件，但是没有保存到本地数据库中。</span><br><span class="line">  - 已暂存(&#96;staged&#96;)：表示对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中。</span><br><span class="line">- 三种状态分别对应三个工作区域的概念：</span><br><span class="line">  - git仓库：用来保存项目的元数据和对象数据的地方。这是git最重要的部分，从其他计算机克隆仓库是，拷贝的就是这里的数据。</span><br><span class="line">  - 工作目录：是对项目的某个版本独立提取出来的内容。这些从git仓库的压缩数据库中提取出来的文件，放在磁盘供用户使用和修改。</span><br><span class="line">  - 暂存区域：是一个文件，保存了下次将要提交的文件的列表信息，一般在git仓库目录下中，有时候也被称作“索引”。</span><br><span class="line">- 关于三个工作区域的关系展示如图：</span><br><span class="line"></span><br><span class="line">&#123;% asset_img git三个工作区域关系.PNG  %&#125;</span><br><span class="line"></span><br><span class="line">- 基本的git工作流程：</span><br><span class="line">  - 1. 在工作目录中修改文件</span><br><span class="line">    2. 暂存文件，将文件的快照放入暂存区域</span><br><span class="line">    3. 提交更新，找到暂存区域的文件，将快照永久性存储到git仓库目录。</span><br><span class="line"></span><br><span class="line">#### 1.2.5 出次运行git前的配置</span><br><span class="line"></span><br><span class="line">- git自带一个&#96;git config&#96;的工具帮助设置控制git外观和行为的配置变量。</span><br><span class="line">  - &#96;&#x2F;etc&#x2F;gitconfig&#96;文件：包含系统上每一个用户及他们仓库的通用配置。如果使用带有&#96;--system&#96;选项的命令时，它会从此文件读写配置变量。</span><br><span class="line">  - &#96;~&#x2F;.gitconfig&#96;或者&#96;~&#x2F;.config&#x2F;git&#x2F;config&#96;文件：只针对当前用户。可以传递&#96;--global&#96;选项让git读写此文件。</span><br><span class="line">  - 当前使用仓库的git目录中的&#96;config&#96;文件(&#96;.git&#x2F;config&#96;)：针对该仓库。</span><br><span class="line">- 在windows系统中，git会查找$HOME目录下的&#96;.gitconfig&#96;文件。</span><br><span class="line"></span><br><span class="line">#### 1.2.6 用户信息</span><br><span class="line"></span><br><span class="line">- 设置用户名称和用户邮箱地址。</span><br><span class="line"></span><br><span class="line">  - &#96;&#96;&#96;</span><br><span class="line">    $ git config --global user.name &quot;John Doe&quot;</span><br><span class="line">    $ git config --global user.email johndoe@example.com</span><br></pre></td></tr></table></figure></li>
+<li><p>使用<code>--global</code>选项，该命令只需要运行一次，无论在该系统中做任何事情，git都会使用这些信息。</p>
+</li>
+<li><p>要使用不同的用户进行操作，可以在相应的项目目录下面利用<code>--global</code>进行配置。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-2-7-文本编辑器"><a href="#1-2-7-文本编辑器" class="headerlink" title="1.2.7 文本编辑器"></a>1.2.7 文本编辑器</h4><ul>
+<li><p>绑定文本编辑器</p>
+<ul>
+<li>```<br>git config core.editor Code //绑定VScode<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 1.2.8 检查配置信息</span><br><span class="line"></span><br><span class="line">- &#96;&#96;&#96;</span><br><span class="line">  git config --list</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>上述命令会列出git当时能找到的所有配置。</p>
+</li>
+</ul>
+<h2 id="第二章-Git基础"><a href="#第二章-Git基础" class="headerlink" title="第二章 Git基础"></a>第二章 Git基础</h2><h3 id="2-1-获取Git仓库"><a href="#2-1-获取Git仓库" class="headerlink" title="2.1 获取Git仓库"></a>2.1 获取Git仓库</h3><ul>
+<li>获取git仓库的方式有二：<ul>
+<li>在现有的项目或者目录下导入所有文件到git中。</li>
+<li>从一个服务器克隆现有的git仓库。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-1-1-在现有的目录中初始化仓库"><a href="#2-1-1-在现有的目录中初始化仓库" class="headerlink" title="2.1.1 在现有的目录中初始化仓库"></a>2.1.1 在现有的目录中初始化仓库</h4><ul>
+<li><p>首先作的就是进入相应的目录，然后执行以下的git命令。</p>
+<ul>
+<li>```bash<br>$  git init<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  - 该命令创建一个名为&#96;.git&#96;的文件，这个目录含有初始化git仓库时所需要的所有文件，这些文件时git仓库的骨干。</span><br><span class="line"></span><br><span class="line">- 在一个已经存在文件的文件目录中初始化git操作，那么应该跟踪相应的文件并提交，可以使用&#96;git add&#96;命令实现，如下：</span><br><span class="line"></span><br><span class="line">  - &#96;&#96;&#96;</span><br><span class="line">    git add file_name.xxx</span><br><span class="line">    git add LICENSE </span><br><span class="line">    git commit -m &#39;initial project version&#39;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h4 id="2-1-2-克隆现有的仓库"><a href="#2-1-2-克隆现有的仓库" class="headerlink" title="2.1.2 克隆现有的仓库"></a>2.1.2 克隆现有的仓库</h4><ul>
+<li><p>git的克隆是克隆的是该git仓库上几乎所有的数据。</p>
+</li>
+<li><p>执行<code>git clone</code>命令时，默认配置下的远程仓库下的每一个文件的每一个版本都被克隆下来。</p>
+</li>
+<li><p>指令命令格式：</p>
+<ul>
+<li><p>```bash<br>git clone [url] [本地仓库名]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- git支持多种协议，可以使用http协议，也可以使用SSH协议。</span><br><span class="line"></span><br><span class="line">#### 2.1.3 记录每次更新到仓库</span><br><span class="line"></span><br><span class="line">- 在工作目录的文件只有两种状态：</span><br><span class="line">  - 已跟踪：被纳入了版本控制的文件。</span><br><span class="line">  - 未跟踪：既不存在上次快照的记录，也没有放入暂存区。</span><br><span class="line"></span><br><span class="line">- 使用git时文件的声明周期如下：</span><br><span class="line"></span><br><span class="line">&#123;% asset_img git文件生命周期.PNG  %&#125;</span><br><span class="line"></span><br><span class="line">#### 2.1.4 检查当前文件状态</span><br><span class="line"></span><br><span class="line">- 使用&#96;git status&#96;命令检查当前的文件状态，当从远程的git仓库将项目拷贝下来，会输出如下的信息：</span><br><span class="line"></span><br><span class="line">  - &#96;&#96;&#96;bash</span><br><span class="line">    $ git status </span><br><span class="line">    On branch master</span><br><span class="line">    nothing to commit.working directory clean</span><br></pre></td></tr></table></figure></li>
+<li><p>上述的信息表名工作目录很干净，所有跟踪的文件未被修改。同时也表明当前目录的文件没有出现未被跟踪的新文件。</p>
+</li>
+</ul>
+</li>
+<li><p>当存在新文件时，使用<code>git status</code>命令再查看时，会出现如下的信息.以<code>README</code>为例。</p>
+<ul>
+<li><p>```bash<br>$ echo ‘my project’ &gt;README<br>$ git status<br>$ On branch master                                                                                   No commits yet                                                                                     Untracked files:                                                                                   (use “git add <file>…” to include in what will be committed)                                                                                                                                        README                                                                                            nothing added to commit but untracked files present (use “git add” to track) </file></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 上述的信息表示，&#96;readme&#96;文件属于未跟踪的文件，未跟踪意味着再git以前的版本中没有该文件的快照。git不会自动将其纳入跟踪的范围，必须通过相应的命令才可以实现对文件的跟踪。</span><br><span class="line"></span><br><span class="line">#### 2.1.5 跟踪新文件</span><br><span class="line"></span><br><span class="line">- 使用命令&#96;git add ...&#96;开始跟踪一个文件，以&#96;readme&#96;为例，</span><br><span class="line"></span><br><span class="line">  - &#96;&#96;&#96;bash</span><br><span class="line">    $ git add readme</span><br><span class="line">    $ git status</span><br><span class="line">    On branch master                                                                                      No commits yet                                                                                        Changes to be committed:                                                                             (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)                                                                                                                                                                new file:   README       </span><br></pre></td></tr></table></figure></li>
+<li><p>上述的信息表示目前的文件<code>readme</code>处于被跟踪状态，也就是处于暂存状态。信息<code>changes to be committed</code>表示当前文件处于暂存状态。</p>
+</li>
+<li><p><code>git add</code>的参数可以是具体的文件，也可以是相应的目录，如果是目录，表示该目录所有的文件纳入跟踪的对象范围。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-1-6-暂存已修改的文件"><a href="#2-1-6-暂存已修改的文件" class="headerlink" title="2.1.6 暂存已修改的文件"></a>2.1.6 暂存已修改的文件</h4><ul>
+<li><p>修改一个已经跟踪的文件，然后使用<code>git status</code>查看相应的信息，会发现如下：（以<code>readme</code>为例）</p>
+<ul>
+<li><p>```bash<br>cohen@XIAOGE-PC2:/mnt/e/Alearning/git-learning-pro$ git status                                                          On branch master                                                                                      No commits yet                                                                                                                                                                                              Changes to be committed:                                                                              (use “git rm –cached <file>…” to unstage)                                                                                  new file:   README                                                             Changes not staged for commit:                                                                       (use “git add <file>…” to update what will be committed)                                           (use “git restore <file>…” to discard changes in working directory)                                                         modified:   README                                                                                                                                             cohen@XIAOGE-PC2:/mnt/e/Alearning/git-learning-pro$   </file></file></file></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  - 信息&#96;changes not staged for commit&#96;表示修改后的文件，但是并没有被放入暂存区，需要使用&#96;git add&#96;来实现对修改的暂存。然后再通过&#96;git status&#96;查看内容时，回到跟踪时的样子。</span><br><span class="line"></span><br><span class="line">#### 2.1.7 状态简览</span><br><span class="line"></span><br><span class="line">- 使用&#96;git status -s &#x2F;&#x2F;git status --short&#96;可以实现对信息状态的简单浏览。</span><br><span class="line"></span><br><span class="line">- - &#96;&#96;&#96;bash</span><br><span class="line">    cohen@XIAOGE-PC2:&#x2F;mnt&#x2F;e&#x2F;Alearning&#x2F;git-learning-pro$ git status -s                                     A  README                                                                                             A  hello.md                                                                                           cohen@XIAOGE-PC2:&#x2F;mnt&#x2F;e&#x2F;Alearning&#x2F;git-learning-pro$                                                                     </span><br></pre></td></tr></table></figure></li>
+<li><p>对于上述文件状态的解读：</p>
+<ul>
+<li><code>??</code>：表示新添加未被跟踪的文件。</li>
+<li><code>A</code>：表示新添加到暂存区域中的文件。</li>
+<li><code>M</code>：表示修改过的文件。</li>
+<li><code>MM</code>：第一个M表示已经放入暂存区域的需改，第二个M表示新的一次修改。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-1-8-忽略文件"><a href="#2-1-8-忽略文件" class="headerlink" title="2.1.8 忽略文件"></a>2.1.8 忽略文件</h4><ul>
+<li><p>当我们想将一些不需要跟踪的文件纳入忽略文件里面，那么可以创建一个名为<code>.gitignore</code>的文件，列出要忽略的文件模式即可。</p>
+</li>
+<li><p>```bash<br>$ cat .gitignore<br>*.[oa]<br>*~</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 文件&#96;.gitignore&#96;的格式规范如下：</span><br><span class="line"></span><br><span class="line">  - 所有空行或者以# 开头的行都会被git忽略。</span><br><span class="line">  - 可以使用标准的glob模式匹配：简化了的shell正则表达式。</span><br><span class="line">  - 匹配模式可以以&#x2F;开头防止递归。</span><br><span class="line">  - 匹配模式可以以&#x2F;结尾指定目录。</span><br><span class="line">  - 要忽略指定模式以外的文件或者目录，可以在模式前加上感叹号取反。</span><br><span class="line"></span><br><span class="line">#### 2.1.9 查看已暂存和未暂存的修改</span><br><span class="line"></span><br><span class="line">- 想知道具体修改了什么地方，可以通过&#96;git diff&#96;来查看，结合&#96;git status&#96;可以更加方便查看相应改变。</span><br><span class="line">- 如果要查看已暂存的将要添加到下次提交里的内容，可以用&#96;git diff --cached&#96;来命令查看，甚至可以用&#96;git diff staged&#96;来查看。</span><br><span class="line"></span><br><span class="line">#### 2.1.10 提交更新</span><br><span class="line"></span><br><span class="line">- 将暂存区域的文件提交，首先要确保还有什么修改过的或者新建的文件没有通过&#96;git add&#96;加入到暂存区，否则提交后看不到相应的变化，这些修改只保留在本地磁盘，需要通过&#96;git add&#96;添加到暂存区。最稳妥的方式每次使用&#96;git status&#96;来查看状态。</span><br><span class="line">- 通过使用&#96;git commit -a ....&#96;使得直接跳过&#96;git add&#96;的步骤，并且同样达到相应的效果。</span><br><span class="line"></span><br><span class="line">#### 2.1.11 移除文件</span><br><span class="line"></span><br><span class="line">- 想要从git中移除某个文件，那么就要从暂存区域将其移除，然后提交。该工作由&#96;git rm&#96;来完成。</span><br><span class="line"></span><br><span class="line">- 使用格式：</span><br><span class="line"></span><br><span class="line">  - &#96;&#96;&#96;bash</span><br><span class="line">    $ git rm 指定删除文件</span><br></pre></td></tr></table></figure></li>
+<li><p>如果需要删除的文件已经修改过并且放到了暂存区域，那么通过<code>git rm -f</code>来实现强制删除。</p>
+</li>
+<li><p>如果想把文件从git仓库中删除，但仍希望保流在当前工作目录中，即是说想额昂磁盘保留，但是git不再继续跟踪。可以使用<code>--cached</code>选项实现。</p>
+<ul>
+<li>```bash<br>$ git rm –cached …<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 2.1.12 移动文件</span><br><span class="line"></span><br><span class="line">- git不显示跟踪文件移动操作。</span><br><span class="line"></span><br><span class="line">- 移动操作命令格式：</span><br><span class="line"></span><br><span class="line">  - &#96;&#96;&#96;</span><br><span class="line">    git mv file_from file_to</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h4 id="2-1-13-查看提交历史"><a href="#2-1-13-查看提交历史" class="headerlink" title="2.1.13 查看提交历史"></a>2.1.13 查看提交历史</h4><ul>
+<li><code>git log</code>查看日志。</li>
+</ul>
+<h3 id="2-2-撤销操作"><a href="#2-2-撤销操作" class="headerlink" title="2.2 撤销操作"></a>2.2 撤销操作</h3><ul>
+<li><p>如果提交过程发现有相应的文件未提交，可以运行带有<code>--amend</code>选项的提交命令尝试重新提交。</p>
+<ul>
+<li>```bash<br>$ git commit –amend<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 2.1.1 取消暂存的文件</span><br><span class="line"></span><br><span class="line">- &#96;&#96;&#96;bash</span><br><span class="line">  $ git reset ...</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h4 id="2-1-2-撤销对文件的修改"><a href="#2-1-2-撤销对文件的修改" class="headerlink" title="2.1.2 撤销对文件的修改"></a>2.1.2 撤销对文件的修改</h4><ul>
+<li><p>```bash<br>$ git checkout – …</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 2.3 远程仓库的使用</span><br><span class="line"></span><br><span class="line">- 远程仓库是指托管在因特网或者其他网络中的你的项目的版本库。</span><br><span class="line"></span><br><span class="line">#### 2.3.1 查看远程仓库</span><br><span class="line"></span><br><span class="line">- 如果想查看已经配置的远程仓库服务器，可以运行&#96;git remote&#96;命令，它会列出你指定的每一个远程服务器的简写。默认名字为&#96;origin&#96;。</span><br><span class="line">- 通过指定选项&#96;-v&#96;，会显示需要读写远程仓库使用的git保存的简写和对应的URL。</span><br><span class="line"></span><br><span class="line">#### 2.3.2 添加远程仓库</span><br><span class="line"></span><br><span class="line">- 运行&#96;git remote add &lt;shortname&gt; &lt;url&gt;&#96;添加一个新的远程仓库。</span><br><span class="line"></span><br><span class="line">  - &#96;&#96;&#96;bash</span><br><span class="line">    $ git remote add pb https:&#x2F;&#x2F;gtihub.com&#x2F;RockCohen&#x2F;git-learning-pro</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上述<code>pb</code>代替整个<code>url</code>简单操作。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-3-3-从远程仓库拉取和查看"><a href="#2-3-3-从远程仓库拉取和查看" class="headerlink" title="2.3.3 从远程仓库拉取和查看"></a>2.3.3 从远程仓库拉取和查看</h4><ul>
+<li><p>从远程仓库获取数据，可以使用:</p>
+<ul>
+<li><p>```<br>git fetch [remote-name]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  - 该命令访问远程仓库，并拉取你没有的数据，执行完毕后将会拥有该仓库的所有的分支。</span><br><span class="line"></span><br><span class="line">  - &#96;git fetch&#96;不会合并和修改当前的本地的工作。必须要手动进行合并。</span><br><span class="line"></span><br><span class="line">#### 2.3.4 推送到远程分支</span><br><span class="line"></span><br><span class="line">- 想要分享项目时，必须将其推送到上游。通常使用命令：</span><br><span class="line"></span><br><span class="line">  - &#96;&#96;&#96;bash</span><br><span class="line">    $ git push [remote-name]  [branch-name]</span><br></pre></td></tr></table></figure></li>
+<li><p>下列将master分支推送到origin服务器使用命令如下：</p>
+<ul>
+<li>```<br>git push origin master<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  - 只有当你有克隆的服务器的写入权限，并且之前没有人推送过时，那么相应的命令才会生效，如果同一时刻，两个人同时推送的命令将会被拒绝，必须先将共享者的工作拉取下来并且合并你的工作，然后再一次进行推送才可以。</span><br><span class="line"></span><br><span class="line">#### 2.3.5 查看远程仓库</span><br><span class="line"></span><br><span class="line">- 为了查看远程仓库的更多的信息，可以使用命令：</span><br><span class="line"></span><br><span class="line">  - &#96;&#96;&#96;</span><br><span class="line">    git remote show   [remote-name]</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>上述命令会列出远程仓库的URL和分支信息。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-3-6-远程仓库的移除与重命名"><a href="#2-3-6-远程仓库的移除与重命名" class="headerlink" title="2.3.6 远程仓库的移除与重命名"></a>2.3.6 远程仓库的移除与重命名</h4><ul>
+<li><p>通过命令<code>git remote rename </code>去修改一个远程仓库的简写名。比如修改名为<code>pb</code>de 远程仓库:</p>
+<ul>
+<li>```bash<br>git remote rename pb paul<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  - 上述命令将pb的远程仓库名改成&#96;paul&#96;.</span><br><span class="line"></span><br><span class="line">- 如果想要移除某个仓库，不再使用其镜像，可以使用命令</span><br><span class="line"></span><br><span class="line">  - &#96;&#96;&#96;</span><br><span class="line">    git remote rm [remote-name]</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="2-4-打标签"><a href="#2-4-打标签" class="headerlink" title="2.4 打标签"></a>2.4 打标签</h3><ul>
+<li>git可以给历史中的某个提交打上标签，以表示重要。</li>
+</ul>
+<h4 id="2-4-1-列出标签"><a href="#2-4-1-列出标签" class="headerlink" title="2.4.1 列出标签"></a>2.4.1 列出标签</h4><ul>
+<li><p>在git中列出已有的标签使用命令：</p>
+<ul>
+<li>```bash<br>git tag<br>v0.3<br>v1.0<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  - 可以使用特定模式的正则表达式来查询特定模式的标签。如下查询1.8.5系列的标签。</span><br><span class="line"></span><br><span class="line">    - &#96;&#96;&#96;&#96;&#96;</span><br><span class="line">      gti tag -l &#39;v1.8.5*&#39;</span><br><span class="line">      ...</span><br><span class="line">      ...</span><br><span class="line">      ...</span><br><span class="line">      ..</span><br><span class="line">      .</span><br><span class="line">      &#96;&#96;&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">#### 2.4.2 创建标签</span><br><span class="line"></span><br><span class="line">- 标签分为：</span><br><span class="line">  - 轻量标签</span><br><span class="line">  - 附注标签</span><br><span class="line">- 一个轻量标签很像一个不会改变的分支，他只是一个特定分支的引用。</span><br><span class="line">- 附注标签是存储在git数据库中一个完整的对象，他们是可以被校验的。包括标签的相关信息。</span><br><span class="line"></span><br><span class="line">#### 2.4.3 附注标签</span><br><span class="line"></span><br><span class="line">- 创建附注标签可以使用命令时指定&#96;-a&#96;选项：</span><br><span class="line"></span><br><span class="line">  - &#96;&#96;&#96;bash</span><br><span class="line">    $ git tag -a v1.4 -m &#39;my version 1.4&#39;</span><br><span class="line">    $ git tag</span><br><span class="line">    v0.1</span><br><span class="line">    v1.3</span><br><span class="line">    v1.4</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>可以通过<code>git show</code>来查看标签信息和对应的提交信息</p>
+<ul>
+<li><p>```<br>git show v1.4<br>tag v1.4<br>Tagger: Ben Straub <a href="mailto:&#x62;&#x65;&#110;&#x40;&#x73;&#x74;&#114;&#x61;&#117;&#x62;&#46;&#x63;&#x63;">&#x62;&#x65;&#110;&#x40;&#x73;&#x74;&#114;&#x61;&#117;&#x62;&#46;&#x63;&#x63;</a><br>Date: Sat May 3 20:19:12 2014 -0700<br>my version 1.4<br>commit ca82a6dff817ec66f44342007202690a93763949<br>Author: Scott Chacon <a href="mailto:&#115;&#99;&#104;&#x61;&#x63;&#x6f;&#110;&#x40;&#x67;&#x65;&#101;&#45;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#109;">&#115;&#99;&#104;&#x61;&#x63;&#x6f;&#110;&#x40;&#x67;&#x65;&#101;&#45;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#109;</a><br>Date: Mon Mar 17 21:52:11 2008 -0700<br>  changed the version number</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 2.4.4 轻量标签</span><br><span class="line"></span><br><span class="line">- 轻量标签本质上是将校验和存储到一个文件中，没有保存任何其他信息。</span><br><span class="line"></span><br><span class="line">- 创建轻量标签不需要使用&#96;-a&#96;,&#96;-m&#96;等选项。</span><br><span class="line"></span><br><span class="line">  - &#96;&#96;&#96;</span><br><span class="line">    git tag v1.4-lw</span><br><span class="line">    git tag</span><br><span class="line">    v1.0</span><br><span class="line">    v1.4</span><br><span class="line">    v1.4-lw</span><br></pre></td></tr></table></figure></li>
+<li><p>使用<code>git show</code>也看不到其他信息</p>
+</li>
+<li><pre><code class="bash">$ git show v1.4-lw
+commit ca82a6dff817ec66f44342007202690a93763949
+Author: Scott Chacon &lt;schacon@gee-mail.com&gt;
+Date: Mon Mar 17 21:52:11 2008 -0700
+  changed the version number
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="第三章-Git分支"><a href="#第三章-Git分支" class="headerlink" title="第三章 Git分支"></a>第三章 Git分支</h2><p>- </p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/Git/" rel="tag"># Git</a>
+              <a href="/blog/tags/VersionController/" rel="tag"># VersionController</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2021/05/19/OS/" rel="prev" title="Modern OS">
+      <i class="fa fa-chevron-left"></i> Modern OS
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2021/05/19/ansibel/" rel="next" title="ansibel">
+      ansibel <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A9%E5%84%BF%E7%AB%8B%E5%BF%97%E5%87%BA%E4%B9%A1%E5%85%B3%EF%BC%8C%E5%AD%A6%E4%B8%8D%E6%88%90%E5%90%8D%E8%AA%93%E4%B8%8D%E8%BF%98%E3%80%82"><span class="nav-number">1.</span> <span class="nav-text">孩儿立志出乡关，学不成名誓不还。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%8B%E9%AA%A8%E4%BD%95%E9%A1%BB%E6%A1%91%E6%A2%93%E5%9C%B0%EF%BC%8C%E4%BA%BA%E7%94%9F%E6%97%A0%E5%A4%84%E4%B8%8D%E9%9D%92%E5%B1%B1"><span class="nav-number">2.</span> <span class="nav-text">埋骨何须桑梓地，人生无处不青山!</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git"><span class="nav-number">3.</span> <span class="nav-text">Git</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A6%82%E8%AE%BA"><span class="nav-number">3.1.</span> <span class="nav-text">第一章 概论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#git%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-number">3.1.0.1.</span> <span class="nav-text">git工作流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git%E5%B7%A5%E4%BD%9C%E5%8C%BA%E3%80%81%E6%9A%82%E5%AD%98%E5%8C%BA%E3%80%81%E7%89%88%E6%9C%AC%E5%BA%93"><span class="nav-number">3.1.0.2.</span> <span class="nav-text">git工作区、暂存区、版本库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">3.1.0.3.</span> <span class="nav-text">git基本操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-7-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8"><span class="nav-number">3.1.0.4.</span> <span class="nav-text">1.2.7 文本编辑器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-Git%E5%9F%BA%E7%A1%80"><span class="nav-number">3.2.</span> <span class="nav-text">第二章 Git基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E8%8E%B7%E5%8F%96Git%E4%BB%93%E5%BA%93"><span class="nav-number">3.2.1.</span> <span class="nav-text">2.1 获取Git仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-%E5%9C%A8%E7%8E%B0%E6%9C%89%E7%9A%84%E7%9B%AE%E5%BD%95%E4%B8%AD%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BB%93%E5%BA%93"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">2.1.1 在现有的目录中初始化仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-%E5%85%8B%E9%9A%86%E7%8E%B0%E6%9C%89%E7%9A%84%E4%BB%93%E5%BA%93"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">2.1.2 克隆现有的仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-6-%E6%9A%82%E5%AD%98%E5%B7%B2%E4%BF%AE%E6%94%B9%E7%9A%84%E6%96%87%E4%BB%B6"><span class="nav-number">3.2.1.3.</span> <span class="nav-text">2.1.6 暂存已修改的文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-8-%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6"><span class="nav-number">3.2.1.4.</span> <span class="nav-text">2.1.8 忽略文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-13-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2"><span class="nav-number">3.2.1.5.</span> <span class="nav-text">2.1.13 查看提交历史</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%92%A4%E9%94%80%E6%93%8D%E4%BD%9C"><span class="nav-number">3.2.2.</span> <span class="nav-text">2.2 撤销操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-%E6%92%A4%E9%94%80%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">2.1.2 撤销对文件的修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-3-%E4%BB%8E%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%8B%89%E5%8F%96%E5%92%8C%E6%9F%A5%E7%9C%8B"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">2.3.3 从远程仓库拉取和查看</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-6-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E7%A7%BB%E9%99%A4%E4%B8%8E%E9%87%8D%E5%91%BD%E5%90%8D"><span class="nav-number">3.2.2.3.</span> <span class="nav-text">2.3.6 远程仓库的移除与重命名</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E6%89%93%E6%A0%87%E7%AD%BE"><span class="nav-number">3.2.3.</span> <span class="nav-text">2.4 打标签</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-1-%E5%88%97%E5%87%BA%E6%A0%87%E7%AD%BE"><span class="nav-number">3.2.3.1.</span> <span class="nav-text">2.4.1 列出标签</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-Git%E5%88%86%E6%94%AF"><span class="nav-number">3.3.</span> <span class="nav-text">第三章 Git分支</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="RockCohen"
+      src="/blog/images/hugo.png">
+  <p class="site-author-name" itemprop="name">RockCohen</p>
+  <div class="site-description" itemprop="description">a programmer</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/rockcohen" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;rockcohen" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xluo0616@gmail.com" title="E-Mail → mailto:xluo0616@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RockCohen</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

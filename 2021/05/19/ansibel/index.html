@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rockcohen.gitee.io","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="自信人生二百年， 会当水击三千里">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ansibel">
+<meta property="og:url" content="https://rockcohen.gitee.io/blog/2021/05/19/ansibel/index.html">
+<meta property="og:site_name" content="Rock Cohen">
+<meta property="og:description" content="自信人生二百年， 会当水击三千里">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-19T07:01:37.000Z">
+<meta property="article:modified_time" content="2021-05-19T07:04:32.182Z">
+<meta property="article:author" content="RockCohen">
+<meta property="article:tag" content="Ansible">
+<meta property="article:tag" content="Script">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://rockcohen.gitee.io/blog/2021/05/19/ansibel/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ansibel | Rock Cohen</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rock Cohen</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Cohen</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/05/19/ansibel/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/hugo.png">
+      <meta itemprop="name" content="RockCohen">
+      <meta itemprop="description" content="a programmer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rock Cohen">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ansibel
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-19 15:01:37 / 修改时间：15:04:32" itemprop="dateCreated datePublished" datetime="2021-05-19T15:01:37+08:00">2021-05-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Ansible/" itemprop="url" rel="index"><span itemprop="name">Ansible</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="自信人生二百年，-会当水击三千里"><a href="#自信人生二百年，-会当水击三千里" class="headerlink" title="自信人生二百年， 会当水击三千里"></a>自信人生二百年， 会当水击三千里</h1><span id="more"></span>
+
+<h3 id="1-ansible-概述"><a href="#1-ansible-概述" class="headerlink" title="1. ansible 概述"></a>1. ansible 概述</h3><ul>
+<li><p>ansible默认通过ssh协议管理机器。</p>
+</li>
+<li><p>管理主机的要求：ansible的python依赖为2.6或者2.7.</p>
+</li>
+<li><p>对于托管节点的要求：</p>
+<ul>
+<li>通常我们使用 ssh 与托管节点通信，默认使用 sftp.如果 sftp 不可用，可在 ansible.cfg 配置文件中配置成 scp 的方式. 在托管节点上也需要安装 Python 2.4 或以上的版本.如果版本低于 Python 2.5 ,还需要额外安装一个模块:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python-simplejson</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>note：</p>
+<ul>
+<li>没安装python-simplejson,也可以使用Ansible的”raw”模块和script模块,因此从技术上讲,你可以通过Ansible的”raw”模块安装python-simplejson,之后就可以使用Ansible的所有功能了.</li>
+<li>如果托管节点上开启了SElinux,你需要安装libselinux-python,这样才可使用Ansible中与copy/file/template相关的函数.你可以通过Ansible的yum模块在需要的托管节点上安装libselinux-python.</li>
+<li><strong>Python 3 与 Python 2 是稍有不同的语言,大多数Python程序还不能在 Python 3 中正确运行.一些Linux发行版(Gentoo, Arch)没有默认安装 Python 2.X 解释器.在这些系统上,你需要安装一个 Python 2.X 解释器,并在 inventory (详见</strong> <a target="_blank" rel="noopener" href="http://www.ansible.com.cn/docs/intro_inventory.html"><em>Inventory文件</em></a><strong>) 中设置 ‘ansible_python_interpreter’ 变量指向你的 2.X Python.你可以使用 ‘raw’ 模块在托管节点上远程安装Python 2.X.</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ansible myhost --sudo -m raw -a <span class="string">&quot;apt install -y python2 python-simplejson&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上述命令可以通过远程的方式在远程托管节点安装python-2.X解释器。在一些默认安装python-2.x版本解释器的机器上则不需要额外安装。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>管理主机的安装：</p>
+<ul>
+<li><p>源码安装：</p>
+<ol>
+<li>获取源码</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git://github.com/ansible/ansible.git --recursive</span><br><span class="line">$ <span class="built_in">cd</span> ./ansible</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使用bash</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> ./hacking/env-setup</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>使用Fish</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ . ./hacking/env-setup.fish</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>如果没有安装pip, 请先安装对应于你的Python版本的pip:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo easy_install pip</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>以下的Python模块也需要安装:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pip install paramiko PyYAML Jinja2 httplib2 six</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>ansible版本更新</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git pull --rebase</span><br><span class="line">$ git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>一旦运行env-setup脚本,就意味着Ansible从源码中运行起来了.默认的inventory文件是 /etc/ansible/hosts.inventory文件也可以另行指定 (详见 <a target="_blank" rel="noopener" href="http://www.ansible.com.cn/docs/intro_inventory.html"><em>Inventory文件</em></a>) :</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;127.0.0.1&quot;</span> &gt; ~/ansible_hosts</span><br><span class="line">$ <span class="built_in">export</span> ANSIBLE_HOSTS=~/ansible_hosts</span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li>你可以在手册的后续章节阅读更多关于 inventory 文件的使用,现在让我们测试一条ping命令:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ansible all -m ping --ask-pass</span><br></pre></td></tr></table></figure></li>
+<li><p>通过apt安装，Ubuntu 编译版可在PPA中获得: <code> &lt;https://launchpad.net/~ansible/+archive/ansible&gt;</code>_.配置PPA及安装ansible,执行如下命令.</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install software-properties-common</span><br><span class="line">$ sudo apt-add-repository ppa:ansible/ansible</span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install ansible</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过pip安装：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo easy_install pip</span><br><span class="line">$ sudo pip install ansible</span><br></pre></td></tr></table></figure></li>
+<li><p>远程连接概述</p>
+<ul>
+<li>远程设备,Ansible会默认假定你使用 SSH Key(我们推荐这种)但是密码也一样可以.通过在需要的地方添加 –ask-pass选项 来启用密码验证.如果使用了sudo 特性,当sudo需要密码时,也同样适当的提供了–ask-sudo-pass选项.</li>
+<li>任何管理系统受益于被管理的机器在主控机附近运行.如果在云中运行,可以考虑在使用云中的一台机器来运行Ansible.</li>
+</ul>
+</li>
+<li><p>第一次简单尝试：</p>
+<ul>
+<li>编辑(或创建)/etc/ansible/hosts 并在其中加入一个或多个远程系统.你的public SSH key必须在这些系统的<code>authorized_keys</code>中:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">192.168.1.50</span><br><span class="line">aserver.example.org</span><br><span class="line">bserver.example.org</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>这里有个节点设置文件(inventory file)将会在 <a target="_blank" rel="noopener" href="http://www.ansible.com.cn/docs/intro_inventory.html"><em>Inventory文件</em></a> 中得到深入说明. 我们假定你使用SSH Key来授权.为了避免在建立SSH连接时,重复输入密码你可以这么 做:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-agent bash</span><br><span class="line">$ ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>(根据你的建立方式,你也许希望使用Ansible的 <code>--private-key</code> 选项,通过指定pem文件来代替SSH Key来授权) 现在ping 你的所有节点:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ansible all -m ping</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Ansible会像SSH那样试图用你的当前用户名来连接你的远程机器.要覆写远程用户名,只需使用’-u’参数. 如果你想访问 sudo模式,这里也有标识(flags)来实现:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># as bruce</span></span><br><span class="line">$ ansible all -m ping -u bruce</span><br><span class="line"><span class="comment"># as bruce, sudoing to root</span></span><br><span class="line">$ ansible all -m ping -u bruce --sudo</span><br><span class="line"><span class="comment"># as bruce, sudoing to batman</span></span><br><span class="line">$ ansible all -m ping -u bruce --sudo --sudo-user batman</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>(如果你碰巧想要使用其他sudo的实现方式,你可以通过修改Ansible的配置文件来实现.也可以通过传递标识给sudo(如-H)来设置.) 现在对你的所有节点运行一个命令:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ansible all -a <span class="string">&quot;/bin/echo hello&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-Inventory文件"><a href="#2-Inventory文件" class="headerlink" title="2. Inventory文件"></a>2. Inventory文件</h3><ul>
+<li>Ansible 可同时操作属于一个组的多台主机,组和主机之间的关系通过 inventory 文件配置. 默认的文件路径为 /etc/ansible/hosts。</li>
+</ul>
+<h4 id="2-1-主机与组"><a href="#2-1-主机与组" class="headerlink" title="2.1 主机与组"></a>2.1 主机与组</h4><ul>
+<li>/etc/ansible/hosts 文件的格式与windows的ini配置文件类似：</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">mail.example.com</span></span><br><span class="line"></span><br><span class="line">[<span class="string">webservers</span>]</span><br><span class="line"><span class="string">foo.example.com</span></span><br><span class="line"><span class="string">bar.example.com</span></span><br><span class="line"></span><br><span class="line">[<span class="string">dbservers</span>]</span><br><span class="line"><span class="string">one.example.com</span></span><br><span class="line"><span class="string">two.example.com</span></span><br><span class="line"><span class="string">three.example.com</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上述中的【】表示分组，对系统进行分类，便于对不同系统进行细粒度的管理。</li>
+<li>一个系统可以属于不同的组，这时属于两个组的变量都可以为这台主机所用,至于变量的优先级关系将于以后的章节中讨论.</li>
+<li>如果有主机的SSH端口不是标准的22端口,可在主机名之后加上端口号,用冒号分隔.SSH 配置文件中列出的端口号不会在 paramiko 连接中使用,会在 openssh 连接中使用.端口号不是默认设置时,可明确的表示为:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">badwolf.example.com:5309</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>假设你有一些静态IP地址,希望设置一些别名,但不是在系统的 host 文件中设置,又或者你是通过隧道在连接,那么可以设置如下:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jumper ansible_ssh_port&#x3D;5555 ansible_ssh_host&#x3D;192.168.1.50</span><br><span class="line">在这个例子中,通过 “jumper” 别名,会连接 192.168.1.50:5555.记住,这是通过 inventory 文件的特性功能设置的变量. 一般而言,这不是设置变量(描述你的系统策略的变量)的最好方式.后面会说到这个问题.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>一组相似的 hostname , 可简写如下:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[webservers]</span><br><span class="line">www[01:50].example.com</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>对于每一个 host,你还可以选择连接类型和连接用户名:</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">targets</span>]</span><br><span class="line"></span><br><span class="line"><span class="string">localhost</span>              <span class="string">ansible_connection=local</span></span><br><span class="line"><span class="string">other1.example.com</span>     <span class="string">ansible_connection=ssh</span>        <span class="string">ansible_ssh_user=mpdehaan</span></span><br><span class="line"><span class="string">other2.example.com</span>     <span class="string">ansible_connection=ssh</span>        <span class="string">ansible_ssh_user=mdehaan</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-主机变量"><a href="#2-2-主机变量" class="headerlink" title="2.2 主机变量"></a>2.2 主机变量</h4><ul>
+<li>前面已经提到过,分配变量给主机很容易做到,这些变量定义后可在 playbooks 中使用:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[atlanta]</span><br><span class="line">host1 http_port&#x3D;80 maxRequestsPerChild&#x3D;808</span><br><span class="line">host2 http_port&#x3D;303 maxRequestsPerChild&#x3D;909</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3-组变量"><a href="#2-3-组变量" class="headerlink" title="2.3 组变量"></a>2.3 组变量</h4><ul>
+<li>也可以定义属于整个组的变量:</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">atlanta</span>]</span><br><span class="line"><span class="string">host1</span></span><br><span class="line"><span class="string">host2</span></span><br><span class="line"></span><br><span class="line">[<span class="string">atlanta:vars</span>]</span><br><span class="line"><span class="string">ntp_server=ntp.atlanta.example.com</span></span><br><span class="line"><span class="string">proxy=proxy.atlanta.example.com</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-4-把一个组作为其他组的子成员"><a href="#2-4-把一个组作为其他组的子成员" class="headerlink" title="2.4 把一个组作为其他组的子成员"></a>2.4 把一个组作为其他组的子成员</h4><ul>
+<li>可以把一个组作为另一个组的子成员,以及分配变量给整个组使用. 这些变量可以给 /usr/bin/ansible-playbook 使用,但不能给 /usr/bin/ansible 使用:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[atlanta]</span><br><span class="line">host1</span><br><span class="line">host2</span><br><span class="line"></span><br><span class="line">[raleigh]</span><br><span class="line">host2</span><br><span class="line">host3</span><br><span class="line"></span><br><span class="line">[southeast:children]</span><br><span class="line">atlanta</span><br><span class="line">raleigh</span><br><span class="line"></span><br><span class="line">[southeast:vars]</span><br><span class="line">some_server&#x3D;foo.southeast.example.com</span><br><span class="line">halon_system_timeout&#x3D;30</span><br><span class="line">self_destruct_countdown&#x3D;60</span><br><span class="line">escape_pods&#x3D;2</span><br><span class="line"></span><br><span class="line">[usa:children]</span><br><span class="line">southeast</span><br><span class="line">northeast</span><br><span class="line">southwest</span><br><span class="line">northwest</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-5-分文件定义Host与Group"><a href="#2-5-分文件定义Host与Group" class="headerlink" title="2.5 分文件定义Host与Group"></a>2.5 分文件定义Host与Group</h4><ul>
+<li>在 inventory 主文件中保存所有的变量并不是最佳的方式.还可以保存在独立的文件中,这些独立文件与 inventory 文件保持关联. 不同于 inventory 文件(INI 格式),这些独立文件的格式为 YAML.详见 <a target="_blank" rel="noopener" href="http://www.ansible.com.cn/docs/YAMLSyntax.html"><em>YAML 语法</em></a> .</li>
+<li>假设 inventory 文件的路径为:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;ansible&#x2F;hosts</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>假设有一个主机名为 ‘foosball’, 主机同时属于两个组,一个是 ‘raleigh’, 另一个是 ‘webservers’. 那么以下配置文件(YAML 格式)中的变量可以为 ‘foosball’ 主机所用.依次为 ‘raleigh’ 的组变量,’webservers’ 的组变量,’foosball’ 的主机变量:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;ansible&#x2F;group_vars&#x2F;raleigh</span><br><span class="line">&#x2F;etc&#x2F;ansible&#x2F;group_vars&#x2F;webservers</span><br><span class="line">&#x2F;etc&#x2F;ansible&#x2F;host_vars&#x2F;foosball</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>还有更进一步的运用,你可以为一个主机,或一个组,创建一个目录,目录名就是主机名或组名.目录中的可以创建多个文件, 文件中的变量都会被读取为主机或组的变量.如下 ‘raleigh’ 组对应于 /etc/ansible/group_vars/raleigh/ 目录,其下有两个文件 db_settings 和 cluster_settings, 其中分别设置不同的变量:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;ansible&#x2F;group_vars&#x2F;raleigh&#x2F;db_settings</span><br><span class="line">&#x2F;etc&#x2F;ansible&#x2F;group_vars&#x2F;raleigh&#x2F;cluster_settings</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>Tip: Ansible 1.2 及以上的版本中,group_vars/ 和 host_vars/ 目录可放在 inventory 目录下,或是 playbook 目录下. 如果两个目录下都存在,那么 playbook 目录下的配置会覆盖 inventory 目录的配置.</strong></li>
+</ul>
+<h4 id="2-6-inventory参数说明"><a href="#2-6-inventory参数说明" class="headerlink" title="2.6 inventory参数说明"></a>2.6 inventory参数说明</h4><ul>
+<li>如同前面提到的,通过设置下面的参数,可以控制 ansible 与远程主机的交互方式,其中一些我们已经讲到过:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">ansible_ssh_host</span><br><span class="line">      将要连接的远程主机名.与你想要设定的主机的别名不同的话,可通过此变量设置.</span><br><span class="line"></span><br><span class="line">ansible_ssh_port</span><br><span class="line">      ssh端口号.如果不是默认的端口号,通过此变量设置.</span><br><span class="line"></span><br><span class="line">ansible_ssh_user</span><br><span class="line">      默认的 ssh 用户名</span><br><span class="line"></span><br><span class="line">ansible_ssh_pass</span><br><span class="line">      ssh 密码(这种方式并不安全,我们强烈建议使用 --ask-pass 或 SSH 密钥)</span><br><span class="line"></span><br><span class="line">ansible_sudo_pass</span><br><span class="line">      sudo 密码(这种方式并不安全,我们强烈建议使用 --ask-sudo-pass)</span><br><span class="line"></span><br><span class="line">ansible_sudo_exe (new in version 1.8)</span><br><span class="line">      sudo 命令路径(适用于1.8及以上版本)</span><br><span class="line"></span><br><span class="line">ansible_connection</span><br><span class="line">      与主机的连接类型.比如:local, ssh 或者 paramiko. Ansible 1.2 以前默认使用 paramiko.1.2 以后默认使用 &#39;smart&#39;,&#39;smart&#39; 方式会根据是否支持 ControlPersist, 来判断&#39;ssh&#39; 方式是否可行.</span><br><span class="line"></span><br><span class="line">ansible_ssh_private_key_file</span><br><span class="line">      ssh 使用的私钥文件.适用于有多个密钥,而你不想使用 SSH 代理的情况.</span><br><span class="line"></span><br><span class="line">ansible_shell_type</span><br><span class="line">      目标系统的shell类型.默认情况下,命令的执行使用 &#39;sh&#39; 语法,可设置为 &#39;csh&#39; 或 &#39;fish&#39;.</span><br><span class="line"></span><br><span class="line">ansible_python_interpreter</span><br><span class="line">      目标主机的 python 路径.适用于的情况: 系统中有多个 Python, 或者命令路径不是&quot;&#x2F;usr&#x2F;bin&#x2F;python&quot;,比如  \*BSD, 或者 &#x2F;usr&#x2F;bin&#x2F;python</span><br><span class="line">      不是 2.X 版本的 Python.我们不使用 &quot;&#x2F;usr&#x2F;bin&#x2F;env&quot; 机制,因为这要求远程用户的路径设置正确,且要求 &quot;python&quot; 可执行程序名不可为 python以外的名字(实际有可能名为python26).</span><br><span class="line"></span><br><span class="line">      与 ansible_python_interpreter 的工作方式相同,可设定如 ruby 或 perl 的路径....</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-playbook"><a href="#3-playbook" class="headerlink" title="3. playbook"></a>3. playbook</h3><ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/ansible/ansible-examples">配套参考学习</a></p>
+</li>
+<li><p>Playbooks 是 Ansible的配置,部署,编排语言.他们可以被描述为一个需要希望远程主机执行命令的方案,或者一组IT程序运行的命令集合.</p>
+</li>
+<li><p>如果 Ansible 模块你是工作室中的工具,那么 playbooks 就是你设置的方案计划.</p>
+</li>
+<li><p>在基础层面, playbooks 可以被用来管理用于部署到远程主机的配置文件.在更高的层面上,playbooks 可以依次对多层式架构上的服务器执行上线包括滚动更新在内的操作并可以将操作委托给其他主机包括在此过程中发生的与监视服务器,负载均衡服务器的交互操作在内.</p>
+</li>
+<li><p>简单来说,playbooks 是一种简单的配置管理系统与多机器部署系统的基础.与现有的其他系统有不同之处,且非常适合于复杂应用的部署.</p>
+</li>
+<li><p>Playbooks 可用于声明配置,更强大的地方在于,在 playbooks 中可以编排有序的执行过程,甚至于做到在多组机器间,来回有序的执行特别指定的步骤.并且可以同步或异步的发起任务.</p>
+</li>
+</ul>
+<h4 id="3-1-playbook语言示例"><a href="#3-1-playbook语言示例" class="headerlink" title="3.1 playbook语言示例"></a>3.1 playbook语言示例</h4><ul>
+<li>Playbooks 的格式是YAML（详见:<a target="_blank" rel="noopener" href="http://www.ansible.com.cn/docs/YAMLSyntax.html"><em>YAML 语法</em></a>）,语法做到最小化,意在避免 playbooks 成为一种编程语言或是脚本,但它也并不是一个配置模型或过程的模型.</li>
+<li>playbook 由一个或多个 ‘plays’ 组成.它的内容是一个以 ‘plays’ 为元素的列表.</li>
+<li><strong>在 play 之中,一组机器被映射为定义好的角色.在 ansible 中,play 的内容,被称为 tasks,即任务.在基本层次的应用中,一个任务是一个对 ansible 模块的调用,这在前面章节学习过.</strong></li>
+<li>‘plays’ 好似音符,playbook 好似由 ‘plays’ 构成的曲谱,通过 playbook,可以编排步骤进行多机器的部署,比如在 webservers 组的所有机器上运行一定的步骤, 然后在 database server 组运行一些步骤,最后回到 webservers 组,再运行一些步骤,诸如此类.</li>
+<li>给个示例：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">- hosts: webservers</span><br><span class="line">  vars:</span><br><span class="line">    http_port: 80</span><br><span class="line">    max_clients: 200</span><br><span class="line">  remote_user: root</span><br><span class="line">  tasks:</span><br><span class="line">  - name: ensure apache is at the latest version</span><br><span class="line">    yum: pkg&#x3D;httpd state&#x3D;latest</span><br><span class="line">  - name: write the apache config file</span><br><span class="line">    template: src&#x3D;&#x2F;srv&#x2F;httpd.j2 dest&#x3D;&#x2F;etc&#x2F;httpd.conf</span><br><span class="line">    notify:</span><br><span class="line">    - restart apache</span><br><span class="line">  - name: ensure apache is running</span><br><span class="line">    service: name&#x3D;httpd state&#x3D;started</span><br><span class="line">  handlers:</span><br><span class="line">    - name: restart apache</span><br><span class="line">      service: name&#x3D;httpd state&#x3D;restarted</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-playbook-基础"><a href="#3-2-playbook-基础" class="headerlink" title="3.2 playbook 基础"></a>3.2 playbook 基础</h4><ul>
+<li><p><strong>主机与用户</strong>：</p>
+<ul>
+<li>hosts <strong>行的内容是一个或多个组或主机的 patterns,以逗号为分隔符,详见</strong> <a target="_blank" rel="noopener" href="http://www.ansible.com.cn/docs/intro_patterns.html"><em>Patterns</em></a> <strong>章节.</strong></li>
+<li>remote_user 就是账户名:</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">hosts:</span> <span class="string">webservers</span></span><br><span class="line">  <span class="attr">remote_user:</span> <span class="string">root</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>再者,在每一个 task 中,可以定义自己的远程用户:</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">hosts:</span> <span class="string">webservers</span></span><br><span class="line">  <span class="attr">remote_user:</span> <span class="string">root</span></span><br><span class="line">  <span class="attr">tasks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">test</span> <span class="string">connection</span></span><br><span class="line">      <span class="attr">ping:</span></span><br><span class="line">      <span class="attr">remote_user:</span> <span class="string">yourname</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>也支持从 sudo 执行命令:</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">hosts:</span> <span class="string">webservers</span></span><br><span class="line">  <span class="attr">remote_user:</span> <span class="string">yourname</span></span><br><span class="line">  <span class="attr">sudo:</span> <span class="literal">yes</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>同样的,你可以仅在一个 task 中,使用 sudo 执行命令,而不是在整个 play 中使用 sudo:</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">hosts:</span> <span class="string">webservers</span></span><br><span class="line">  <span class="attr">remote_user:</span> <span class="string">yourname</span></span><br><span class="line">  <span class="attr">tasks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">service:</span> <span class="string">name=nginx</span> <span class="string">state=started</span></span><br><span class="line">      <span class="attr">sudo:</span> <span class="literal">yes</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>你也可以登陆后,sudo 到不同的用户身份,而不是使用 root:</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">hosts:</span> <span class="string">webservers</span></span><br><span class="line">  <span class="attr">remote_user:</span> <span class="string">yourname</span></span><br><span class="line">  <span class="attr">sudo:</span> <span class="literal">yes</span></span><br><span class="line">  <span class="attr">sudo_user:</span> <span class="string">postgres</span></span><br><span class="line">  <span class="string">如果你需要在使用</span> <span class="string">sudo</span> <span class="string">时指定密码,可在运行</span> <span class="string">ansible-playbook</span> <span class="string">命令时加上选项</span> <span class="string">--ask-sudo-pass</span> <span class="string">(-K).</span> <span class="string">如果使用</span> <span class="string">sudo</span> <span class="string">时,playbook</span> <span class="string">疑似被挂起,可能是在</span> <span class="string">sudo</span> <span class="string">prompt</span> <span class="string">处被卡住,这时可执行</span> <span class="string">Control-C</span> <span class="string">杀死卡住的任务,再重新运行一次.</span></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>Task列表</strong>：</p>
+<ul>
+<li>每一个 play 包含了一个 task 列表（任务列表）.一个 task 在其所对应的所有主机上（通过 host pattern 匹配的所有主机）执行完毕之后,下一个 task 才会执行.有一点需要明白的是（很重要）,在一个 play 之中,所有 hosts 会获取相同的任务指令,这是 play 的一个目的所在,也就是将一组选出的 hosts 映射到 task.</li>
+<li>在运行 playbook 时（从上到下执行）,如果一个 host 执行 task 失败,这个 host 将会从整个 playbook 的 rotation 中移除. 如果发生执行失败的情况,请修正 playbook 中的错误,然后重新执行即可.</li>
+<li>每个 task 的目标在于执行一个 moudle, 通常是带有特定的参数来执行.在参数中可以使用变量（variables）.modules 具有”幂等”性,意思是如果你再一次地执行 moudle（译者注:比如遇到远端系统被意外改动,需要恢复原状）,moudle 只会执行必要的改动,只会改变需要改变的地方.所以重复多次执行 playbook 也很安全.</li>
+<li>每一个 task 必须有一个名称 name,这样在运行 playbook 时,从其输出的任务执行信息中可以很好的辨别出是属于哪一个 task 的. 如果没有定义 name,‘action’ 的值将会用作输出信息中标记特定的 task.</li>
+<li>在 action 行中可以使用变量.假设在 ‘vars’ 那里定义了一个变量 ‘vhost’ ,可以这样使用它:</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">tasks:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">create</span> <span class="string">a</span> <span class="string">virtual</span> <span class="string">host</span> <span class="string">file</span> <span class="string">for</span> &#123;&#123; <span class="string">vhost</span> &#125;&#125;</span><br><span class="line">    <span class="attr">template:</span> <span class="string">src=somefile.j2</span> <span class="string">dest=/etc/httpd/conf.d/&#123;&#123;</span> <span class="string">vhost</span> <span class="string">&#125;&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="3-3-Roles-和include语句"><a href="#3-3-Roles-和include语句" class="headerlink" title="3.3 Roles 和include语句"></a>3.3 Roles 和include语句</h4><ul>
+<li>当我们刚开始学习运用 playbook 时，可能会把 playbook 写成一个很大的文件，到后来可能你会希望这些文件是可以方便去重用的，所以需要重新去组织这些文件。</li>
+<li>基本上，使用 include 语句引用 task 文件的方法，可允许你将一个配置策略分解到更小的文件中。使用 include 语句引用 tasks 是将 tasks 从其他文件拉取过来。因为 handlers 也是 tasks，所以你也可以使用 include 语句去引用 handlers 文件。handlers 文件来自 ‘handlers:’ section。</li>
+<li><strong>Playbook 同样可以使用 include 引用其他 playbook 文件中的 play。这时被引用的 play 会被插入到当前的 playbook 中，当前的 playbook 中就有了一个更长的的 play 列表。</strong></li>
+<li>Roles 的概念来自于这样的想法：通过 include 包含文件并将它们组合在一起，组织成一个简洁、可重用的抽象对象。这种方式可使你将注意力更多地放在大局上，只有在需要时才去深入了解细节。</li>
+<li>假如你希望在多个 play 或者多个 playbook 中重用同一个 task 列表，你可以使用 include files 做到这一点。 当我们希望为系统定义一个角色时，使用 include 去包含 task 列表是一种很好用的方法。需要记住的是，一个 play 所要达成 的目标是将一组系统映射为多个角色。下面我们来看看具体是如何做的：</li>
+<li>一个 task include file 由一个普通的 task 列表所组成，像这样:</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="comment"># possibly saved as tasks/foo.yml</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">placeholder</span> <span class="string">foo</span></span><br><span class="line">  <span class="attr">command:</span> <span class="string">/bin/foo</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">placeholder</span> <span class="string">bar</span></span><br><span class="line">  <span class="attr">command:</span> <span class="string">/bin/bar</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Include 指令看起来像下面这样，在一个 playbook 中，Include 指令可以跟普通的 task 混合在一起使用:</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">tasks:</span></span><br><span class="line"></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">include:</span> <span class="string">tasks/foo.yml</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>你也可以给 include 传递变量。我们称之为 ‘参数化的 include’。</li>
+<li>举个例子，如果我们要部署多个 wordpress 实例，我们可将所有的 wordpress task 写在一个 wordpress.yml 文件中， 然后像下面这样使用 wordpress.yml 文件:</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">tasks:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">include:</span> <span class="string">wordpress.yml</span> <span class="string">wp_user=timmy</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">include:</span> <span class="string">wordpress.yml</span> <span class="string">wp_user=alice</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">include:</span> <span class="string">wordpress.yml</span> <span class="string">wp_user=bob</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>变量可以这样去引用:</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; <span class="string">wp_user</span> &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>从 1.0 版开始，Ansible 支持另一种传递变量到 include files 的语法，这种语法支持结构化的变量:</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">tasks:</span></span><br><span class="line"></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">include:</span> <span class="string">wordpress.yml</span></span><br><span class="line">    <span class="attr">vars:</span></span><br><span class="line">        <span class="attr">wp_user:</span> <span class="string">timmy</span></span><br><span class="line">        <span class="attr">some_list_variable:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">alpha</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">beta</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">gamma</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="Role"><a href="#Role" class="headerlink" title="Role"></a>Role</h5><ul>
+<li>你现在已经学过 tasks 和 handlers，那怎样组织 playbook 才是最好的方式呢？简单的回答就是：使用 roles ! Roles 基于一个已知的文件结构，去自动的加载某些 vars_files，tasks 以及 handlers。基于 roles 对内容进行分组，使得我们可以容易地与其他用户分享 roles 。</li>
+<li>一个项目的结构如下:</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">site.yml</span></span><br><span class="line"><span class="string">webservers.yml</span></span><br><span class="line"><span class="string">fooservers.yml</span></span><br><span class="line"><span class="string">roles/</span></span><br><span class="line">   <span class="string">common/</span></span><br><span class="line">     <span class="string">files/</span></span><br><span class="line">     <span class="string">templates/</span></span><br><span class="line">     <span class="string">tasks/</span></span><br><span class="line">     <span class="string">handlers/</span></span><br><span class="line">     <span class="string">vars/</span></span><br><span class="line">     <span class="string">defaults/</span></span><br><span class="line">     <span class="string">meta/</span></span><br><span class="line">   <span class="string">webservers/</span></span><br><span class="line">     <span class="string">files/</span></span><br><span class="line">     <span class="string">templates/</span></span><br><span class="line">     <span class="string">tasks/</span></span><br><span class="line">     <span class="string">handlers/</span></span><br><span class="line">     <span class="string">vars/</span></span><br><span class="line">     <span class="string">defaults/</span></span><br><span class="line">     <span class="string">meta/</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>一个 playbook 如下:</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">hosts:</span> <span class="string">webservers</span></span><br><span class="line">  <span class="attr">roles:</span></span><br><span class="line">     <span class="bullet">-</span> <span class="string">common</span></span><br><span class="line">     <span class="bullet">-</span> <span class="string">webservers</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>这个 playbook 为一个角色 ‘x’ 指定了如下的行为：<ul>
+<li>如果 roles/x/tasks/main.yml 存在, 其中列出的 tasks 将被添加到 play 中</li>
+<li>如果 roles/x/handlers/main.yml 存在, 其中列出的 handlers 将被添加到 play 中</li>
+<li>如果 roles/x/vars/main.yml 存在, 其中列出的 variables 将被添加到 play 中</li>
+<li>如果 roles/x/meta/main.yml 存在, 其中列出的 “角色依赖” 将被添加到 roles 列表中 (1.3 and later)</li>
+<li>所有 copy tasks 可以引用 roles/x/files/ 中的文件，不需要指明文件的路径。</li>
+<li>所有 script tasks 可以引用 roles/x/files/ 中的脚本，不需要指明文件的路径。</li>
+<li>所有 template tasks 可以引用 roles/x/templates/ 中的文件，不需要指明文件的路径。</li>
+<li>所有 include tasks 可以引用 roles/x/tasks/ 中的文件，不需要指明文件的路径。</li>
+</ul>
+</li>
+<li>如果 roles 目录下有文件不存在，这些文件将被忽略。比如 roles 目录下面缺少了 ‘vars/’ 目录，这也没关系。</li>
+</ul>
+<h5 id="角色默认变量（default-role）"><a href="#角色默认变量（default-role）" class="headerlink" title="角色默认变量（default role）"></a>角色默认变量（default role）</h5><ul>
+<li>角色默认变量允许你为 included roles 或者 dependent roles(见下) 设置默认变量。要创建默认变量，只需在 roles 目录下添加 defaults/main.yml 文件。这些变量在所有可用变量中拥有最低优先级，可能被其他地方定义的变量(包括 inventory 中的变量)所覆盖。</li>
+</ul>
+<h5 id="角色依赖（role-dependence）"><a href="#角色依赖（role-dependence）" class="headerlink" title="角色依赖（role dependence）"></a>角色依赖（role dependence）</h5><ul>
+<li>“角色依赖” 使你可以自动地将其他 roles 拉取到现在使用的 role 中。”角色依赖” 保存在 roles 目录下的 meta/main.yml 文件中。这个文件应包含一列 roles 和 为之指定的参数，下面是在 roles/myapp/meta/main.yml 文件中的示例:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">dependencies:</span><br><span class="line">  - &#123; role: common, some_parameter: 3 &#125;</span><br><span class="line">  - &#123; role: apache, port: 80 &#125;</span><br><span class="line">  - &#123; role: postgres, dbname: blarg, other_parameter: 12 &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>“角色依赖” 可以通过绝对路径指定，如同顶级角色的设置:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">dependencies:</span><br><span class="line">   - &#123; role: &#39;&#x2F;path&#x2F;to&#x2F;common&#x2F;roles&#x2F;foo&#39;, x: 1 &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>“角色依赖” 也可以通过源码控制仓库或者 tar 文件指定，使用逗号分隔：路径、一个可选的版本（tag, commit, branch 等等）、一个可选友好角色名（尝试从源码仓库名或者归档文件名中派生出角色名）:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">dependencies:</span><br><span class="line">  - &#123; role: &#39;git+http:&#x2F;&#x2F;git.example.com&#x2F;repos&#x2F;role-foo,v1.1,foo&#39; &#125;</span><br><span class="line">  - &#123; role: &#39;&#x2F;path&#x2F;to&#x2F;tar&#x2F;file.tgz,,friendly-name&#39; &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>“角色依赖” 总是在 role （包含”角色依赖”的role）之前执行，并且是递归地执行。默认情况下，作为 “角色依赖” 被添加的 role 只能被添加一次，如果另一个 role 将一个相同的角色列为 “角色依赖” 的对象，它不会被重复执行。但这种默认的行为可被修改，通过添加 allow_duplicates: yes 到 meta/main.yml 文件中。 比如，一个 role 名为 ‘car’，它可以添加名为 ‘wheel’ 的 role 到它的 “角色依赖” 中:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">dependencies:</span><br><span class="line">- &#123; role: wheel, n: 1 &#125;</span><br><span class="line">- &#123; role: wheel, n: 2 &#125;</span><br><span class="line">- &#123; role: wheel, n: 3 &#125;</span><br><span class="line">- &#123; role: wheel, n: 4 &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>wheel 角色的 meta/main.yml 文件包含如下内容:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">allow_duplicates: yes</span><br><span class="line">dependencies:</span><br><span class="line">- &#123; role: tire &#125;</span><br><span class="line">- &#123; role: brake &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>最终的执行顺序是这样的:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tire(n&#x3D;1)</span><br><span class="line">brake(n&#x3D;1)</span><br><span class="line">wheel(n&#x3D;1)</span><br><span class="line">tire(n&#x3D;2)</span><br><span class="line">brake(n&#x3D;2)</span><br><span class="line">wheel(n&#x3D;2)</span><br><span class="line">...</span><br><span class="line">car</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-变量（Variables）"><a href="#4-变量（Variables）" class="headerlink" title="4. 变量（Variables）"></a>4. 变量（Variables）</h3><ul>
+<li>在使用变量之前最好先知道什么是合法的变量名. 变量名可以为字母,数字以及下划线.变量始终应该以字母开头. “foo_port”是个合法的变量名.”foo5”也是. “foo-port”, “foo port”, “foo.port” 和 “12”则不是合法的变量名.</li>
+</ul>
+<h4 id="4-1-在inventory中定义变量"><a href="#4-1-在inventory中定义变量" class="headerlink" title="4.1 在inventory中定义变量"></a>4.1 在inventory中定义变量</h4><ul>
+<li><p>我们已经在其它文档中覆盖了大量关于使用变量的场景,所以这里没多少新的知识点,权当加深记忆.</p>
+<p>通常你想基于一个机器位于哪个群组而设置变量.比如,位于波士顿的很多机器会使用 ‘boston.ntp.example.com’ 作为NTP服务器.</p>
+<p>请看 <a target="_blank" rel="noopener" href="http://www.ansible.com.cn/docs/intro_inventory.html"><em>Inventory文件</em></a> 文档来学习在inventory中使用多种方式来定义变量.</p>
+</li>
+</ul>
+<h4 id="4-1-在playbook中定义变量"><a href="#4-1-在playbook中定义变量" class="headerlink" title="4.1 在playbook中定义变量"></a>4.1 在playbook中定义变量</h4><ul>
+<li>在playbook中,可以直接定义变量,如下所示:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- hosts: webservers</span><br><span class="line">  vars:</span><br><span class="line">    http_port: 80</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Ansible允许你使用Jinja2模板系统在playbook中引用变量.借助Jinja你能做很多复杂的操作,首先你要学习基本使用. 例如,在简单的模板中你可以这样做:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">My amp goes to &#123;&#123; max_amp_value &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>这就是变量替换最基本的形式. 你也可以在playbook中直接这样用,你偶尔想这样做:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">template: src&#x3D;foo.cfg.j2 dest&#x3D;&#123;&#123; remote_install_path &#125;&#125;&#x2F;foo.cfg</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>YAML语法要求如果值以开头的话我们需要将整行用双引号包起来.这是为了确认你不是想声明一个YAML字典.该知识点在 <a target="_blank" rel="noopener" href="http://www.ansible.com.cn/docs/YAMLSyntax.html"><em>YAML 语法</em></a> 页面有所讲述.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- hosts: app_servers</span><br><span class="line">  vars:</span><br><span class="line">      app_path: &#123;&#123; base_path &#125;&#125;&#x2F;22 #不合法的声明</span><br><span class="line">- hosts: app_servers</span><br><span class="line">  vars:</span><br><span class="line">       app_path: &quot;&#123;&#123; base_path &#125;&#125;&#x2F;22&quot; #合法声明</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>关于Facts的使用可以参考文献中的变量章节。</li>
+</ul>
+<h3 id="5-条件选择"><a href="#5-条件选择" class="headerlink" title="5. 条件选择"></a>5. 条件选择</h3><ul>
+<li>Ansible 提供了很多不同选项,来控制执行流. </li>
+</ul>
+<h4 id="5-1-when-语句"><a href="#5-1-when-语句" class="headerlink" title="5.1 when 语句"></a>5.1 when 语句</h4><ul>
+<li>When语句包含Jinja2表达式(参见:doc:playbooks_variables). 实际上真的很简单:</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">tasks:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">&quot;shutdown Debian flavored systems&quot;</span></span><br><span class="line">    <span class="attr">command:</span> <span class="string">/sbin/shutdown</span> <span class="string">-t</span> <span class="string">now</span></span><br><span class="line">    <span class="attr">when:</span> <span class="string">ansible_os_family</span> <span class="string">==</span> <span class="string">&quot;Debian&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在playbooks 和 inventory中定义的变量都可以使用. 下面一个例子,就是基于布尔值来决定一个任务是否被执行:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vars:</span><br><span class="line">  epic: true</span><br><span class="line">  </span><br><span class="line"> # 使用变量</span><br><span class="line">tasks:</span><br><span class="line">    - shell: echo &quot;This certainly is epic!&quot;</span><br><span class="line">      when: epic</span><br><span class="line"># 或者</span><br><span class="line">tasks:</span><br><span class="line">    - shell: echo &quot;This certainly isn&#39;t epic!&quot;</span><br><span class="line">      when: not epic</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果一个变量不存在,你可以使用Jinja2的<code>defined</code>命令跳过或略过.</li>
+</ul>
+<h4 id="5-2-在roles-和-includes-上面应用’when’语句"><a href="#5-2-在roles-和-includes-上面应用’when’语句" class="headerlink" title="5.2 在roles 和 includes 上面应用’when’语句"></a>5.2 在roles 和 includes 上面应用’when’语句</h4><ul>
+<li>note,如果你的很多任务都共享同样的条件语句的话,可以在选择语句后面添加inlcudes语句,参见下面事例. 这个特性并不适用于playbook的inclues,只有task 的 includes适用.所有的task都会被检验, 选择会应用到所有的task上面:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- include: tasks&#x2F;sometasks.yml</span><br><span class="line">  when: &quot;&#39;reticulating splines&#39; in output&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>应用到role上面：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- hosts: webservers</span><br><span class="line">  roles:</span><br><span class="line">     - &#123; role: debian_stock_config, when: ansible_os_family &#x3D;&#x3D; &#39;Debian&#39; &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-3-条件导入"><a href="#5-3-条件导入" class="headerlink" title="5.3 条件导入"></a>5.3 条件导入</h4><ul>
+<li>基于某个特定标准,又是你也许在一个playbook中你想以不同的方式做同一件事. 在不同平台或操作系统上使用同一个playbook就是一个很好的例子.</li>
+<li>举个例子,名字叫做Apache的包,在CentOS 和 Debian系统中也许不同, 但是这个问题可以一些简单的语法就可以被Ansible Playbook解决:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">- hosts: all</span><br><span class="line">  remote_user: root</span><br><span class="line">  vars_files:</span><br><span class="line">    - &quot;vars&#x2F;common.yml&quot;</span><br><span class="line">    - [ &quot;vars&#x2F;&#123;&#123; ansible_os_family &#125;&#125;.yml&quot;, &quot;vars&#x2F;os_defaults.yml&quot; ]</span><br><span class="line">  tasks:</span><br><span class="line">  - name: make sure apache is running</span><br><span class="line">    service: name&#x3D;&#123;&#123; apache &#125;&#125; state&#x3D;running</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li></li>
+</ul>
+<h4 id="5-4-注册变量"><a href="#5-4-注册变量" class="headerlink" title="5.4 注册变量"></a>5.4 注册变量</h4><ul>
+<li>经常在playbook中,存储某个命令的结果在变量中,以备日后访问是很有用的. 这样使用命令模块可以在许多方面除去写站（site）特异事件,据哥例子 你可以检测某一个特定程序是否存在</li>
+<li>这个 ‘register’ 关键词决定了把结果存储在哪个变量中.结果参数可以用在模版中,动作条目,或者 <em>when</em> 语句. 像这样（这是一个浅显的例子）:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- name: test play</span><br><span class="line">  hosts: all</span><br><span class="line"></span><br><span class="line">  tasks:</span><br><span class="line"></span><br><span class="line">      - shell: cat &#x2F;etc&#x2F;motd</span><br><span class="line">        register: motd_contents</span><br><span class="line"></span><br><span class="line">      - shell: echo &quot;motd contains the word hi&quot;</span><br><span class="line">        when: motd_contents.stdout.find(&#39;hi&#39;) !&#x3D; -1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li></li>
+</ul>
+<h3 id="6-循环"><a href="#6-循环" class="headerlink" title="6 循环"></a>6 循环</h3><ul>
+<li></li>
+</ul>
+<h4 id="6-1-标准循环"><a href="#6-1-标准循环" class="headerlink" title="6.1 标准循环"></a>6.1 标准循环</h4><ul>
+<li>为了保持简洁,重复的任务可以用以下简写的方式:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- name: add several users</span><br><span class="line">  user: name&#x3D;&#123;&#123; item &#125;&#125; state&#x3D;present groups&#x3D;wheel</span><br><span class="line">  with_items:</span><br><span class="line">     - testuser1</span><br><span class="line">     - testuser2</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li></li>
+</ul>
+<h3 id="7-最佳实践"><a href="#7-最佳实践" class="headerlink" title="7. 最佳实践"></a>7. 最佳实践</h3><ul>
+<li>目录结构</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">production                # inventory file for production servers 关于生产环境服务器的清单文件</span><br><span class="line">stage                     # inventory file for stage environment 关于 stage 环境的清单文件</span><br><span class="line"></span><br><span class="line">group_vars/</span><br><span class="line">   group1                 # here we assign variables to particular groups 这里我们给特定的组赋值</span><br><span class="line">   group2                 # &quot;&quot;</span><br><span class="line">host_vars/</span><br><span class="line">   hostname1           # if systems need specific variables, put them here 如果系统需要特定的变量,把它们放置在这里.</span><br><span class="line">   hostname2              # &quot;&quot;</span><br><span class="line"></span><br><span class="line">library/                  # if any custom modules, put them here (optional) 如果有自定义的模块,放在这里(可选)</span><br><span class="line">filter_plugins/     # if any custom filter plugins, put them here (optional) 如果有自定义的过滤插件,放在这里(可选)</span><br><span class="line"></span><br><span class="line">site.yml                  # master playbook 主 playbook</span><br><span class="line">webservers.yml            # playbook for webserver tier Web 服务器的 playbook</span><br><span class="line">dbservers.yml             # playbook for dbserver tier 数据库服务器的 playbook</span><br><span class="line"></span><br><span class="line">roles/</span><br><span class="line">    common/               # this hierarchy represents a &quot;role&quot; 这里的结构代表了一个 &quot;role&quot;</span><br><span class="line">        tasks/            #</span><br><span class="line">            main.yml      #  &lt;-- tasks file can include smaller files if warranted</span><br><span class="line">        handlers/         #</span><br><span class="line">            main.yml      #  &lt;-- handlers file</span><br><span class="line">        templates/        #  &lt;-- files for use with the template resource</span><br><span class="line">            ntp.conf.j2   #  &lt;------- templates end in .j2</span><br><span class="line">        files/            #</span><br><span class="line">            bar.txt       #  &lt;-- files for use with the copy resource</span><br><span class="line">            foo.sh        #  &lt;-- script files for use with the script resource</span><br><span class="line">        vars/             #</span><br><span class="line">            main.yml      #  &lt;-- variables associated with this role</span><br><span class="line">        defaults/         #</span><br><span class="line">            main.yml      #  &lt;-- default lower priority variables for this role</span><br><span class="line">        meta/             #</span><br><span class="line">            main.yml      #  &lt;-- role dependencies</span><br><span class="line"></span><br><span class="line">    webtier/              # same kind of structure as &quot;common&quot; was above, done for the webtier role</span><br><span class="line">    monitoring/           # &quot;&quot;</span><br><span class="line">    fooapp/               # &quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>参考文献：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.ansible.com.cn/docs">http://www.ansible.com.cn/docs</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/Ansible/" rel="tag"># Ansible</a>
+              <a href="/blog/tags/Script/" rel="tag"># Script</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2021/05/19/git/" rel="prev" title="Git-base">
+      <i class="fa fa-chevron-left"></i> Git-base
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2021/05/19/redis/" rel="next" title="redis">
+      redis <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E4%BF%A1%E4%BA%BA%E7%94%9F%E4%BA%8C%E7%99%BE%E5%B9%B4%EF%BC%8C-%E4%BC%9A%E5%BD%93%E6%B0%B4%E5%87%BB%E4%B8%89%E5%8D%83%E9%87%8C"><span class="nav-number">1.</span> <span class="nav-text">自信人生二百年， 会当水击三千里</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ansible-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. ansible 概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Inventory%E6%96%87%E4%BB%B6"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. Inventory文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E4%B8%BB%E6%9C%BA%E4%B8%8E%E7%BB%84"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">2.1 主机与组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E4%B8%BB%E6%9C%BA%E5%8F%98%E9%87%8F"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">2.2 主机变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E7%BB%84%E5%8F%98%E9%87%8F"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">2.3 组变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-%E6%8A%8A%E4%B8%80%E4%B8%AA%E7%BB%84%E4%BD%9C%E4%B8%BA%E5%85%B6%E4%BB%96%E7%BB%84%E7%9A%84%E5%AD%90%E6%88%90%E5%91%98"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">2.4 把一个组作为其他组的子成员</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-%E5%88%86%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89Host%E4%B8%8EGroup"><span class="nav-number">1.0.2.5.</span> <span class="nav-text">2.5 分文件定义Host与Group</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-inventory%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="nav-number">1.0.2.6.</span> <span class="nav-text">2.6 inventory参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-playbook"><span class="nav-number">1.0.3.</span> <span class="nav-text">3. playbook</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-playbook%E8%AF%AD%E8%A8%80%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">3.1 playbook语言示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-playbook-%E5%9F%BA%E7%A1%80"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">3.2 playbook 基础</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-Roles-%E5%92%8Cinclude%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">3.3 Roles 和include语句</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Role"><span class="nav-number">1.0.3.3.1.</span> <span class="nav-text">Role</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%92%E8%89%B2%E9%BB%98%E8%AE%A4%E5%8F%98%E9%87%8F%EF%BC%88default-role%EF%BC%89"><span class="nav-number">1.0.3.3.2.</span> <span class="nav-text">角色默认变量（default role）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%92%E8%89%B2%E4%BE%9D%E8%B5%96%EF%BC%88role-dependence%EF%BC%89"><span class="nav-number">1.0.3.3.3.</span> <span class="nav-text">角色依赖（role dependence）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%8F%98%E9%87%8F%EF%BC%88Variables%EF%BC%89"><span class="nav-number">1.0.4.</span> <span class="nav-text">4. 变量（Variables）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-%E5%9C%A8inventory%E4%B8%AD%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">4.1 在inventory中定义变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-%E5%9C%A8playbook%E4%B8%AD%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">4.1 在playbook中定义变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%9D%A1%E4%BB%B6%E9%80%89%E6%8B%A9"><span class="nav-number">1.0.5.</span> <span class="nav-text">5. 条件选择</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-when-%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">5.1 when 语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-%E5%9C%A8roles-%E5%92%8C-includes-%E4%B8%8A%E9%9D%A2%E5%BA%94%E7%94%A8%E2%80%99when%E2%80%99%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.0.5.2.</span> <span class="nav-text">5.2 在roles 和 includes 上面应用’when’语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-%E6%9D%A1%E4%BB%B6%E5%AF%BC%E5%85%A5"><span class="nav-number">1.0.5.3.</span> <span class="nav-text">5.3 条件导入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4-%E6%B3%A8%E5%86%8C%E5%8F%98%E9%87%8F"><span class="nav-number">1.0.5.4.</span> <span class="nav-text">5.4 注册变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%BE%AA%E7%8E%AF"><span class="nav-number">1.0.6.</span> <span class="nav-text">6 循环</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-%E6%A0%87%E5%87%86%E5%BE%AA%E7%8E%AF"><span class="nav-number">1.0.6.1.</span> <span class="nav-text">6.1 标准循环</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="nav-number">1.0.7.</span> <span class="nav-text">7. 最佳实践</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="RockCohen"
+      src="/blog/images/hugo.png">
+  <p class="site-author-name" itemprop="name">RockCohen</p>
+  <div class="site-description" itemprop="description">a programmer</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/rockcohen" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;rockcohen" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xluo0616@gmail.com" title="E-Mail → mailto:xluo0616@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RockCohen</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
