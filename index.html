@@ -163,6 +163,183 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/05/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/hugo.png">
+      <meta itemprop="name" content="RockCohen">
+      <meta itemprop="description" content="a programmer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rock Cohen">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2021/05/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B/" class="post-title-link" itemprop="url">网络编程IO模型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-22 10:16:28 / 修改时间：15:36:36" itemprop="dateCreated datePublished" datetime="2021-05-22T10:16:28+08:00">2021-05-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Network/" itemprop="url" rel="index"><span itemprop="name">Network</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <img src="/blog/2021/05/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B/%E6%AD%A6%E6%B1%89.jpg" class>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2021/05/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/05/22/rpc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/hugo.png">
+      <meta itemprop="name" content="RockCohen">
+      <meta itemprop="description" content="a programmer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rock Cohen">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2021/05/22/rpc/" class="post-title-link" itemprop="url">RPC</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-22 09:41:45 / 修改时间：15:36:54" itemprop="dateCreated datePublished" datetime="2021-05-22T09:41:45+08:00">2021-05-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/RPC/" itemprop="url" rel="index"><span itemprop="name">RPC</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+
+<span id="more"></span>
+
+<h1 id="RPC概述"><a href="#RPC概述" class="headerlink" title="RPC概述"></a>RPC概述</h1><p>进程是计算机资源分配的最小单位，通过<strong>进程通信</strong>(IPC,Inter-process communication)来协调资源的利用。IPC的实现方式有：</p>
+<ul>
+<li>消息传递</li>
+<li>同步</li>
+<li>共享内存</li>
+<li>远程过程调用</li>
+</ul>
+<img src="/blog/2021/05/22/rpc/rpc-c.webp" class>
+
+<p>总结：RPC就是从一台机器（客户端）上通过参数传递的方式调用另一台机器（服务器）上的一个函数或方法（可以统称为服务）并得到返回的结果。</p>
+<p>RPC与Restful的对比：</p>
+<ul>
+<li>RPC：其API对应的是一个函数，一个动作。</li>
+<li>Restful：其API对应的对应URI的资源。</li>
+</ul>
+<p>RPC的关键：</p>
+<ul>
+<li>ID映射：客户端进程与目的端进程的映射关系</li>
+<li>序列化与反序列化：客户端与目的端的请求与响应的传输需要进行序列化与反序列化</li>
+<li>网络传输: 底层的网络传输协议可选，根据应用场景的变化。</li>
+</ul>
+<p>RPC过程：</p>
+<img src="/blog/2021/05/22/rpc/rpc-p.webp" class>
+
+<p>RPC应用：</p>
+<ul>
+<li>服务化/微服务</li>
+<li>分布式架构系统</li>
+<li>服务重用</li>
+<li>系统间交互</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/05/19/wsgi-demo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -776,167 +953,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/05/11/spring-boot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/hugo.png">
-      <meta itemprop="name" content="RockCohen">
-      <meta itemprop="description" content="a programmer">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rock Cohen">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/05/11/spring-boot/" class="post-title-link" itemprop="url">spring-boot</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-05-11 20:42:52" itemprop="dateCreated datePublished" datetime="2021-05-11T20:42:52+08:00">2021-05-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-12 22:48:37" itemprop="dateModified" datetime="2021-05-12T22:48:37+08:00">2021-05-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/Spring-Boot/" itemprop="url" rel="index"><span itemprop="name">Spring Boot</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <img src="/blog/2021/05/11/spring-boot/jay.webp" class>
-
-
-<h1 id="夜的第七章-打字机继续推向-接近事实的那下一行-—《夜的第七章》"><a href="#夜的第七章-打字机继续推向-接近事实的那下一行-—《夜的第七章》" class="headerlink" title="夜的第七章 打字机继续推向 接近事实的那下一行 —《夜的第七章》"></a>夜的第七章 打字机继续推向 接近事实的那下一行 —《夜的第七章》</h1>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2021/05/11/spring-boot/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/05/11/spring-annotation/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/hugo.png">
-      <meta itemprop="name" content="RockCohen">
-      <meta itemprop="description" content="a programmer">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rock Cohen">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/05/11/spring-annotation/" class="post-title-link" itemprop="url">spring-annotation</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-05-11 20:01:52 / 修改时间：23:29:23" itemprop="dateCreated datePublished" datetime="2021-05-11T20:01:52+08:00">2021-05-11</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <img src="/blog/2021/05/11/spring-annotation/jay.webp" class>
-
-<h1 id="天下谁的-第一又如何-止干戈-我辈尚武德-—《霍元甲》"><a href="#天下谁的-第一又如何-止干戈-我辈尚武德-—《霍元甲》" class="headerlink" title="天下谁的 第一又如何 止干戈 我辈尚武德 —《霍元甲》"></a>天下谁的 第一又如何 止干戈 我辈尚武德 —《霍元甲》</h1>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2021/05/11/spring-annotation/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1008,20 +1024,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/blog/categories/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">30</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

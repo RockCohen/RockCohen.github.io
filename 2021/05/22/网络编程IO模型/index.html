@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rockcohen.gitee.io","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="网络编程IO模型">
+<meta property="og:url" content="https://rockcohen.gitee.io/blog/2021/05/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:site_name" content="Rock Cohen">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B/%E6%AD%A6%E6%B1%89.jpg">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B/NIO%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B/NIO-p.png">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B/BIO%E6%A8%A1%E5%BC%8F.png">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B/NIO%E6%A8%A1%E5%BC%8F.png">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B/nio-mx.png">
+<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B/selrctor.PNG">
+<meta property="article:published_time" content="2021-05-22T02:16:28.000Z">
+<meta property="article:modified_time" content="2021-05-22T07:36:36.580Z">
+<meta property="article:author" content="RockCohen">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Network">
+<meta property="article:tag" content="I&#x2F;O">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://rockcohen.gitee.io/blog/2021/05/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B/%E6%AD%A6%E6%B1%89.jpg">
+
+<link rel="canonical" href="https://rockcohen.gitee.io/blog/2021/05/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>网络编程IO模型 | Rock Cohen</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rock Cohen</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Cohen</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/05/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/hugo.png">
+      <meta itemprop="name" content="RockCohen">
+      <meta itemprop="description" content="a programmer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rock Cohen">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          网络编程IO模型
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-22 10:16:28 / 修改时间：15:36:36" itemprop="dateCreated datePublished" datetime="2021-05-22T10:16:28+08:00">2021-05-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Network/" itemprop="url" rel="index"><span itemprop="name">Network</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <img src="/blog/2021/05/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B/%E6%AD%A6%E6%B1%89.jpg" class>
+
+<span id="more"></span>
+<h1 id="IO概述"><a href="#IO概述" class="headerlink" title="IO概述"></a>IO概述</h1><p>IO操作中存在两个阶段：（不够详细）</p>
+<ul>
+<li>数据准备阶段</li>
+<li>内核空间复制数据到用户进程缓冲区（用户空间）阶段 在操作系统中，程序运行的空间分为内核空间和用户空间。 应用程序都是运行在用户空间的，所以它们能操作的数据也都在用户空间。</li>
+</ul>
+<h2 id="阻塞／非阻塞IO"><a href="#阻塞／非阻塞IO" class="headerlink" title="阻塞／非阻塞IO"></a>阻塞／非阻塞IO</h2><p>阻塞是指I/O操作需要彻底完成后才能返回用户空间，非阻塞是指I/O操作被调用后立即返回一个状态值，无需等I/O操作彻底完成。</p>
+<h2 id="同步／异步IO"><a href="#同步／异步IO" class="headerlink" title="同步／异步IO"></a>同步／异步IO</h2><p>同步是用户线程发起I/O请求后需要等待或者轮询内核I/O操作完成后才能继续执行，异步是用户线程发起I/O请求后仍需要继续执行，当内核I/O操作完成后会通知用户线程，或者调用用户线程注册的回调函数。</p>
+<img src="/blog/2021/05/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B/NIO%E6%A8%A1%E5%9E%8B.png" class>
+
+<p>异步IO则采用“订阅-通知”模式：即应用程序向操作系统注册IO监听，然后继续做自己的事情。当操作系统发生IO事件，并且准备好数据后，在主动通知应用程序，触发相应的函数。</p>
+<img src="/blog/2021/05/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B/NIO-p.png" class>
+
+<h1 id="Java提供三种网络编程IO模型："><a href="#Java提供三种网络编程IO模型：" class="headerlink" title="Java提供三种网络编程IO模型："></a>Java提供三种网络编程IO模型：</h1><ul>
+<li>BIO</li>
+<li>NIO</li>
+<li>AIO</li>
+</ul>
+<h2 id="BIO-blocking-IO"><a href="#BIO-blocking-IO" class="headerlink" title="BIO(blocking IO)"></a>BIO(<code>blocking IO</code>)</h2><p>同步阻塞，服务器实现模式为一个连接一个服务线程。即客户端有连接请求时服务器端就需要启动一个线程进行处理，如果这个连接不做任何事情会造成不必要的线程开销。优点在于：同步的，缺点在于：线程资源占用大。并且线程池中没有额外的线程资源时，不能发起新的请求。Java BIO 就是传统的 Java I/O 编程，其相关的类和接口在 java.io。</p>
+<img src="/blog/2021/05/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B/BIO%E6%A8%A1%E5%BC%8F.png" class>
+
+<p>BIO的缺点也很明显：</p>
+<ul>
+<li>每个请求都需要开启新的独立的线程。并发度大时线程资源占用较大。</li>
+<li>建立连接之后，如果没有可用的数据刻度，阻塞在read上，占用资源较大。</li>
+</ul>
+<p>BIO的示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> jIO;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.net.ServerSocket;</span><br><span class="line"><span class="keyword">import</span> java.net.Socket;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ExecutorService;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Executors;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * BIO的示例类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BIOServer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">//线程池机制</span></span><br><span class="line">        <span class="comment">//思路</span></span><br><span class="line">        <span class="comment">//1. 创建一个线程池</span></span><br><span class="line">        <span class="comment">//2. 如果有客户端连接，就创建一个线程，与之通讯(单独写一个方法)</span></span><br><span class="line">        ExecutorService newCachedThreadPool = Executors.newCachedThreadPool();</span><br><span class="line">        <span class="comment">//创建ServerSocket</span></span><br><span class="line">        ServerSocket serverSocket = <span class="keyword">new</span> ServerSocket(<span class="number">6666</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;服务器启动了&quot;</span>);</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;线程信息id = &quot;</span> + Thread.currentThread().getId() + <span class="string">&quot;名字 = &quot;</span> + Thread.currentThread().getName());</span><br><span class="line">            <span class="comment">//监听，等待客户端连接</span></span><br><span class="line">            System.out.println(<span class="string">&quot;等待连接....&quot;</span>);</span><br><span class="line">            <span class="keyword">final</span> Socket socket = serverSocket.accept();</span><br><span class="line">            System.out.println(<span class="string">&quot;连接到一个客户端&quot;</span>);</span><br><span class="line">            <span class="comment">//就创建一个线程，与之通讯(单独写一个方法)</span></span><br><span class="line">            newCachedThreadPool.execute(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;<span class="comment">//我们重写</span></span><br><span class="line">                    <span class="comment">//可以和客户端通讯</span></span><br><span class="line">                    handler(socket);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//编写一个handler方法，和客户端通讯</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">handler</span><span class="params">(Socket socket)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;线程信息id = &quot;</span> + Thread.currentThread().getId() + <span class="string">&quot;名字 = &quot;</span> + Thread.currentThread().getName());</span><br><span class="line">            <span class="keyword">byte</span>[] bytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">            <span class="comment">//通过socket获取输入流</span></span><br><span class="line">            InputStream inputStream = socket.getInputStream();</span><br><span class="line">            <span class="comment">//循环的读取客户端发送的数据</span></span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;线程信息id = &quot;</span> + Thread.currentThread().getId() + <span class="string">&quot;名字 = &quot;</span> + Thread.currentThread().getName());</span><br><span class="line">                System.out.println(<span class="string">&quot;read....&quot;</span>);</span><br><span class="line">                <span class="keyword">int</span> read = inputStream.read(bytes);</span><br><span class="line">                <span class="keyword">if</span> (read != -<span class="number">1</span>) &#123;</span><br><span class="line">                    System.out.println(<span class="keyword">new</span> String(bytes, <span class="number">0</span>, read));<span class="comment">//输出客户端发送的数据</span></span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;关闭和client的连接&quot;</span>);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                socket.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="NIO"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h2><p>同步非阻塞IO，服务器实现模式为一个线程处理多个请求（连接），即客户端发送的连接请求都会注册到多路复用器上，多路复用器轮询到连接有 I/O 请求就进行处理。</p>
+<img src="/blog/2021/05/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B/NIO%E6%A8%A1%E5%BC%8F.png" class>
+
+<p>Java JDK1.4中引入NIO，对BIO进行改写，实现非阻塞的同步IO。NIO中有三大核心：</p>
+<ul>
+<li>通道(<code>Channel</code>)</li>
+<li>缓冲区(<code>Buffer</code>)</li>
+<li>选择器(<code>Selector</code>)<br>三者的关系如下：</li>
+</ul>
+<img src="/blog/2021/05/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B/nio-mx.png" class>
+
+<p>说明：</p>
+<ul>
+<li>Channel与Buffer一一对应。</li>
+<li>线程与Selector一一对应。</li>
+<li>Channel与Buffer对注册到Selector中，Event决定切换对应的Channel。</li>
+<li>Selector负责监听事件并且切换相应的Channel。</li>
+</ul>
+<p>下面给出网络编程中NIO的模型图：</p>
+<img src="/blog/2021/05/22/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B/selrctor.PNG" class>
+
+<p>说明：</p>
+<ol>
+<li>当客户端连接时，会通过 ServerSocketChannel 得到 SocketChannel。</li>
+<li>Selector 进行监听 select 方法，返回有事件发生的通道的个数。</li>
+<li>将 socketChannel 注册到 Selector 上，register(Selector sel, int ops)，一个 Selector 上可以注册多个 SocketChannel。</li>
+<li>注册后返回一个 SelectionKey，会和该 Selector 关联（集合）。</li>
+<li>进一步得到各个 SelectionKey（有事件发生）。</li>
+<li>再通过 SelectionKey 反向获取 SocketChannel，方法 channel()。</li>
+<li>可以通过得到的 channel，完成业务处理。</li>
+</ol>
+<p>NIO 是面向缓冲区，或者面向块编程的。数据读取到一个它稍后处理的缓冲区，需要时可在缓冲区中前后移动，这就增加了处理过程中的灵活性，使用它可以提供非阻塞式的高伸缩性网络。</p>
+<p>HTTP 2.0 使用了多路复用的技术，做到同一个连接并发处理多个请求，而且并发请求的数量比 HTTP 1.1 大了好几个数量级。</p>
+<h2 id="BIO与NIO"><a href="#BIO与NIO" class="headerlink" title="BIO与NIO"></a>BIO与NIO</h2><ul>
+<li>BIO 以流的方式处理数据，而 NIO 以块的方式处理数据，块 I/O 的效率比流 I/O 高很多。</li>
+<li>BIO 是阻塞的，NIO 则是非阻塞的。</li>
+<li>BIO 基于字节流和字符流进行操作，而NIO基于Channel（通道）和Buffer（缓冲区）进行操作，数据总是从通道读取到缓冲区中，或者从缓冲区写入到通道中。Selector（选择器）用于监听多个通道的事件（比如：连接请求，数据到达等），因此使用单个线程就可以监听多个客户端通道。</li>
+</ul>
+<h2 id="AIO"><a href="#AIO" class="headerlink" title="AIO"></a>AIO</h2><p>异步非阻塞，AIO引入异步通道的概念，采用了 <code>Proactor</code>模式，简化了程序编写，有效的请求才启动线程，它的特点是先由操作系统完成后才通知服务端程序启动线程去处理，一般适用于连接数较多且连接时间较长的应用。</p>
+<h2 id="BIO-NIO-AIO"><a href="#BIO-NIO-AIO" class="headerlink" title="BIO/NIO/AIO"></a>BIO/NIO/AIO</h2><p>BIO：去理发店，发现理发师不在，等理发师，理完再去做其他事。</p>
+<p>NIO：去理发店，发现理发师不在，先做其他事，等理发师来，理发。</p>
+<p>AIO：打电话给理发师，先做自己事情，理发师到了，理发。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/Java/" rel="tag"># Java</a>
+              <a href="/blog/tags/Network/" rel="tag"># Network</a>
+              <a href="/blog/tags/I-O/" rel="tag"># I/O</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2021/05/22/rpc/" rel="prev" title="RPC">
+      <i class="fa fa-chevron-left"></i> RPC
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IO%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">IO概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%BB%E5%A1%9E%EF%BC%8F%E9%9D%9E%E9%98%BB%E5%A1%9EIO"><span class="nav-number">1.1.</span> <span class="nav-text">阻塞／非阻塞IO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%EF%BC%8F%E5%BC%82%E6%AD%A5IO"><span class="nav-number">1.2.</span> <span class="nav-text">同步／异步IO</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E6%8F%90%E4%BE%9B%E4%B8%89%E7%A7%8D%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8BIO%E6%A8%A1%E5%9E%8B%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">Java提供三种网络编程IO模型：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BIO-blocking-IO"><span class="nav-number">2.1.</span> <span class="nav-text">BIO(blocking IO)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NIO"><span class="nav-number">2.2.</span> <span class="nav-text">NIO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BIO%E4%B8%8ENIO"><span class="nav-number">2.3.</span> <span class="nav-text">BIO与NIO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AIO"><span class="nav-number">2.4.</span> <span class="nav-text">AIO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BIO-NIO-AIO"><span class="nav-number">2.5.</span> <span class="nav-text">BIO&#x2F;NIO&#x2F;AIO</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="RockCohen"
+      src="/blog/images/hugo.png">
+  <p class="site-author-name" itemprop="name">RockCohen</p>
+  <div class="site-description" itemprop="description">a programmer</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/rockcohen" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;rockcohen" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xluo0616@gmail.com" title="E-Mail → mailto:xluo0616@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RockCohen</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
