@@ -5,47 +5,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/blog/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rockcohen.gitee.io","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"rockcohen.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta property="og:type" content="article">
 <meta property="og:title" content="JVM基础">
-<meta property="og:url" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:url" content="https://rockcohen.github.io/2021/04/11/JVM%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Rock Cohen">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%A7%91%E6%AF%94.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/jdk8jvm.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E5%8F%A5%E6%9F%84%E8%AE%BF%E9%97%AE.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%9B%B4%E6%8E%A5%E6%8C%87%E9%92%88.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E5%8F%AF%E8%BE%BE%E6%80%A7%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E5%B8%B8%E9%87%8F%E6%B1%A0%E8%A1%A8.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E8%AE%BF%E9%97%AE%E6%A0%87%E5%BF%97%E7%AC%A6.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%9E%B6%E6%9E%84.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%91%A8%E6%9C%9F.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E5%87%86%E5%A4%87%E9%98%B6%E6%AE%B5%E5%A4%8D%E5%88%B6%E6%83%85%E5%86%B5.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%A7%91%E6%AF%94.PNG">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/11/JVM%E5%9F%BA%E7%A1%80/jdk8jvm.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E5%8F%A5%E6%9F%84%E8%AE%BF%E9%97%AE.PNG">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%9B%B4%E6%8E%A5%E6%8C%87%E9%92%88.PNG">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E5%8F%AF%E8%BE%BE%E6%80%A7%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95.PNG">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E5%B8%B8%E9%87%8F%E6%B1%A0%E8%A1%A8.PNG">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E8%AE%BF%E9%97%AE%E6%A0%87%E5%BF%97%E7%AC%A6.PNG">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%9E%B6%E6%9E%84.PNG">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%91%A8%E6%9C%9F.PNG">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E5%87%86%E5%A4%87%E9%98%B6%E6%AE%B5%E5%A4%8D%E5%88%B6%E6%83%85%E5%86%B5.PNG">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B.png">
 <meta property="article:published_time" content="2021-04-11T08:41:32.000Z">
-<meta property="article:modified_time" content="2021-05-11T15:30:20.466Z">
+<meta property="article:modified_time" content="2021-05-11T15:30:20.000Z">
 <meta property="article:author" content="RockCohen">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="JVM">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%A7%91%E6%AF%94.PNG">
+<meta name="twitter:image" content="https://rockcohen.github.io/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%A7%91%E6%AF%94.PNG">
 
-<link rel="canonical" href="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/">
+<link rel="canonical" href="https://rockcohen.github.io/2021/04/11/JVM%E5%9F%BA%E7%A1%80/">
 
 
 <script id="page-configurations">
@@ -107,7 +107,7 @@
 
   <div class="site-meta">
 
-    <a href="/blog/" class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">Rock Cohen</h1>
       <span class="logo-line-after"><i></i></span>
@@ -128,27 +128,27 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
   </ul>
@@ -179,10 +179,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/">
+    <link itemprop="mainEntityOfPage" href="https://rockcohen.github.io/2021/04/11/JVM%E5%9F%BA%E7%A1%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/hugo.png">
+      <meta itemprop="image" content="/images/hugo.png">
       <meta itemprop="name" content="RockCohen">
       <meta itemprop="description" content="a programmer">
     </span>
@@ -217,7 +217,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a>
+                  <a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a>
                 </span>
             </span>
 
@@ -232,7 +232,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <img src="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%A7%91%E6%AF%94.PNG" class>
+        <img src="/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%A7%91%E6%AF%94.PNG" class>
 
 <span id="more"></span>
 
@@ -245,7 +245,7 @@
 <p>Java虚拟机的本质属于程序虚拟机，其位置在操作系统之上。</p>
 <h1 id="自动内存管理"><a href="#自动内存管理" class="headerlink" title="自动内存管理"></a>自动内存管理</h1><h2 id="Java内存区域"><a href="#Java内存区域" class="headerlink" title="Java内存区域"></a>Java内存区域</h2><p>Java 中，在虚拟机自动内存管理机制的帮助下，不需要为每一个<code>new</code>的对象去写培对的<code>delete/free</code>代码。同时，内存管理交由虚拟机来管理之后，使得排查错误、修正问题将会成为艰巨的任务。</p>
 <p>Java虚拟机在执行时会把所管理的内存划分为若干个不同的区域。每个区域有各自的用途，创建和销毁时间。</p>
-<img src="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/jdk8jvm.png" class>
+<img src="/2021/04/11/JVM%E5%9F%BA%E7%A1%80/jdk8jvm.png" class>
 
 <h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3><p>程序计数器是一块较小的内存空间，它可以看作是当前线程执行的字节码的行号指示器。主要时程序控制流的指示器，完成分支，循环，跳转，异常处理，线程恢复等工作。Java虚拟机的多线程是通过线程轮流切换、分配处理执行时间的方式来完成，任何时候，一个处理器都只会执行一条线程中的指令。每个线程拥有独立的程序计数器，线程之间相互独立，互不影响。这类内存区域叫做<strong>线程私有</strong>的内存。如果线程正在执行一个Java方法，这个计数器记录的是正在执行的虚拟机字节码指零的地址，如果执行的是<strong>本地(<code>native</code>方法</strong>,这个计数器值应该为空(<code>undefined</code>)。该区域是唯一一个在《Java虚拟机规范》中没有规定任何<code>OutOfMemory</code>的区域。</p>
 <h3 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h3><p>Java虚拟机栈也是线程私有的，其生命周期与线程相同。描述Java方法执行的线程内存模型：用于存储局部变量表，操作数栈，动态连接，方法出口等信息。每一个方法被调用直到执行完毕分过程中，就对应着一个栈帧在虚拟机中从入栈到出栈的过程。</p>
@@ -295,9 +295,9 @@
 <li>直接指针：Java堆中对象的内存布局九必须考虑如何放置访问类型数据的相关信息，reference中存储的直接就是对象地址，如果访问对象本身的话，就不需要多一次的间接访问的开销。</li>
 </ul>
 <p>两种方式参考下面给的两张图。</p>
-<img src="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E5%8F%A5%E6%9F%84%E8%AE%BF%E9%97%AE.PNG" class>
+<img src="/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E5%8F%A5%E6%9F%84%E8%AE%BF%E9%97%AE.PNG" class>
 
-<img src="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%9B%B4%E6%8E%A5%E6%8C%87%E9%92%88.PNG" class>
+<img src="/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%9B%B4%E6%8E%A5%E6%8C%87%E9%92%88.PNG" class>
 
 <h1 id="垃圾收集器与自动内存管理"><a href="#垃圾收集器与自动内存管理" class="headerlink" title="垃圾收集器与自动内存管理"></a>垃圾收集器与自动内存管理</h1><p>垃圾收集器需要完成的三件事：</p>
 <ul>
@@ -311,7 +311,7 @@
 <p>上述的代码通过<code>objA.instance=objB</code>,<code>objB.instance=objA</code>;来建立对象AB之间的引用。然后并没有对AB对象进行其他的操作，如果采用引用计数算法，那么AB则无法回收。事实上，执行结果表明：对象AB确实被回收了。</p>
 <h3 id="可达性分析算法"><a href="#可达性分析算法" class="headerlink" title="可达性分析算法"></a>可达性分析算法</h3><p>可达性分析算法是主流语言(java c#)的内存管理算法。</p>
 <p>可达性分析算法的基本思路：<br>通过一系列称作<strong>GC Roots</strong>的根对象作为起始节点集。从这些节点出发，根据引用关系向下搜索，搜索过程所走过的路径叫做<strong>引用链</strong>，如果某个对象到<code>GC　Roots</code>间没有任何引用链相连，也就是图中的对象节点不可达，证明该节点不能再被使用，可被回收。</p>
-<img src="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E5%8F%AF%E8%BE%BE%E6%80%A7%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95.PNG" class>
+<img src="/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E5%8F%AF%E8%BE%BE%E6%80%A7%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95.PNG" class>
 
 <p>上图的对象<code>5,6,7</code>是可被回收的。</p>
 <p>Java技术体系里面，固定可作为<code>GC Roots</code>的对象包括以下几种：</p>
@@ -391,7 +391,7 @@
 </ul>
 <p><strong>Java代码在Javac编译的时候，不会保存各个方法，字段的最终物理地址，只有在程序运行期间才真正的获得。Java虚拟机加载类时候，将从常量池种获得相应的符号引用，再在类创建或者运行的时候解析和编译到具体的地址。</strong></p>
 <p>常量池中的每一项常量都是一个表，分别由17种表来表示：</p>
-<img src="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E5%B8%B8%E9%87%8F%E6%B1%A0%E8%A1%A8.PNG" class>
+<img src="/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E5%B8%B8%E9%87%8F%E6%B1%A0%E8%A1%A8.PNG" class>
 
 <p><strong>访问标识符</strong>：<br>接着常量池的字段就是访问标志(<code>access_flags</code>)。访问标志用于识别一些类和接口层次的访问信息，包括：</p>
 <ul>
@@ -401,18 +401,18 @@
 </ul>
 <p>访问标志一共有16个标志可以使用，没有应用到的标志默认为0.</p>
 <p>访问标志的具体信息参考如下：</p>
-<img src="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E8%AE%BF%E9%97%AE%E6%A0%87%E5%BF%97%E7%AC%A6.PNG" class>
+<img src="/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E8%AE%BF%E9%97%AE%E6%A0%87%E5%BF%97%E7%AC%A6.PNG" class>
 
 <p><strong>类索引、父类索引、接口索引集合</strong>:<br>类索引和父类索引都是一个u2类型的数据，而接口索引集合则是一组u2类型的数据的集合。Class文件通过这三个来确定类的继承的关系。类索引用于确定这类的全限定名。父类索引用于确定这类的父类的全限定名。类索引，父类索引，接口索引集合都按照顺序排列在访问标志之后，类索引，父类索引用两个u2类型的索引值表示，各自指向一个为<code>CONSTANT_Class_info</code>类常量描述符。</p>
 <h1 id="虚拟机类加载机制-加载子系统"><a href="#虚拟机类加载机制-加载子系统" class="headerlink" title="虚拟机类加载机制(加载子系统)"></a>虚拟机类加载机制(加载子系统)</h1><p>Java虚拟机把描述类的数据从Class 文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型，这个过程叫做虚拟机的类加载机制。与编译器间需要连接的程序不同，Java语言里面，类的加载、连接和初始化过程都是程序运行器间完成的。Java天生可以动态扩展的语言特性就是依赖运行器期动态加载和动态连接这个特点实现的。</p>
-<img src="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%9E%B6%E6%9E%84.PNG" class>
+<img src="/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%9E%B6%E6%9E%84.PNG" class>
 
 <p>上图展示加载子系统的位置，具体的过程参考如下的图片：</p>
-<img src="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B.png" class>
+<img src="/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B.png" class>
 
 <p>类加载器子系统负责从文件系统或者网络中加载class文件。ClassLoader只负责class文件的加载，是否能运行则由Execution Engine决定。加载的信息放入方法区。</p>
 <h2 id="类加载时机"><a href="#类加载时机" class="headerlink" title="类加载时机"></a>类加载时机</h2><p>一个类型从被加到到虚拟机内存中开始，到卸载出内存为止，它的整个声明周期将会经历加载(<code>loading</code>)、验证(<code>Verification</code>)、准备(<code>Preparation</code>)、解析(<code>Resolution</code>)、初始化(<code>Initialization</code>)、使用(<code>using</code>)和卸载(<code>Unloading</code>)七个阶段。</p>
-<img src="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%91%A8%E6%9C%9F.PNG" class>
+<img src="/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%91%A8%E6%9C%9F.PNG" class>
 
 <p>上图中，加载、验证、准备、初始化和卸载这几个阶段的顺序是完全确定的，类型的加载必须按照这个顺序来按部就班开始，而解析则不一定：解析在某些情况下，可以在初始化之后再开始，这是为了支持Java语言运行时绑定特性。</p>
 <p>对于初始化阶段，《Java虚拟机规范》严格规定了有且只有六种情况必须立即对类进行初始化：</p>
@@ -497,7 +497,7 @@
 <h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>准备阶段是正式为类中定义的变量分配内存被那个设置初始值的阶段，从概念上讲，这些变量所使用的内存都应该在方法区进行分配，但必须注意到方法区本身是一个逻辑上的区域。JDK8之后，类变量则会随着Class对象一起存放在Java堆中。<br>进行内存分配的仅包括类变量，而不包括实例变量，实例变量将会在对象实例化时随着对象一起分配在Java堆中。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> number=<span class="number">123</span>;</span><br></pre></td></tr></table></figure>
 <p>上述代码在准备阶段后只会被初始化为0，此时还未执行任何java方法，而把value赋值为123的<code>putstatic</code>指令是程序被编译后，存放于类构造器<code>&lt;clinit&gt;()</code>方法之中，所以把value赋值为123的动作要到类的初始化阶段才会被执行.而对于final类型的数据，一般在数据准备时直接完成赋值操作。准备阶段，一般情况复制情况如下：</p>
-<img src="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E5%87%86%E5%A4%87%E9%98%B6%E6%AE%B5%E5%A4%8D%E5%88%B6%E6%83%85%E5%86%B5.PNG" class>
+<img src="/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E5%87%86%E5%A4%87%E9%98%B6%E6%AE%B5%E5%A4%8D%E5%88%B6%E6%83%85%E5%86%B5.PNG" class>
 
 <h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><p>解析阶段时Java虚拟机讲常量池内的符号引用替换为直接引用的过程，符号引用在Class文件中它以<code>CONSTANT_Class_info</code>,<code>CONSTANT_Fieldref_info</code>,<code>CONSTANT_Methodref_info</code>等类型的常量出现，那解析阶段中所说的直接引用的关联如下：</p>
 <ul>
@@ -548,7 +548,7 @@
 <p>启动类加载器（<code>Bootstrap Class Loader</code>）:这个类加载器负责加载存放在 <JAVA_HOME>\lib目录，或者被-Xbootclasspath参数所指定的路径中存放的，而且是Java虚拟机能够识别的（按照文件名识别，如rt.jar、tools.jar，名字不符合的类库即使放在lib目录中也不会被加载）类库加载到虚拟机的内存中。启动类加载器无法被Java程序直接引用，用户在编写自定义类加载器时，如果需要把加载请求委派给引导类加载器去处理，那直接使用null代替即可.</JAVA_HOME></p>
 <p>扩展类加载器（<code>Extension Class Loader</code>）:这个类加载器是在类<code>sun.misc.Launcher$ExtClassLoader</code>中以Java代码的形式实现的。它负责加载<code>&lt;JAVA_HOME&gt;\lib\ext</code>目录中，或者被<code>java.ext.dirs</code>系统变量所 指定的路径中所有的类库。由于扩展类加载器是由Java代码实现的，开发者可以直接在程序中使用扩展类加载器来加载Class文件。</p>
 <p>应用程序类加载器（<code>Application Class Loader</code>）：这个类加载器由<code>sun.misc.Launcher$AppClassLoader</code>来实现。由于应用程序类加载器是<code>ClassLoader</code>类中的<code>getSystem- ClassLoader()</code>方法的返回值，所以有些场合中也称它为“系统类加载器”。它负责加载用户类路径 （<code>ClassPath</code>）上所有的类库，开发者同样可以直接在代码中使用这个类加载器。如果应用程序中没有自定义过自己的类加载器，一般情况下这个就是程序中默认的类加载器。</p>
-<img src="/blog/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B.png" class>
+<img src="/2021/04/11/JVM%E5%9F%BA%E7%A1%80/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B.png" class>
 
 <p>双亲委派模型要求除了顶层的启动类加载器外，其余的类加载器都应有自己的父类加载器。不过这里类加载器之间的父子关系一般不是以继承（<code>Inheritance</code>）的关系来实现的，而是通常使用组合（<code>Composition</code>）关系来复用父加载器的代码。</p>
 <p>双亲委派模型的工作过程是：如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加 载这个类，而是把这个请求委派给父类加载器去完成，每一个层次的类加载器都是如此，因此所有的 加载请求最终都应该传送到最顶层的启动类加载器中，只有当父加载器反馈自己无法完成这个加载请 求（它的搜索范围中没有找到所需的类）时，子加载器才会尝试自己去完成加载。</p>
@@ -624,8 +624,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/blog/tags/Java/" rel="tag"># Java</a>
-              <a href="/blog/tags/JVM/" rel="tag"># JVM</a>
+              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/JVM/" rel="tag"># JVM</a>
           </div>
 
         
@@ -634,11 +634,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blog/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/" rel="prev" title="java核心问题">
+    <a href="/2021/04/01/java%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98/" rel="prev" title="java核心问题">
       <i class="fa fa-chevron-left"></i> java核心问题
     </a></div>
       <div class="post-nav-item">
-    <a href="/blog/2021/04/15/scala%E5%9F%BA%E7%A1%80/" rel="next" title="scala基础">
+    <a href="/2021/04/15/scala%E5%9F%BA%E7%A1%80/" rel="next" title="scala基础">
       scala基础 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -706,27 +706,27 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="RockCohen"
-      src="/blog/images/hugo.png">
+      src="/images/hugo.png">
   <p class="site-author-name" itemprop="name">RockCohen</p>
   <div class="site-description" itemprop="description">a programmer</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/blog/archives/">
+          <a href="/archives/">
         
           <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/blog/categories/">
+            <a href="/categories/">
           
         <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/blog/tags/">
+            <a href="/tags/">
           
         <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">标签</span></a>
@@ -786,19 +786,19 @@
   </div>
 
   
-  <script src="/blog/lib/anime.min.js"></script>
-  <script src="/blog/lib/velocity/velocity.min.js"></script>
-  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/blog/js/utils.js"></script>
+<script src="/js/utils.js"></script>
 
-<script src="/blog/js/motion.js"></script>
-
-
-<script src="/blog/js/schemes/pisces.js"></script>
+<script src="/js/motion.js"></script>
 
 
-<script src="/blog/js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
 
 
 

@@ -5,47 +5,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/blog/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rockcohen.gitee.io","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"rockcohen.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="我会发着呆然后微微笑，接着紧紧闭上眼 —《轨迹》">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图论-最小生成树">
-<meta property="og:url" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/index.html">
+<meta property="og:url" content="https://rockcohen.github.io/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/index.html">
 <meta property="og:site_name" content="Rock Cohen">
 <meta property="og:description" content="我会发着呆然后微微笑，接着紧紧闭上眼 —《轨迹》">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/jay.webp">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k1.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k2.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k3.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k4.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k5.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k6.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k7.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/1135-1.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/1135-2.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/jay.webp">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k1.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k2.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k3.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k4.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k5.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k6.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k7.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/1135-1.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/1135-2.png">
 <meta property="article:published_time" content="2021-04-26T06:32:19.000Z">
-<meta property="article:modified_time" content="2021-04-27T09:00:10.760Z">
+<meta property="article:modified_time" content="2021-04-27T09:00:10.000Z">
 <meta property="article:author" content="RockCohen">
 <meta property="article:tag" content="Algorithm">
 <meta property="article:tag" content="DataStruction">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/jay.webp">
+<meta name="twitter:image" content="https://rockcohen.github.io/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/jay.webp">
 
-<link rel="canonical" href="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">
+<link rel="canonical" href="https://rockcohen.github.io/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">
 
 
 <script id="page-configurations">
@@ -107,7 +107,7 @@
 
   <div class="site-meta">
 
-    <a href="/blog/" class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">Rock Cohen</h1>
       <span class="logo-line-after"><i></i></span>
@@ -128,27 +128,27 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
   </ul>
@@ -179,10 +179,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">
+    <link itemprop="mainEntityOfPage" href="https://rockcohen.github.io/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/hugo.png">
+      <meta itemprop="image" content="/images/hugo.png">
       <meta itemprop="name" content="RockCohen">
       <meta itemprop="description" content="a programmer">
     </span>
@@ -217,7 +217,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/DataStruction/" itemprop="url" rel="index"><span itemprop="name">DataStruction</span></a>
+                  <a href="/categories/DataStruction/" itemprop="url" rel="index"><span itemprop="name">DataStruction</span></a>
                 </span>
             </span>
 
@@ -232,7 +232,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <img src="/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/jay.webp" class>
+        <img src="/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/jay.webp" class>
 
 <h1 id="我会发着呆然后微微笑，接着紧紧闭上眼-—《轨迹》"><a href="#我会发着呆然后微微笑，接着紧紧闭上眼-—《轨迹》" class="headerlink" title="我会发着呆然后微微笑，接着紧紧闭上眼 —《轨迹》"></a>我会发着呆然后微微笑，接着紧紧闭上眼 —《轨迹》</h1><span id="more"></span>
 
@@ -248,33 +248,33 @@
 </ul>
 <p>克鲁斯卡尔算法从边的角度出发去构建最小生成树，显然更加适合于边较为少的图。也就是稀疏图。</p>
 <p>算法过程如下，给定连通图：</p>
-<img src="/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k1.png" class>
+<img src="/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k1.png" class>
 
 <p>根据克鲁斯卡尔算法的算法原则，应该呈现如下的边的添加过程。</p>
-<img src="/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k2.png" class>
+<img src="/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k2.png" class>
 
-<img src="/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k3.png" class>
+<img src="/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k3.png" class>
 
-<img src="/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k4.png" class>
+<img src="/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k4.png" class>
 
-<img src="/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k5.png" class>
+<img src="/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k5.png" class>
 
-<img src="/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k6.png" class>
+<img src="/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k6.png" class>
 
-<img src="/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k7.png" class>
+<img src="/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/k7.png" class>
 
 <p>为了联系克鲁斯卡尔算法，精选如下的题目供练习：</p>
 <p>题目一：城市最小联通成本<br>参考：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/connecting-cities-with-minimum-cost/%EF%BC%88%E9%9C%80%E8%A6%81%E4%BC%9A%E5%91%98%EF%BC%89">https://leetcode-cn.com/problems/connecting-cities-with-minimum-cost/（需要会员）</a></p>
 <p>题目描述：</p>
 <p>想象一下你是个城市基建规划者，地图上有 N 座城市，它们按以 1 到 N 的次序编号。<br>给你一些可连接的选项 conections，其中每个选项 conections[i] = [city1, city2, cost] 表示将城市 city1 和城市 city2 连接所要的成本。（连接是双向的，也就是说城市 city1 和城市 city2 相连也同样意味着城市 city2 和城市 city1 相连）。<br>返回使得每对城市间都存在将它们连接在一起的连通路径（可能长度为 1 的）最小成本。该最小成本应该是所用全部连接代价的综合。如果根据已知条件无法完成该项任务，则请你返回 -1。<br>示例 1：</p>
-<img src="/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/1135-1.png" class>
+<img src="/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/1135-1.png" class>
 
 <p>输入：N = 3, conections = [[1,2,5],[1,3,6],[2,3,1]]<br>输出：6<br>解释：</p>
 <ul>
 <li>选出任意 2 条边都可以连接所有城市，我们从中选取成本最小的 2 条。</li>
 </ul>
 <p>示例 2：</p>
-<img src="/blog/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/1135-2.png" class>
+<img src="/2021/04/26/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/1135-2.png" class>
 
 <p>输入:N = 4, conections = [[1,2,3],[3,4,4]]<br>输出：-1</p>
 <p>解释： </p>
@@ -322,8 +322,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/blog/tags/Algorithm/" rel="tag"># Algorithm</a>
-              <a href="/blog/tags/DataStruction/" rel="tag"># DataStruction</a>
+              <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+              <a href="/tags/DataStruction/" rel="tag"># DataStruction</a>
           </div>
 
         
@@ -332,11 +332,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blog/2021/04/25/%E5%9B%BE%E8%AE%BA/" rel="prev" title="图论-搜索算法">
+    <a href="/2021/04/25/%E5%9B%BE%E8%AE%BA/" rel="prev" title="图论-搜索算法">
       <i class="fa fa-chevron-left"></i> 图论-搜索算法
     </a></div>
       <div class="post-nav-item">
-    <a href="/blog/2021/04/26/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="next" title="并查集">
+    <a href="/2021/04/26/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="next" title="并查集">
       并查集 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -404,27 +404,27 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="RockCohen"
-      src="/blog/images/hugo.png">
+      src="/images/hugo.png">
   <p class="site-author-name" itemprop="name">RockCohen</p>
   <div class="site-description" itemprop="description">a programmer</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/blog/archives/">
+          <a href="/archives/">
         
           <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/blog/categories/">
+            <a href="/categories/">
           
         <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/blog/tags/">
+            <a href="/tags/">
           
         <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">标签</span></a>
@@ -484,19 +484,19 @@
   </div>
 
   
-  <script src="/blog/lib/anime.min.js"></script>
-  <script src="/blog/lib/velocity/velocity.min.js"></script>
-  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/blog/js/utils.js"></script>
+<script src="/js/utils.js"></script>
 
-<script src="/blog/js/motion.js"></script>
-
-
-<script src="/blog/js/schemes/pisces.js"></script>
+<script src="/js/motion.js"></script>
 
 
-<script src="/blog/js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
 
 
 

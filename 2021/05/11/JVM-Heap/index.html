@@ -5,62 +5,62 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/blog/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rockcohen.gitee.io","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"rockcohen.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta property="og:type" content="article">
 <meta property="og:title" content="JVM-Heap">
-<meta property="og:url" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/index.html">
+<meta property="og:url" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/index.html">
 <meta property="og:site_name" content="Rock Cohen">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/jay.webp">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200706195127740.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200706200739392.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200706201904057.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200706203419496.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200706203835403.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200706205756045.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200706205821919.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200706205947535.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200706210000461.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200706211652779.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200707075847954.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200707080154039.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200707084208115.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200707084714886.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/JVM-Heapages/image-20200707085232646.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200707085737207.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200707091058346.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.gif">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200707095606813.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200707101511025.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200707101543871.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200707103547712.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200707104253530.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200707203038615.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200707203441718.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/image-20200707205634266.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/jay.webp">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200706195127740.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200706200739392.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200706201904057.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200706203419496.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200706203835403.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200706205756045.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200706205821919.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200706205947535.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200706210000461.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200706211652779.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200707075847954.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200707080154039.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200707084208115.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200707084714886.png">
+<meta property="og:image" content="https://rockcohen.github.io/JVM-Heapages/image-20200707085232646.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200707085737207.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200707091058346.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.gif">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200707095606813.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200707101511025.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200707101543871.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200707103547712.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200707104253530.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200707203038615.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200707203441718.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/image-20200707205634266.png">
 <meta property="article:published_time" content="2021-05-11T03:14:48.000Z">
-<meta property="article:modified_time" content="2021-05-11T15:30:46.794Z">
+<meta property="article:modified_time" content="2021-05-11T15:30:46.000Z">
 <meta property="article:author" content="RockCohen">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="JVM">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/jay.webp">
+<meta name="twitter:image" content="https://rockcohen.github.io/2021/05/11/JVM-Heap/jay.webp">
 
-<link rel="canonical" href="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/">
+<link rel="canonical" href="https://rockcohen.github.io/2021/05/11/JVM-Heap/">
 
 
 <script id="page-configurations">
@@ -122,7 +122,7 @@
 
   <div class="site-meta">
 
-    <a href="/blog/" class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">Rock Cohen</h1>
       <span class="logo-line-after"><i></i></span>
@@ -143,27 +143,27 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
   </ul>
@@ -194,10 +194,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/05/11/JVM-Heap/">
+    <link itemprop="mainEntityOfPage" href="https://rockcohen.github.io/2021/05/11/JVM-Heap/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/hugo.png">
+      <meta itemprop="image" content="/images/hugo.png">
       <meta itemprop="name" content="RockCohen">
       <meta itemprop="description" content="a programmer">
     </span>
@@ -226,7 +226,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a>
+                  <a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a>
                 </span>
             </span>
 
@@ -241,12 +241,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <img src="/blog/2021/05/11/JVM-Heap/jay.webp" class>
+        <img src="/2021/05/11/JVM-Heap/jay.webp" class>
 
 <span id="more"></span>
 
 <h1 id="一件黑色毛衣，两个人的回忆-—-《黑色毛衣》"><a href="#一件黑色毛衣，两个人的回忆-—-《黑色毛衣》" class="headerlink" title="一件黑色毛衣，两个人的回忆 — 《黑色毛衣》"></a>一件黑色毛衣，两个人的回忆 — 《黑色毛衣》</h1><h1 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h1><h2 id="堆的核心概念"><a href="#堆的核心概念" class="headerlink" title="堆的核心概念"></a>堆的核心概念</h2><p>堆针对一个JVM进程来说是唯一的，也就是一个进程只有一个JVM，但是进程包含多个线程，他们是共享同一堆空间的。</p>
-<img src="/blog/2021/05/11/JVM-Heap/image-20200706195127740.png" class title="image-20200706195127740">
+<img src="/2021/05/11/JVM-Heap/image-20200706195127740.png" class title="image-20200706195127740">
 
 <p>一个JVM实例只存在一个堆内存，堆也是Java内存管理的核心区域。</p>
 <p>Java堆区在JVM启动的时候即被创建，其空间大小也就确定了。是JVM管理的最大一块内存空间。</p>
@@ -260,7 +260,7 @@
 <p>-Xmx10m：最大堆内存</p>
 </blockquote>
 <p>下图就是使用：Java VisualVM查看堆空间的内容，通过 jdk bin提供的插件</p>
-<img src="/blog/2021/05/11/JVM-Heap/image-20200706200739392.png" class title="image-20200706200739392">
+<img src="/2021/05/11/JVM-Heap/image-20200706200739392.png" class title="image-20200706200739392">
 
 <p>《Java虚拟机规范》中对Java堆的描述是：所有的对象实例以及数组都应当在运行时分配在堆上。（The heap is the run-time data area from which memory for all class instances and arrays is allocated）</p>
 <p>我要说的是：“几乎”所有的对象实例都在这里分配内存。—从实际使用角度看的。</p>
@@ -274,7 +274,7 @@
 <li>如果堆中对象马上被回收，那么用户线程就会收到影响，因为有stop the word</li>
 </ul>
 <p>堆，是GC（Garbage Collection，垃圾收集器）执行垃圾回收的重点区域。</p>
-<img src="/blog/2021/05/11/JVM-Heap/image-20200706201904057.png" class title="image-20200706201904057">
+<img src="/2021/05/11/JVM-Heap/image-20200706201904057.png" class title="image-20200706201904057">
 
 <h3 id="堆内存细分"><a href="#堆内存细分" class="headerlink" title="堆内存细分"></a>堆内存细分</h3><p>Java 7及之前堆内存逻辑上分为三部分：新生区+养老区+永久区</p>
 <ul>
@@ -289,10 +289,10 @@
 <li>Meta Space  元空间   Meta</li>
 </ul>
 <p>约定：新生区 -&gt; 新生代 -&gt; 年轻代   、  养老区 -&gt; 老年区 -&gt; 老年代、 永久区 -&gt; 永久代</p>
-<img src="/blog/2021/05/11/JVM-Heap/image-20200706203419496.png" class title="image-20200706203419496">
+<img src="/2021/05/11/JVM-Heap/image-20200706203419496.png" class title="image-20200706203419496">
 
 <p>堆空间内部结构，JDK1.8之前从永久代  替换成 元空间</p>
-<img src="/blog/2021/05/11/JVM-Heap/image-20200706203835403.png" class title="image-20200706203835403">
+<img src="/2021/05/11/JVM-Heap/image-20200706203835403.png" class title="image-20200706203835403">
 
 
 
@@ -320,15 +320,15 @@
 <p>如何查看堆内存的内存分配情况</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jps  -&gt;  jstat -gc 进程id</span><br></pre></td></tr></table></figure>
 
-<img src="/blog/2021/05/11/JVM-Heap/image-20200706205756045.png" class title="image-20200706205756045">
+<img src="/2021/05/11/JVM-Heap/image-20200706205756045.png" class title="image-20200706205756045">
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-XX:+PrintGCDetails</span><br></pre></td></tr></table></figure>
 
-<img src="/blog/2021/05/11/JVM-Heap/image-20200706205821919.png" class title="image-20200706205821919">
+<img src="/2021/05/11/JVM-Heap/image-20200706205821919.png" class title="image-20200706205821919">
 
-<h3 id="OutOfMemory举例"><a href="#OutOfMemory举例" class="headerlink" title="OutOfMemory举例"></a>OutOfMemory举例</h3><img src="/blog/2021/05/11/JVM-Heap/image-20200706205947535.png" class title="image-20200706205947535">
+<h3 id="OutOfMemory举例"><a href="#OutOfMemory举例" class="headerlink" title="OutOfMemory举例"></a>OutOfMemory举例</h3><img src="/2021/05/11/JVM-Heap/image-20200706205947535.png" class title="image-20200706205947535">
 
-<img src="/blog/2021/05/11/JVM-Heap/image-20200706210000461.png" class title="image-20200706210000461">
+<img src="/2021/05/11/JVM-Heap/image-20200706210000461.png" class title="image-20200706210000461">
 
 <p>我们简单的写一个OOM例子</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * OOM测试</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: 陌溪</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span>: 2020-07-06-21:11</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OOMTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">            list.add(<span class="number">999999999</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -337,7 +337,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-Xms10m -Xmx:10m</span><br></pre></td></tr></table></figure>
 
 <p>运行后，就出现OOM了，那么我们可以通过 VisualVM这个工具查看具体是什么参数造成的OOM</p>
-<img src="/blog/2021/05/11/JVM-Heap/image-20200706211652779.png" class title="image-20200706211652779">
+<img src="/2021/05/11/JVM-Heap/image-20200706211652779.png" class title="image-20200706211652779">
 
 <h2 id="年轻代与老年代"><a href="#年轻代与老年代" class="headerlink" title="年轻代与老年代"></a>年轻代与老年代</h2><p>存储在JVM中的Java对象可以被划分为两类：</p>
 <ul>
@@ -349,10 +349,10 @@
 </ul>
 <p>Java堆区进一步细分的话，可以划分为年轻代（YoungGen）和老年代（oldGen）</p>
 <p>其中年轻代又可以划分为Eden空间、Survivor0空间和Survivor1空间（有时也叫做from区、to区）</p>
-<img src="/blog/2021/05/11/JVM-Heap/image-20200707075847954.png" class title="image-20200707075847954">
+<img src="/2021/05/11/JVM-Heap/image-20200707075847954.png" class title="image-20200707075847954">
 
 <p>下面这参数开发中一般不会调：</p>
-<img src="/blog/2021/05/11/JVM-Heap/image-20200707080154039.png" class title="image-20200707080154039">
+<img src="/2021/05/11/JVM-Heap/image-20200707080154039.png" class title="image-20200707080154039">
 
 <ul>
 <li>Eden：From：to -&gt;  8:1:1</li>
@@ -375,7 +375,7 @@
 <p>可以使用选项”-Xmn”设置新生代最大内存大小</p>
 <p>这个参数一般使用默认值就可以了。</p>
 </blockquote>
-<img src="/blog/2021/05/11/JVM-Heap/image-20200707084208115.png" class title="image-20200707084208115">
+<img src="/2021/05/11/JVM-Heap/image-20200707084208115.png" class title="image-20200707084208115">
 
 <h2 id="图解对象分配过程"><a href="#图解对象分配过程" class="headerlink" title="图解对象分配过程"></a>图解对象分配过程</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>为新对象分配内存是一件非常严谨和复杂的任务，JM的设计者们不仅需要考虑内存如何分配、在哪里分配等问题，并且由于内存分配算法与内存回收算法密切相关，所以还需要考虑GC执行完内存回收后是否会在内存空间中产生内存碎片。</p>
 <ul>
@@ -390,13 +390,13 @@
 </ul>
 <p>可以设置参数：-Xx:MaxTenuringThreshold= N进行设置</p>
 <h3 id="图解过程"><a href="#图解过程" class="headerlink" title="图解过程"></a>图解过程</h3><p>我们创建的对象，一般都是存放在Eden区的，当我们Eden区满了后，就会触发GC操作，一般被称为 YGC / Minor GC操作</p>
-<img src="/blog/2021/05/11/JVM-Heap/image-20200707084714886.png" class title="image-20200707084714886">
+<img src="/2021/05/11/JVM-Heap/image-20200707084714886.png" class title="image-20200707084714886">
 
 <p>当我们进行一次垃圾收集后，红色的将会被回收，而绿色的还会被占用着，存放在S0(Survivor From)区。同时我们给每个对象设置了一个年龄计数器，一次回收后就是1。</p>
 <p>同时Eden区继续存放对象，当Eden区再次存满的时候，又会触发一个MinorGC操作，此时GC将会把 Eden和Survivor From中的对象 进行一次收集，把存活的对象放到 Survivor To区，同时让年龄 + 1</p>
-<p><img src="/blog/JVM-Heapages/image-20200707085232646.png" alt="image-20200707085232646"></p>
+<p><img src="/JVM-Heapages/image-20200707085232646.png" alt="image-20200707085232646"></p>
 <p>我们继续不断的进行对象生成 和 垃圾回收，当Survivor中的对象的年龄达到15的时候，将会触发一次 Promotion晋升的操作，也就是将年轻代中的对象  晋升到 老年代中</p>
-<img src="/blog/2021/05/11/JVM-Heap/image-20200707085737207.png" class title="image-20200707085737207">
+<img src="/2021/05/11/JVM-Heap/image-20200707085737207.png" class title="image-20200707085737207">
 
 <h3 id="思考：幸存区区满了后？"><a href="#思考：幸存区区满了后？" class="headerlink" title="思考：幸存区区满了后？"></a>思考：幸存区区满了后？</h3><p>特别注意，在Eden区满了的时候，才会触发MinorGC，而幸存者区满了后，不会触发MinorGC操作</p>
 <p>如果Survivor区满了后，将会触发一些特殊的规则，也就是可能直接晋升老年代</p>
@@ -404,7 +404,7 @@
 <p>举例：以当兵为例，正常人的晋升可能是 ：  新兵 -&gt; 班长 -&gt; 排长 -&gt; 连长</p>
 <p>但是也有可能有些人因为做了非常大的贡献，直接从  新兵 -&gt; 排长</p>
 </blockquote>
-<h3 id="对象分配的特殊情况"><a href="#对象分配的特殊情况" class="headerlink" title="对象分配的特殊情况"></a>对象分配的特殊情况</h3><img src="/blog/2021/05/11/JVM-Heap/image-20200707091058346.png" class title="image-20200707091058346">
+<h3 id="对象分配的特殊情况"><a href="#对象分配的特殊情况" class="headerlink" title="对象分配的特殊情况"></a>对象分配的特殊情况</h3><img src="/2021/05/11/JVM-Heap/image-20200707091058346.png" class title="image-20200707091058346">
 
 <h3 id="代码演示对象分配过程"><a href="#代码演示对象分配过程" class="headerlink" title="代码演示对象分配过程"></a>代码演示对象分配过程</h3><p>我们不断的创建大对象</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 代码演示对象创建过程</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: 陌溪</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span>: 2020-07-07-9:16</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeapInstanceTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">byte</span> [] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="keyword">new</span> Random().nextInt(<span class="number">1024</span> * <span class="number">200</span>)];</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        ArrayList&lt;HeapInstanceTest&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            list.add(<span class="keyword">new</span> HeapInstanceTest());</span><br><span class="line">            Thread.sleep(<span class="number">10</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -416,7 +416,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jvisualvm</span><br></pre></td></tr></table></figure>
 
 <p>然后通过执行上面代码，通过VisualGC进行动态化查看</p>
-<img src="/blog/2021/05/11/JVM-Heap/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.gif" class title="垃圾回收">
+<img src="/2021/05/11/JVM-Heap/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.gif" class title="垃圾回收">
 
 <p>最终，在老年代和新生代都满了，就出现OOM</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; java.lang.OutOfMemoryError: Java heap space</span><br><span class="line">	at com.atguigu.java.chapter08.HeapInstanceTest.&lt;init&gt;(HeapInstanceTest.java:13)</span><br><span class="line">	at com.atguigu.java.chapter08.HeapInstanceTest.main(HeapInstanceTest.java:17)</span><br></pre></td></tr></table></figure>
@@ -466,7 +466,7 @@
 <blockquote>
 <p>STW：stop the word</p>
 </blockquote>
-<img src="/blog/2021/05/11/JVM-Heap/image-20200707095606813.png" class title="image-20200707095606813">
+<img src="/2021/05/11/JVM-Heap/image-20200707095606813.png" class title="image-20200707095606813">
 
 <h3 id="Major-GC"><a href="#Major-GC" class="headerlink" title="Major GC"></a>Major GC</h3><p>指发生在老年代的GC，对象从老年代消失时，我们说 “Major Gc” 或 “Full GC” 发生了</p>
 <p>出现了MajorGc，经常会伴随至少一次的Minor GC（但非绝对的，在Paralle1 Scavenge收集器的收集策略里就有直接进行MajorGC的策略选择过程）</p>
@@ -497,10 +497,10 @@
 <blockquote>
 <p>新生代：有Eden、两块大小相同的survivor（又称为from/to，s0/s1）构成，to总为空。<br>老年代：存放新生代中经历多次GC仍然存活的对象。</p>
 </blockquote>
-<img src="/blog/2021/05/11/JVM-Heap/image-20200707101511025.png" class title="image-20200707101511025">
+<img src="/2021/05/11/JVM-Heap/image-20200707101511025.png" class title="image-20200707101511025">
 
 <p>其实不分代完全可以，分代的唯一理由就是优化GC性能。如果没有分代，那所有的对象都在一块，就如同把一个学校的人都关在一个教室。GC的时候要找到哪些对象没用，这样就会对堆的所有区域进行扫描。而很多对象都是朝生夕死的，如果分代的话，把新创建的对象放到某一地方，当GC的时候先把这块存储“朝生夕死”对象的区域进行回收，这样就会腾出很大的空间出来。</p>
-<img src="/blog/2021/05/11/JVM-Heap/image-20200707101543871.png" class title="image-20200707101543871">
+<img src="/2021/05/11/JVM-Heap/image-20200707101543871.png" class title="image-20200707101543871">
 
 
 
@@ -534,14 +534,14 @@
 <h3 id="什么是TLAB"><a href="#什么是TLAB" class="headerlink" title="什么是TLAB"></a>什么是TLAB</h3><p>从内存模型而不是垃圾收集的角度，对Eden区域继续进行划分，JVM为每个线程分配了一个私有缓存区域，它包含在Eden空间内。</p>
 <p>多线程同时分配内存时，使用TLAB可以避免一系列的非线程安全问题，同时还能够提升内存分配的吞吐量，因此我们可以将这种内存分配方式称之为快速分配策略。</p>
 <p>据我所知所有OpenJDK衍生出来的JVM都提供了TLAB的设计。</p>
-<img src="/blog/2021/05/11/JVM-Heap/image-20200707103547712.png" class title="image-20200707103547712">
+<img src="/2021/05/11/JVM-Heap/image-20200707103547712.png" class title="image-20200707103547712">
 
 <p>尽管不是所有的对象实例都能够在TLAB中成功分配内存，但JVM确实是将TLAB作为内存分配的首选。</p>
 <p>在程序中，开发人员可以通过选项“-Xx:UseTLAB”设置是否开启TLAB空间。</p>
 <p>默认情况下，TLAB空间的内存非常小，仅占有整个Eden空间的1，当然我们可以通过选项“-Xx:TLABWasteTargetPercent”设置TLAB空间所占用Eden空间的百分比大小。</p>
 <p>一旦对象在TLAB空间分配内存失败时，JVM就会尝试着通过使用加锁机制确保数据操作的原子性，从而直接在Eden空间中分配内存。</p>
 <h3 id="TLAB分配过程"><a href="#TLAB分配过程" class="headerlink" title="TLAB分配过程"></a>TLAB分配过程</h3><p>对象首先是通过TLAB开辟空间，如果不能放入，那么需要通过Eden来进行分配</p>
-<img src="/blog/2021/05/11/JVM-Heap/image-20200707104253530.png" class title="image-20200707104253530">
+<img src="/2021/05/11/JVM-Heap/image-20200707104253530.png" class title="image-20200707104253530">
 
 <h2 id="小结：堆空间的参数设置"><a href="#小结：堆空间的参数设置" class="headerlink" title="小结：堆空间的参数设置"></a>小结：堆空间的参数设置</h2><ul>
 <li><p>-XX：+PrintFlagsInitial：查看所有的参数的默认初始值</p>
@@ -630,7 +630,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">花费的时间为：664 ms</span><br></pre></td></tr></table></figure>
 
 <p>然后查看内存的情况，发现有大量的User存储在堆中</p>
-<img src="/blog/2021/05/11/JVM-Heap/image-20200707203038615.png" class title="image-20200707203038615">
+<img src="/2021/05/11/JVM-Heap/image-20200707203038615.png" class title="image-20200707203038615">
 
 
 
@@ -641,7 +641,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">花费的时间为：5 ms</span><br></pre></td></tr></table></figure>
 
 <p>在看内存情况，我们发现只有很少的User对象，说明User未发生逃逸，因为它存储在栈中，随着栈的销毁而消失</p>
-<img src="/blog/2021/05/11/JVM-Heap/image-20200707203441718.png" class title="image-20200707203441718">
+<img src="/2021/05/11/JVM-Heap/image-20200707203441718.png" class title="image-20200707203441718">
 
 
 
@@ -654,7 +654,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Object hellis = <span class="keyword">new</span> Object();</span><br><span class="line">	System.out.println(hellis);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>我们将其转换成字节码</p>
-<img src="/blog/2021/05/11/JVM-Heap/image-20200707205634266.png" class title="image-20200707205634266">
+<img src="/2021/05/11/JVM-Heap/image-20200707205634266.png" class title="image-20200707205634266">
 
 <h3 id="分离对象和标量替换"><a href="#分离对象和标量替换" class="headerlink" title="分离对象和标量替换"></a>分离对象和标量替换</h3><p>标量（scalar）是指一个无法再分解成更小的数据的数据。Java中的原始数据类型就是标量。</p>
 <p>相对的，那些还可以分解的数据叫做聚合量（Aggregate），Java中的对象就是聚合量，因为他可以分解成其他聚合量和标量。</p>
@@ -692,8 +692,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/blog/tags/Java/" rel="tag"># Java</a>
-              <a href="/blog/tags/JVM/" rel="tag"># JVM</a>
+              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/JVM/" rel="tag"># JVM</a>
           </div>
 
         
@@ -702,11 +702,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blog/2021/05/10/Dubbo/" rel="prev" title="Dubbo 基础">
+    <a href="/2021/05/10/Dubbo/" rel="prev" title="Dubbo 基础">
       <i class="fa fa-chevron-left"></i> Dubbo 基础
     </a></div>
       <div class="post-nav-item">
-    <a href="/blog/2021/05/11/spring-annotation/" rel="next" title="spring-annotation">
+    <a href="/2021/05/11/spring-annotation/" rel="next" title="spring-annotation">
       spring-annotation <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -774,27 +774,27 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="RockCohen"
-      src="/blog/images/hugo.png">
+      src="/images/hugo.png">
   <p class="site-author-name" itemprop="name">RockCohen</p>
   <div class="site-description" itemprop="description">a programmer</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/blog/archives/">
+          <a href="/archives/">
         
           <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/blog/categories/">
+            <a href="/categories/">
           
         <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/blog/tags/">
+            <a href="/tags/">
           
         <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">标签</span></a>
@@ -854,19 +854,19 @@
   </div>
 
   
-  <script src="/blog/lib/anime.min.js"></script>
-  <script src="/blog/lib/velocity/velocity.min.js"></script>
-  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/blog/js/utils.js"></script>
+<script src="/js/utils.js"></script>
 
-<script src="/blog/js/motion.js"></script>
-
-
-<script src="/blog/js/schemes/pisces.js"></script>
+<script src="/js/motion.js"></script>
 
 
-<script src="/blog/js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
 
 
 

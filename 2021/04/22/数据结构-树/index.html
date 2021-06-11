@@ -5,50 +5,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/blog/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rockcohen.gitee.io","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"rockcohen.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="我给你的爱写在西元前，深埋在美索不达米亚平原—《爱在西元前》">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构-树">
-<meta property="og:url" content="https://rockcohen.gitee.io/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/index.html">
+<meta property="og:url" content="https://rockcohen.github.io/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/index.html">
 <meta property="og:site_name" content="Rock Cohen">
 <meta property="og:description" content="我给你的爱写在西元前，深埋在美索不达米亚平原—《爱在西元前》">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/jay.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/rr.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/rr.gif">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/ll.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/ll.gif">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/lr.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/lr.gif">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/rl.png">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/rl.gif">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/%E7%BA%A2%E9%BB%91%E6%A0%91.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/TNIL.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/NoTIL.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/%E6%97%8B%E8%BD%AC.jpg">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/jay.PNG">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/rr.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/rr.gif">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/ll.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/ll.gif">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/lr.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/lr.gif">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/rl.png">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/rl.gif">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/%E7%BA%A2%E9%BB%91%E6%A0%91.PNG">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/TNIL.PNG">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/NoTIL.PNG">
+<meta property="og:image" content="https://rockcohen.github.io/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/%E6%97%8B%E8%BD%AC.jpg">
 <meta property="article:published_time" content="2021-04-22T05:24:34.000Z">
-<meta property="article:modified_time" content="2021-04-25T04:57:21.133Z">
+<meta property="article:modified_time" content="2021-04-25T04:57:21.000Z">
 <meta property="article:author" content="RockCohen">
 <meta property="article:tag" content="Algorithm">
 <meta property="article:tag" content="DataStruction">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://rockcohen.gitee.io/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/jay.PNG">
+<meta name="twitter:image" content="https://rockcohen.github.io/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/jay.PNG">
 
-<link rel="canonical" href="https://rockcohen.gitee.io/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/">
+<link rel="canonical" href="https://rockcohen.github.io/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/">
 
 
 <script id="page-configurations">
@@ -110,7 +110,7 @@
 
   <div class="site-meta">
 
-    <a href="/blog/" class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">Rock Cohen</h1>
       <span class="logo-line-after"><i></i></span>
@@ -131,27 +131,27 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
   </ul>
@@ -182,10 +182,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/">
+    <link itemprop="mainEntityOfPage" href="https://rockcohen.github.io/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/hugo.png">
+      <meta itemprop="image" content="/images/hugo.png">
       <meta itemprop="name" content="RockCohen">
       <meta itemprop="description" content="a programmer">
     </span>
@@ -220,7 +220,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/DataStruction/" itemprop="url" rel="index"><span itemprop="name">DataStruction</span></a>
+                  <a href="/categories/DataStruction/" itemprop="url" rel="index"><span itemprop="name">DataStruction</span></a>
                 </span>
             </span>
 
@@ -235,7 +235,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <img src="/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/jay.PNG" class>
+        <img src="/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/jay.PNG" class>
 
 <h1 id="我给你的爱写在西元前，深埋在美索不达米亚平原—《爱在西元前》"><a href="#我给你的爱写在西元前，深埋在美索不达米亚平原—《爱在西元前》" class="headerlink" title="我给你的爱写在西元前，深埋在美索不达米亚平原—《爱在西元前》"></a>我给你的爱写在西元前，深埋在美索不达米亚平原—《爱在西元前》</h1><span id="more"></span>
 <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>树属于数据结构中的<strong>链式结构</strong>。在基本的二叉树的概念之上，引申出<strong>满二叉树</strong>，<strong>完全二叉树</strong>，<strong>二叉搜索树</strong>，<strong>平衡二叉树(AVL)<strong>，</strong>线索二叉树</strong>都是重要的知识点。</p>
@@ -254,24 +254,24 @@
 <li>右左旋转：用于平衡情况，对失衡节点u失衡方向的右子节点ur右旋，再对失衡节点u左旋</li>
 </ul>
 <p>下面将分别详细呈现：</p>
-<h2 id="RR-插入节点是失衡节点u右子节点ur上的右子树节点"><a href="#RR-插入节点是失衡节点u右子节点ur上的右子树节点" class="headerlink" title="RR - 插入节点是失衡节点u右子节点ur上的右子树节点"></a>RR - 插入节点是失衡节点u右子节点ur上的右子树节点</h2><img src="/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/rr.png" class>
+<h2 id="RR-插入节点是失衡节点u右子节点ur上的右子树节点"><a href="#RR-插入节点是失衡节点u右子节点ur上的右子树节点" class="headerlink" title="RR - 插入节点是失衡节点u右子节点ur上的右子树节点"></a>RR - 插入节点是失衡节点u右子节点ur上的右子树节点</h2><img src="/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/rr.png" class>
 
-<img src="/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/rr.gif" class>
+<img src="/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/rr.gif" class>
 
 <p>方法总结：左旋左靠</p>
-<h2 id="LL-插入节点是失衡节点u左子节点ul上的左子树节点"><a href="#LL-插入节点是失衡节点u左子节点ul上的左子树节点" class="headerlink" title="LL - 插入节点是失衡节点u左子节点ul上的左子树节点"></a>LL - 插入节点是失衡节点u左子节点ul上的左子树节点</h2><img src="/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/ll.png" class>
+<h2 id="LL-插入节点是失衡节点u左子节点ul上的左子树节点"><a href="#LL-插入节点是失衡节点u左子节点ul上的左子树节点" class="headerlink" title="LL - 插入节点是失衡节点u左子节点ul上的左子树节点"></a>LL - 插入节点是失衡节点u左子节点ul上的左子树节点</h2><img src="/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/ll.png" class>
 
-<img src="/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/ll.gif" class>
+<img src="/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/ll.gif" class>
 
 <p>方法总结：右旋右靠。失衡节点成为其左孩子的右孩子，失衡节点的原左孩子的右孩子作为失衡节点的左孩子。</p>
-<h2 id="LR-插入节点是失衡节点u左子节点ul上的右子树节点"><a href="#LR-插入节点是失衡节点u左子节点ul上的右子树节点" class="headerlink" title="LR - 插入节点是失衡节点u左子节点ul上的右子树节点"></a>LR - 插入节点是失衡节点u左子节点ul上的右子树节点</h2><img src="/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/lr.png" class>
+<h2 id="LR-插入节点是失衡节点u左子节点ul上的右子树节点"><a href="#LR-插入节点是失衡节点u左子节点ul上的右子树节点" class="headerlink" title="LR - 插入节点是失衡节点u左子节点ul上的右子树节点"></a>LR - 插入节点是失衡节点u左子节点ul上的右子树节点</h2><img src="/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/lr.png" class>
 
-<img src="/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/lr.gif" class>
+<img src="/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/lr.gif" class>
 
 <p>方法总结：左旋右旋</p>
-<h2 id="RL-插入节点是失衡节点u右子节点ur上的左子树节点"><a href="#RL-插入节点是失衡节点u右子节点ur上的左子树节点" class="headerlink" title="RL - 插入节点是失衡节点u右子节点ur上的左子树节点"></a>RL - 插入节点是失衡节点u右子节点ur上的左子树节点</h2><img src="/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/rl.png" class>
+<h2 id="RL-插入节点是失衡节点u右子节点ur上的左子树节点"><a href="#RL-插入节点是失衡节点u右子节点ur上的左子树节点" class="headerlink" title="RL - 插入节点是失衡节点u右子节点ur上的左子树节点"></a>RL - 插入节点是失衡节点u右子节点ur上的左子树节点</h2><img src="/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/rl.png" class>
 
-<img src="/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/rl.gif" class>
+<img src="/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/rl.gif" class>
 
 <p>方法总结：右旋左旋</p>
 <h1 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h1><p>红黑树是一棵二叉搜索树，它在每个结点上增加了一个存储位来表示结点的颜色，可以是<code>RED</code>或<code>BLACK</code>。通过对任何一条从根到叶子的简单路径上各个结点的颜色进行约束，红黑树确保没有一条路径会比其他路径长出 2 倍，因而是近似于平衡的。</p>
@@ -285,20 +285,20 @@
 <li>对每个结点，从该结点到其所有后代叶结点的简单路径上，均包含相同数目的黑色结点。</li>
 </ol>
 <p>下面展示一个红黑树的例子：</p>
-<img src="/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/%E7%BA%A2%E9%BB%91%E6%A0%91.PNG" class>
+<img src="/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/%E7%BA%A2%E9%BB%91%E6%A0%91.PNG" class>
 
 <p>为了便于处理红黑树代码中的边界条件，使用一个哨兵来代表 NIL（参见 10.2 节）。对于一棵红黑树 T，哨兵 T.nil 是一个与树中普通结点有相同属性的对象。它的 color 属性为 BLACK，而其他属性 p、left、right 和key 可以设为任意值。如图，所有指向 NIL 的指针都用指向哨兵 T. nil的指针替换。</p>
-<img src="/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/TNIL.PNG" class>
+<img src="/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/TNIL.PNG" class>
 
 <p>忽略NIL得到如下的图形：</p>
-<img src="/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/NoTIL.PNG" class>
+<img src="/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/NoTIL.PNG" class>
 
 <p>定义：从任意节点x出发到一个叶节点的黑色节点个数叫做该点的黑高(<code>black-height</code>,<code>BH(x)</code>).</p>
 <p>根据性质5，<strong>红黑树的黑高为根节点的黑高</strong>。</p>
 <p>引理 13.1 一棵有n个内部结点的红黑树的高度至多为2lg（n＋1）。</p>
 <p><strong>旋转</strong>：</p>
 <p>红黑树在添加删除元素的过程中，可能会破坏红黑树的性质，通过<strong>旋转</strong>的方式可以保证红黑树的性质。</p>
-<img src="/blog/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/%E6%97%8B%E8%BD%AC.jpg" class>
+<img src="/2021/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/%E6%97%8B%E8%BD%AC.jpg" class>
 
 <p>下面给出左旋的伪代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">LEFT-ROTATE(T, x)  </span><br><span class="line"></span><br><span class="line">y ← right[x]            <span class="comment">// 前提：这里假设x的右孩子为y。下面开始正式操作</span></span><br><span class="line"></span><br><span class="line">right[x] ← left[y]      <span class="comment">// 将 “y的左孩子” 设为 “x的右孩子”，即 将β设为x的右孩子</span></span><br><span class="line"></span><br><span class="line">p[left[y]] ← x          <span class="comment">// 将 “x” 设为 “y的左孩子的父亲”，即 将β的父亲设为x</span></span><br><span class="line"></span><br><span class="line">p[y] ← p[x]             <span class="comment">// 将 “x的父亲” 设为 “y的父亲”</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> p[x] = nil[T]       </span><br><span class="line"></span><br><span class="line">    then root[T] ← y                 <span class="comment">// 情况1：如果 “x的父亲” 是空节点，则将y设为根节点</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> x = left[p[x]]  </span><br><span class="line"></span><br><span class="line">    then left[p[x]] ← y    <span class="comment">// 情况2：如果 x是它父节点的左孩子，则将y设为“x的父节点的左孩子”</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span> right[p[x]] ← y   <span class="comment">// 情况3：(x是它父节点的右孩子) 将y设为“x的父节点的右孩子”</span></span><br><span class="line"></span><br><span class="line">left[y] ← x             <span class="comment">// 将 “x” 设为 “y的左孩子”</span></span><br><span class="line"></span><br><span class="line">p[x] ← y                <span class="comment">// 将 “x的父节点” 设为 “y”</span></span><br></pre></td></tr></table></figure>
@@ -336,8 +336,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/blog/tags/Algorithm/" rel="tag"># Algorithm</a>
-              <a href="/blog/tags/DataStruction/" rel="tag"># DataStruction</a>
+              <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+              <a href="/tags/DataStruction/" rel="tag"># DataStruction</a>
           </div>
 
         
@@ -346,11 +346,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blog/2021/04/21/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A0%86/" rel="prev" title="堆(Heap)">
+    <a href="/2021/04/21/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A0%86/" rel="prev" title="堆(Heap)">
       <i class="fa fa-chevron-left"></i> 堆(Heap)
     </a></div>
       <div class="post-nav-item">
-    <a href="/blog/2021/04/24/B%E6%A0%91/" rel="next" title="B树">
+    <a href="/2021/04/24/B%E6%A0%91/" rel="next" title="B树">
       B树 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -418,27 +418,27 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="RockCohen"
-      src="/blog/images/hugo.png">
+      src="/images/hugo.png">
   <p class="site-author-name" itemprop="name">RockCohen</p>
   <div class="site-description" itemprop="description">a programmer</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/blog/archives/">
+          <a href="/archives/">
         
           <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/blog/categories/">
+            <a href="/categories/">
           
         <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/blog/tags/">
+            <a href="/tags/">
           
         <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">标签</span></a>
@@ -498,19 +498,19 @@
   </div>
 
   
-  <script src="/blog/lib/anime.min.js"></script>
-  <script src="/blog/lib/velocity/velocity.min.js"></script>
-  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/blog/js/utils.js"></script>
+<script src="/js/utils.js"></script>
 
-<script src="/blog/js/motion.js"></script>
-
-
-<script src="/blog/js/schemes/pisces.js"></script>
+<script src="/js/motion.js"></script>
 
 
-<script src="/blog/js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
 
 
 

@@ -5,47 +5,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/blog/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rockcohen.gitee.io","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"rockcohen.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="英特纳雄耐尔一定要实现">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Modern OS">
-<meta property="og:url" content="https://rockcohen.gitee.io/blog/2021/05/19/OS/index.html">
+<meta property="og:url" content="https://rockcohen.github.io/2021/05/19/OS/index.html">
 <meta property="og:site_name" content="Rock Cohen">
 <meta property="og:description" content="英特纳雄耐尔一定要实现">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/19/OS/cohen.jpg">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/19/OS/MMU%E5%8A%9F%E8%83%BD%E4%B8%8E%E4%BD%8D%E7%BD%AE.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/19/OS/%E9%A1%B5%E8%A1%A8%E7%BB%93%E6%9E%84.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/19/OS/TLB%E5%88%86%E9%A1%B5%E5%8A%A0%E9%80%9F%E8%A1%A8.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/19/OS/%E6%97%B6%E9%92%9F%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/19/OS/%E5%B7%A5%E4%BD%9C%E9%9B%86%E6%97%B6%E9%92%9F%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/19/OS/%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/19/OS/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%B8%83%E5%B1%80.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/19/OS/%E7%AC%AC%E4%B8%80%E7%B1%BB%E4%B8%8E%E7%AC%AC%E4%BA%8C%E7%B1%BB%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AE%A1%E7%90%86%E7%A8%8B%E5%BA%8F.PNG">
-<meta property="og:image" content="https://rockcohen.gitee.io/blog/2021/05/19/OS/%E8%99%9A%E6%8B%9F%E5%86%85%E6%A0%B8%E6%80%81%E6%9E%B6%E6%9E%84%E5%9B%BE.PNG">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/19/OS/cohen.jpg">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/19/OS/MMU%E5%8A%9F%E8%83%BD%E4%B8%8E%E4%BD%8D%E7%BD%AE.PNG">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/19/OS/%E9%A1%B5%E8%A1%A8%E7%BB%93%E6%9E%84.PNG">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/19/OS/TLB%E5%88%86%E9%A1%B5%E5%8A%A0%E9%80%9F%E8%A1%A8.PNG">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/19/OS/%E6%97%B6%E9%92%9F%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95.PNG">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/19/OS/%E5%B7%A5%E4%BD%9C%E9%9B%86%E6%97%B6%E9%92%9F%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95.PNG">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/19/OS/%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93.PNG">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/19/OS/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%B8%83%E5%B1%80.PNG">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/19/OS/%E7%AC%AC%E4%B8%80%E7%B1%BB%E4%B8%8E%E7%AC%AC%E4%BA%8C%E7%B1%BB%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AE%A1%E7%90%86%E7%A8%8B%E5%BA%8F.PNG">
+<meta property="og:image" content="https://rockcohen.github.io/2021/05/19/OS/%E8%99%9A%E6%8B%9F%E5%86%85%E6%A0%B8%E6%80%81%E6%9E%B6%E6%9E%84%E5%9B%BE.PNG">
 <meta property="article:published_time" content="2021-05-19T06:21:59.000Z">
-<meta property="article:modified_time" content="2021-05-19T13:43:26.924Z">
+<meta property="article:modified_time" content="2021-05-19T13:43:26.000Z">
 <meta property="article:author" content="RockCohen">
 <meta property="article:tag" content="OS">
 <meta property="article:tag" content="Modern OS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://rockcohen.gitee.io/blog/2021/05/19/OS/cohen.jpg">
+<meta name="twitter:image" content="https://rockcohen.github.io/2021/05/19/OS/cohen.jpg">
 
-<link rel="canonical" href="https://rockcohen.gitee.io/blog/2021/05/19/OS/">
+<link rel="canonical" href="https://rockcohen.github.io/2021/05/19/OS/">
 
 
 <script id="page-configurations">
@@ -107,7 +107,7 @@
 
   <div class="site-meta">
 
-    <a href="/blog/" class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">Rock Cohen</h1>
       <span class="logo-line-after"><i></i></span>
@@ -128,27 +128,27 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
   </ul>
@@ -179,10 +179,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://rockcohen.gitee.io/blog/2021/05/19/OS/">
+    <link itemprop="mainEntityOfPage" href="https://rockcohen.github.io/2021/05/19/OS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/hugo.png">
+      <meta itemprop="image" content="/images/hugo.png">
       <meta itemprop="name" content="RockCohen">
       <meta itemprop="description" content="a programmer">
     </span>
@@ -211,7 +211,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/OS/" itemprop="url" rel="index"><span itemprop="name">OS</span></a>
+                  <a href="/categories/OS/" itemprop="url" rel="index"><span itemprop="name">OS</span></a>
                 </span>
             </span>
 
@@ -226,7 +226,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <img src="/blog/2021/05/19/OS/cohen.jpg" class>
+        <img src="/2021/05/19/OS/cohen.jpg" class>
 
 <h1 id="英特纳雄耐尔一定要实现"><a href="#英特纳雄耐尔一定要实现" class="headerlink" title="英特纳雄耐尔一定要实现"></a>英特纳雄耐尔一定要实现</h1><span id="more"></span>
 
@@ -355,11 +355,11 @@
 <p><strong>空闲区链表的改进</strong>：分别维护进程和空闲区各自独立的链表。则空闲区链表中内存分配的四种算法的性能将会提高。代价就是复杂度增加和内存释放的速度变慢。通过对空闲块的大小进行排序组成链表，在进行最佳适配的时候，时间复杂度将减小。<strong>快速适配</strong>：维护一个常用大小的空闲内存块的链表。</p>
 <h2 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h2><p>使用基地址寄存器和界限寄存器来创建抽象地址空间，引入新的问题：<strong>管理软件的膨胀</strong>。发展带来的问题就是程序设计越来越大，使用交换技术来解决是其中的一种方案，但是相对较为耗时。问题的解决：<strong>程序分割</strong>。成为<strong>覆盖(<code>overlay</code>)</strong>.虚拟内存的基本思路：每个程序拥有自己的地址空间，这个空间被分割成多个块，每一个块成为<strong>页面</strong>或者<strong>页</strong>，每一个页面的地址连续。（一部分页面加载到内存即可运行程序）</p>
 <h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3><p>分页机制中，真实的物理地址通过<strong>索引、基地址寄存器、段寄存器和其他方式</strong>产生。虚拟地址空间被送入<strong>内存管理单元</strong>（<code>Memory Management Unit</code>,<code>MMU</code>)，该部件将虚拟地址映射成物理地址。下图指出MMU的位置与功能。</p>
-<img src="/blog/2021/05/19/OS/MMU%E5%8A%9F%E8%83%BD%E4%B8%8E%E4%BD%8D%E7%BD%AE.PNG" class>
+<img src="/2021/05/19/OS/MMU%E5%8A%9F%E8%83%BD%E4%B8%8E%E4%BD%8D%E7%BD%AE.PNG" class>
 
 <p>虚拟地址空间按照固定的大小划分成被称为页面的若干单元，在物理内存中对应的单元称作<strong>页框</strong>。RAM与磁盘之间的交换总是以整个页面为单位进行的。通常页面的大小设计也不是唯一的，用户程序与内核程序使用的页面大小就不一定相同大小。分页算法中还需要记录具体的页面是否在内存中，也就是需要一bit来记录。如果发生需要的页面不在内存中，CPU陷入到操作系统中，发生<strong>缺页中断</strong>。操作系统需要将访问的页面读到被回收的页框中，修改映射关系（页表与页框之间的映射），然后重新启动引起陷阱的指令。</p>
 <h3 id="页表"><a href="#页表" class="headerlink" title="页表"></a>页表</h3><p>虚拟地址空间的映射一种简单的是实现方案就是：虚拟地址被划分为虚拟页号和偏移量。将虚拟号与页框号进行对应，然后将页框号与偏移量进行拼接得到物理地址。页表项的结构：</p>
-<img src="/blog/2021/05/19/OS/%E9%A1%B5%E8%A1%A8%E7%BB%93%E6%9E%84.PNG" class>
+<img src="/2021/05/19/OS/%E9%A1%B5%E8%A1%A8%E7%BB%93%E6%9E%84.PNG" class>
 
 <p>结构介绍：</p>
 <ul>
@@ -376,7 +376,7 @@
 <p>设计大而快速的映射，可以通过硬件的方式实现，通过专用的映射结构来实现虚拟地址的映射。代价：映射表越大，代价越大。如果将这个页表放入内存中，那么在进行页表检索的时候，访问内存的消耗较大，速度较慢。</p>
 <p><strong>转换检测缓冲区</strong>：</p>
 <p>分页机制引起的问题：由于分页机制存在，查找指令需要多次访问指令，而访问内存是一个很耗时的过程。程序特点：大多数程序总是对少量的页面进行多次的访问。解决方案：为计算机设置一个小型的硬件设备，将虚拟地址直接映射到物理地址，不需要再访问页表。该设备叫做<strong>转换检测缓冲区</strong>（<code>Translation Lookaside Buffer</code>,TLB).又称相联存储器或者快表。该硬件通常在MMU中。下面是一个TLB的加速分页表</p>
-<img src="/blog/2021/05/19/OS/TLB%E5%88%86%E9%A1%B5%E5%8A%A0%E9%80%9F%E8%A1%A8.PNG" class>
+<img src="/2021/05/19/OS/TLB%E5%88%86%E9%A1%B5%E5%8A%A0%E9%80%9F%E8%A1%A8.PNG" class>
 
 <p><strong>软件管理TLB</strong>：</p>
 <p>原始的TLB管理：TLB的管理和TLB的失效处理完全由MMU硬件实现。只有在内存中没有找到响应的页面时，才会陷入到操作系统中。软件管理TLB：TLB表项被操作系统显式的装载，当发生TLB失效时，不由MMU处理，而是生成一个TLB失效并交由操作系统解决。系统首先找到该页面，然后从TLB中删除一个项，接着装载一个新的项，最后执行先前出错的命令。软件管理TLB的问题：当页表不在TLB中发生TLB失效，处理过程产生额外的TLB失效。软件管理TLB问题的解决：在内存固定位置维护一个大的TLB表项的软件高速缓存来减少TLB失效。TLB失效的类别：</p>
@@ -400,7 +400,7 @@
 <h3 id="先进先出页面置换算法"><a href="#先进先出页面置换算法" class="headerlink" title="先进先出页面置换算法"></a>先进先出页面置换算法</h3><p>操作系统维护一个所有当前在内存中的页面的链表，最新进入的页面放在表尾，最早进入的页面放在表头，发生缺页中断时，从表头中删除第一个页面，然后在表尾插入新的页面。该算法的问题：经常被访问的页面被置换出，重复的进行页面置换。所以纯粹的FIFO算法很少使用。</p>
 <h3 id="第二次机会页面置换算法"><a href="#第二次机会页面置换算法" class="headerlink" title="第二次机会页面置换算法"></a>第二次机会页面置换算法</h3><p>对FIFO算法进行适当的修改：检查最老页面的R位。如果R位是0，那么该页面表示既老又没有被使用，理当被置换掉，如果是1，将R置为0，并把该页面放到链表的尾端，修改它的装入时间使得其像新的页面被装入。第二次机会页面置换算法就是在寻找一个在最近时间间隔内没有被访问的页面。如果所有的页面都被访问那么就是简单的FIFO算法。算法缺点：链表中宏移动页面的操作较多，性能相对有影响。</p>
 <h3 id="时钟页面置换算法"><a href="#时钟页面置换算法" class="headerlink" title="时钟页面置换算法"></a>时钟页面置换算法</h3><p>把所有的页面保存在一个类似于钟面的环形链表中，一个表指针指向最来的页面。如下图：</p>
-<img src="/blog/2021/05/19/OS/%E6%97%B6%E9%92%9F%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95.PNG" class>
+<img src="/2021/05/19/OS/%E6%97%B6%E9%92%9F%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95.PNG" class>
 
 <p>当发生缺页中断时，算法首先检查表指针指向的页面，如果R位位0直接淘汰，并将新的页面插入到该位置，并将表指针向前移动一个位置。如果R位位1，那么将R位清零，表指针向前移动一位。重复这个位置直到找到一个R位为0的页面为止。<strong>第二次机会页面置算法与时钟页面置换算法对比</strong>：显然，从数据操作上面来看，第二次机会是通过不断移动页面实现页面的置换，而时钟页面置换算法是通过移动指针来实现页面的置换，这里明显知道指针的移动性能相对较高。</p>
 <h3 id="最近最少使用页面置换算法"><a href="#最近最少使用页面置换算法" class="headerlink" title="最近最少使用页面置换算法"></a>最近最少使用页面置换算法</h3><p>最近最少使用算法（<code>Least Recently Used</code>,<strong>LRU</strong>)的策略是：在缺页中断发生时，置换未使用时间最长的页面。LRU的实现：在内存中维护ige所有页面的链表，最近最多使用的在表头，最近最少使用的页面在表尾。每次访问内存需要更新链表，维护链表的性质（相对较为耗费资源）。</p>
@@ -412,7 +412,7 @@
 </ul>
 <p>工作集模型：跟踪进程的工作集，确保让进程运行以前，它的工作集就已经存在在内存中。尽量减少缺页中断。</p>
 <h3 id="工作集时钟页面置换算法"><a href="#工作集时钟页面置换算法" class="headerlink" title="工作集时钟页面置换算法"></a>工作集时钟页面置换算法</h3><p>工作集时钟页面置换算法的数据结构如下：</p>
-<img src="/blog/2021/05/19/OS/%E5%B7%A5%E4%BD%9C%E9%9B%86%E6%97%B6%E9%92%9F%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95.PNG" class>
+<img src="/2021/05/19/OS/%E5%B7%A5%E4%BD%9C%E9%9B%86%E6%97%B6%E9%92%9F%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95.PNG" class>
 
 <p>装入第一个页面之后，把它加入到该表中，随着表的加入，形成一个环，每个表项包括基本的工作集上次使用的时间、R位、M位。</p>
 <p>算法过程：</p>
@@ -421,7 +421,7 @@
 <li>重复该算法找到一个页面R位为0，而如果M为1，表示其被修改过，那么该页面不能被直接替换。</li>
 </ul>
 <h3 id="页面置换算法总结"><a href="#页面置换算法总结" class="headerlink" title="页面置换算法总结"></a>页面置换算法总结</h3><p>几种页面置换算法的总结如下：</p>
-<img src="/blog/2021/05/19/OS/%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93.PNG" class>
+<img src="/2021/05/19/OS/%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93.PNG" class>
 
 <h2 id="分段"><a href="#分段" class="headerlink" title="分段"></a>分段</h2><p>对于很多问题来说，有两个或者多个独立的地址空间可能比只有一个要好很多。比如存在一个程序多种动态增长的表，如果表的地址空间是独立的，那么在动态增长的时候就很方便。解决办法：在机器上提供多个相互独立的成为<strong>段</strong>的地址空间。每个段由一个从0开始到最大线性地址构成。根据实际情况，每个段的实际长度可以不同，</p>
 <p>分段存储管理的优点：</p>
@@ -453,7 +453,7 @@
 <li>磁盘管理</li>
 </ul>
 <h3 id="文件系统布局"><a href="#文件系统布局" class="headerlink" title="文件系统布局"></a>文件系统布局</h3><p>文件系统存放在磁盘中，多数磁盘被划分为一个或者多个分区，每个分区中有一个独立的文件系统。磁盘的0号扇区称为<strong>主引导记录</strong>（<code>Master Boot Record</code>),用来引导计算机。主引导记录后面是分区表，分区表记录每个分区的起始与终止地址。通常每个分区有一个引导块，即便没有对应的引导程序。文件系统结构如下：</p>
-<img src="/blog/2021/05/19/OS/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%B8%83%E5%B1%80.PNG" class>
+<img src="/2021/05/19/OS/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%B8%83%E5%B1%80.PNG" class>
 
 <p><strong>超级块</strong>：记录文件的关键参数，当文件首次被加载时，超级快会被读入内存。关键参数包括：确定文件类型的魔数，文件系统中块的数量和其他管理信息。</p>
 <p><strong>空闲块</strong>：利用位图或者指针列表指定空闲块的位置。</p>
@@ -497,13 +497,13 @@
 <p>虚拟机管理程序并未真正运行原始的客户操作系统，虚拟机管理程序在运行中改写部分代码，将有问题的不知零替换成了安全的指令序列，模拟元指令的功能。上述的指令执行结果必须限制在虚拟机内部，不能影响其他虚拟机火鹤虚拟机管理程序自身。因此，一条不安全的I/O指令会被替换为一个陷入操作，经过安全性检查之后，执行等价的指令并返回结果。</p>
 <p><strong>半虚拟化</strong>：</p>
 <p>提供一层类似物理机器的软件接口，显示暴露出自身是一个虚拟化的环境。提供一组虚拟化调用，允许用户向虚拟机发起显式的请求，类似于系统功能调用为用户程序提供服务一样。</p>
-<h2 id="第一类和第二类虚拟化管理程序"><a href="#第一类和第二类虚拟化管理程序" class="headerlink" title="第一类和第二类虚拟化管理程序"></a>第一类和第二类虚拟化管理程序</h2><img src="/blog/2021/05/19/OS/%E7%AC%AC%E4%B8%80%E7%B1%BB%E4%B8%8E%E7%AC%AC%E4%BA%8C%E7%B1%BB%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AE%A1%E7%90%86%E7%A8%8B%E5%BA%8F.PNG" class>
+<h2 id="第一类和第二类虚拟化管理程序"><a href="#第一类和第二类虚拟化管理程序" class="headerlink" title="第一类和第二类虚拟化管理程序"></a>第一类和第二类虚拟化管理程序</h2><img src="/2021/05/19/OS/%E7%AC%AC%E4%B8%80%E7%B1%BB%E4%B8%8E%E7%AC%AC%E4%BA%8C%E7%B1%BB%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AE%A1%E7%90%86%E7%A8%8B%E5%BA%8F.PNG" class>
 
 <p><strong>第一类虚拟机管理程序</strong></p>
 <p>上图中，第一类虚拟机管理程序，从技术上讲，第一类虚拟机管理程序就像一个操作系统，其是唯一一个运行在最高特权级的程序。其工作是支持真实硬件的多个虚拟机拷贝，类似于普通操作系统支持的进程。</p>
 <p><strong>第二类虚拟机管理程序</strong></p>
 <p>第二类虚拟机管理程序是在宿主操作系统上运行的进程。当然，第二类虚拟机管理程序仍然伪装成具有CPU和各种设备的完整计算机。第二类虚拟机管理程序也称作<strong>托管虚拟机管理程序</strong>，依赖于宿主操作系统，运行客户操作系统。</p>
-<h2 id="高效虚拟化技术"><a href="#高效虚拟化技术" class="headerlink" title="高效虚拟化技术"></a>高效虚拟化技术</h2><img src="/blog/2021/05/19/OS/%E8%99%9A%E6%8B%9F%E5%86%85%E6%A0%B8%E6%80%81%E6%9E%B6%E6%9E%84%E5%9B%BE.PNG" class>
+<h2 id="高效虚拟化技术"><a href="#高效虚拟化技术" class="headerlink" title="高效虚拟化技术"></a>高效虚拟化技术</h2><img src="/2021/05/19/OS/%E8%99%9A%E6%8B%9F%E5%86%85%E6%A0%B8%E6%80%81%E6%9E%B6%E6%9E%84%E5%9B%BE.PNG" class>
 
 <p>虚拟机作为用户态进程运行，不允许执行敏感指令，虚拟机上客户操作系统认为自己运行在内核态，从图中我们知道，我们称之为<strong>虚拟内核态</strong>。虚拟机中同样也运行真实的用户态进程。<br>虚拟机被分为虚拟机用户态与虚拟内核态，两个同属于真实的用户态。只有虚拟机管理程序运行在内核态。</p>
 <h2 id="半虚拟化与全虚拟化的对比"><a href="#半虚拟化与全虚拟化的对比" class="headerlink" title="半虚拟化与全虚拟化的对比"></a>半虚拟化与全虚拟化的对比</h2>
@@ -521,8 +521,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/blog/tags/OS/" rel="tag"># OS</a>
-              <a href="/blog/tags/Modern-OS/" rel="tag"># Modern OS</a>
+              <a href="/tags/OS/" rel="tag"># OS</a>
+              <a href="/tags/Modern-OS/" rel="tag"># Modern OS</a>
           </div>
 
         
@@ -531,11 +531,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blog/2021/05/19/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5/" rel="prev" title="虚拟机网络连接">
+    <a href="/2021/05/19/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5/" rel="prev" title="虚拟机网络连接">
       <i class="fa fa-chevron-left"></i> 虚拟机网络连接
     </a></div>
       <div class="post-nav-item">
-    <a href="/blog/2021/05/19/git/" rel="next" title="Git-base">
+    <a href="/2021/05/19/git/" rel="next" title="Git-base">
       Git-base <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -603,27 +603,27 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="RockCohen"
-      src="/blog/images/hugo.png">
+      src="/images/hugo.png">
   <p class="site-author-name" itemprop="name">RockCohen</p>
   <div class="site-description" itemprop="description">a programmer</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/blog/archives/">
+          <a href="/archives/">
         
           <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/blog/categories/">
+            <a href="/categories/">
           
         <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/blog/tags/">
+            <a href="/tags/">
           
         <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">标签</span></a>
@@ -683,19 +683,19 @@
   </div>
 
   
-  <script src="/blog/lib/anime.min.js"></script>
-  <script src="/blog/lib/velocity/velocity.min.js"></script>
-  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/blog/js/utils.js"></script>
+<script src="/js/utils.js"></script>
 
-<script src="/blog/js/motion.js"></script>
-
-
-<script src="/blog/js/schemes/pisces.js"></script>
+<script src="/js/motion.js"></script>
 
 
-<script src="/blog/js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
 
 
 
