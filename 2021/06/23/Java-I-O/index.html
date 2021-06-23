@@ -20,13 +20,14 @@
     var CONFIG = {"hostname":"rockcohen.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="概述">
+  <meta name="description" content="三舅，这话能跟他说吗？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java-I&#x2F;O">
 <meta property="og:url" content="https://rockcohen.github.io/2021/06/23/Java-I-O/index.html">
 <meta property="og:site_name" content="Rock Cohen">
-<meta property="og:description" content="概述">
+<meta property="og:description" content="三舅，这话能跟他说吗？">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://rockcohen.github.io/2021/06/23/Java-I-O/bullet.jfif">
 <meta property="og:image" content="https://rockcohen.github.io/2021/06/23/Java-I-O/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81.PNG">
 <meta property="og:image" content="https://rockcohen.github.io/2021/06/23/Java-I-O/IO.jpg">
 <meta property="og:image" content="https://rockcohen.github.io/2021/06/23/Java-I-O/Writer.png">
@@ -34,12 +35,12 @@
 <meta property="og:image" content="https://rockcohen.github.io/2021/06/23/Java-I-O/InputStream.png">
 <meta property="og:image" content="https://rockcohen.github.io/2021/06/23/Java-I-O/OutputStream.png">
 <meta property="article:published_time" content="2021-06-23T15:22:39.000Z">
-<meta property="article:modified_time" content="2021-06-23T16:51:01.661Z">
+<meta property="article:modified_time" content="2021-06-23T16:56:42.322Z">
 <meta property="article:author" content="RockCohen">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="I&#x2F;O">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://rockcohen.github.io/2021/06/23/Java-I-O/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81.PNG">
+<meta name="twitter:image" content="https://rockcohen.github.io/2021/06/23/Java-I-O/bullet.jfif">
 
 <link rel="canonical" href="https://rockcohen.github.io/2021/06/23/Java-I-O/">
 
@@ -205,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-24 00:51:01" itemprop="dateModified" datetime="2021-06-24T00:51:01+08:00">2021-06-24</time>
+                <time title="修改时间：2021-06-24 00:56:42" itemprop="dateModified" datetime="2021-06-24T00:56:42+08:00">2021-06-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,9 +229,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><span id="more"></span>
+        <img src="/2021/06/23/Java-I-O/bullet.jfif" class>
 
-<p>流是一组有顺序的，有起点和终点的字节集合，是对数据传输的总称或抽象。即数据在两设备间的传输称为流，流的本质是数据传输，根据数据传输特性将流抽象为各种类，方便更直观的进行数据操作。</p>
+<h1 id="三舅，这话能跟他说吗？"><a href="#三舅，这话能跟他说吗？" class="headerlink" title="三舅，这话能跟他说吗？"></a>三舅，这话能跟他说吗？</h1><span id="more"></span>
+
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>流是一组有顺序的，有起点和终点的字节集合，是对数据传输的总称或抽象。即数据在两设备间的传输称为流，流的本质是数据传输，根据数据传输特性将流抽象为各种类，方便更直观的进行数据操作。</p>
 <p>流有输入和输出，输入时是流从数据源流向程序。输出时是流从程序传向数据源，而数据源可以是内存，文件，网络或程序等。</p>
 <h1 id="I-O-流分类"><a href="#I-O-流分类" class="headerlink" title="I/O 流分类"></a>I/O 流分类</h1><h2 id="输入输出流"><a href="#输入输出流" class="headerlink" title="输入输出流"></a>输入输出流</h2><p>分类标准：数据流向</p>
 <ul>
@@ -352,7 +355,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#I-O-%E6%B5%81%E5%88%86%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">I&#x2F;O 流分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81"><span class="nav-number">2.1.</span> <span class="nav-text">输入输出流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E5%AD%97%E8%8A%82%E6%B5%81"><span class="nav-number">2.2.</span> <span class="nav-text">字符字节流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E6%B5%81%E4%B8%8E%E5%A4%84%E7%90%86%E6%B5%81"><span class="nav-number">2.3.</span> <span class="nav-text">节点流与处理流</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#I-O-%E6%B5%81%E5%88%86%E7%B1%BB-1"><span class="nav-number">3.</span> <span class="nav-text">I&#x2F;O 流分类</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E8%88%85%EF%BC%8C%E8%BF%99%E8%AF%9D%E8%83%BD%E8%B7%9F%E4%BB%96%E8%AF%B4%E5%90%97%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">三舅，这话能跟他说吗？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#I-O-%E6%B5%81%E5%88%86%E7%B1%BB"><span class="nav-number">3.</span> <span class="nav-text">I&#x2F;O 流分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81"><span class="nav-number">3.1.</span> <span class="nav-text">输入输出流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E5%AD%97%E8%8A%82%E6%B5%81"><span class="nav-number">3.2.</span> <span class="nav-text">字符字节流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E6%B5%81%E4%B8%8E%E5%A4%84%E7%90%86%E6%B5%81"><span class="nav-number">3.3.</span> <span class="nav-text">节点流与处理流</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#I-O-%E6%B5%81%E5%88%86%E7%B1%BB-1"><span class="nav-number">4.</span> <span class="nav-text">I&#x2F;O 流分类</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
